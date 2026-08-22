@@ -1,0 +1,2 @@
+# Python deps for the parts DB (ingest + agent query functions).
+pymongo>=4.6

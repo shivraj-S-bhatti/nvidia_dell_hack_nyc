@@ -1,0 +1,879 @@
+{
+  "count": 46,
+  "parts": [
+    {
+      "partId": "part-easyrc-10-teeth-crown-gear",
+      "name": "10 teeth crown gear",
+      "subsystem": "drivetrain",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-10-teeth-crown-gear.glb",
+      "bboxMm": [
+        11,
+        12.5,
+        9.08
+      ],
+      "tris": 4464,
+      "verts": 3351,
+      "center": [
+        0.53,
+        0,
+        2.94
+      ]
+    },
+    {
+      "partId": "part-easyrc-15-teeth-crown-gear",
+      "name": "15 teeth crown gear",
+      "subsystem": "drivetrain",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-15-teeth-crown-gear.glb",
+      "bboxMm": [
+        24.77,
+        15,
+        21.7
+      ],
+      "tris": 5371,
+      "verts": 4248,
+      "center": [
+        -3.96,
+        0,
+        2.16
+      ]
+    },
+    {
+      "partId": "part-easyrc-16-teeth-bearing-mount",
+      "name": "16 teeth bearing mount",
+      "subsystem": "drivetrain",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-16-teeth-bearing-mount.glb",
+      "bboxMm": [
+        7,
+        6.99,
+        10.2
+      ],
+      "tris": 1010,
+      "verts": 942,
+      "center": [
+        0,
+        0,
+        12.3
+      ]
+    },
+    {
+      "partId": "part-easyrc-16-teeth-gear",
+      "name": "16 teeth gear",
+      "subsystem": "drivetrain",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-16-teeth-gear.glb",
+      "bboxMm": [
+        18,
+        18,
+        8
+      ],
+      "tris": 6760,
+      "verts": 4438,
+      "center": [
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "partId": "part-easyrc-24-teeth-gear",
+      "name": "24 teeth gear",
+      "subsystem": "drivetrain",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-24-teeth-gear.glb",
+      "bboxMm": [
+        26,
+        26,
+        10
+      ],
+      "tris": 7806,
+      "verts": 5919,
+      "center": [
+        0,
+        0,
+        5
+      ]
+    },
+    {
+      "partId": "part-easyrc-25-teeth-gear",
+      "name": "25 teeth gear",
+      "subsystem": "drivetrain",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-25-teeth-gear.glb",
+      "bboxMm": [
+        26.93,
+        26.98,
+        8
+      ],
+      "tris": 6498,
+      "verts": 4603,
+      "center": [
+        0.03,
+        0,
+        4
+      ]
+    },
+    {
+      "partId": "part-easyrc-battery-lid",
+      "name": "Battery lid",
+      "subsystem": "chassis",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-battery-lid.glb",
+      "bboxMm": [
+        95.4,
+        63.9,
+        5.2
+      ],
+      "tris": 1164,
+      "verts": 1204,
+      "center": [
+        77,
+        43.45,
+        -12.4
+      ]
+    },
+    {
+      "partId": "part-easyrc-chassis-bottom",
+      "name": "Chassis bottom",
+      "subsystem": "chassis",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-chassis-bottom.glb",
+      "bboxMm": [
+        213.5,
+        113.8,
+        20.2
+      ],
+      "tris": 8896,
+      "verts": 9113,
+      "center": [
+        86.75,
+        66.1,
+        -4.9
+      ]
+    },
+    {
+      "partId": "part-easyrc-chassis-securing-bracket",
+      "name": "Chassis securing bracket",
+      "subsystem": "chassis",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-chassis-securing-bracket.glb",
+      "bboxMm": [
+        16.5,
+        89.8,
+        9.6
+      ],
+      "tris": 1296,
+      "verts": 1386,
+      "center": [
+        -3.25,
+        66.1,
+        10
+      ]
+    },
+    {
+      "partId": "part-easyrc-chassis-top",
+      "name": "Chassis top",
+      "subsystem": "chassis",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-chassis-top.glb",
+      "bboxMm": [
+        166.5,
+        103,
+        15
+      ],
+      "tris": 5936,
+      "verts": 6206,
+      "center": [
+        112.25,
+        60.7,
+        7.5
+      ]
+    },
+    {
+      "partId": "part-easyrc-differential-case",
+      "name": "Differential case",
+      "subsystem": "drivetrain",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-differential-case.glb",
+      "bboxMm": [
+        21.33,
+        21.33,
+        58.97
+      ],
+      "tris": 3592,
+      "verts": 3228,
+      "center": [
+        15.83,
+        1.83,
+        1.48
+      ]
+    },
+    {
+      "partId": "part-easyrc-differential-spacer",
+      "name": "Differential spacer",
+      "subsystem": "drivetrain",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-differential-spacer.glb",
+      "bboxMm": [
+        8.65,
+        8.65,
+        5
+      ],
+      "tris": 420,
+      "verts": 424,
+      "center": [
+        14,
+        0,
+        6.89
+      ]
+    },
+    {
+      "partId": "part-easyrc-differential-spacer-ring",
+      "name": "Differential spacer ring",
+      "subsystem": "drivetrain",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-differential-spacer-ring.glb",
+      "bboxMm": [
+        17,
+        17,
+        1.8
+      ],
+      "tris": 656,
+      "verts": 660,
+      "center": [
+        14,
+        0,
+        -21.9
+      ]
+    },
+    {
+      "partId": "part-easyrc-front-body",
+      "name": "Front body",
+      "subsystem": "body-exterior",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-front-body.glb",
+      "bboxMm": [
+        171.67,
+        124.4,
+        81
+      ],
+      "tris": 12084,
+      "verts": 11501,
+      "center": [
+        30.84,
+        68.2,
+        25.5
+      ]
+    },
+    {
+      "partId": "part-easyrc-front-bumper",
+      "name": "Front bumper",
+      "subsystem": "body-exterior",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-front-bumper.glb",
+      "bboxMm": [
+        20.6,
+        54,
+        8
+      ],
+      "tris": 492,
+      "verts": 504,
+      "center": [
+        -30.3,
+        66.1,
+        -11
+      ]
+    },
+    {
+      "partId": "part-easyrc-front-led-insert",
+      "name": "Front LED insert",
+      "subsystem": "body-exterior",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-front-led-insert.glb",
+      "bboxMm": [
+        8.5,
+        20,
+        10
+      ],
+      "tris": 1596,
+      "verts": 1468,
+      "center": [
+        -39.15,
+        26.45,
+        21.02
+      ]
+    },
+    {
+      "partId": "part-easyrc-front-light-clamp",
+      "name": "Front light clamp",
+      "subsystem": "body-exterior",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-front-light-clamp.glb",
+      "bboxMm": [
+        31.4,
+        105.49,
+        13
+      ],
+      "tris": 2004,
+      "verts": 2214,
+      "center": [
+        -19.2,
+        68.2,
+        21.3
+      ]
+    },
+    {
+      "partId": "part-easyrc-front-rim",
+      "name": "Front rim",
+      "subsystem": "wheels",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-front-rim.glb",
+      "bboxMm": [
+        34.99,
+        15,
+        34.99
+      ],
+      "tris": 1794,
+      "verts": 1940,
+      "center": [
+        0,
+        11.5,
+        0
+      ]
+    },
+    {
+      "partId": "part-easyrc-front-rim-locking-ring",
+      "name": "Front rim locking ring",
+      "subsystem": "wheels",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-front-rim-locking-ring.glb",
+      "bboxMm": [
+        13.99,
+        4,
+        14
+      ],
+      "tris": 624,
+      "verts": 628,
+      "center": [
+        0,
+        16,
+        0
+      ]
+    },
+    {
+      "partId": "part-easyrc-front-rim-spacer",
+      "name": "Front rim spacer",
+      "subsystem": "wheels",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-front-rim-spacer.glb",
+      "bboxMm": [
+        10.5,
+        7.6,
+        10.49
+      ],
+      "tris": 888,
+      "verts": 896,
+      "center": [
+        0,
+        7.8,
+        0
+      ]
+    },
+    {
+      "partId": "part-easyrc-front-wheel-mount-spacer",
+      "name": "Front wheel mount spacer",
+      "subsystem": "suspension-steering",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-front-wheel-mount-spacer.glb",
+      "bboxMm": [
+        10,
+        7.4,
+        9.99
+      ],
+      "tris": 672,
+      "verts": 678,
+      "center": [
+        0,
+        116.9,
+        0
+      ]
+    },
+    {
+      "partId": "part-easyrc-front-window",
+      "name": "Front window",
+      "subsystem": "body-exterior",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-front-window.glb",
+      "bboxMm": [
+        28.83,
+        105.07,
+        20.65
+      ],
+      "tris": 960,
+      "verts": 1048,
+      "center": [
+        50.46,
+        68.2,
+        50.22
+      ]
+    },
+    {
+      "partId": "part-easyrc-left-front-wheel-mount",
+      "name": "Left front wheel mount",
+      "subsystem": "suspension-steering",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-left-front-wheel-mount.glb",
+      "bboxMm": [
+        29.49,
+        17.84,
+        10
+      ],
+      "tris": 1680,
+      "verts": 1639,
+      "center": [
+        9.74,
+        27.92,
+        0
+      ]
+    },
+    {
+      "partId": "part-easyrc-left-front-window",
+      "name": "Left front window",
+      "subsystem": "body-exterior",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-left-front-window.glb",
+      "bboxMm": [
+        70.05,
+        16.13,
+        23.26
+      ],
+      "tris": 1034,
+      "verts": 1122,
+      "center": [
+        78.45,
+        17.09,
+        47.82
+      ]
+    },
+    {
+      "partId": "part-easyrc-left-rear-axle-tpu",
+      "name": "Left rear axle TPU",
+      "subsystem": "suspension-steering",
+      "material": "TPU-flex",
+      "glb": "assets/part-easyrc-left-rear-axle-tpu.glb",
+      "bboxMm": [
+        10.48,
+        10,
+        39.5
+      ],
+      "tris": 532,
+      "verts": 578,
+      "center": [
+        14,
+        0,
+        45.05
+      ]
+    },
+    {
+      "partId": "part-easyrc-left-rear-led-insert",
+      "name": "Left rear LED insert",
+      "subsystem": "body-exterior",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-left-rear-led-insert.glb",
+      "bboxMm": [
+        7.5,
+        24.96,
+        13.37
+      ],
+      "tris": 1266,
+      "verts": 1158,
+      "center": [
+        216.85,
+        26.56,
+        23.64
+      ]
+    },
+    {
+      "partId": "part-easyrc-left-rear-window",
+      "name": "Left rear window",
+      "subsystem": "body-exterior",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-left-rear-window.glb",
+      "bboxMm": [
+        46.56,
+        16.14,
+        23.28
+      ],
+      "tris": 648,
+      "verts": 712,
+      "center": [
+        143.16,
+        17.08,
+        47.81
+      ]
+    },
+    {
+      "partId": "part-easyrc-rear-body",
+      "name": "Rear body",
+      "subsystem": "body-exterior",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-rear-body.glb",
+      "bboxMm": [
+        109.82,
+        124.4,
+        80.99
+      ],
+      "tris": 11464,
+      "verts": 10441,
+      "center": [
+        171.59,
+        68.2,
+        25.5
+      ]
+    },
+    {
+      "partId": "part-easyrc-rear-bumper",
+      "name": "Rear bumper",
+      "subsystem": "body-exterior",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-rear-bumper.glb",
+      "bboxMm": [
+        26.6,
+        56,
+        15
+      ],
+      "tris": 426,
+      "verts": 468,
+      "center": [
+        206.8,
+        66.1,
+        -7.5
+      ]
+    },
+    {
+      "partId": "part-easyrc-rear-light-clamp",
+      "name": "Rear light clamp",
+      "subsystem": "body-exterior",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-rear-light-clamp.glb",
+      "bboxMm": [
+        23.5,
+        24.96,
+        40.07
+      ],
+      "tris": 1006,
+      "verts": 1018,
+      "center": [
+        213.25,
+        26.56,
+        10.68
+      ]
+    },
+    {
+      "partId": "part-easyrc-rear-rim",
+      "name": "Rear rim",
+      "subsystem": "wheels",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-rear-rim.glb",
+      "bboxMm": [
+        34.99,
+        17,
+        34.99
+      ],
+      "tris": 2110,
+      "verts": 2170,
+      "center": [
+        0,
+        6.5,
+        0
+      ]
+    },
+    {
+      "partId": "part-easyrc-rear-rim-spacer",
+      "name": "Rear rim spacer",
+      "subsystem": "wheels",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-rear-rim-spacer.glb",
+      "bboxMm": [
+        10.5,
+        5,
+        10.49
+      ],
+      "tris": 720,
+      "verts": 726,
+      "center": [
+        0,
+        12.5,
+        0
+      ]
+    },
+    {
+      "partId": "part-easyrc-rear-window",
+      "name": "Rear window",
+      "subsystem": "body-exterior",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-rear-window.glb",
+      "bboxMm": [
+        26.76,
+        104.9,
+        20.37
+      ],
+      "tris": 960,
+      "verts": 1048,
+      "center": [
+        160.47,
+        68.2,
+        49.97
+      ]
+    },
+    {
+      "partId": "part-easyrc-rear-wing",
+      "name": "Rear wing",
+      "subsystem": "body-exterior",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-rear-wing.glb",
+      "bboxMm": [
+        31.9,
+        99.8,
+        34.87
+      ],
+      "tris": 5698,
+      "verts": 3398,
+      "center": [
+        205.12,
+        68.2,
+        46.43
+      ]
+    },
+    {
+      "partId": "part-easyrc-rear-wing-holder",
+      "name": "Rear wing holder",
+      "subsystem": "body-exterior",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-rear-wing-holder.glb",
+      "bboxMm": [
+        18.4,
+        58,
+        22
+      ],
+      "tris": 1136,
+      "verts": 1112,
+      "center": [
+        196.63,
+        68.2,
+        26
+      ]
+    },
+    {
+      "partId": "part-easyrc-right-front-wheel-mount",
+      "name": "Right front wheel mount",
+      "subsystem": "suspension-steering",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-right-front-wheel-mount.glb",
+      "bboxMm": [
+        29.49,
+        17.84,
+        10
+      ],
+      "tris": 1666,
+      "verts": 1643,
+      "center": [
+        9.74,
+        104.28,
+        0
+      ]
+    },
+    {
+      "partId": "part-easyrc-right-front-window",
+      "name": "Right front window",
+      "subsystem": "body-exterior",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-right-front-window.glb",
+      "bboxMm": [
+        70.05,
+        16.13,
+        23.26
+      ],
+      "tris": 1034,
+      "verts": 1122,
+      "center": [
+        78.45,
+        119.31,
+        47.82
+      ]
+    },
+    {
+      "partId": "part-easyrc-right-rear-axle-tpu",
+      "name": "Right rear axle TPU",
+      "subsystem": "suspension-steering",
+      "material": "TPU-flex",
+      "glb": "assets/part-easyrc-right-rear-axle-tpu.glb",
+      "bboxMm": [
+        10.5,
+        10,
+        37
+      ],
+      "tris": 548,
+      "verts": 594,
+      "center": [
+        14,
+        0,
+        -30
+      ]
+    },
+    {
+      "partId": "part-easyrc-right-rear-led-insert",
+      "name": "Right rear LED insert",
+      "subsystem": "body-exterior",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-right-rear-led-insert.glb",
+      "bboxMm": [
+        7.5,
+        24.96,
+        13.37
+      ],
+      "tris": 1266,
+      "verts": 1158,
+      "center": [
+        216.85,
+        109.84,
+        23.64
+      ]
+    },
+    {
+      "partId": "part-easyrc-right-rear-window",
+      "name": "Right rear window",
+      "subsystem": "body-exterior",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-right-rear-window.glb",
+      "bboxMm": [
+        46.56,
+        16.14,
+        23.28
+      ],
+      "tris": 648,
+      "verts": 712,
+      "center": [
+        143.16,
+        119.32,
+        47.81
+      ]
+    },
+    {
+      "partId": "part-easyrc-servo-horn-attachment-large-tpu",
+      "name": "Servo horn attachment large TPU",
+      "subsystem": "body-exterior",
+      "material": "TPU-flex",
+      "glb": "assets/part-easyrc-servo-horn-attachment-large-tpu.glb",
+      "bboxMm": [
+        27.39,
+        39.78,
+        5
+      ],
+      "tris": 796,
+      "verts": 844,
+      "center": [
+        10.32,
+        66.1,
+        20.2
+      ]
+    },
+    {
+      "partId": "part-easyrc-servo-horn-attachment-small-tpu",
+      "name": "Servo horn attachment small TPU",
+      "subsystem": "body-exterior",
+      "material": "TPU-flex",
+      "glb": "assets/part-easyrc-servo-horn-attachment-small-tpu.glb",
+      "bboxMm": [
+        27.39,
+        37.78,
+        5
+      ],
+      "tris": 896,
+      "verts": 956,
+      "center": [
+        10.32,
+        66.1,
+        20.2
+      ]
+    },
+    {
+      "partId": "part-easyrc-steering-linkage",
+      "name": "Steering linkage",
+      "subsystem": "suspension-steering",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-steering-linkage.glb",
+      "bboxMm": [
+        12.86,
+        79.18,
+        9.6
+      ],
+      "tris": 870,
+      "verts": 836,
+      "center": [
+        21.96,
+        66.1,
+        9.9
+      ]
+    },
+    {
+      "partId": "part-easyrc-steering-linkage-connector",
+      "name": "Steering linkage connector",
+      "subsystem": "suspension-steering",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-steering-linkage-connector.glb",
+      "bboxMm": [
+        15.65,
+        15.79,
+        15
+      ],
+      "tris": 1620,
+      "verts": 1530,
+      "center": [
+        15.66,
+        103.26,
+        12.5
+      ]
+    },
+    {
+      "partId": "part-easyrc-tire-tpu",
+      "name": "Tire TPU",
+      "subsystem": "wheels",
+      "material": "TPU-flex",
+      "glb": "assets/part-easyrc-tire-tpu.glb",
+      "bboxMm": [
+        49.8,
+        15.8,
+        49.8
+      ],
+      "tris": 54962,
+      "verts": 34807,
+      "center": [
+        0,
+        7.5,
+        0
+      ]
+    },
+    {
+      "partId": "part-easyrc-window-holder",
+      "name": "Window holder",
+      "subsystem": "body-exterior",
+      "material": "PLA-rigid",
+      "glb": "assets/part-easyrc-window-holder.glb",
+      "bboxMm": [
+        106.6,
+        92.67,
+        15.58
+      ],
+      "tris": 3702,
+      "verts": 4016,
+      "center": [
+        104.93,
+        68.2,
+        43.21
+      ]
+    }
+  ]
+}

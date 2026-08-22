@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "occt-import-js": "^0.0.23"
+  }
+}
