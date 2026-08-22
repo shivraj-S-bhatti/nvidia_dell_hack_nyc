@@ -417,6 +417,7 @@ def render_run(report_path=".artifacts/track/track-report.json", out_dir=None,
     report_path = os.path.abspath(report_path)
     report = json.loads(Path(report_path).read_text(encoding="utf-8"))
     report_dir = os.path.dirname(report_path)
+    default_out = out_dir is None
     out_dir = os.path.abspath(out_dir or os.path.join(report_dir, "evidence"))
     os.makedirs(out_dir, exist_ok=True)
 
@@ -485,9 +486,10 @@ def render_run(report_path=".artifacts/track/track-report.json", out_dir=None,
     written.append(index)
     # Written twice on purpose, same bytes: the sheet belongs next to its PNGs
     # for anyone browsing the evidence directory, and next to track-report.json
-    # for anyone following the report.
+    # for anyone following the report. Only on the default layout -- an explicit
+    # --out-dir means "put it there", not "there and also in my artifact dir".
     beside = os.path.join(report_dir, "evidence.html")
-    if os.path.abspath(beside) != os.path.abspath(index):
+    if default_out and os.path.abspath(beside) != os.path.abspath(index):
         Path(beside).write_text(page, encoding="utf-8")
         written.append(beside)
     return written
@@ -717,6 +719,14 @@ def build_html(report, fx, figures, order, rejected, vmax):
         'grey background, not as zero energy. Every image is a top view with model '
         '+z up and +x right, one grid cell per %d&times;%d pixel block.</p>'
         % (vmax, VMAX_QUANTILE * 100, LOG_K, LOG_K, px, px))
+    # Two artefacts of the fixture that a viewer would otherwise read as physics.
+    out.append(
+        '<p class="sub">Two things to expect in these fields. The brightest cells '
+        'sit at the payload pad because that is where the load is introduced. The '
+        'arm mounts read as <i>dark</i> discs because every node inside a support '
+        'pad is held in both DOF, and an element whose four nodes are all held '
+        'stores no strain energy &mdash; the loaded material is the fan running '
+        'out of the payload pad toward each mount, not the mount itself.</p>')
 
     out.append("<h3>Baseline and survivors, in rank order</h3>")
     for i, cid in enumerate(order):
