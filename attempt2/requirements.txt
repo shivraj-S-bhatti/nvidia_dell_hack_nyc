@@ -1,0 +1,9 @@
+# ExitTwin Attempt 2 — deterministic backbone + data layer.
+# Pure-Python / arm64-safe. The only hard dependency is networkx (pure Python).
+# The model client and NYC fetcher use the stdlib (urllib), so `pull && run` works
+# with just this one install.
+networkx>=3.0
+
+# Optional: only needed if you point EXITTWIN_MONGODB_URI at a real MongoDB.
+# Without it, ExitTwin uses the built-in zero-dependency JSON store.
+# pymongo>=4.0

@@ -1,0 +1,27 @@
+{
+  "zoneId": "consented-zone-1",
+  "building": {"bbl": "1006720001", "bin": "1012268", "floor": 10},
+  "note": "PROXY GEOMETRY for development. Not the actual 10th-floor plan. Two west-wall stair exits (E1 north, E2 south), a north and south corridor joined by an east connector, occupants working along the corridor junctions. A furniture obstruction blocks the mid-building cross-link NJ2-SJ2 in the baseline.",
+  "nodes": [
+    {"id": "E1", "type": "exit", "x": 0, "y": 8},
+    {"id": "E2", "type": "exit", "x": 0, "y": 0},
+    {"id": "NJ1", "type": "junction", "x": 4, "y": 8, "occupants": 6},
+    {"id": "NJ2", "type": "junction", "x": 8, "y": 8, "occupants": 8},
+    {"id": "NJ3", "type": "junction", "x": 12, "y": 8, "occupants": 4},
+    {"id": "SJ1", "type": "junction", "x": 4, "y": 0, "occupants": 6},
+    {"id": "SJ2", "type": "junction", "x": 8, "y": 0, "occupants": 8},
+    {"id": "SJ3", "type": "junction", "x": 12, "y": 0, "occupants": 4},
+    {"id": "EJ", "type": "junction", "x": 12, "y": 4}
+  ],
+  "edges": [
+    {"a": "E1", "b": "NJ1", "clearance_mm": 1300},
+    {"a": "NJ1", "b": "NJ2", "clearance_mm": 1000},
+    {"a": "NJ2", "b": "NJ3", "clearance_mm": 1200},
+    {"a": "NJ3", "b": "EJ", "clearance_mm": 900},
+    {"a": "EJ", "b": "SJ3", "clearance_mm": 900},
+    {"a": "SJ3", "b": "SJ2", "clearance_mm": 1200},
+    {"a": "SJ2", "b": "SJ1", "clearance_mm": 1200},
+    {"a": "SJ1", "b": "E2", "clearance_mm": 1300},
+    {"a": "NJ2", "b": "SJ2", "clearance_mm": 1100, "passable": false}
+  ]
+}
