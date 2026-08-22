@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/attempt1/physgen/object/component-manifest.schema.json",
+  "title": "Stable NeoRacer component and occurrence identities",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "assetId",
+    "sourceArtifactSha256",
+    "assembly",
+    "counts",
+    "definitions",
+    "occurrences"
+  ],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "assetId": {"type": "string", "minLength": 1},
+    "sourceArtifactSha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "assembly": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assemblyId", "definitionName", "displayName", "units"],
+      "properties": {
+        "assemblyId": {"type": "string", "pattern": "^assembly-[0-9a-f]{20}$"},
+        "definitionName": {"type": "string", "minLength": 1},
+        "displayName": {"type": "string", "minLength": 1},
+        "units": {"const": "mm"}
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["definitions", "occurrences"],
+      "properties": {
+        "definitions": {"type": "integer", "minimum": 1},
+        "occurrences": {"type": "integer", "minimum": 1}
+      }
+    },
+    "definitions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["componentId", "definitionName", "occurrenceCount", "isRootAssembly"],
+        "properties": {
+          "componentId": {"type": "string", "pattern": "^component-[0-9a-f]{20}$"},
+          "definitionName": {"type": "string", "minLength": 1},
+          "occurrenceCount": {"type": "integer", "minimum": 0},
+          "isRootAssembly": {"type": "boolean"}
+        }
+      }
+    },
+    "occurrences": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "occurrenceId",
+          "componentId",
+          "definitionName",
+          "occurrenceName",
+          "occurrencePath",
+          "parentOccurrencePath",
+          "assemblyTransform",
+          "units"
+        ],
+        "properties": {
+          "occurrenceId": {"type": "string", "pattern": "^occurrence-[0-9a-f]{20}$"},
+          "componentId": {"type": "string", "pattern": "^component-[0-9a-f]{20}$"},
+          "definitionName": {"type": "string", "minLength": 1},
+          "occurrenceName": {"type": "string", "minLength": 1},
+          "occurrencePath": {"type": "string", "minLength": 1},
+          "parentOccurrencePath": {"type": ["string", "null"]},
+          "assemblyTransform": {"$ref": "#/$defs/matrix4"},
+          "units": {"const": "mm"}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "matrix4": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "array",
+        "minItems": 4,
+        "maxItems": 4,
+        "items": {"type": "number"}
+      }
+    }
+  }
+}

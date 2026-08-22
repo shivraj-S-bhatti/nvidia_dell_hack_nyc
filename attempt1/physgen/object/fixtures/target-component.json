@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "1.0.0",
+  "selectionStatus": "selected-neoracer",
+  "assetId": "neoracer-full-vehicle-2025-11",
+  "sourceArtifactSha256": "73d18cf9104c93177495f09f1aa4569c887c089ce0c9d0ddf4a97d1f26fc7c73",
+  "componentId": "component-651d2501fdff2aa4f1cd",
+  "occurrenceId": "occurrence-356ea2a4ca15007f265a",
+  "definitionName": "WING-MOUNT-L",
+  "occurrencePath": "SST000_ASM (1):1/WING-MOUNT-L:1",
+  "units": "mm",
+  "localFrame": {
+    "description": "Unlocated source component-definition frame from STEP/XCAF; millimetres.",
+    "transform": [
+      [1.0, 0.0, 0.0, 0.0],
+      [0.0, 1.0, 0.0, 0.0],
+      [0.0, 0.0, 1.0, 0.0],
+      [0.0, 0.0, 0.0, 1.0]
+    ]
+  },
+  "assemblyTransform": [
+    [0.0, 0.0, -1.0, 13.850003482099993],
+    [0.9902680687415676, -0.13917310096008484, 0.0, 63.078101193872826],
+    [-0.13917310096008484, -0.9902680687415676, 0.0, 36.64925532071398],
+    [0.0, 0.0, 0.0, 1.0]
+  ],
+  "geometry": {
+    "solidCount": 1,
+    "valid": true,
+    "volumeMm3": 5136.6088757797625,
+    "boundingBoxMm": {
+      "min": [-40.68610800849179, -13.172787610101567, -5.172787610101566],
+      "max": [11.008003209516778, 46.47258984557533, 7.997385062014778]
+    },
+    "nominalThicknessMm": 5.0,
+    "extrusionDirectionLocal": [0.0, 0.0, 1.0],
+    "classification": "mostly-planar thin-wall bracket",
+    "thicknessEvidence": "The lower pair of source M3 clearance cylinders spans local Z=-2.5..+2.5 mm; the canted upper flange is retained as a protected interface rather than treated as a uniform extrusion."
+  },
+  "protectedMountRegions": [
+    {
+      "regionId": "lower-mount-a",
+      "frame": "component-local",
+      "axisOriginMm": [-6.0, 1.0, -2.5],
+      "axisDirection": [0.0, 0.0, 1.0],
+      "axialLengthMm": 5.0,
+      "protectedRadiusMm": 4.5,
+      "source": "source CAD cylindrical mounting interface"
+    },
+    {
+      "regionId": "lower-mount-b",
+      "frame": "component-local",
+      "axisOriginMm": [-6.0, 11.0, -2.5],
+      "axisDirection": [0.0, 0.0, 1.0],
+      "axialLengthMm": 5.0,
+      "protectedRadiusMm": 4.5,
+      "source": "source CAD cylindrical mounting interface"
+    },
+    {
+      "regionId": "upper-mount-a",
+      "frame": "component-local",
+      "axisOriginMm": [-34.515593, 45.899589, 3.15],
+      "axisDirection": [-0.139173, -0.990268, 0.0],
+      "axialLengthMm": 3.0,
+      "protectedRadiusMm": 4.5,
+      "source": "source CAD cylindrical mounting interface"
+    },
+    {
+      "regionId": "upper-mount-b",
+      "frame": "component-local",
+      "axisOriginMm": [-21.750714, 44.105602, 3.15],
+      "axisDirection": [-0.139173, -0.990268, 0.0],
+      "axialLengthMm": 3.0,
+      "protectedRadiusMm": 4.5,
+      "source": "source CAD cylindrical mounting interface"
+    }
+  ],
+  "neighborKeepOuts": [
+    {
+      "occurrenceName": "A014-2024-05-11:1",
+      "definitionName": "A014-2024-05-11",
+      "frame": "parent-subassembly",
+      "boundingBoxMm": {
+        "min": [166.719608, -57.699261, 17.741599],
+        "max": [337.368473, -1.717553, 62.840069]
+      },
+      "clearanceMm": 1.0,
+      "source": "source CAD sibling envelope"
+    },
+    {
+      "occurrenceName": "A017-R-2024-05-11_1_:1",
+      "definitionName": "A017-R-2024-05-11_1_",
+      "frame": "parent-subassembly",
+      "boundingBoxMm": {
+        "min": [225.889028, -58.904464, 5.503967],
+        "max": [257.202042, -14.103077, 41.026208]
+      },
+      "clearanceMm": 1.0,
+      "source": "source CAD sibling envelope"
+    },
+    {
+      "occurrenceName": "WING-MOUNT-R:1",
+      "definitionName": "WING-MOUNT-R",
+      "frame": "parent-subassembly",
+      "boundingBoxMm": {
+        "min": [257.89207, -84.624908, -27.239642],
+        "max": [271.066832, -30.719606, 28.740459]
+      },
+      "clearanceMm": 1.0,
+      "source": "source CAD sibling envelope"
+    }
+  ],
+  "testFixtureAssumptions": {
+    "label": "demo test-fixture assumptions",
+    "supports": ["Fix lower-mount-a and lower-mount-b cylindrical envelopes in all translations for the common demo fixture."],
+    "loads": [
+      {
+        "regionIds": ["upper-mount-a", "upper-mount-b"],
+        "forceNLocal": [0.0, -100.0, 0.0],
+        "purpose": "Apply one deterministic transverse comparison load shared by baseline and candidates."
+      }
+    ],
+    "disclaimer": "These support and load regions are demo comparison assumptions, not recovered vehicle loads and not evidence of safety, aero, fatigue, or manufacturing readiness."
+  },
+  "baselineArtifact": {
+    "relativePath": "artifacts/sha256/0b7a0a9785a8723db1167466cd617f7e93cb4b66be0501fb9ff337e511ad7cd9.step",
+    "sha256": "0b7a0a9785a8723db1167466cd617f7e93cb4b66be0501fb9ff337e511ad7cd9",
+    "sizeBytes": 1774541
+  },
+  "assemblyContextScreenshot": {
+    "relativePath": "artifacts/sha256/425cc02758671dbb20391dbd14337bc43a31940c2ab0a20cfb2f073249eb97ba.png",
+    "sha256": "425cc02758671dbb20391dbd14337bc43a31940c2ab0a20cfb2f073249eb97ba",
+    "sizeBytes": 287461
+  },
+  "fallback": {
+    "assetId": "s500-c1-asm",
+    "targetDefinitionName": "BOTTOM-PLATE-S500",
+    "sourceArtifactSha256": "c8d3bc53168bbfe29d7c49cfe49f8523844c5c12d6431a4ea0c30e8b2d851c36",
+    "trigger": "Select S500 if, within 90 minutes, any required NeoRacer LFS object is unavailable offline, STEP needs manual repair, WING-MOUNT-L identity changes across three loads, it is not one valid solid, or its protected interfaces cannot be isolated."
+  }
+}

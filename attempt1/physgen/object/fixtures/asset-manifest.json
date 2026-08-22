@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1.0.0",
+  "assetId": "neoracer-full-vehicle-2025-11",
+  "source": {
+    "repositoryUrl": "https://github.com/Neobotics-Foundation-Inc/neoracer-hardware-files",
+    "commitSha": "05d9c69a82f2867f2729125292c53cf93e8d3d08",
+    "license": {
+      "spdx": "CERN-OHL-S-2.0",
+      "repositoryPath": "LICENSE",
+      "sha256": "d6475a84171f0cf7ff52667dea714df268fc65cea42f0bf328b0b70d4cd0ebab",
+      "sizeBytes": 13419
+    }
+  },
+  "cache": {
+    "repositoryRelativePath": "source/neoracer-hardware-files"
+  },
+  "artifacts": [
+    {
+      "artifactId": "neoracer-full-vehicle-step",
+      "role": "source-assembly-step",
+      "repositoryPath": "full-vehicle/neoracer-full-vehicle.step",
+      "sha256": "73d18cf9104c93177495f09f1aa4569c887c089ce0c9d0ddf4a97d1f26fc7c73",
+      "sizeBytes": 100519607,
+      "lfsOidSha256": "73d18cf9104c93177495f09f1aa4569c887c089ce0c9d0ddf4a97d1f26fc7c73"
+    }
+  ],
+  "toolchain": {
+    "python": "3.12",
+    "cadquery": "2.8.0",
+    "cadqueryOcp": "7.9.3.1.1",
+    "openCascade": "7.9.3",
+    "freeCAD": null,
+    "modelInventory": []
+  },
+  "loadContract": {
+    "units": "mm",
+    "requiredOfflineLoads": 3,
+    "allowRepair": false
+  }
+}
