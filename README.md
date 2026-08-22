@@ -166,3 +166,7 @@ run the document as an unattended shell script.
 - [Prior winners and GB10 budget](docs/research/winner-patterns-and-gb10-budget.md)
 - [Candidate map](docs/research/candidate-map.md)
 - [Custom kernel boundary](docs/research/custom-kernels.md)
+
+## Demo fixtures
+
+- [Native PartMode turbofan](examples/turbofan/README.md): editable schema-5 project, compact BOM, backend-neutral graph, MongoDB JSONL, and a verified exploded render.

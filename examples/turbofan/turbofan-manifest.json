@@ -1,0 +1,27 @@
+{
+  "corpusRevision": "sha256:ddcdcf06363b4a29516e05bee694596194492939f45fa5f13ef3be71c9d1b0ec",
+  "sourceCommit": "fe88558a34c8d7a3e03b34c2a374ba5ce6febe9f",
+  "sourceFile": "partmode-turbofan.bomcad.json",
+  "rootDocument": {
+    "kind": "assembly",
+    "assemblyId": "assembly-jet-engine-root"
+  },
+  "counts": {
+    "nodes": 287,
+    "edges": 709,
+    "partDefinitions": 40,
+    "assemblyDefinitions": 7,
+    "directOccurrences": 57,
+    "generatedPatternMembers": 343,
+    "renderedExactBodies": 394,
+    "authoredMates": 157
+  },
+  "files": {
+    "project": "partmode-turbofan.bomcad.json",
+    "bom": "turbofan-bom.json",
+    "graph": "turbofan-graph.json",
+    "demoDependencies": "demo-dependencies.json",
+    "mongoNodes": "mongo/nodes.ndjson",
+    "mongoEdges": "mongo/edges.ndjson"
+  }
+}

@@ -1,0 +1,575 @@
+{
+  "corpusRevision": "sha256:ddcdcf06363b4a29516e05bee694596194492939f45fa5f13ef3be71c9d1b0ec",
+  "rows": [
+    {
+      "assemblyId": "assembly-jet-01-fan-spool",
+      "assemblyName": "01 Fan and LP Spool",
+      "occurrenceId": "occ-jet-01-fan-blades",
+      "occurrenceName": "16 fan blades",
+      "definitionKind": "part",
+      "definitionId": "part-jet-fan-blade",
+      "quantity": 16,
+      "patterned": true
+    },
+    {
+      "assemblyId": "assembly-jet-01-fan-spool",
+      "assemblyName": "01 Fan and LP Spool",
+      "occurrenceId": "occ-jet-01-fan-disk",
+      "occurrenceName": "Fan disk",
+      "definitionKind": "part",
+      "definitionId": "part-jet-fan-disk",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-01-fan-spool",
+      "assemblyName": "01 Fan and LP Spool",
+      "occurrenceId": "occ-jet-01-front-bearing",
+      "occurrenceName": "Front shaft bearing",
+      "definitionKind": "part",
+      "definitionId": "part-jet-bearing-ring",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-01-fan-spool",
+      "assemblyName": "01 Fan and LP Spool",
+      "occurrenceId": "occ-jet-01-lp-shaft",
+      "occurrenceName": "Low-pressure shaft",
+      "definitionKind": "part",
+      "definitionId": "part-jet-lp-shaft",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-01-fan-spool",
+      "assemblyName": "01 Fan and LP Spool",
+      "occurrenceId": "occ-jet-01-rear-bearing",
+      "occurrenceName": "Rear shaft bearing",
+      "definitionKind": "part",
+      "definitionId": "part-jet-bearing-ring",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-01-fan-spool",
+      "assemblyName": "01 Fan and LP Spool",
+      "occurrenceId": "occ-jet-01-spinner",
+      "occurrenceName": "Spinner cone",
+      "definitionKind": "part",
+      "definitionId": "part-jet-spinner-cone",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-02-axial-compressor",
+      "assemblyName": "02 Axial Compressor",
+      "occurrenceId": "occ-jet-02-comp-case",
+      "occurrenceName": "Compressor case",
+      "definitionKind": "part",
+      "definitionId": "part-jet-compressor-case",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-02-axial-compressor",
+      "assemblyName": "02 Axial Compressor",
+      "occurrenceId": "occ-jet-02-hp-drum",
+      "occurrenceName": "HP spool drum",
+      "definitionKind": "part",
+      "definitionId": "part-jet-hp-drum",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-02-axial-compressor",
+      "assemblyName": "02 Axial Compressor",
+      "occurrenceId": "occ-jet-02-rotor-blades-1",
+      "occurrenceName": "20 rotor blades stage 1",
+      "definitionKind": "part",
+      "definitionId": "part-jet-compressor-rotor-blade-1",
+      "quantity": 20,
+      "patterned": true
+    },
+    {
+      "assemblyId": "assembly-jet-02-axial-compressor",
+      "assemblyName": "02 Axial Compressor",
+      "occurrenceId": "occ-jet-02-rotor-blades-2",
+      "occurrenceName": "22 rotor blades stage 2",
+      "definitionKind": "part",
+      "definitionId": "part-jet-compressor-rotor-blade-2",
+      "quantity": 22,
+      "patterned": true
+    },
+    {
+      "assemblyId": "assembly-jet-02-axial-compressor",
+      "assemblyName": "02 Axial Compressor",
+      "occurrenceId": "occ-jet-02-rotor-blades-3",
+      "occurrenceName": "24 rotor blades stage 3",
+      "definitionKind": "part",
+      "definitionId": "part-jet-compressor-rotor-blade-3",
+      "quantity": 24,
+      "patterned": true
+    },
+    {
+      "assemblyId": "assembly-jet-02-axial-compressor",
+      "assemblyName": "02 Axial Compressor",
+      "occurrenceId": "occ-jet-02-rotor-blades-4",
+      "occurrenceName": "26 rotor blades stage 4",
+      "definitionKind": "part",
+      "definitionId": "part-jet-compressor-rotor-blade-4",
+      "quantity": 26,
+      "patterned": true
+    },
+    {
+      "assemblyId": "assembly-jet-02-axial-compressor",
+      "assemblyName": "02 Axial Compressor",
+      "occurrenceId": "occ-jet-02-rotor-blades-5",
+      "occurrenceName": "28 rotor blades stage 5",
+      "definitionKind": "part",
+      "definitionId": "part-jet-compressor-rotor-blade-5",
+      "quantity": 28,
+      "patterned": true
+    },
+    {
+      "assemblyId": "assembly-jet-02-axial-compressor",
+      "assemblyName": "02 Axial Compressor",
+      "occurrenceId": "occ-jet-02-rotor-disk-1",
+      "occurrenceName": "Rotor disk stage 1",
+      "definitionKind": "part",
+      "definitionId": "part-jet-compressor-disk",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-02-axial-compressor",
+      "assemblyName": "02 Axial Compressor",
+      "occurrenceId": "occ-jet-02-rotor-disk-2",
+      "occurrenceName": "Rotor disk stage 2",
+      "definitionKind": "part",
+      "definitionId": "part-jet-compressor-disk",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-02-axial-compressor",
+      "assemblyName": "02 Axial Compressor",
+      "occurrenceId": "occ-jet-02-rotor-disk-3",
+      "occurrenceName": "Rotor disk stage 3",
+      "definitionKind": "part",
+      "definitionId": "part-jet-compressor-disk",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-02-axial-compressor",
+      "assemblyName": "02 Axial Compressor",
+      "occurrenceId": "occ-jet-02-rotor-disk-4",
+      "occurrenceName": "Rotor disk stage 4",
+      "definitionKind": "part",
+      "definitionId": "part-jet-compressor-disk",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-02-axial-compressor",
+      "assemblyName": "02 Axial Compressor",
+      "occurrenceId": "occ-jet-02-rotor-disk-5",
+      "occurrenceName": "Rotor disk stage 5",
+      "definitionKind": "part",
+      "definitionId": "part-jet-compressor-disk",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-02-axial-compressor",
+      "assemblyName": "02 Axial Compressor",
+      "occurrenceId": "occ-jet-02-stator-shroud-1",
+      "occurrenceName": "Stator shroud stage 1",
+      "definitionKind": "part",
+      "definitionId": "part-jet-stator-shroud",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-02-axial-compressor",
+      "assemblyName": "02 Axial Compressor",
+      "occurrenceId": "occ-jet-02-stator-shroud-2",
+      "occurrenceName": "Stator shroud stage 2",
+      "definitionKind": "part",
+      "definitionId": "part-jet-stator-shroud",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-02-axial-compressor",
+      "assemblyName": "02 Axial Compressor",
+      "occurrenceId": "occ-jet-02-stator-shroud-3",
+      "occurrenceName": "Stator shroud stage 3",
+      "definitionKind": "part",
+      "definitionId": "part-jet-stator-shroud",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-02-axial-compressor",
+      "assemblyName": "02 Axial Compressor",
+      "occurrenceId": "occ-jet-02-stator-shroud-4",
+      "occurrenceName": "Stator shroud stage 4",
+      "definitionKind": "part",
+      "definitionId": "part-jet-stator-shroud",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-02-axial-compressor",
+      "assemblyName": "02 Axial Compressor",
+      "occurrenceId": "occ-jet-02-stator-vanes-1",
+      "occurrenceName": "17 stator vanes stage 1",
+      "definitionKind": "part",
+      "definitionId": "part-jet-compressor-stator-vane-1",
+      "quantity": 17,
+      "patterned": true
+    },
+    {
+      "assemblyId": "assembly-jet-02-axial-compressor",
+      "assemblyName": "02 Axial Compressor",
+      "occurrenceId": "occ-jet-02-stator-vanes-2",
+      "occurrenceName": "19 stator vanes stage 2",
+      "definitionKind": "part",
+      "definitionId": "part-jet-compressor-stator-vane-2",
+      "quantity": 19,
+      "patterned": true
+    },
+    {
+      "assemblyId": "assembly-jet-02-axial-compressor",
+      "assemblyName": "02 Axial Compressor",
+      "occurrenceId": "occ-jet-02-stator-vanes-3",
+      "occurrenceName": "21 stator vanes stage 3",
+      "definitionKind": "part",
+      "definitionId": "part-jet-compressor-stator-vane-3",
+      "quantity": 21,
+      "patterned": true
+    },
+    {
+      "assemblyId": "assembly-jet-02-axial-compressor",
+      "assemblyName": "02 Axial Compressor",
+      "occurrenceId": "occ-jet-02-stator-vanes-4",
+      "occurrenceName": "23 stator vanes stage 4",
+      "definitionKind": "part",
+      "definitionId": "part-jet-compressor-stator-vane-4",
+      "quantity": 23,
+      "patterned": true
+    },
+    {
+      "assemblyId": "assembly-jet-03-annular-combustor",
+      "assemblyName": "03 Annular Combustor",
+      "occurrenceId": "occ-jet-03-comb-case",
+      "occurrenceName": "Combustor outer case",
+      "definitionKind": "part",
+      "definitionId": "part-jet-combustor-case",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-03-annular-combustor",
+      "assemblyName": "03 Annular Combustor",
+      "occurrenceId": "occ-jet-03-dome",
+      "occurrenceName": "Combustor dome ring",
+      "definitionKind": "part",
+      "definitionId": "part-jet-combustor-dome",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-03-annular-combustor",
+      "assemblyName": "03 Annular Combustor",
+      "occurrenceId": "occ-jet-03-injectors",
+      "occurrenceName": "12 fuel injectors",
+      "definitionKind": "part",
+      "definitionId": "part-jet-fuel-injector",
+      "quantity": 12,
+      "patterned": true
+    },
+    {
+      "assemblyId": "assembly-jet-03-annular-combustor",
+      "assemblyName": "03 Annular Combustor",
+      "occurrenceId": "occ-jet-03-inner-liner",
+      "occurrenceName": "Inner combustor liner",
+      "definitionKind": "part",
+      "definitionId": "part-jet-combustor-liner-inner",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-03-annular-combustor",
+      "assemblyName": "03 Annular Combustor",
+      "occurrenceId": "occ-jet-03-outer-liner",
+      "occurrenceName": "Outer combustor liner",
+      "definitionKind": "part",
+      "definitionId": "part-jet-combustor-liner-outer",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-04-turbine",
+      "assemblyName": "04 Turbine",
+      "occurrenceId": "occ-jet-04-nozzle-vanes-1",
+      "occurrenceName": "14 nozzle vanes row 1",
+      "definitionKind": "part",
+      "definitionId": "part-jet-turbine-nozzle-vane-1",
+      "quantity": 14,
+      "patterned": true
+    },
+    {
+      "assemblyId": "assembly-jet-04-turbine",
+      "assemblyName": "04 Turbine",
+      "occurrenceId": "occ-jet-04-nozzle-vanes-2",
+      "occurrenceName": "16 nozzle vanes row 2",
+      "definitionKind": "part",
+      "definitionId": "part-jet-turbine-nozzle-vane-2",
+      "quantity": 16,
+      "patterned": true
+    },
+    {
+      "assemblyId": "assembly-jet-04-turbine",
+      "assemblyName": "04 Turbine",
+      "occurrenceId": "occ-jet-04-nozzle-vanes-3",
+      "occurrenceName": "18 nozzle vanes row 3",
+      "definitionKind": "part",
+      "definitionId": "part-jet-turbine-nozzle-vane-3",
+      "quantity": 18,
+      "patterned": true
+    },
+    {
+      "assemblyId": "assembly-jet-04-turbine",
+      "assemblyName": "04 Turbine",
+      "occurrenceId": "occ-jet-04-turb-case",
+      "occurrenceName": "Turbine case",
+      "definitionKind": "part",
+      "definitionId": "part-jet-turbine-case",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-04-turbine",
+      "assemblyName": "04 Turbine",
+      "occurrenceId": "occ-jet-04-turbine-blades-1",
+      "occurrenceName": "20 turbine blades stage 1",
+      "definitionKind": "part",
+      "definitionId": "part-jet-turbine-rotor-blade-1",
+      "quantity": 20,
+      "patterned": true
+    },
+    {
+      "assemblyId": "assembly-jet-04-turbine",
+      "assemblyName": "04 Turbine",
+      "occurrenceId": "occ-jet-04-turbine-blades-2",
+      "occurrenceName": "22 turbine blades stage 2",
+      "definitionKind": "part",
+      "definitionId": "part-jet-turbine-rotor-blade-2",
+      "quantity": 22,
+      "patterned": true
+    },
+    {
+      "assemblyId": "assembly-jet-04-turbine",
+      "assemblyName": "04 Turbine",
+      "occurrenceId": "occ-jet-04-turbine-blades-3",
+      "occurrenceName": "24 turbine blades stage 3",
+      "definitionKind": "part",
+      "definitionId": "part-jet-turbine-rotor-blade-3",
+      "quantity": 24,
+      "patterned": true
+    },
+    {
+      "assemblyId": "assembly-jet-04-turbine",
+      "assemblyName": "04 Turbine",
+      "occurrenceId": "occ-jet-04-turbine-disk-1",
+      "occurrenceName": "Turbine disk stage 1",
+      "definitionKind": "part",
+      "definitionId": "part-jet-hpt-disk",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-04-turbine",
+      "assemblyName": "04 Turbine",
+      "occurrenceId": "occ-jet-04-turbine-disk-2",
+      "occurrenceName": "Turbine disk stage 2",
+      "definitionKind": "part",
+      "definitionId": "part-jet-lpt-disk",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-04-turbine",
+      "assemblyName": "04 Turbine",
+      "occurrenceId": "occ-jet-04-turbine-disk-3",
+      "occurrenceName": "Turbine disk stage 3",
+      "definitionKind": "part",
+      "definitionId": "part-jet-lpt-disk",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-04-turbine",
+      "assemblyName": "04 Turbine",
+      "occurrenceId": "occ-jet-04-vane-ring-1",
+      "occurrenceName": "Nozzle inner ring 1",
+      "definitionKind": "part",
+      "definitionId": "part-jet-nozzle-vane-ring",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-04-turbine",
+      "assemblyName": "04 Turbine",
+      "occurrenceId": "occ-jet-04-vane-ring-2",
+      "occurrenceName": "Nozzle inner ring 2",
+      "definitionKind": "part",
+      "definitionId": "part-jet-nozzle-vane-ring",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-04-turbine",
+      "assemblyName": "04 Turbine",
+      "occurrenceId": "occ-jet-04-vane-ring-3",
+      "occurrenceName": "Nozzle inner ring 3",
+      "definitionKind": "part",
+      "definitionId": "part-jet-nozzle-vane-ring",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-05-exhaust",
+      "assemblyName": "05 Exhaust",
+      "occurrenceId": "occ-jet-05-exh-case",
+      "occurrenceName": "Exhaust case",
+      "definitionKind": "part",
+      "definitionId": "part-jet-exhaust-case",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-05-exhaust",
+      "assemblyName": "05 Exhaust",
+      "occurrenceId": "occ-jet-05-nozzle",
+      "occurrenceName": "Exhaust nozzle ring",
+      "definitionKind": "part",
+      "definitionId": "part-jet-exhaust-nozzle",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-05-exhaust",
+      "assemblyName": "05 Exhaust",
+      "occurrenceId": "occ-jet-05-struts",
+      "occurrenceName": "6 exhaust struts",
+      "definitionKind": "part",
+      "definitionId": "part-jet-exhaust-strut",
+      "quantity": 6,
+      "patterned": true
+    },
+    {
+      "assemblyId": "assembly-jet-05-exhaust",
+      "assemblyName": "05 Exhaust",
+      "occurrenceId": "occ-jet-05-tail-cone",
+      "occurrenceName": "Exhaust tail cone",
+      "definitionKind": "part",
+      "definitionId": "part-jet-tail-cone",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-06-fan-case",
+      "assemblyName": "06 Fan Case and OGVs",
+      "occurrenceId": "occ-jet-06-fan-case",
+      "occurrenceName": "Fan case",
+      "definitionKind": "part",
+      "definitionId": "part-jet-fan-case",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-06-fan-case",
+      "assemblyName": "06 Fan Case and OGVs",
+      "occurrenceId": "occ-jet-06-ogvs",
+      "occurrenceName": "14 outlet guide vanes",
+      "definitionKind": "part",
+      "definitionId": "part-jet-outlet-guide-vane",
+      "quantity": 14,
+      "patterned": true
+    },
+    {
+      "assemblyId": "assembly-jet-06-fan-case",
+      "assemblyName": "06 Fan Case and OGVs",
+      "occurrenceId": "occ-jet-06-splitter",
+      "occurrenceName": "Core splitter ring",
+      "definitionKind": "part",
+      "definitionId": "part-jet-splitter-ring",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-engine-root",
+      "assemblyName": "Turbofan demonstrator assembly",
+      "occurrenceId": "occ-jet-root-01-fan-spool",
+      "occurrenceName": "01 · Fan and LP Spool",
+      "definitionKind": "assembly",
+      "definitionId": "assembly-jet-01-fan-spool",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-engine-root",
+      "assemblyName": "Turbofan demonstrator assembly",
+      "occurrenceId": "occ-jet-root-02-axial-compressor",
+      "occurrenceName": "02 · Axial Compressor",
+      "definitionKind": "assembly",
+      "definitionId": "assembly-jet-02-axial-compressor",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-engine-root",
+      "assemblyName": "Turbofan demonstrator assembly",
+      "occurrenceId": "occ-jet-root-03-annular-combustor",
+      "occurrenceName": "03 · Annular Combustor",
+      "definitionKind": "assembly",
+      "definitionId": "assembly-jet-03-annular-combustor",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-engine-root",
+      "assemblyName": "Turbofan demonstrator assembly",
+      "occurrenceId": "occ-jet-root-04-turbine",
+      "occurrenceName": "04 · Turbine",
+      "definitionKind": "assembly",
+      "definitionId": "assembly-jet-04-turbine",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-engine-root",
+      "assemblyName": "Turbofan demonstrator assembly",
+      "occurrenceId": "occ-jet-root-05-exhaust",
+      "occurrenceName": "05 · Exhaust",
+      "definitionKind": "assembly",
+      "definitionId": "assembly-jet-05-exhaust",
+      "quantity": 1,
+      "patterned": false
+    },
+    {
+      "assemblyId": "assembly-jet-engine-root",
+      "assemblyName": "Turbofan demonstrator assembly",
+      "occurrenceId": "occ-jet-root-06-fan-case",
+      "occurrenceName": "06 · Fan Case and OGVs",
+      "definitionKind": "assembly",
+      "definitionId": "assembly-jet-06-fan-case",
+      "quantity": 1,
+      "patterned": false
+    }
+  ]
+}

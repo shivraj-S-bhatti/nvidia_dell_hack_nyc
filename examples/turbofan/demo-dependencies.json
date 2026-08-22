@@ -1,0 +1,89 @@
+{
+  "status": "team-authored-demo-hypothesis",
+  "warning": "These are proposed impact relationships, not relationships recovered from the CAD model.",
+  "sampleChange": {
+    "targetNodeId": "part:part-jet-compressor-case",
+    "request": "Increase the compressor-case radial envelope by 4 mm while preserving 1 mm blade-tip clearance.",
+    "expectedAction": "Retrieve affected definitions, propose coordinated edits, then require deterministic geometry and clearance checks before acceptance."
+  },
+  "edges": [
+    {
+      "fromNodeId": "part:part-jet-compressor-case",
+      "toNodeId": "part:part-jet-compressor-rotor-blade-1",
+      "type": "CLEARANCE_IMPACTS",
+      "rationale": "Compressor rotor stage 1 tip clearance follows the case envelope."
+    },
+    {
+      "fromNodeId": "part:part-jet-compressor-case",
+      "toNodeId": "part:part-jet-compressor-rotor-blade-2",
+      "type": "CLEARANCE_IMPACTS",
+      "rationale": "Compressor rotor stage 2 tip clearance follows the case envelope."
+    },
+    {
+      "fromNodeId": "part:part-jet-compressor-case",
+      "toNodeId": "part:part-jet-compressor-rotor-blade-3",
+      "type": "CLEARANCE_IMPACTS",
+      "rationale": "Compressor rotor stage 3 tip clearance follows the case envelope."
+    },
+    {
+      "fromNodeId": "part:part-jet-compressor-case",
+      "toNodeId": "part:part-jet-compressor-rotor-blade-4",
+      "type": "CLEARANCE_IMPACTS",
+      "rationale": "Compressor rotor stage 4 tip clearance follows the case envelope."
+    },
+    {
+      "fromNodeId": "part:part-jet-compressor-case",
+      "toNodeId": "part:part-jet-compressor-rotor-blade-5",
+      "type": "CLEARANCE_IMPACTS",
+      "rationale": "Compressor rotor stage 5 tip clearance follows the case envelope."
+    },
+    {
+      "fromNodeId": "part:part-jet-compressor-case",
+      "toNodeId": "part:part-jet-compressor-stator-vane-1",
+      "type": "ENVELOPE_IMPACTS",
+      "rationale": "Compressor stator stage 1 outer radius follows the case envelope."
+    },
+    {
+      "fromNodeId": "part:part-jet-compressor-case",
+      "toNodeId": "part:part-jet-compressor-stator-vane-2",
+      "type": "ENVELOPE_IMPACTS",
+      "rationale": "Compressor stator stage 2 outer radius follows the case envelope."
+    },
+    {
+      "fromNodeId": "part:part-jet-compressor-case",
+      "toNodeId": "part:part-jet-compressor-stator-vane-3",
+      "type": "ENVELOPE_IMPACTS",
+      "rationale": "Compressor stator stage 3 outer radius follows the case envelope."
+    },
+    {
+      "fromNodeId": "part:part-jet-compressor-case",
+      "toNodeId": "part:part-jet-compressor-stator-vane-4",
+      "type": "ENVELOPE_IMPACTS",
+      "rationale": "Compressor stator stage 4 outer radius follows the case envelope."
+    },
+    {
+      "fromNodeId": "part:part-jet-compressor-case",
+      "toNodeId": "part:part-jet-combustor-case",
+      "type": "INTERFACE_IMPACTS",
+      "rationale": "The compressor exit and combustor inlet envelopes form an adjacent module interface."
+    },
+    {
+      "fromNodeId": "part:part-jet-combustor-dome",
+      "toNodeId": "part:part-jet-fuel-injector",
+      "type": "PLACEMENT_IMPACTS",
+      "rationale": "Fuel injector placement is authored against injector datums on the combustor dome."
+    },
+    {
+      "fromNodeId": "part:part-jet-fan-case",
+      "toNodeId": "part:part-jet-outlet-guide-vane",
+      "type": "ENVELOPE_IMPACTS",
+      "rationale": "Outlet guide vane span terminates at the fan-case envelope."
+    },
+    {
+      "fromNodeId": "part:part-jet-tail-cone",
+      "toNodeId": "part:part-jet-exhaust-strut",
+      "type": "INTERFACE_IMPACTS",
+      "rationale": "Exhaust strut inner span follows the tail-cone envelope."
+    }
+  ]
+}
