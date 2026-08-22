@@ -1,0 +1,268 @@
+{
+  "note": "Real track.result/1 payloads captured from a full Track run on the frozen S500 fixture. Frozen here so the contract adapter smoke test is hermetic: a live run needs the depgraph artifacts and a multi-minute FEA solve. Regenerate with: bash scripts/track-run.sh",
+  "rankingRule": "specificStiffnessRatio desc; ties by materialRatio asc, then complianceRatio asc, then candidateId asc; non-ok states last",
+  "rejected": [
+    {
+      "candidateId": "cand-d-severed-mount",
+      "implicated": [
+        "BOTTOM-PLATE-S500",
+        "arm-mount-pads"
+      ],
+      "measured": 3.0,
+      "reasonCode": "STANDIN.LOAD_PATH_DISCONNECTED",
+      "tolerance": 4.0,
+      "units": "arm mounts reachable from the payload pad through material"
+    }
+  ],
+  "results": [
+    {
+      "candidateId": "baseline",
+      "fixtureHash": "sha256:8c4de1f737f9c8213c433e9cd87249b81299653549a008c634c23c8c370f8f2c",
+      "fixtureId": "s500-bottom-plate-inplane-v1",
+      "host": {
+        "compute": "cpu",
+        "cpuCount": 10,
+        "gitSha": "cacf4ee5aef05bed0632b794aafb06f745d94441",
+        "gpuNote": "solver is CPU sparse-direct; no GPU memory is allocated",
+        "gpuPeakMemoryMb": null,
+        "machine": "arm64",
+        "numpy": "2.0.2",
+        "platform": "macOS-26.3.1-arm64-arm-64bit",
+        "processor": "arm",
+        "python": "3.9.6",
+        "scipy": "1.13.1"
+      },
+      "maskSha256": "sha256:ec63f9d67736903a6522509e43dd88517f7ed7f2989c4ab0874f02c53efbe64c",
+      "measures": {
+        "complianceNmm": 0.239063178,
+        "compliancePerCaseNmm": {
+          "+x": 0.068932595,
+          "+z": 0.170130584
+        },
+        "materialFractionOfDomain": 0.725,
+        "maxDisplacementAtXZMm": [
+          0.05,
+          -4.917
+        ],
+        "maxDisplacementLoadCase": "+z",
+        "maxDisplacementMm": 0.002345011,
+        "solidCells": 25056,
+        "solveSeconds": 2.778711,
+        "state": "ok",
+        "unbackedFixtureNodes": 0
+      },
+      "meetsTarget": null,
+      "metric": "in-plane compliance under the frozen fixture (a stiffness proxy for material layout)",
+      "notes": "unmodified BOTTOM-PLATE-S500 footprint, same domain and fixture",
+      "parentId": null,
+      "problemHash": "sha256:8c4de1f737f9c8213c433e9cd87249b81299653549a008c634c23c8c370f8f2c",
+      "relative": {
+        "complianceRatioToBaseline": 1.0,
+        "materialRatioToBaseline": 1.0,
+        "maxDisplacementRatioToBaseline": 1.0,
+        "specificStiffnessRatio": 1.0
+      },
+      "removalDiagnosis": {
+        "basis": "first-order, evaluated on the baseline strain-energy field",
+        "massFractionRemoved": 0.0,
+        "payoffRatio": null,
+        "strainEnergyFractionRemoved": 0.0
+      },
+      "role": "baseline",
+      "runId": "track-run-1",
+      "schemaVersion": "track.result/1",
+      "timing": {
+        "solveSeconds": 2.778711
+      }
+    },
+    {
+      "candidateId": "cand-a-edge-scallops",
+      "fixtureHash": "sha256:8c4de1f737f9c8213c433e9cd87249b81299653549a008c634c23c8c370f8f2c",
+      "fixtureId": "s500-bottom-plate-inplane-v1",
+      "host": {
+        "compute": "cpu",
+        "cpuCount": 10,
+        "gitSha": "cacf4ee5aef05bed0632b794aafb06f745d94441",
+        "gpuNote": "solver is CPU sparse-direct; no GPU memory is allocated",
+        "gpuPeakMemoryMb": null,
+        "machine": "arm64",
+        "numpy": "2.0.2",
+        "platform": "macOS-26.3.1-arm64-arm-64bit",
+        "processor": "arm",
+        "python": "3.9.6",
+        "scipy": "1.13.1"
+      },
+      "maskSha256": "sha256:c11b60fccf91decdfef07304b0084819779436fd8303b27a77c60bab6fe28ae1",
+      "measures": {
+        "complianceNmm": 0.250188587,
+        "compliancePerCaseNmm": {
+          "+x": 0.072920639,
+          "+z": 0.177267949
+        },
+        "materialFractionOfDomain": 0.634201389,
+        "maxDisplacementAtXZMm": [
+          0.05,
+          -4.917
+        ],
+        "maxDisplacementLoadCase": "+z",
+        "maxDisplacementMm": 0.002413526,
+        "solidCells": 21918,
+        "solveSeconds": 2.672089,
+        "state": "ok",
+        "unbackedFixtureNodes": 0
+      },
+      "meetsTarget": true,
+      "metric": "in-plane compliance under the frozen fixture (a stiffness proxy for material layout)",
+      "notes": "scallop the two long edges, away from the payload-to-mount paths",
+      "parentId": "baseline",
+      "problemHash": "sha256:8c4de1f737f9c8213c433e9cd87249b81299653549a008c634c23c8c370f8f2c",
+      "rank": 1,
+      "relative": {
+        "complianceRatioToBaseline": 1.046537527,
+        "materialRatioToBaseline": 0.874760536,
+        "maxDisplacementRatioToBaseline": 1.029217347,
+        "specificStiffnessRatio": 1.092335409
+      },
+      "removalDiagnosis": {
+        "basis": "first-order, evaluated on the baseline strain-energy field",
+        "massFractionRemoved": 0.125239,
+        "payoffRatio": 0.1597,
+        "strainEnergyFractionRemoved": 0.019998
+      },
+      "role": "survivor",
+      "runId": "track-run-1",
+      "schemaVersion": "track.result/1",
+      "timing": {
+        "solveSeconds": 2.672089
+      }
+    },
+    {
+      "candidateId": "cand-b-centre-window",
+      "fixtureHash": "sha256:8c4de1f737f9c8213c433e9cd87249b81299653549a008c634c23c8c370f8f2c",
+      "fixtureId": "s500-bottom-plate-inplane-v1",
+      "host": {
+        "compute": "cpu",
+        "cpuCount": 10,
+        "gitSha": "cacf4ee5aef05bed0632b794aafb06f745d94441",
+        "gpuNote": "solver is CPU sparse-direct; no GPU memory is allocated",
+        "gpuPeakMemoryMb": null,
+        "machine": "arm64",
+        "numpy": "2.0.2",
+        "platform": "macOS-26.3.1-arm64-arm-64bit",
+        "processor": "arm",
+        "python": "3.9.6",
+        "scipy": "1.13.1"
+      },
+      "maskSha256": "sha256:69ba50f2c15d6da94d4ecbe9740390cf581aa4b0756823e13f2285d8860b67f8",
+      "measures": {
+        "complianceNmm": 0.31530394,
+        "compliancePerCaseNmm": {
+          "+x": 0.117741768,
+          "+z": 0.197562172
+        },
+        "materialFractionOfDomain": 0.647337963,
+        "maxDisplacementAtXZMm": [
+          0.05,
+          -4.917
+        ],
+        "maxDisplacementLoadCase": "+z",
+        "maxDisplacementMm": 0.002625666,
+        "solidCells": 22372,
+        "solveSeconds": 2.703677,
+        "state": "ok",
+        "unbackedFixtureNodes": 0
+      },
+      "meetsTarget": false,
+      "metric": "in-plane compliance under the frozen fixture (a stiffness proxy for material layout)",
+      "notes": "two windows either side of the payload pad, across the diagonal load paths",
+      "parentId": "baseline",
+      "problemHash": "sha256:8c4de1f737f9c8213c433e9cd87249b81299653549a008c634c23c8c370f8f2c",
+      "rank": 3,
+      "relative": {
+        "complianceRatioToBaseline": 1.318914701,
+        "materialRatioToBaseline": 0.892879949,
+        "maxDisplacementRatioToBaseline": 1.119681741,
+        "specificStiffnessRatio": 0.849161353
+      },
+      "removalDiagnosis": {
+        "basis": "first-order, evaluated on the baseline strain-energy field",
+        "massFractionRemoved": 0.10712,
+        "payoffRatio": 0.5708,
+        "strainEnergyFractionRemoved": 0.061146
+      },
+      "role": "survivor",
+      "runId": "track-run-1",
+      "schemaVersion": "track.result/1",
+      "timing": {
+        "solveSeconds": 2.703677
+      }
+    },
+    {
+      "candidateId": "cand-c-diagonal-truss",
+      "fixtureHash": "sha256:8c4de1f737f9c8213c433e9cd87249b81299653549a008c634c23c8c370f8f2c",
+      "fixtureId": "s500-bottom-plate-inplane-v1",
+      "host": {
+        "compute": "cpu",
+        "cpuCount": 10,
+        "gitSha": "cacf4ee5aef05bed0632b794aafb06f745d94441",
+        "gpuNote": "solver is CPU sparse-direct; no GPU memory is allocated",
+        "gpuPeakMemoryMb": null,
+        "machine": "arm64",
+        "numpy": "2.0.2",
+        "platform": "macOS-26.3.1-arm64-arm-64bit",
+        "processor": "arm",
+        "python": "3.9.6",
+        "scipy": "1.13.1"
+      },
+      "maskSha256": "sha256:d0f368683ba2d27d1f372b2fa17d3b3bf2ba6730a2be41852676ec89e8491283",
+      "measures": {
+        "complianceNmm": 0.722422987,
+        "compliancePerCaseNmm": {
+          "+x": 0.441854254,
+          "+z": 0.280568733
+        },
+        "materialFractionOfDomain": 0.249189815,
+        "maxDisplacementAtXZMm": [
+          -8.117,
+          8.194
+        ],
+        "maxDisplacementLoadCase": "+x",
+        "maxDisplacementMm": 0.005493637,
+        "solidCells": 8612,
+        "solveSeconds": 2.705082,
+        "state": "ok",
+        "unbackedFixtureNodes": 0
+      },
+      "meetsTarget": false,
+      "metric": "in-plane compliance under the frozen fixture (a stiffness proxy for material layout)",
+      "notes": "rim plus four bands from payload pad to arm mounts, everything else voided",
+      "parentId": "baseline",
+      "problemHash": "sha256:8c4de1f737f9c8213c433e9cd87249b81299653549a008c634c23c8c370f8f2c",
+      "rank": 2,
+      "relative": {
+        "complianceRatioToBaseline": 3.021891506,
+        "materialRatioToBaseline": 0.343710089,
+        "maxDisplacementRatioToBaseline": 2.342691356,
+        "specificStiffnessRatio": 0.962783971
+      },
+      "removalDiagnosis": {
+        "basis": "first-order, evaluated on the baseline strain-energy field",
+        "massFractionRemoved": 0.65629,
+        "payoffRatio": 0.482,
+        "strainEnergyFractionRemoved": 0.316341
+      },
+      "role": "survivor",
+      "runId": "track-run-1",
+      "schemaVersion": "track.result/1",
+      "timing": {
+        "solveSeconds": 2.705082
+      }
+    }
+  ],
+  "runId": "track-run-1",
+  "schema": "TrackResultGolden/1",
+  "target": {
+    "complianceRatioMax": 1.25,
+    "materialFractionRatioMax": 0.9
+  }
+}

@@ -211,6 +211,41 @@ Two further limits worth knowing before quoting a number:
   — so the XZ projection *is* the cross-section here. A part with draft or bosses
   would need a Y-slice instead.
 
+## The #43 contract adapter
+
+`contract_adapter.py` re-expresses a `track.result/1` as
+`nightshift.track-result/v1`. Like the Factory one it is a thin, one-way wrapper
+that imports nothing from `evaluate.py` and changes no measured number; the
+mapping tables at the top are the single edit point when the real schema lands.
+
+```python
+from contract_adapter import to_track_result, NIGHTSHIFT_UNITS, track_creation_method
+
+record = to_track_result(
+    raw_result,
+    factory_verdict=verdict_record,     # required -- gates the emit
+    run_id='run.neoracer-2026-08-22',
+    units=NIGHTSHIFT_UNITS,
+    creation_method=track_creation_method('track.result/1'))
+```
+
+**The boundary is enforced, not documented.** #43 states that a candidate with a
+failed Factory verdict cannot have a Track result. `to_track_result` requires the
+candidate's `nightshift.factory-verdict/v1` record and raises
+`FactoryRejectedError` unless it is a pass *for that exact candidate*. There is
+no bypass flag. A missing verdict is refused too — absence is not permission.
+This is a second, independent gate: `manifest.py` already refuses to parse a
+survivor manifest containing a rejected candidate, and this closes the same door
+at the emit end.
+
+Two mappings are judgement calls, recorded in `STATUS_MAP`:
+`load_path_lost` becomes `measured` (the solve succeeded; the design is bad, and
+Issue 48 requires a known-poor survivor stay visible), while
+`fixture_unsupported` and `non_finite` become `solver_failed`. A `solver_failed`
+candidate is given no `score`, so a meaningless number cannot enter a ranking.
+
+Proven end to end by `python3 tools/contract_smoke.py`.
+
 ## See also
 
 - `tools/depgraph/README.md` — the assembly graph this fixture is grounded in
