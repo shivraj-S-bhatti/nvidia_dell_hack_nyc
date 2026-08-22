@@ -132,6 +132,19 @@ complete until those checks pass in issue #10. The pinned runtime also reports
 Marlin weight-only FP4 rather than a native FP4 compute path, so retain that
 warning with any performance result.
 
+**Code side of that gap is closed**, in [`tools/gateway`](tools/gateway/README.md):
+a three-tool read-only MCP surface (`work_order`, `factory_verdict`,
+`track_result`) wrapping the already-verified `tools/depgraph`,
+`tools/factory`, and `tools/track` CLIs, plus the matching OpenClaw skill at
+`openclaw/workspace/skills/night-shift-gateway/SKILL.md`. All three tool
+functions were smoke-tested directly against real CLIs and real `.artifacts/`
+on this machine and returned real JSON — see `tools/gateway/README.md` for the
+transcripts. What remains is GB10-only and not yet done: registering the MCP
+server with `openclaw mcp add`, creating the OpenShell sandbox, running one
+OpenClaw-to-tool invocation through the local model, and repeating it with
+networking disabled. `tools/gateway/README.md` has the exact commands for each
+remaining step.
+
 ## Offline kit
 
 Inventory an attached drive without exposing credentials:
