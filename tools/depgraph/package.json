@@ -1,0 +1,11 @@
+{
+  "name": "depgraph-tools",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Offline STEP tessellation for ATTEMPT#DEP_GRAPH (#23)",
+  "dependencies": {
+    "occt-import-js": "^0.0.23",
+    "three": "^0.185.1"
+  }
+}
