@@ -151,7 +151,7 @@ def capabilities() -> dict[str, Any]:
             "name": COMPONENT,
             "assembly": "NeoRacer v0 full vehicle",
             "source": "precompiled NeoRacer artifact pack",
-            "objectView": "/autoauto/vehicle-viewer.html",
+            "objectView": "/autoauto/vehicle-viewer.html?v=neoracer-demo-2",
             "objective": "Minimize compliance at a fixed 35% material target.",
             "constraint": "Preserve all four wing-mount interfaces and the assembly envelope.",
             "protectedInterfaces": ["mount-00", "mount-01", "mount-02", "mount-03"],

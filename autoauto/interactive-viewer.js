@@ -319,7 +319,7 @@
       const progress = this.explodeProgress;
       const hasSelection = this.selectedSet.size > 0;
       this.displayMaterial.opacity = progress > 0.002
-        ? Math.max(0.07, 1 - progress * 0.93)
+        ? 0
         : this.mode === 'focus' ? 0.045 : hasSelection ? 0.22 : 1;
       this.displayMaterial.depthWrite = progress < 0.002 && !hasSelection;
       this.displayMesh.renderOrder = 0;
