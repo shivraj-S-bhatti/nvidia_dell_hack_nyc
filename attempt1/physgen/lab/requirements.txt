@@ -1,0 +1,13 @@
+accelerate==1.14.0
+cupy-cuda13x==14.2.0
+diffusers==0.40.0
+huggingface-hub==1.28.0
+jsonschema==4.26.0
+matplotlib==3.11.1
+numba==0.67.0
+numpy==2.5.2
+Pillow==12.3.0
+scipy==1.18.1
+torch==2.13.0
+torchvision==0.28.0
+vtk==9.7.0

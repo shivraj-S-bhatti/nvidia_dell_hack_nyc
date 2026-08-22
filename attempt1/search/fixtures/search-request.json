@@ -1,0 +1,10 @@
+{
+  "assemblyId": "s500-battery-tray-v1",
+  "objective": "maximize_clearance_then_minimize_material",
+  "slots": {
+    "trayWidthMm": [100, 105, 110],
+    "boardThicknessMm": [2.0, 2.5, 3.0],
+    "padThicknessMm": [2.0, 2.5, 3.0]
+  },
+  "constraints": {}
+}

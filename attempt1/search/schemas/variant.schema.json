@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/attempt1-search/variant.schema.json",
+  "title": "Attempt 1 battery-tray fixture variant",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "_id", "runId", "variantId", "parentVariantId", "ordinal",
+    "parameters", "partModeRevision", "artifactPath", "metrics",
+    "validity", "buildStatus", "evaluationStatus", "failureStage",
+    "failureReason", "timing", "evidenceSource"
+  ],
+  "properties": {
+    "_id": {"type": "string", "pattern": "^variant-[0-9a-f]{16}$"},
+    "runId": {"type": "string", "pattern": "^search-run-[0-9a-f]{16}$"},
+    "variantId": {"type": "string", "pattern": "^variant-[0-9a-f]{16}$"},
+    "parentVariantId": {
+      "type": ["string", "null"],
+      "pattern": "^variant-[0-9a-f]{16}$"
+    },
+    "ordinal": {"type": "integer", "minimum": 0, "maximum": 26},
+    "parameters": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["trayWidthMm", "boardThicknessMm", "padThicknessMm"],
+      "properties": {
+        "trayWidthMm": {"enum": [100, 105, 110]},
+        "boardThicknessMm": {"enum": [2.0, 2.5, 3.0]},
+        "padThicknessMm": {"enum": [2.0, 2.5, 3.0]}
+      }
+    },
+    "partModeRevision": {"type": ["string", "null"]},
+    "artifactPath": {"type": ["string", "null"]},
+    "metrics": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["clearanceGainProxyMm", "materialVolumeProxyMm3"],
+          "properties": {
+            "clearanceGainProxyMm": {"type": "number"},
+            "materialVolumeProxyMm3": {"type": "number"}
+          }
+        }
+      ]
+    },
+    "validity": {"type": "boolean"},
+    "buildStatus": {"enum": ["succeeded", "failed"]},
+    "evaluationStatus": {"enum": ["succeeded", "failed", "not_run"]},
+    "failureStage": {"type": ["string", "null"]},
+    "failureReason": {"type": ["string", "null"]},
+    "timing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "buildMs", "evaluationMs"],
+      "properties": {
+        "source": {"const": "fixture"},
+        "buildMs": {"type": ["number", "null"]},
+        "evaluationMs": {"type": ["number", "null"]}
+      }
+    },
+    "evidenceSource": {"const": "fixture"}
+  }
+}

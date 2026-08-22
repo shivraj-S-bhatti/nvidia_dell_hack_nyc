@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/attempt1-fsai/variant.schema.json",
+  "title": "FS-AI CAD-derived sensor-plate variant",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "_id",
+    "runId",
+    "variantId",
+    "parentVariantId",
+    "ordinal",
+    "parameters",
+    "sourcePartName",
+    "geometryRevisionId",
+    "artifactPath",
+    "artifactSha256",
+    "metrics",
+    "checks",
+    "validity",
+    "buildStatus",
+    "evaluationStatus",
+    "physicsStatus",
+    "failureStage",
+    "failureReason",
+    "timing",
+    "evidenceSource"
+  ],
+  "properties": {
+    "_id": {"type": "string", "pattern": "^fsai-variant-[0-9a-f]{16}$"},
+    "runId": {"type": "string", "pattern": "^fsai-run-[0-9a-f]{16}$"},
+    "variantId": {"type": "string", "pattern": "^fsai-variant-[0-9a-f]{16}$"},
+    "parentVariantId": {
+      "type": ["string", "null"],
+      "pattern": "^fsai-variant-[0-9a-f]{16}$"
+    },
+    "ordinal": {"type": "integer", "minimum": 0},
+    "parameters": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["plateWidthMm", "topWidthMm", "plateThicknessMm"],
+      "properties": {
+        "plateWidthMm": {"type": "number"},
+        "topWidthMm": {"type": "number"},
+        "plateThicknessMm": {"type": "number"}
+      }
+    },
+    "sourcePartName": {"const": "Example Plate"},
+    "geometryRevisionId": {
+      "type": "string",
+      "pattern": "^fsai-plate-rev-[0-9a-f]{16}$"
+    },
+    "artifactPath": {"type": ["object", "null"]},
+    "artifactSha256": {"type": ["object", "null"]},
+    "metrics": {"type": ["object", "null"]},
+    "checks": {"type": ["object", "null"]},
+    "validity": {"type": "boolean"},
+    "buildStatus": {"enum": ["succeeded", "failed"]},
+    "evaluationStatus": {"enum": ["succeeded", "failed", "not_run"]},
+    "physicsStatus": {"const": "not_run"},
+    "failureStage": {"type": ["string", "null"]},
+    "failureReason": {"type": ["string", "null"]},
+    "timing": {"type": "object"},
+    "evidenceSource": {"const": "cad-derived-parametric"}
+  }
+}

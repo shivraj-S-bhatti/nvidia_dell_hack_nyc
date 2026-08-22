@@ -1,0 +1,36 @@
+{
+  "default": {
+    "buildStatus": "succeeded",
+    "evaluationStatus": "succeeded",
+    "buildMs": 12,
+    "evaluationMs": 4
+  },
+  "overrides": [
+    {
+      "parameters": {
+        "trayWidthMm": 100,
+        "boardThicknessMm": 3.0,
+        "padThicknessMm": 3.0
+      },
+      "buildStatus": "failed",
+      "evaluationStatus": "not_run",
+      "failureStage": "build",
+      "failureReason": "fixture_build_failure",
+      "buildMs": 25,
+      "evaluationMs": null
+    },
+    {
+      "parameters": {
+        "trayWidthMm": 105,
+        "boardThicknessMm": 3.0,
+        "padThicknessMm": 3.0
+      },
+      "buildStatus": "succeeded",
+      "evaluationStatus": "failed",
+      "failureStage": "evaluation",
+      "failureReason": "fixture_evaluation_failure",
+      "buildMs": 12,
+      "evaluationMs": 9
+    }
+  ]
+}

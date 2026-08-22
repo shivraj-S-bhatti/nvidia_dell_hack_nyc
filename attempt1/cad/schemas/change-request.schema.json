@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/attempt1-cad/change-request.schema.json",
+  "title": "Attempt 1 battery tray mutation request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["parameter", "deltaMm"],
+  "properties": {
+    "parameter": {
+      "const": "trayWidthMm"
+    },
+    "deltaMm": {
+      "const": 10
+    }
+  }
+}

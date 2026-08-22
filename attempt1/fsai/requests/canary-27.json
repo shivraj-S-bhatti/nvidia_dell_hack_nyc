@@ -1,0 +1,17 @@
+{
+  "assemblyId": "fs-ai-ads-dv-2026",
+  "targetPart": "Example Plate",
+  "objective": "minimize_plate_volume_with_knob_clearance",
+  "candidateBudget": 27,
+  "ranges": {
+    "plateWidthMm": {"start": 330, "stop": 350, "step": 10},
+    "topWidthMm": {"start": 120, "stop": 200, "step": 40},
+    "plateThicknessMm": {"start": 3, "stop": 5, "step": 1}
+  },
+  "constraints": {
+    "mountHoleDiameterMm": 6.5,
+    "knobClearanceDiameterMm": 40.0,
+    "maxPlateThicknessMm": 5.0,
+    "minimumMountCount": 3
+  }
+}

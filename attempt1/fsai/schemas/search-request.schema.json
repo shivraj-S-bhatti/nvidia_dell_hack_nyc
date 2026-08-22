@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/attempt1-fsai/search-request.schema.json",
+  "title": "FS-AI sensor-plate CAD search request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "assemblyId",
+    "targetPart",
+    "objective",
+    "candidateBudget",
+    "ranges",
+    "constraints"
+  ],
+  "properties": {
+    "assemblyId": {"const": "fs-ai-ads-dv-2026"},
+    "targetPart": {"const": "Example Plate"},
+    "objective": {"const": "minimize_plate_volume_with_knob_clearance"},
+    "candidateBudget": {"type": "integer", "minimum": 1, "maximum": 100000},
+    "ranges": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["plateWidthMm", "topWidthMm", "plateThicknessMm"],
+      "properties": {
+        "plateWidthMm": {"$ref": "#/$defs/range"},
+        "topWidthMm": {"$ref": "#/$defs/range"},
+        "plateThicknessMm": {"$ref": "#/$defs/range"}
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mountHoleDiameterMm",
+        "knobClearanceDiameterMm",
+        "maxPlateThicknessMm",
+        "minimumMountCount"
+      ],
+      "properties": {
+        "mountHoleDiameterMm": {"const": 6.5},
+        "knobClearanceDiameterMm": {"const": 40.0},
+        "maxPlateThicknessMm": {"const": 5.0},
+        "minimumMountCount": {"const": 3}
+      }
+    }
+  },
+  "$defs": {
+    "range": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start", "stop", "step"],
+      "properties": {
+        "start": {"type": "number"},
+        "stop": {"type": "number"},
+        "step": {"type": "number", "exclusiveMinimum": 0}
+      }
+    }
+  }
+}

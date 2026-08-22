@@ -1,0 +1,16 @@
+{
+  "schema_version": "nightshift.oat-domain/v1",
+  "source": {
+    "dataset": "OpenTO/OpenTO",
+    "row": 0,
+    "split": "test",
+    "parquet_sha256": "6d16e791be719dc6269806f17aa9c1c13d63d01e2512e6f34cc3ac567d882810"
+  },
+  "grid_shape": [88, 107],
+  "extent_mm": [0.822429906542056, 1.0],
+  "thickness_mm": 1.0,
+  "void_stiffness": 0.000001,
+  "filter_radius_elements": 1.5,
+  "simp_penalty": 3.0,
+  "density_threshold": 0.5
+}

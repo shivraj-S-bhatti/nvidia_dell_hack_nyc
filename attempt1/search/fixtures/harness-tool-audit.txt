@@ -1,0 +1,7 @@
+Run a read-only audit of the Attempt 1 battery-tray retrieval surface. Call
+each registered attempt1-search tool at least once: get_ontology; search_parts
+for "left screw"; search_variants for invalid variants; get_dependencies for
+trayWidthMm; list_design_runs; get_winner using the returned run ID; and
+get_variant_lineage using the returned winner ID. Do not use shell or raw
+MongoDB. Finish with a compact summary that distinguishes six physical parts
+from 27 fixture configurations and states the proxy/CAD limitation.

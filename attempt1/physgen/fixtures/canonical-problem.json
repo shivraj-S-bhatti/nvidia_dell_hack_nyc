@@ -1,0 +1,105 @@
+{
+  "schema_version": "nightshift.design-problem/v1",
+  "id": "design-problem.opento-test-0000",
+  "run_id": "run.lab-runtime-seed-7",
+  "parent_ids": [],
+  "source_hashes": [
+    {"source_id": "source.opento-test-parquet", "sha256": "6d16e791be719dc6269806f17aa9c1c13d63d01e2512e6f34cc3ac567d882810"}
+  ],
+  "units": {"length": "mm", "mass": "kg", "time": "s", "force": "N", "pressure": "Pa", "density": "kg/m^3"},
+  "creation_method": {"kind": "imported", "name": "OpenTO cached test fixture adapter", "version": "1.0.0", "deterministic": true},
+  "evidence_sources": [
+    {
+      "evidence_id": "evidence.opento-domain-row-0000",
+      "kind": "constraint",
+      "uri": "repo://attempt1/physgen/fixtures/canonical-oat-domain.json",
+      "sha256": "7258e9f98867fbe9261e8dcc7cb8a57a01cd8f59ecefe3bb2c80ffee1a4a181c"
+    }
+  ],
+  "assembly": {
+    "assembly_id": "assembly.opento-canonical-benchmark",
+    "name": "OpenTO canonical topology benchmark row 0",
+    "baseline_artifact": {"artifact_id": "artifact.opento-row-0000", "uri": "artifact://sha256/7258e9f98867fbe9261e8dcc7cb8a57a01cd8f59ecefe3bb2c80ffee1a4a181c", "sha256": "7258e9f98867fbe9261e8dcc7cb8a57a01cd8f59ecefe3bb2c80ffee1a4a181c", "media_type": "application/json"},
+    "component_manifest": {"artifact_id": "artifact.opento-component-manifest", "uri": "artifact://sha256/7258e9f98867fbe9261e8dcc7cb8a57a01cd8f59ecefe3bb2c80ffee1a4a181c", "sha256": "7258e9f98867fbe9261e8dcc7cb8a57a01cd8f59ecefe3bb2c80ffee1a4a181c", "media_type": "application/json"},
+    "dependency_manifest": {"artifact_id": "artifact.opento-dependency-manifest", "uri": "artifact://sha256/7258e9f98867fbe9261e8dcc7cb8a57a01cd8f59ecefe3bb2c80ffee1a4a181c", "sha256": "7258e9f98867fbe9261e8dcc7cb8a57a01cd8f59ecefe3bb2c80ffee1a4a181c", "media_type": "application/json"}
+  },
+  "target_component": {
+    "component_id": "component.opento-row-0000",
+    "name": "OpenTO benchmark design domain",
+    "occurrence_ids": ["occurrence.opento-row-0000"],
+    "baseline_artifact": {"artifact_id": "artifact.opento-component-row-0000", "uri": "artifact://sha256/7258e9f98867fbe9261e8dcc7cb8a57a01cd8f59ecefe3bb2c80ffee1a4a181c", "sha256": "7258e9f98867fbe9261e8dcc7cb8a57a01cd8f59ecefe3bb2c80ffee1a4a181c", "media_type": "application/json"}
+  },
+  "design_domain": {"artifact_id": "artifact.opento-design-domain-row-0000", "uri": "artifact://sha256/7258e9f98867fbe9261e8dcc7cb8a57a01cd8f59ecefe3bb2c80ffee1a4a181c", "sha256": "7258e9f98867fbe9261e8dcc7cb8a57a01cd8f59ecefe3bb2c80ffee1a4a181c", "media_type": "application/json"},
+  "coordinate_transform": {
+    "from_frame": "frame.opento-source",
+    "to_frame": "frame.opento-domain",
+    "matrix_row_major": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+  },
+  "protected_interfaces": [
+    {
+      "interface_id": "interface.opento-supports",
+      "kind": "boundary",
+      "region": {"kind": "axis_aligned_box", "min_mm": [0.0, 0.29906541109085083, 0.0], "max_mm": [0.8130841255187988, 0.9906542301177979, 0.0]},
+      "component_ids": ["component.opento-row-0000"],
+      "tolerance_mm": 0.0,
+      "evidence_source_ids": ["evidence.opento-domain-row-0000"]
+    }
+  ],
+  "keep_outs": [],
+  "supports": [
+    {
+      "support_id": "support.opento-00",
+      "region": {"kind": "axis_aligned_box", "min_mm": [0.0, 0.9906542301177979, 0.0], "max_mm": [0.0, 0.9906542301177979, 0.0]},
+      "constrained_dofs": ["x"],
+      "evidence_source_ids": ["evidence.opento-domain-row-0000"]
+    },
+    {
+      "support_id": "support.opento-01",
+      "region": {"kind": "axis_aligned_box", "min_mm": [0.037383176386356354, 0.29906541109085083, 0.0], "max_mm": [0.037383176386356354, 0.29906541109085083, 0.0]},
+      "constrained_dofs": ["x"],
+      "evidence_source_ids": ["evidence.opento-domain-row-0000"]
+    },
+    {
+      "support_id": "support.opento-02",
+      "region": {"kind": "axis_aligned_box", "min_mm": [0.8130841255187988, 0.9906542301177979, 0.0], "max_mm": [0.8130841255187988, 0.9906542301177979, 0.0]},
+      "constrained_dofs": ["y"],
+      "evidence_source_ids": ["evidence.opento-domain-row-0000"]
+    }
+  ],
+  "loads": [
+    {
+      "load_id": "load.opento-00",
+      "kind": "force",
+      "region": {"kind": "axis_aligned_box", "min_mm": [0.5887850522994995, 0.38317757844924927, 0.0], "max_mm": [0.5887850522994995, 0.38317757844924927, 0.0]},
+      "components": [0.0, 1.0, 0.0],
+      "evidence_source_ids": ["evidence.opento-domain-row-0000"]
+    }
+  ],
+  "material": {
+    "material_id": "material.opento-normalized",
+    "name": "OpenTO normalized plane-stress material",
+    "youngs_modulus_pa": 1000000.0,
+    "poisson_ratio": 0.3333333333333333,
+    "density_kg_m3": 1.0,
+    "yield_strength_pa": null,
+    "evidence_source_id": "evidence.opento-domain-row-0000"
+  },
+  "solver": {
+    "name": "OptimizeAnyTopology pyEDGE MinimumCompliance",
+    "version": "dc5e817497eb7d5517f93b7c79ea463ab2761082",
+    "analysis_type": "linear_static",
+    "element_type": "plane_stress_quad",
+    "mesh_size_mm": 0.009345794392523364,
+    "convergence_tolerance": 0.001,
+    "deterministic": true
+  },
+  "candidate_budget": 3,
+  "seed_policy": {"mode": "fixed", "seeds": [7]},
+  "material_fraction_target": 0.31814345717430115,
+  "objective": {
+    "metric_id": "metric.compliance",
+    "goal": "minimize",
+    "target": {"value": 0.0099932042, "unit": "J"},
+    "tolerance": {"value": 0.001, "unit": "J"}
+  }
+}

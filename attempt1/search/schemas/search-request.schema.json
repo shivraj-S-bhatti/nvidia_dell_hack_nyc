@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/attempt1-search/search-request.schema.json",
+  "title": "Attempt 1 battery-tray search request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["assemblyId", "objective", "slots", "constraints"],
+  "properties": {
+    "assemblyId": {"const": "s500-battery-tray-v1"},
+    "objective": {"const": "maximize_clearance_then_minimize_material"},
+    "slots": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["trayWidthMm", "boardThicknessMm", "padThicknessMm"],
+      "properties": {
+        "trayWidthMm": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "uniqueItems": true,
+          "items": {"enum": [100, 105, 110]}
+        },
+        "boardThicknessMm": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "uniqueItems": true,
+          "items": {"enum": [2.0, 2.5, 3.0]}
+        },
+        "padThicknessMm": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "uniqueItems": true,
+          "items": {"enum": [2.0, 2.5, 3.0]}
+        }
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "maxProperties": 0
+    }
+  }
+}

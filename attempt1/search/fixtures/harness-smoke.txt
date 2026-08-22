@@ -1,0 +1,4 @@
+Use the Attempt 1 battery tray search capability. I typed "batery bord".
+Find the physical part I mean and report its dimensions in every stored
+revision. Use the registered retrieval tool; do not use shell commands or raw
+MongoDB.

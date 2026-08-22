@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/attempt1-cad/build-response.schema.json",
+  "title": "Attempt 1 battery tray build response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "assemblyId",
+    "partModeRevision",
+    "parentRevisionId",
+    "artifactPath",
+    "artifactSha256",
+    "parameters",
+    "validation",
+    "buildStatus"
+  ],
+  "properties": {
+    "assemblyId": {"const": "s500-battery-tray-v1"},
+    "partModeRevision": {"type": "string", "pattern": "^tray-rev-[0-9a-f]{12}$"},
+    "parentRevisionId": {"type": ["string", "null"]},
+    "artifactPath": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["step", "stl", "manifest"],
+      "properties": {
+        "step": {"type": "string"},
+        "stl": {"type": "string"},
+        "manifest": {"type": "string"}
+      }
+    },
+    "artifactSha256": {
+      "type": "object",
+      "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+      "required": ["step", "stl", "manifest"]
+    },
+    "parameters": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["trayWidthMm"],
+      "properties": {"trayWidthMm": {"type": "number"}}
+    },
+    "validation": {"type": "object"},
+    "buildStatus": {"const": "succeeded"}
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/attempt1-search/ontology.json",
+  "name": "Attempt 1 battery-tray retrieval ontology",
+  "version": "1.0.0",
+  "assemblyId": "s500-battery-tray-v1",
+  "scope": {
+    "data": "local fixture-backed battery-tray parts, dependencies, revisions, design runs, and search variants",
+    "access": "read-only through fixed MCP tools",
+    "limitations": [
+      "The 27 variant records are possible parameter configurations, not a catalog of 27 physical parts.",
+      "There are six physical part records in attempt1_cad.parts.",
+      "Search metrics and failure outcomes are deterministic fixtures/proxies, not CAD or simulation measurements.",
+      "Variant partModeRevision and artifactPath values are null until the later CAD integration issue connects them."
+    ]
+  },
+  "entities": {
+    "Part": {
+      "database": "attempt1_cad",
+      "collection": "parts",
+      "primaryKey": "_id",
+      "fields": {
+        "_id": {"type": "string", "meaning": "stable part ID"},
+        "assemblyId": {"type": "string"},
+        "kind": {
+          "enum": [
+            "battery_mounting_board",
+            "battery_pad",
+            "m2.5x6_mounting_screw"
+          ]
+        },
+        "source": {"type": "string"},
+        "revisionValues": {
+          "type": "map",
+          "key": "Revision._id",
+          "value": "dimension or placement fields whose names end in Mm"
+        }
+      }
+    },
+    "Dependency": {
+      "database": "attempt1_cad",
+      "collection": "dependencies",
+      "primaryKey": "_id",
+      "fields": {
+        "from": {"type": "string", "example": "parameter:trayWidthMm"},
+        "to": {"type": "string", "references": "Part._id"},
+        "type": {"const": "parameter_drives"},
+        "targetFields": {"type": "array[string]"},
+        "rule": {"type": "string"},
+        "approved": {"type": "boolean"}
+      }
+    },
+    "Revision": {
+      "database": "attempt1_cad",
+      "collection": "revisions",
+      "primaryKey": "_id",
+      "fields": {
+        "assemblyId": {"type": "string"},
+        "parentRevisionId": {"type": ["string", "null"], "references": "Revision._id"},
+        "parameters.trayWidthMm": {"type": "number", "unit": "mm"},
+        "partValues": {"type": "map"},
+        "validation": {"type": "object"}
+      }
+    },
+    "DesignRun": {
+      "database": "attempt1_search",
+      "collection": "design_runs",
+      "primaryKey": "_id",
+      "fields": {
+        "runId": {"type": "string"},
+        "normalizedRequest": {"type": "object"},
+        "variantCount": {"type": "integer"},
+        "baselineVariantId": {"type": "string", "references": "Variant._id"},
+        "winnerVariantId": {"type": "string", "references": "Variant._id"},
+        "status": {"const": "completed"}
+      }
+    },
+    "Variant": {
+      "database": "attempt1_search",
+      "collection": "variants",
+      "primaryKey": "_id",
+      "fields": {
+        "runId": {"type": "string", "references": "DesignRun._id"},
+        "variantId": {"type": "string"},
+        "parentVariantId": {"type": ["string", "null"], "references": "Variant._id"},
+        "ordinal": {"type": "integer", "range": [0, 26]},
+        "parameters.trayWidthMm": {"enum": [100, 105, 110], "unit": "mm"},
+        "parameters.boardThicknessMm": {"enum": [2, 2.5, 3], "unit": "mm"},
+        "parameters.padThicknessMm": {"enum": [2, 2.5, 3], "unit": "mm"},
+        "metrics.clearanceGainProxyMm": {"type": ["number", "null"], "unit": "mm"},
+        "metrics.materialVolumeProxyMm3": {"type": ["number", "null"], "unit": "mm^3"},
+        "validity": {"type": "boolean"},
+        "buildStatus": {"enum": ["succeeded", "failed"]},
+        "evaluationStatus": {"enum": ["succeeded", "failed", "not_run"]},
+        "failureStage": {"type": ["string", "null"]},
+        "failureReason": {"type": ["string", "null"]},
+        "partModeRevision": {"type": ["string", "null"]},
+        "artifactPath": {"type": ["string", "null"]},
+        "evidenceSource": {"const": "fixture"}
+      }
+    }
+  },
+  "relationships": [
+    {"from": "parameter:trayWidthMm", "type": "parameter_drives", "to": "Part"},
+    {"from": "DesignRun", "type": "contains", "to": "Variant"},
+    {"from": "Variant", "type": "derived_from", "to": "Variant"},
+    {"from": "Revision", "type": "contains", "to": "Part"},
+    {"from": "Variant", "type": "may_produce", "to": "Revision", "implemented": false}
+  ],
+  "partAliases": {
+    "battery-mounting-board": [
+      "battery mounting board",
+      "battery board",
+      "mounting board",
+      "tray board",
+      "battery tray",
+      "tray"
+    ],
+    "battery-pad": ["battery pad", "pad", "cushion", "battery cushion"],
+    "mounting-screw-left-front": ["left front screw", "front left screw", "left screw", "mounting screw"],
+    "mounting-screw-left-rear": ["left rear screw", "rear left screw", "left screw", "mounting screw"],
+    "mounting-screw-right-front": ["right front screw", "front right screw", "right screw", "mounting screw"],
+    "mounting-screw-right-rear": ["right rear screw", "rear right screw", "right screw", "mounting screw"]
+  },
+  "queryPolicy": {
+    "naturalLanguageMapping": "The agent maps the user request into typed tool arguments before the query runs.",
+    "fuzzyFields": ["Part._id", "partAliases"],
+    "exactFields": [
+      "Part.kind",
+      "Revision._id",
+      "DesignRun._id",
+      "Variant._id",
+      "Variant.parameters.*",
+      "Variant.validity",
+      "Variant.buildStatus",
+      "Variant.evaluationStatus",
+      "Variant.failureStage"
+    ],
+    "rawMongoQueriesAllowed": false,
+    "writesAllowed": false,
+    "maximumResultsPerCall": 50
+  }
+}
