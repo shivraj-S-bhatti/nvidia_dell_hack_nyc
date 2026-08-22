@@ -46,6 +46,17 @@
     border: 1px solid #26324a; border-radius: 8px; padding: 8px 14px; cursor: pointer;
   }
   #toolbar button:hover { background: #1c2534; border-color: #3a4a68; }
+  #toolbar { align-items: center; }
+  #explodeWrap {
+    display: flex; align-items: center; gap: 10px;
+    background: rgba(20,27,38,0.92); border: 1px solid #26324a;
+    border-radius: 8px; padding: 6px 12px;
+  }
+  #explodeWrap label { font-size: 13px; color: #7d8aa0; letter-spacing: .3px; }
+  #explodeVal { font-size: 12px; color: #4fb0a5; font-weight: 600; min-width: 34px; text-align: right; }
+  #explodeSlider { width: 190px; accent-color: #4fb0a5; cursor: pointer; }
+  #toolbar button.ghost { padding: 4px 9px; font-size: 12px; }
+  #toolbar .sep { width: 1px; height: 26px; background: #26324a; }
 </style>
 </head>
 <body>
@@ -59,8 +70,17 @@
   </aside>
   <div id="info"><div class="hint">Click a part to inspect</div></div>
   <div id="toolbar">
+    <div id="explodeWrap">
+      <label for="explodeSlider">Explode</label>
+      <input id="explodeSlider" type="range" min="0" max="100" value="0" step="1">
+      <span id="explodeVal">0%</span>
+      <button id="explodeClear" class="ghost">Clear</button>
+    </div>
+    <span class="sep"></span>
+    <button id="layoutBtn">Layout: assembled</button>
+    <button id="fitBtn">Fit</button>
     <button id="colorBtn">Color: subsystem</button>
-    <button id="resetBtn">Reset view</button>
+    <button id="resetBtn">Home</button>
   </div>
   <script src="bundle.js"></script>
 </body>
