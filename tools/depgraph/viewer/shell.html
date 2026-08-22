@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>S500 Change Impact</title>
+<style>
+:root{
+  --bg:#f4f3f0; --surface:#fffefc; --surface2:#eceae5; --ink:#191c20; --ink2:#4a515a;
+  --muted:#79818c; --line:#d8d5ce; --line2:#c3bfb6;
+  --accent:#c8701f; --ok:#3f8a63; --bad:#c0453f;
+  --shadow:0 1px 2px rgba(25,28,32,.06),0 8px 24px -12px rgba(25,28,32,.14);
+  --canvas-a:#e9e7e2; --canvas-b:#d9d6cf;
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --bg:#12161b; --surface:#1a2027; --surface2:#212932; --ink:#e8eaed; --ink2:#b3bcc7;
+  --muted:#8a929c; --line:#2b333d; --line2:#3a444f;
+  --accent:#e8913a; --ok:#4ea87a; --bad:#d9534f;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -14px rgba(0,0,0,.7);
+  --canvas-a:#161b21; --canvas-b:#0d1116;
+}}
+:root[data-theme="dark"]{
+  --bg:#12161b; --surface:#1a2027; --surface2:#212932; --ink:#e8eaed; --ink2:#b3bcc7;
+  --muted:#8a929c; --line:#2b333d; --line2:#3a444f;
+  --accent:#e8913a; --ok:#4ea87a; --bad:#d9534f;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -14px rgba(0,0,0,.7);
+  --canvas-a:#161b21; --canvas-b:#0d1116;
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font:450 14px/1.5 'IBM Plex Sans',system-ui,sans-serif;
+ -webkit-font-smoothing:antialiased;height:100vh;overflow:hidden}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.cond{font-family:'IBM Plex Sans Condensed','IBM Plex Sans',sans-serif}
+.lbl{font:600 10px/1 'IBM Plex Sans Condensed',sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.app{display:grid;grid-template-columns:262px minmax(0,1fr) 372px;grid-template-rows:auto minmax(0,1fr);height:100vh}
+header{grid-column:1/-1;display:flex;align-items:center;gap:22px;padding:11px 18px;
+ background:var(--surface);border-bottom:1px solid var(--line)}
+.brand{display:flex;flex-direction:column;gap:2px;padding-right:20px;border-right:1px solid var(--line)}
+.brand b{font:700 14px/1 'IBM Plex Sans Condensed',sans-serif;letter-spacing:.02em}
+.brand span{font-size:10.5px;color:var(--muted);letter-spacing:.04em}
+.stats{display:flex;gap:20px;margin-left:auto;flex-wrap:wrap}
+.stat{display:flex;flex-direction:column;gap:3px;align-items:flex-end}
+.stat b{font:600 16px/1 'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums}
+aside,.right{background:var(--surface);overflow-y:auto;display:flex;flex-direction:column}
+aside{border-right:1px solid var(--line)} .right{border-left:1px solid var(--line)}
+.sec{padding:14px 16px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:10px}
+.defs{display:flex;flex-direction:column;gap:1px;padding:8px 8px 20px}
+.defbtn{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;
+ padding:7px 9px;background:none;border:0;border-left:2px solid transparent;border-radius:3px;
+ color:var(--ink2);font:500 11.5px/1.35 'IBM Plex Mono',monospace;text-align:left;cursor:pointer}
+.defbtn:hover{background:var(--surface2);color:var(--ink)}
+.defbtn.on{background:var(--surface2);border-left-color:var(--accent);color:var(--ink)}
+.defbtn em{font-style:normal;color:var(--muted);font-size:10.5px}
+.defbtn.on em{color:var(--accent)}
+.defbtn:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.stage{position:relative;background:radial-gradient(120% 110% at 50% 8%,var(--canvas-a),var(--canvas-b))}
+canvas{display:block;width:100%;height:100%;cursor:crosshair}
+.legend{position:absolute;left:16px;bottom:14px;display:flex;flex-direction:column;gap:7px;
+ padding:11px 13px;background:color-mix(in srgb,var(--surface) 88%,transparent);
+ border:1px solid var(--line);border-radius:5px;backdrop-filter:blur(8px)}
+.lg{display:flex;align-items:center;gap:8px;font:500 11px/1 'IBM Plex Mono',monospace;color:var(--ink2)}
+.sw{width:11px;height:11px;border-radius:2px;flex:none}
+.hint{position:absolute;right:16px;top:14px;font-size:11px;color:var(--muted);
+ background:color-mix(in srgb,var(--surface) 88%,transparent);padding:7px 11px;border:1px solid var(--line);border-radius:5px}
+.sumbar{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.sumbar div{background:var(--surface2);padding:9px 11px;display:flex;flex-direction:column;gap:3px}
+.sumbar b{font:600 19px/1 'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums}
+.anchor{display:flex;flex-direction:column;gap:5px;padding:11px 13px;border:1px solid var(--accent);
+ border-radius:4px;background:color-mix(in srgb,var(--accent) 9%,transparent)}
+.anchor b{font:600 13px/1.3 'IBM Plex Mono',monospace;color:var(--accent);word-break:break-all}
+.work{display:flex;flex-direction:column;gap:1px;background:var(--line);border-top:1px solid var(--line)}
+.row{background:var(--surface);padding:11px 15px;display:flex;flex-direction:column;gap:6px}
+.row.is-anchor{background:var(--surface2)}
+.rowhead{display:flex;align-items:baseline;gap:8px}
+.hopdot{width:8px;height:8px;border-radius:2px;background:var(--c);flex:none;transform:translateY(-1px)}
+.rowname{font:600 12px/1.3 'IBM Plex Mono',monospace;word-break:break-all;flex:1}
+.qty{font:600 12px/1 'IBM Plex Mono',monospace;color:var(--accent);font-variant-numeric:tabular-nums}
+.rowmeta{display:flex;gap:5px;flex-wrap:wrap}
+.chip{font:600 9.5px/1 'IBM Plex Sans Condensed',sans-serif;letter-spacing:.07em;text-transform:uppercase;
+ padding:4px 6px;border-radius:3px;border:1px solid var(--line2);color:var(--muted)}
+.chip-geo{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 45%,transparent)}
+.chip-inst{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,transparent)}
+.chip-tier{color:var(--ink2)}
+.why{font:400 11.5px/1.5 'IBM Plex Mono',monospace;color:var(--muted);word-break:break-word}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.ctl{display:flex;align-items:center;justify-content:space-between;gap:10px}
+label.chk{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink2);cursor:pointer}
+.note{font:400 11px/1.55 'IBM Plex Sans',sans-serif;color:var(--muted)}
+.note b{color:var(--ink2);font-weight:600}
+.change{display:flex;flex-direction:column;gap:10px;padding:12px 13px;border:1px solid var(--line2);border-radius:4px;background:var(--surface2)}
+.change-command{font:600 12px/1.45 'IBM Plex Mono',monospace;color:var(--ink)}
+.change-actions{display:flex;flex-direction:column;gap:5px}
+.change-action{display:flex;justify-content:space-between;gap:12px;font:500 10.5px/1.4 'IBM Plex Mono',monospace;color:var(--ink2)}
+.change-action b{color:var(--accent);white-space:nowrap}
+.change-controls{display:flex;gap:7px}
+.action-btn{min-height:32px;padding:7px 10px;border:1px solid var(--line2);border-radius:3px;background:var(--surface);color:var(--ink);font:600 10.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer}
+.action-btn.primary{border-color:var(--accent);background:var(--accent);color:#15110d}
+.action-btn:hover{filter:brightness(1.06)}
+.action-btn:disabled{cursor:default;filter:none;opacity:.52}
+.change-state{font:600 9.5px/1 'IBM Plex Sans Condensed',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.change-state.active{color:var(--accent)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+ <header>
+  <div class="brand"><b>S500 CHANGE IMPACT</b><span class="mono">S500-C1_ASM.step · AP214 · derived graph</span></div>
+  <div class="stats">
+   <div class="stat"><b id="stat-defs">—</b><span class="lbl">definitions</span></div>
+   <div class="stat"><b id="stat-nodes">—</b><span class="lbl">occurrences</span></div>
+   <div class="stat"><b id="stat-fast">—</b><span class="lbl">fastens edges</span></div>
+   <div class="stat"><b id="stat-edges">—</b><span class="lbl">total edges</span></div>
+  </div>
+ </header>
+ <aside>
+  <div class="sec">
+   <span class="lbl">Change anchor</span>
+   <p class="note">Pick the part being changed. Impact is derived from geometry — a screw shank collinear with a clearance hole is a <b>FASTENS</b> edge.</p>
+  </div>
+  <div class="sec">
+   <div class="ctl"><span class="lbl">Max hops</span><b class="mono" id="hopsv">3</b></div>
+   <input type="range" id="hops" min="1" max="4" value="3">
+   <label class="chk"><input type="checkbox" id="iso"> Isolate impacted parts</label>
+  </div>
+  <div class="defs" id="defs"></div>
+ </aside>
+ <div class="stage">
+  <canvas id="cv"></canvas>
+  <div class="hint mono">click any part to re-anchor</div>
+  <div class="legend">
+   <div class="lg"><span class="sw" style="background:#e8913a"></span>hop 0 · changed</div>
+   <div class="lg"><span class="sw" style="background:#e0b04e"></span>hop 1</div>
+   <div class="lg"><span class="sw" style="background:#8fbf7a"></span>hop 2</div>
+   <div class="lg"><span class="sw" style="background:#5fa8c9"></span>hop 3</div>
+   <div class="lg"><span class="sw" style="background:#39414c"></span>unaffected</div>
+  </div>
+ </div>
+ <div class="right">
+  <div class="sec">
+   <span class="lbl">Work order</span>
+   <div class="anchor"><span class="lbl">Anchor</span><b id="anchorName">—</b></div>
+   <div class="sumbar">
+    <div><b id="sumDef">0</b><span class="lbl">defs hit</span></div>
+    <div><b id="sumOcc">0</b><span class="lbl">occurrences</span></div>
+    <div><b id="sumHop">0</b><span class="lbl">max hop</span></div>
+   </div>
+   <div class="change">
+    <div class="change-state" id="changeState">candidate ready</div>
+    <div class="change-command">Increase bottom plate thickness by 1.0 mm</div>
+    <div class="change-actions" id="changeActions"></div>
+    <div class="change-controls">
+     <button class="action-btn primary" id="previewChange" type="button">Preview change</button>
+     <button class="action-btn" id="resetChange" type="button" disabled>Reset</button>
+    </div>
+    <p class="note">The visual delta is local. Graph impact and relative fastener actions are derived from geometry; accepting a CAD revision still requires human approval.</p>
+   </div>
+  </div>
+  <div class="work" id="work"></div>
+ </div>
+</div>
