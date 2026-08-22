@@ -39,6 +39,92 @@ Ship one five-minute demo that:
 Candidate projects and custom-kernel work remain queued in GitHub. Issues are
 the execution record; `docs/research/` holds evidence and constraints.
 
+## Verified GB10 model inference and harness boundary
+
+This is the setup verified on the event GB10 on 2026-08-22. The measurements
+and machine evidence are recorded in [issue #10](https://github.com/shivraj-S-bhatti/nvidia_dell_hack_nyc/issues/10).
+It is a record of what passed, not a claim that every acceptance test in that
+issue is complete.
+
+| Component | Verified state |
+|---|---|
+| Host | Ubuntu 24.04.4 on `aarch64`; NVIDIA GB10; driver 580.173.02; driver CUDA 13.0 |
+| Model | `nvidia/Qwen3.6-35B-A3B-NVFP4`, revision `491c2f1ea524c639598bf8fa787a93fed5a6fbce` |
+| Checkpoint | 21.82 GiB loaded from the local kit and mounted read-only at `/models/qwen` |
+| Server | NVIDIA vLLM release `26.05.post1`, vLLM `0.21.0+2325b6f0`, loaded ARM64 image ID `sha256:46591c6e4a018d8d197fa246b1e3d682c907654aab4e9402302abb3e6a7dd916` |
+| API | OpenAI-compatible API from container `attempt1-vllm`; model context reported as 262,144 tokens |
+| Host route | `http://127.0.0.1:8000/v1` |
+| Sandbox route | `http://host.openshell.internal:8000/v1` through Docker network `openshell-docker` |
+| Harness prerequisites | Node.js 22.23.2, OpenClaw 2026.7.1, and OpenShell 0.0.101 installed user-locally |
+
+The verified container runs the following command with `/models/qwen` supplied
+by a read-only bind mount:
+
+```bash
+vllm serve /models/qwen \
+  --served-model-name nvidia/Qwen3.6-35B-A3B-NVFP4 \
+  --host 0.0.0.0 \
+  --port 8000 \
+  --max-model-len 262144 \
+  --gpu-memory-utilization 0.4 \
+  --dtype auto \
+  --quantization modelopt \
+  --kv-cache-dtype fp8 \
+  --attention-backend flashinfer \
+  --moe-backend marlin \
+  --max-num-seqs 4 \
+  --max-num-batched-tokens 8192 \
+  --enable-chunked-prefill \
+  --async-scheduling \
+  --enable-prefix-caching \
+  --enable-auto-tool-choice \
+  --tool-call-parser qwen3_coder \
+  --reasoning-parser qwen3
+```
+
+`0.0.0.0` above is the address *inside the container*. Docker publishes it on
+the host only at `127.0.0.1:8000` and the private OpenShell bridge gateway
+`172.18.0.1:8000`; `ss` confirmed that there is no wildcard or LAN listener.
+The container also uses all available NVIDIA GPUs, host IPC, 64 GiB shared
+memory, unlimited locked memory, a 64 MiB stack ulimit, and restart policy
+`unless-stopped`. Preserve those settings if the container is recreated.
+
+On the existing GB10 installation, start and verify the endpoint with:
+
+```bash
+docker start attempt1-vllm
+
+curl --fail --silent --show-error \
+  http://127.0.0.1:8000/v1/models
+
+curl --fail --silent --show-error \
+  -H 'Content-Type: application/json' \
+  -d '{"model":"nvidia/Qwen3.6-35B-A3B-NVFP4","messages":[{"role":"user","content":"Reply with exactly READY and no other text."}],"temperature":0,"max_tokens":256}' \
+  http://127.0.0.1:8000/v1/chat/completions
+```
+
+The first check must report the exact model ID and a 262,144-token limit. Trim
+leading whitespace before comparing the chat response content with `READY`.
+Keep `max_tokens` large enough for the model's reasoning: a 64-token test used
+its entire budget before emitting final content. A warm smoke test returned
+HTTP 200, first token in 80.7 ms, and a complete response in 3.04 seconds. The
+earlier retained run measured about 68 generated tokens/second; treat these as
+single-run setup evidence, not a benchmark.
+
+The private bridge itself also passed model discovery and chat generation from
+a bridge-attached container. Follow NVIDIA's
+[local-vLLM network guidance](https://docs.nvidia.com/nemoclaw/latest/user-guide/openclaw/inference/local-inference/set-up-vllm.html)
+when wiring a sandbox: use `host.openshell.internal`, never expose port 8000 on
+all host interfaces, and do not configure automatic cloud fallback.
+
+Current boundary: the model server and sandbox-side network path are proven,
+but the OpenShell gateway is stopped and no NemoClaw/OpenShell sandbox has been
+created. Therefore an OpenClaw-to-tool invocation and the network-disabled
+end-to-end smoke test remain pending; do not describe the full harness as
+complete until those checks pass in issue #10. The pinned runtime also reports
+Marlin weight-only FP4 rather than a native FP4 compute path, so retain that
+warning with any performance result.
+
 ## Offline kit
 
 Inventory an attached drive without exposing credentials:
