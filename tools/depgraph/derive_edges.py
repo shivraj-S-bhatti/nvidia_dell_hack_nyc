@@ -72,27 +72,44 @@ def classify_fasteners(cyl_by_def, overrides=None):
             lines.add((perp, tuple(round(c, 2) for c in dn)))
         if len(lines) > MAX_AXIS_LINES:
             continue
-        radii = collections.Counter(round(r, 3) for r, _, _ in cyls)
+        radii = sorted({round(r, 3) for r, _, _ in cyls})
         if len(radii) < 2:
             continue
-        shank_r = radii.most_common(1)[0][0]                 # most faces = the shank
-        bigger = [r for r in radii if r > shank_r]
-        if not bigger:
-            continue
-        head_r = min(bigger, key=lambda r: abs(r - shank_r * 1.8))
-        ratio = head_r / shank_r if shank_r else 0
-        if not (HEAD_RATIO[0] <= ratio <= HEAD_RATIO[1]):
-            continue
+        # Score every ordered (smaller, larger) radius pair against the table and keep
+        # the best fit. The shank is the SMALLER radius of the pair by definition of a
+        # cap screw -- which is geometry, not bookkeeping.
+        #
+        # An earlier version picked the shank as the radius owning the most cylinder
+        # faces. That holds on S500-C1_ASM.step and fails on
+        # neoracer-full-vehicle.step, where a socket head cap screw's head is split
+        # into more faces than its shank: the head was selected as the shank, nothing
+        # larger remained, and all 13 standard-named M3 screws were silently dropped.
+        # Face count is a property of how the part was modelled, not of the part.
+        #
+        # The head must also be the part's LARGEST radius. On every cap-screw standard
+        # -- ISO 4762, ISO 4014, BS 4168, ANSI/ASME B18.3 -- the head is the outermost
+        # diameter of the part; nothing on a screw is wider than its head. Verified to
+        # hold for all 6 S500 fasteners and all 22 standard-named NeoRacer fasteners.
+        # Without it the pair search classifies S500's JIAO-EVA landing-gear foot pad
+        # (radii 5.05 / 8.0 / 9.5) as an M10, because its 5.05/8.0 pair fits the table
+        # -- but 8.0 is an internal bore, not an outer head, and 9.5 sits outside it.
+        head_r = radii[-1]
         best = None
-        for M, (sr, hr, k, hexs) in ISO4762.items():
-            ds, dh = abs(shank_r - sr), abs(head_r - hr)
-            if ds <= SHANK_TOL_MM and dh <= HEAD_TOL_MM:
-                score = ds + dh
-                if best is None or score < best[0]:
-                    best = (score, M, hexs)
+        for shank_r in radii[:-1]:
+            if shank_r <= 0:
+                continue
+            ratio = head_r / shank_r
+            if not (HEAD_RATIO[0] <= ratio <= HEAD_RATIO[1]):
+                continue
+            for M, (sr, hr, k, hexs) in ISO4762.items():
+                ds, dh = abs(shank_r - sr), abs(head_r - hr)
+                if ds <= SHANK_TOL_MM and dh <= HEAD_TOL_MM:
+                    score = ds + dh
+                    if best is None or score < best[0]:
+                        best = (score, M, hexs, shank_r, head_r, ratio)
         if best is None:
             continue
-        _, M, hexs = best
+        _, M, hexs, shank_r, head_r, ratio = best
         out[name] = {'shank': shank_r, 'M': M, 'len': None,
                      'std': f'ISO 4762 class (inferred), hex {hexs} mm',
                      'confidence': round(max(0.0, 1.0 - best[0]), 3),
@@ -192,31 +209,60 @@ def derive(occurrences, cyl_by_def, mesh=None, vert_path=None, fasteners=None):
 # versions. See docs/research/manufacturing-side-spec.md sections 5.1-5.3.
 # ---------------------------------------------------------------------------
 
-def swept_volume_hits(mesh, vert_path, org, axis, radius, t0, t1, exclude=()):
+def load_vertex_cache(mesh, vert_path):
+    """Decode mesh_vert.bin once into {partIndex: [(x,y,z), ...]}.
+
+    swept_volume_hits re-reads and re-unpacks the whole vertex file on every call,
+    which is fine for a handful of queries and wasteful for a check harness that
+    sweeps every fastener in a candidate family. Pass the result as `verts=` to reuse
+    the decode. Same bytes, same numbers -- this is a decode cache, not a second
+    geometry implementation.
+    """
+    cache = {}
+    with open(vert_path, 'rb') as fh:
+        for part in mesh['parts']:
+            fh.seek(part['vOff'])
+            raw = fh.read(part['vCount'] * 12)
+            cache[part['i']] = [struct.unpack_from('<fff', raw, k)
+                                for k in range(0, len(raw), 12)]
+    return cache
+
+
+def swept_volume_hits(mesh, vert_path, org, axis, radius, t0, t1, exclude=(), verts=None):
     """Occurrences whose mesh vertices fall inside a cylinder along `axis`.
 
     org, axis  world-space origin and unit direction of the cylinder
     radius     cylinder radius, mm
     t0, t1     interval along the axis, mm (t1 may be less than t0)
     exclude    occurrence ids to skip (normally the fastener itself)
+    verts      optional load_vertex_cache() result; avoids re-reading vert_path
 
     Returns [{occId, defName, hitCount, nearestMm}], nearest first. A conservative
     vertex test: a part is reported when any vertex lies inside the cylinder. It can
     miss a part whose surface passes through with no vertex inside, so callers must
     treat an empty result as "no evidence of collision", not "proven clear".
+
+    The asymmetry is the point, and Factory depends on it: OCCT places triangulation
+    nodes ON the exact surface, so a reported vertex is a real point of the real
+    solid and a hit is sound evidence of interference. Sparse sampling can only hide
+    a collision, never invent one. Reported penetration is therefore a LOWER BOUND.
     """
     lo, hi = (t0, t1) if t0 <= t1 else (t1, t0)
     out = []
-    with open(vert_path, 'rb') as fh:
+    fh = None if verts is not None else open(vert_path, 'rb')
+    try:
         for part in mesh['parts']:
             oid = part.get('occ')
             if not oid or oid in exclude:
                 continue
-            fh.seek(part['vOff'])
-            raw = fh.read(part['vCount'] * 12)
+            if verts is not None:
+                pts = verts[part['i']]
+            else:
+                fh.seek(part['vOff'])
+                raw = fh.read(part['vCount'] * 12)
+                pts = (struct.unpack_from('<fff', raw, k) for k in range(0, len(raw), 12))
             hits, nearest = 0, None
-            for k in range(0, len(raw), 12):
-                v = struct.unpack_from('<fff', raw, k)
+            for v in pts:
                 w = _sub(v, org)
                 t = _dot(w, axis)
                 if not (lo <= t <= hi):
@@ -228,6 +274,9 @@ def swept_volume_hits(mesh, vert_path, org, axis, radius, t0, t1, exclude=()):
             if hits:
                 out.append({'occId': oid, 'defName': part['name'],
                             'hitCount': hits, 'nearestMm': round(nearest, 3)})
+    finally:
+        if fh is not None:
+            fh.close()
     out.sort(key=lambda h: abs(h['nearestMm']))
     return out
 
@@ -295,6 +344,13 @@ def _grip(f, spec, org, axis, clamped, mesh, vert_path, by_id):
         # inferred fastener: recover nominal shank length as measured minus head height
         k = ISO4762.get(spec['M'], (0, 0, 0, 0))[2]
         nominal = round(measured_len - k, 1)
+        # A part shorter than the head height of the thread it was matched to is not
+        # that fastener. This fires on NeoRacer, where a shock absorber body classifies
+        # as an M4 and yields a nominal length of -3 mm. Length arithmetic on a
+        # negative nominal produces confident nonsense, so the length is withheld and
+        # every check that needs it reports unchecked instead of computing with it.
+        if nominal <= 0:
+            nominal = None
     engage = round(ENGAGE_D * spec['M'], 2)
     req = None if grip is None else round(grip + engage, 2)
     # An absolute adequate/inadequate verdict needs the THREADED member identified --

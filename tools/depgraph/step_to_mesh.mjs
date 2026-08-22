@@ -27,6 +27,26 @@ const r = occt.ReadStepFile(new Uint8Array(fs.readFileSync(inPath)), {
 if (!r.success) { console.error('STEP read failed'); process.exit(1); }
 console.error(`tessellated ${r.meshes.length} meshes in ${Date.now()-t0} ms`);
 
+// OCCT reports success for a file whose products carry no geometry of their own, and
+// returns the right NUMBER of meshes with nothing in them. Downstream that becomes a
+// graph with zero bound meshes rather than an error, so it is caught here.
+// Measured on neoracer-full-vehicle.step: 1136 meshes, 0 vertices, exit code 0.
+{
+  const empty = r.meshes.filter(m => !m.attributes?.position?.array?.length).length;
+  const verts = r.meshes.reduce((s,m)=>s+((m.attributes?.position?.array?.length||0)/3), 0);
+  if (r.meshes.length && empty === r.meshes.length) {
+    console.error(
+      `\nERROR: all ${empty} meshes are empty -- the file's products own their geometry\n` +
+      `through a SHAPE_REPRESENTATION_RELATIONSHIP instead of containing it, so there\n` +
+      `is nothing under them to tessellate. Fold it in first:\n\n` +
+      `  python3 tools/depgraph/normalize_step.py ${inPath} normalized.step\n` +
+      `  node tools/depgraph/step_to_mesh.mjs normalized.step ${outDir}\n`);
+    process.exit(2);
+  }
+  if (empty) console.error(`warning: ${empty}/${r.meshes.length} meshes are empty`);
+  console.error(`vertices ${verts}`);
+}
+
 // occt flattens below the second level, so a mesh's owner is its nearest named ancestor.
 const owner = {};
 (function walk(n, p){ const nm=n.name||null; const q=nm?[...p,nm]:p;

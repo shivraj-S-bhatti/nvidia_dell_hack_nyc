@@ -36,7 +36,7 @@ Only issues carrying the `active` label are on the execution path:
 | #11 `OBJECT` | Prove the multipart object and dependency matrix | `justgoofingaround` |
 | #12 `LAB` | Produce coherent candidate families and revise from feedback | `shivraj-S-bhatti` |
 | #13 `FACTORY` | Compile candidates and reject invalid assemblies | unassigned |
-| #14 `TRACK` | Measure and rank only Factory survivors | unassigned |
+| #14 `TRACK` | Measure and rank only Factory survivors | `RahulModugula` |
 | #37 `FRONTEND` | Show Claw handoffs and join the stages into one demo | `justgoofingaround` |
 
 Issue #1 is the epic, #7 is the product contract, and #35 is the provisional

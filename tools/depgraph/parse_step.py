@@ -71,6 +71,45 @@ class Step:
             if t == 'SHAPE_DEFINITION_REPRESENTATION':
                 r = R(a)
                 self.rep2prod[r[1]] = self.def_name(self.pds.get(r[0]))
+        self._index_geometry_links()
+
+    def _index_geometry_links(self):
+        """Find B-rep that a product owns but does not contain.
+
+        Some writers put a component's solid in a separate
+        ADVANCED_BREP_SHAPE_REPRESENTATION and tie it to the product with a
+        SHAPE_REPRESENTATION_RELATIONSHIP, leaving the SHAPE_REPRESENTATION that
+        SHAPE_DEFINITION_REPRESENTATION names holding nothing but a placement. A
+        reader that only descends from the product's own representation then sees a
+        part with no faces at all -- silently, because the entity is present and
+        well-formed, it is simply empty.
+
+        Measured on neoracer-full-vehicle.step: 255 of 379 component representations
+        are of this shape, hiding 3951 of the file's 7273 CYLINDRICAL_SURFACE
+        entities. S500-C1_ASM.step carries its geometry inline and is unaffected.
+
+        Only product-representation -> ORPHAN-representation edges are followed. The
+        same relationship entity type is also used, with a transformation operator, to
+        place one component representation inside another; following those would merge
+        an entire assembly's geometry into each of its parts. Requiring the far end to
+        be a representation no product claims separates the two uses.
+        """
+        E, R = self.ents, self.refs
+        links = collections.defaultdict(list)
+        for i, (t, a) in E.items():
+            if t.endswith('REPRESENTATION_RELATIONSHIP'):
+                rs = R(a)
+            elif t == 'COMPLEX' and 'REPRESENTATION_RELATIONSHIP' in a:
+                m = re.search(r'\bREPRESENTATION_RELATIONSHIP\s*\(([^()]*)\)', a)
+                rs = [int(x) for x in re.findall(r'#(\d+)', m.group(1))] if m else []
+            else:
+                continue
+            if len(rs) < 2:
+                continue
+            for src, dst in ((rs[0], rs[1]), (rs[1], rs[0])):
+                if src in self.rep2prod and dst not in self.rep2prod and dst in E:
+                    links[src].append(dst)
+        self.rep_links = {k: sorted(set(v)) for k, v in links.items()}
 
     def def_name(self, pd_id):
         return self.prod.get(self.pdf.get(self.pd.get(pd_id, -1), -1), '?')
@@ -154,7 +193,12 @@ class Step:
         for rep, name in self.rep2prod.items():
             if name in res:
                 continue
-            out = []
-            collect(rep, set(), out)
+            out, seen = [], set()
+            collect(rep, seen, out)
+            # ... plus any B-rep the product owns through a representation
+            # relationship rather than containing directly. `seen` is shared so a
+            # surface reachable both ways is still counted once.
+            for geom in self.rep_links.get(rep, ()):
+                collect(geom, seen, out)
             res[name] = out
         return res

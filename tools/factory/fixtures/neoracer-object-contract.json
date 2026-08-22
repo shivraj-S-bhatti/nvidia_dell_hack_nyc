@@ -1,0 +1,23 @@
+{
+  "checkSetVersion": "factory-checks/1.0.0",
+  "corpusRevision": "73d18cf9104c9317",
+  "expectedDefinitions": 378,
+  "expectedOccurrences": 647,
+  "objectId": "neoracer-full-vehicle",
+  "protectedInterfaces": [
+    {
+      "definition": "ISO_4035_-_M3",
+      "occurrences": 4,
+      "reason": "purchased ISO 4035 hex thin nut; a catalogue part, and the mating thread every joint it closes is dimensioned to"
+    },
+    {
+      "definition": "CSAP_X_E1GY__1",
+      "occurrences": 2,
+      "reason": "purchased ball bearing (csapagy); its bore and outer diameter set the shaft and housing fits around it"
+    }
+  ],
+  "provenance": "Built from the NeoRacer public hardware release (Neobotics-Foundation-Inc/neoracer-hardware-files, CERN-OHL-S-2.0). Mesh comes from the FreeCAD source because the STEP will not tessellate -- see tools/depgraph/fcstd_to_mesh.py. Every field here is measured from those files, not asserted. Issue #11 (OBJECT) owns the authoritative contract; this is Factory's until it publishes one.",
+  "schema": "ObjectContract/1",
+  "stepFile": "neoracer-full-vehicle.step",
+  "stepSha256": "73d18cf9104c93177495f09f1aa4569c887c089ce0c9d0ddf4a97d1f26fc7c73"
+}
