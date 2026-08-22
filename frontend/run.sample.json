@@ -1,0 +1,228 @@
+{
+  "schemaVersion": "designrun/1.0.0",
+  "meta": {
+    "product": "The Night Shift",
+    "subtitle": "PhysGen race-component optimizer · Lab → Factory → Track",
+    "runId": "run-2026-08-22-neoracer-01",
+    "machine": "Dell Pro Max · GB10",
+    "model": "nvidia/Qwen3.6-35B-A3B-NVFP4",
+    "solver": "PhysGen SIMP/OAT · linear-static FEA",
+    "network": "offline",
+    "note": "Fixture run. Field values, verdicts, and metrics are placeholders until a real saved DesignRun replaces this. Schema mirrors issue #43 (DesignProblem / Candidate / FactoryVerdict / TrackResult / FeedbackEvent / DesignRun / HumanSelection)."
+  },
+
+  "object": {
+    "schemaVersion": "component-manifest/1.0.0",
+    "assembly": "NeoRacer FS-AI vehicle",
+    "source": "github.com/Neobotics-Foundation-Inc/neoracer-hardware-files",
+    "license": "CERN-OHL-S-2.0",
+    "commit": "a41f9c2",
+    "componentDefs": 318,
+    "occurrences": 1042,
+    "target": {
+      "id": "BRK-SUS-07",
+      "name": "Front suspension rocker bracket",
+      "role": "non-safety-critical brace",
+      "units": "mm",
+      "material": "Al 6061-T6",
+      "yieldMPa": 276,
+      "modulusGPa": 68.9,
+      "bboxMm": [120, 70, 5],
+      "artifactHash": "sha256:9f3a71c0e8b2",
+      "note": "Mostly planar, extrudable in Z. Selected because it is bounded, non-safety-critical, and closes the loop quickly."
+    }
+  },
+
+  "problem": {
+    "schemaVersion": "designproblem/1.0.0",
+    "id": "DP-BRK-SUS-07-a1",
+    "objective": "Minimize mass",
+    "constraint": "Safety factor ≥ 1.25 under the fixture load",
+    "materialFractionTarget": 0.42,
+    "candidateBudget": 3,
+    "seedPolicy": "deterministic · seed 07",
+    "domain": { "w": 120, "h": 70, "units": "mm" },
+    "outline": [[6,6],[114,6],[114,64],[6,64]],
+    "protectedInterfaces": [
+      { "id": "MNT-A", "kind": "mount-hole", "c": [16,16], "r": 6, "note": "chassis bolt — may not move" },
+      { "id": "MNT-B", "kind": "mount-hole", "c": [16,54], "r": 6, "note": "chassis bolt — may not move" }
+    ],
+    "keepOuts": [
+      { "id": "KO-HARNESS", "rect": [52,2,20,10], "note": "wiring harness routing clearance" }
+    ],
+    "supports": [
+      { "at": "MNT-A", "dof": "fixed" },
+      { "at": "MNT-B", "dof": "fixed" }
+    ],
+    "loads": [
+      { "id": "L1", "c": [110,35], "N": 350, "dir": [0,1], "note": "transverse tip load — demo fixture assumption" }
+    ],
+    "assumptions": [
+      "Linear-static, isotropic Al 6061-T6.",
+      "Support/load regions are labelled demo test-fixture assumptions, not certified duty cycles."
+    ]
+  },
+
+  "baseline": {
+    "schemaVersion": "candidate/1.0.0",
+    "id": "baseline",
+    "label": "Original component",
+    "method": "as-manufactured",
+    "materialFraction": 1.0,
+    "topology": { "solid": true },
+    "artifactHash": "sha256:9f3a71c0e8b2",
+    "metrics": { "massG": 182, "maxStressMPa": 160, "safetyFactor": 1.73, "compliance": 1.00 }
+  },
+
+  "lab": {
+    "schemaVersion": "candidate/1.0.0",
+    "candidates": [
+      {
+        "id": "C1", "parent": "baseline", "label": "Triangulated web",
+        "method": "SIMP", "materialFraction": 0.45, "state": "proposed",
+        "artifactHash": "sha256:1b7d0442aa10",
+        "rationale": "Braced truss between both mounts and the load tab.",
+        "topology": { "struts": [
+          {"a":[16,16],"b":[110,35],"r":7},
+          {"a":[16,54],"b":[110,35],"r":7},
+          {"a":[16,16],"b":[16,54],"r":6},
+          {"a":[16,16],"b":[60,54],"r":5},
+          {"a":[16,54],"b":[60,16],"r":5}
+        ]}
+      },
+      {
+        "id": "C2", "parent": "baseline", "label": "Twin-spar",
+        "method": "OAT", "materialFraction": 0.38, "state": "proposed",
+        "artifactHash": "sha256:5c9e1180bd33",
+        "rationale": "Two direct spars, no cross-bracing — lightest proposal.",
+        "topology": { "struts": [
+          {"a":[16,16],"b":[110,35],"r":7},
+          {"a":[16,54],"b":[110,35],"r":7},
+          {"a":[16,16],"b":[16,54],"r":6}
+        ]}
+      },
+      {
+        "id": "C3", "parent": "baseline", "label": "Lattice cutout",
+        "method": "SIMP", "materialFraction": 0.42, "state": "proposed",
+        "artifactHash": "sha256:e0a4437cf291",
+        "rationale": "Aggressive lattice — visually clean, but one member ran thin.",
+        "topology": {
+          "struts": [
+            {"a":[16,16],"b":[110,35],"r":7},
+            {"a":[16,54],"b":[110,35],"r":2},
+            {"a":[16,16],"b":[16,54],"r":6}
+          ],
+          "island": {"a":[70,12],"b":[92,14],"r":3},
+          "flaw": {"type":"thin-ligament","at":[63,46],"measuredMm":0.9,"minMm":1.5}
+        }
+      }
+    ]
+  },
+
+  "factory": {
+    "schemaVersion": "factoryverdict/1.0.0",
+    "checks": ["single connected solid", "min feature ≥ 1.5 mm", "protected interfaces intact", "compiles to STEP"],
+    "verdicts": [
+      { "candidate": "C1", "verdict": "pass",
+        "reason": "One connected solid; min feature 4.9 mm; both mounts clear; STEP export OK.",
+        "measured": { "minFeatureMm": 4.9, "bodies": 1 }, "implicated": [],
+        "artifactHash": "sha256:a1c2d3e4f501" },
+      { "candidate": "C2", "verdict": "pass",
+        "reason": "One connected solid; min feature 5.1 mm; both mounts clear; STEP export OK.",
+        "measured": { "minFeatureMm": 5.1, "bodies": 1 }, "implicated": [],
+        "artifactHash": "sha256:a1c2d3e4f502" },
+      { "candidate": "C3", "verdict": "fail",
+        "reason": "Lower spar ligament measures 0.9 mm < 1.5 mm printable minimum, and a 3 mm island is disconnected from the load path. Reproducible from the saved density field.",
+        "measured": { "minFeatureMm": 0.9, "minMm": 1.5, "disconnectedBodies": 1 },
+        "implicated": ["lower-spar", "island@[70,12]"],
+        "artifactHash": "sha256:a1c2d3e4f503" }
+    ]
+  },
+
+  "track": {
+    "schemaVersion": "trackresult/1.0.0",
+    "fixture": "Fixed at MNT-A/MNT-B; 350 N transverse at the load tab; linear-static Al 6061-T6.",
+    "scoreDef": "Minimize mass subject to safety factor ≥ 1.25. Stress and compliance reported relative to baseline.",
+    "sfTarget": 1.25,
+    "elapsedMs": 3120,
+    "results": [
+      { "candidate": "C1", "rank": 1, "meetsTarget": true,
+        "metrics": { "massG": 84, "maxStressMPa": 214, "safetyFactor": 1.29, "compliance": 1.31 },
+        "vsBaseline": { "massPct": -54, "stressPct": 34 }, "tolerance": "±3 MPa" },
+      { "candidate": "C2", "rank": 2, "meetsTarget": false,
+        "metrics": { "massG": 71, "maxStressMPa": 268, "safetyFactor": 1.03, "compliance": 1.62 },
+        "vsBaseline": { "massPct": -61, "stressPct": 68 }, "tolerance": "±3 MPa",
+        "flag": "Below safety-factor target (1.03 < 1.25). Lightest, but over-stressed on the lower spar." }
+    ]
+  },
+
+  "feedback": {
+    "schemaVersion": "feedbackevent/1.0.0",
+    "id": "FB-01",
+    "source": "Track",
+    "target": "C2",
+    "measured": "safetyFactor 1.03 < target 1.25; peak stress on the lower spar (tension flange).",
+    "instruction": "Add material to the lower tension flange; keep mass under C1."
+  },
+
+  "revision": {
+    "schemaVersion": "candidate/1.0.0",
+    "id": "C2r", "parent": "C2", "label": "Twin-spar + tension gusset",
+    "method": "SIMP · feedback-seeded", "materialFraction": 0.41, "state": "revised",
+    "artifactHash": "sha256:77be24ac9d18",
+    "rationale": "Gusset added along the lower spar exactly where Track measured peak stress.",
+    "evidence": "Driven by FB-01 (Track): SF 1.03 < 1.25, peak stress lower spar. Geometry changed; not a re-prompt.",
+    "topology": { "struts": [
+      {"a":[16,16],"b":[110,35],"r":7},
+      {"a":[16,54],"b":[110,35],"r":7},
+      {"a":[16,16],"b":[16,54],"r":6},
+      {"a":[16,54],"b":[63,45],"r":5},
+      {"a":[63,45],"b":[110,35],"r":5}
+    ]},
+    "factory": { "verdict": "pass", "minFeatureMm": 4.7, "bodies": 1 },
+    "track": {
+      "metrics": { "massG": 78, "maxStressMPa": 201, "safetyFactor": 1.37, "compliance": 1.24 },
+      "vsParent": { "stressPct": -25, "sfDelta": 0.34 }, "meetsTarget": true, "tolerance": "±3 MPa"
+    }
+  },
+
+  "compare": {
+    "sfTarget": 1.25,
+    "columns": [
+      { "id": "baseline", "kind": "baseline", "label": "Baseline", "parent": "—",
+        "metrics": { "massG": 182, "maxStressMPa": 160, "safetyFactor": 1.73 }, "state": "reference" },
+      { "id": "C2", "kind": "parent", "label": "C2 · parent", "parent": "baseline",
+        "metrics": { "massG": 71, "maxStressMPa": 268, "safetyFactor": 1.03 }, "state": "below target" },
+      { "id": "C3", "kind": "failed", "label": "C3 · failed", "parent": "baseline",
+        "metrics": null, "state": "Factory veto" },
+      { "id": "C1", "kind": "finalist", "label": "C1 · finalist", "parent": "baseline",
+        "metrics": { "massG": 84, "maxStressMPa": 214, "safetyFactor": 1.29 }, "state": "rank 2" },
+      { "id": "C2r", "kind": "finalist", "label": "C2r · finalist", "parent": "C2",
+        "metrics": { "massG": 78, "maxStressMPa": 201, "safetyFactor": 1.37 }, "state": "rank 1" }
+    ],
+    "recommendation": "C2r"
+  },
+
+  "selection": {
+    "schemaVersion": "humanselection/1.0.0",
+    "candidate": "C2r",
+    "prompt": "Promote C2r as the final design? Nothing ships without a human — the system reports evidence, it does not certify the part."
+  },
+
+  "evidenceTrail": {
+    "schemaVersion": "designrun/1.0.0",
+    "runId": "run-2026-08-22-neoracer-01",
+    "offlineReplay": "python -m attempt1.physgen.run --design-problem DP-BRK-SUS-07-a1 --offline",
+    "artifacts": [
+      { "kind": "DesignProblem", "path": ".artifacts/.../design-problem.json", "hash": "sha256:3d81aa02c9f4", "sizeKb": 6, "units": "mm/N/MPa" },
+      { "kind": "Baseline CAD", "path": ".artifacts/.../BRK-SUS-07.step", "hash": "sha256:9f3a71c0e8b2", "sizeKb": 812, "units": "mm" },
+      { "kind": "Candidate C1", "path": ".artifacts/.../C1.step + C1.density.npy", "hash": "sha256:1b7d0442aa10", "sizeKb": 640, "units": "mm" },
+      { "kind": "Candidate C2", "path": ".artifacts/.../C2.step + C2.density.npy", "hash": "sha256:5c9e1180bd33", "sizeKb": 601, "units": "mm" },
+      { "kind": "FactoryVerdict ×3", "path": ".artifacts/.../factory/*.json", "hash": "sha256:a1c2d3e4f50x", "sizeKb": 9, "units": "mm" },
+      { "kind": "TrackResult", "path": ".artifacts/.../track-result.json", "hash": "sha256:b7f0c9114e2a", "sizeKb": 7, "units": "MPa/g" },
+      { "kind": "FeedbackEvent", "path": ".artifacts/.../feedback/FB-01.json", "hash": "sha256:c2119de6a730", "sizeKb": 2, "units": "—" },
+      { "kind": "Revised C2r", "path": ".artifacts/.../C2r.step + C2r.density.npy", "hash": "sha256:77be24ac9d18", "sizeKb": 655, "units": "mm" },
+      { "kind": "HumanSelection", "path": ".artifacts/.../selection.json", "hash": "sha256:d4e5f6a7b809", "sizeKb": 1, "units": "—" }
+    ]
+  }
+}

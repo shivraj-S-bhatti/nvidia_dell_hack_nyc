@@ -1,87 +1,230 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>EasyRC · Parts Explorer</title>
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  :root { color-scheme: dark; }
-  body { font: 14px/1.4 system-ui, -apple-system, sans-serif; color: #c8d3e0; background: #0d1117; overflow: hidden; }
-  #view { position: fixed; inset: 0; }
-  #view canvas { display: block; }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>autoauto</title>
+  <style>
+    * { box-sizing: border-box; }
+    :root {
+      color-scheme: dark;
+      --bg: #0b0f14;
+      --panel: rgba(15, 21, 29, 0.94);
+      --panel-soft: rgba(15, 21, 29, 0.78);
+      --line: #253142;
+      --text: #e7edf5;
+      --muted: #8390a3;
+      --blue: #3f8cff;
+      --lime: #c8f44c;
+    }
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.4 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+    button, input { font: inherit; letter-spacing: 0; }
+    [hidden] { display: none !important; }
+    #viewport { position: fixed; inset: 0; }
+    #viewport canvas { display: block; width: 100%; height: 100%; }
 
-  #sidebar {
-    position: fixed; top: 0; left: 0; bottom: 0; width: 268px; z-index: 10;
-    background: rgba(15,20,28,0.92); backdrop-filter: blur(8px);
-    border-right: 1px solid #1e2836; display: flex; flex-direction: column;
-  }
-  header { padding: 16px 16px 12px; border-bottom: 1px solid #1e2836; }
-  header h1 { font-size: 15px; letter-spacing: .3px; }
-  header .sub { font-size: 12px; color: #7d8aa0; margin-top: 3px; }
-  header #count { color: #4fb0a5; font-weight: 600; }
-  #nav { overflow-y: auto; flex: 1; padding: 8px 0 24px; }
-  .ghead { padding: 12px 16px 5px; font-size: 11px; text-transform: uppercase; letter-spacing: .6px; color: #7d8aa0; display: flex; align-items: center; gap: 7px; }
-  .ghead em { margin-left: auto; font-style: normal; color: #55617a; }
-  .dot { width: 8px; height: 8px; border-radius: 50%; }
-  .pnav { padding: 5px 16px 5px 31px; cursor: pointer; color: #a9b5c6; border-left: 2px solid transparent; }
-  .pnav:hover { background: #161d28; color: #e6edf5; }
-  .pnav.active { background: #172131; color: #ffd166; border-left-color: #ffd166; }
+    .rail {
+      position: fixed;
+      z-index: 10;
+      top: 0;
+      bottom: 0;
+      width: 280px;
+      background: var(--panel);
+      backdrop-filter: blur(14px);
+    }
+    #partsRail { left: 0; border-right: 1px solid var(--line); }
+    #inspector { right: 0; border-left: 1px solid var(--line); padding: 20px; }
+    .brand { padding: 20px; border-bottom: 1px solid var(--line); }
+    .brand h1 { margin: 0; font-size: 18px; line-height: 1.2; }
+    .search { padding: 12px 14px; border-bottom: 1px solid var(--line); }
+    .search input {
+      width: 100%;
+      height: 36px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      outline: none;
+      padding: 0 11px;
+      color: var(--text);
+      background: #101720;
+    }
+    .search input:focus { border-color: var(--blue); }
+    #partsList { height: calc(100% - 105px); overflow-y: auto; padding: 8px 0 28px; }
+    .group-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 16px 6px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .group-title span { margin-left: auto; color: #566276; }
+    .group-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); }
+    .part-button {
+      display: block;
+      width: 100%;
+      min-height: 34px;
+      padding: 7px 16px 7px 30px;
+      border: 0;
+      border-left: 2px solid transparent;
+      color: #aeb9c8;
+      background: transparent;
+      text-align: left;
+      cursor: pointer;
+    }
+    .part-button:hover { background: #141d28; color: var(--text); }
+    .part-button.active { border-left-color: var(--lime); color: var(--lime); background: #17202b; }
 
-  #info {
-    position: fixed; top: 14px; right: 14px; width: 250px; z-index: 10;
-    background: rgba(15,20,28,0.92); backdrop-filter: blur(8px);
-    border: 1px solid #1e2836; border-radius: 10px; padding: 14px 15px;
-  }
-  #info h2 { font-size: 15px; margin: 8px 0 10px; line-height: 1.25; }
-  #info .pill { display: inline-block; font-size: 11px; font-weight: 600; color: #0d1117; padding: 2px 8px; border-radius: 20px; }
-  #info table { width: 100%; border-collapse: collapse; }
-  #info td { padding: 4px 0; vertical-align: top; }
-  #info td:first-child { color: #7d8aa0; width: 82px; }
-  #info .hint { color: #7d8aa0; }
+    #viewTitle {
+      position: fixed;
+      z-index: 7;
+      top: 20px;
+      left: 304px;
+      pointer-events: none;
+    }
+    #viewTitle strong { display: block; font-size: 16px; }
+    #viewTitle span { display: block; margin-top: 3px; color: var(--muted); font-size: 12px; }
 
-  #toolbar { position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; gap: 8px; }
-  #toolbar button {
-    font: inherit; font-size: 13px; color: #c8d3e0; background: rgba(20,27,38,0.92);
-    border: 1px solid #26324a; border-radius: 8px; padding: 8px 14px; cursor: pointer;
-  }
-  #toolbar button:hover { background: #1c2534; border-color: #3a4a68; }
-  #toolbar { align-items: center; }
-  #explodeWrap {
-    display: flex; align-items: center; gap: 10px;
-    background: rgba(20,27,38,0.92); border: 1px solid #26324a;
-    border-radius: 8px; padding: 6px 12px;
-  }
-  #explodeWrap label { font-size: 13px; color: #7d8aa0; letter-spacing: .3px; }
-  #explodeVal { font-size: 12px; color: #4fb0a5; font-weight: 600; min-width: 34px; text-align: right; }
-  #explodeSlider { width: 190px; accent-color: #4fb0a5; cursor: pointer; }
-  #toolbar button.ghost { padding: 4px 9px; font-size: 12px; }
-  #toolbar .sep { width: 1px; height: 26px; background: #26324a; }
-</style>
+    .section-kicker { color: var(--lime); font-size: 11px; font-weight: 750; text-transform: uppercase; }
+    #selectionName { margin: 8px 0 18px; font-size: 21px; line-height: 1.2; }
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .stat { padding: 13px 0; }
+    .stat:nth-child(even) { padding-left: 12px; border-left: 1px solid var(--line); }
+    .stat b { display: block; font-size: 14px; }
+    .stat span { color: var(--muted); font-size: 11px; }
+    .neighbor-heading { margin: 20px 0 7px; font-size: 12px; font-weight: 700; }
+    #neighborList { display: grid; gap: 6px; }
+    .neighbor-button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 36px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 7px 9px;
+      color: #c5cfdb;
+      background: #111821;
+      text-align: left;
+      cursor: pointer;
+    }
+    .neighbor-button:hover { border-color: var(--blue); }
+    .neighbor-button i { width: 7px; height: 7px; flex: none; border-radius: 50%; background: var(--lime); }
+
+    #modeBar {
+      position: fixed;
+      z-index: 12;
+      left: 50%;
+      bottom: 22px;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 4px;
+      padding: 4px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(15, 21, 29, 0.92);
+      backdrop-filter: blur(14px);
+    }
+    .mode-button {
+      min-width: 94px;
+      height: 36px;
+      border: 0;
+      border-radius: 5px;
+      color: #a7b2c1;
+      background: transparent;
+      cursor: pointer;
+    }
+    .mode-button:hover { color: var(--text); background: #17212c; }
+    .mode-button.active { color: #07100d; background: var(--lime); font-weight: 750; }
+    #resetButton {
+      position: fixed;
+      z-index: 12;
+      right: 304px;
+      bottom: 25px;
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--text);
+      background: rgba(15, 21, 29, 0.92);
+      cursor: pointer;
+    }
+    #resetButton:hover { border-color: var(--blue); }
+    #loading {
+      position: fixed;
+      z-index: 30;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      background: var(--bg);
+    }
+    #loading b { color: var(--text); }
+
+    body.embed .rail,
+    body.embed #viewTitle,
+    body.embed #modeBar,
+    body.embed #resetButton { display: none; }
+
+    @media (max-width: 1050px) {
+      .rail { width: 230px; }
+      #viewTitle { left: 250px; }
+      #resetButton { right: 250px; }
+      #inspector { padding: 16px; }
+    }
+    @media (max-width: 760px) {
+      #partsRail { width: 190px; }
+      #inspector { top: auto; left: 190px; width: auto; height: 170px; border-left: 0; border-top: 1px solid var(--line); }
+      #viewTitle { left: 210px; }
+      #modeBar { left: calc(50% + 95px); bottom: 184px; }
+      #resetButton { right: 14px; bottom: 184px; }
+      .stat-grid, #neighborList, .neighbor-heading { display: none; }
+      .mode-button { min-width: 76px; }
+    }
+  </style>
 </head>
 <body>
-  <div id="view"></div>
-  <aside id="sidebar">
-    <header>
-      <h1>EasyRC · Parts Explorer</h1>
-      <div class="sub"><span id="count">…</span> · STEP → GLB · <span style="color:#7d8aa0">TRD-B/EasyRC (MIT)</span></div>
-    </header>
-    <div id="nav"></div>
-  </aside>
-  <div id="info"><div class="hint">Click a part to inspect</div></div>
-  <div id="toolbar">
-    <div id="explodeWrap">
-      <label for="explodeSlider">Explode</label>
-      <input id="explodeSlider" type="range" min="0" max="100" value="0" step="1">
-      <span id="explodeVal">0%</span>
-      <button id="explodeClear" class="ghost">Clear</button>
+  <div id="viewport"></div>
+
+  <aside class="rail" id="partsRail">
+    <div class="brand">
+      <h1><em>auto</em>auto</h1>
     </div>
-    <span class="sep"></span>
-    <button id="layoutBtn">Layout: assembled</button>
-    <button id="fitBtn">Fit</button>
-    <button id="colorBtn">Color: subsystem</button>
-    <button id="resetBtn">Home</button>
+    <div class="search"><input id="partSearch" type="search" placeholder="Find a component" aria-label="Find a component"></div>
+    <div id="partsList"></div>
+  </aside>
+
+  <div id="viewTitle">
+    <strong>The object improves itself.</strong>
+    <span id="modeTitle">Complete assembly</span>
   </div>
-  <script src="bundle.js"></script>
+
+  <aside class="rail" id="inspector">
+    <div class="section-kicker">Selected</div>
+    <h2 id="selectionName">Nothing selected</h2>
+    <div class="stat-grid" id="selectionStats" hidden>
+      <div class="stat"><b id="selectionMeshes">0</b><span>mesh groups</span></div>
+      <div class="stat"><b id="selectionSize">0 mm</b><span>longest side</span></div>
+    </div>
+    <div class="neighbor-heading" id="relatedHeading" hidden>Related parts</div>
+    <div id="neighborList"></div>
+  </aside>
+
+  <div id="modeBar" role="tablist" aria-label="Assembly view mode">
+    <button class="mode-button active" data-mode="assembled" role="tab">Assembled</button>
+    <button class="mode-button" data-mode="focus" role="tab">Focus</button>
+    <button class="mode-button" data-mode="exploded" role="tab">Exploded</button>
+  </div>
+  <button id="resetButton" type="button" title="Reset camera" aria-label="Reset camera">↺</button>
+  <div id="loading"><b>Loading EasyRC</b></div>
+
+  <script src="/tools/depgraph/viewer/three-bundle.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

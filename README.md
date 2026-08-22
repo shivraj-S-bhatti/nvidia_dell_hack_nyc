@@ -6,6 +6,11 @@ Shared preparation and experiment repository for an offline demo on one Dell
 GB10. The team may explore several ideas, but evidence converges in one place:
 [issue #1](https://github.com/shivraj-S-bhatti/nvidia_dell_hack_nyc/issues/1).
 
+Final UI and backend owners should start with
+[FINAL_UI_BACKEND_INTEGRATION.md](FINAL_UI_BACKEND_INTEGRATION.md). It defines
+the judged surface, artifact boundary, viewer bridge, human-selection gate, and
+offline acceptance checks.
+
 ## Destination
 
 Ship one five-minute demo that:
