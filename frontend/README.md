@@ -5,6 +5,8 @@ The recording surface is a two-screen local application:
 1. **Object** selects the EasyRC chassis plate, starts a scripted local design loop, and shows dependency propagation in the assembled viewer.
 2. **Simulation** presents the frozen Factory and Track evidence, including the rejected load path and the winning material layout.
 
+The Object toolbar preserves direct `Assembled`, `Focus`, and `Exploded` views. Its BOM drawer reads the real 46-part catalog, groups it by subsystem, and focuses a rendered component when selected.
+
 `Review on object` returns to the affected subassembly. The operator then promotes one Factory survivor and the dependency graph pulses once more.
 
 ## Run
