@@ -699,7 +699,7 @@ def build_html(report, fx, figures, order, rejected, vmax):
     out.append("<h3>How to read the images</h3>")
     out.append(
         '<p class="legend">'
-        '<span>%socclusion mask: material</span>'
+        '<span>%soccupancy mask: material</span>'
         '<span>%svoid</span>'
         '<span>%sarm-mount support pads (fixture)</span>'
         '<span>%spayload load pad (fixture)</span>'
