@@ -167,6 +167,11 @@
     }
     #loading b { color: var(--text); }
 
+    body.embed .rail,
+    body.embed #viewTitle,
+    body.embed #modeBar,
+    body.embed #resetButton { display: none; }
+
     @media (max-width: 1050px) {
       .rail { width: 230px; }
       #viewTitle { left: 250px; }
@@ -189,7 +194,7 @@
 
   <aside class="rail" id="partsRail">
     <div class="brand">
-      <h1>autoauto</h1>
+      <h1><em>auto</em>auto</h1>
     </div>
     <div class="search"><input id="partSearch" type="search" placeholder="Find a component" aria-label="Find a component"></div>
     <div id="partsList"></div>

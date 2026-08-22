@@ -1,5 +1,7 @@
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
+const embedMode = new URLSearchParams(location.search).has('embed');
+if (embedMode) document.body.classList.add('embed');
 
 const COLORS = {
   background: 0x0b0f14,
@@ -31,6 +33,7 @@ const state = {
   explodeTarget: 0,
   modelScale: 1,
   modelScaleTarget: 1,
+  pulseStartedAt: null,
 };
 
 const viewport = $('#viewport');
@@ -348,6 +351,27 @@ function selectComponent(component) {
   setMode(state.mode);
 }
 
+function findComponent(name) {
+  const exact = state.componentByName.get(name);
+  if (exact) return exact;
+  const needle = normalizedName(name);
+  return state.components.find((component) => normalizedName(component.name).includes(needle));
+}
+
+window.addEventListener('message', (event) => {
+  const message = event.data;
+  if (!message || typeof message !== 'object' || !String(message.type || '').startsWith('autoauto:')) return;
+  if (message.type === 'autoauto:select') {
+    const component = findComponent(message.component || 'Left front wheel mount');
+    if (component) selectComponent(component);
+    if (message.mode) setMode(message.mode);
+  }
+  if (message.type === 'autoauto:mode' && ['assembled', 'focus', 'exploded'].includes(message.mode)) {
+    setMode(message.mode);
+  }
+  if (message.type === 'autoauto:pulse') state.pulseStartedAt = performance.now();
+});
+
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 }
@@ -512,6 +536,21 @@ function animate(now = performance.now()) {
       component.motionTarget.copy(component.target);
     }
     component.group.position.lerp(component.motionTarget, motionAlpha);
+  }
+  if (state.pulseStartedAt !== null) {
+    const elapsed = now - state.pulseStartedAt;
+    const selectedPulse = elapsed < 1350 ? 1 + Math.max(0, Math.sin(elapsed / 105)) * 3.2 : 1;
+    const neighborElapsed = elapsed - 650;
+    const neighborPulse = neighborElapsed > 0 && neighborElapsed < 1500
+      ? 1 + Math.max(0, Math.sin(neighborElapsed / 120)) * 2.6
+      : 1;
+    if (state.selected) {
+      for (const mesh of state.selected.meshes) mesh.material.emissiveIntensity = selectedPulse;
+      for (const neighbor of state.neighbors) {
+        for (const mesh of neighbor.meshes) mesh.material.emissiveIntensity = neighborPulse;
+      }
+    }
+    if (elapsed > 2300) state.pulseStartedAt = null;
   }
   updateThreads();
   controls.update();
