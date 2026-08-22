@@ -182,6 +182,44 @@ them are not authored — they are computed.**
 | `validate.py` | CLI. |
 | `check_factory.py` | 56 assertions gating all of the above. |
 
+## The #43 contract adapter
+
+`contract_adapter.py` re-expresses a `FactoryVerdict/1` as
+`nightshift.factory-verdict/v1` for the PhysGen path. It is a **thin, one-way
+wrapper**: it imports nothing from `verdict.py` or `checks.py` and changes no
+measured value. Everything the frozen schema could rename lives in the mapping
+tables at the top of the file, so conforming to the real schema is a one-file
+edit.
+
+```python
+from contract_adapter import to_factory_verdict, NIGHTSHIFT_UNITS, factory_creation_method
+
+record = to_factory_verdict(
+    raw_verdict,
+    run_id='run.neoracer-2026-08-22',
+    units=NIGHTSHIFT_UNITS,
+    creation_method=factory_creation_method(raw_verdict['checkSetVersion']),
+    repo_root=REPO_ROOT)
+```
+
+`run_id`, `units` and `creation_method` have no source anywhere in
+`tools/factory`, so they are required parameters and their absence raises
+`ContractFieldError`. The adapter also relativizes `evidencePath`, which
+`verdict.py` writes as an absolute machine path that the contract rejects.
+
+**Caveat worth reading before trusting the version string.** The frozen #43
+schemas were said to live in `.artifacts/worktrees/issue43/`. That path does not
+exist, and `nightshift.factory-verdict/v1` has never appeared in this
+repository's history. The envelope is extrapolated from
+`attempt1/physgen/lab/problem.py` — which enforces `nightshift.design-problem/v1`
+exactly, and so pins the shared envelope, the units object and the
+`creation_method` shape — plus the contract-to-UI mapping table in
+`PHYSGEN_UI_CONTEXT_ISSUES_42_50.md`. Verify against the real schema when it is
+committed somewhere readable.
+
+Proven end to end by `python3 tools/contract_smoke.py`, which adapts six real
+NeoRacer verdicts (3 pass, 3 fail across three reason codes).
+
 ## Why a candidate is a declared delta, not a new STEP file
 
 Factory can measure a declared delta exactly — a shank grows *n* mm along its own

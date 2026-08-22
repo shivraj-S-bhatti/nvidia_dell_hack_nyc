@@ -1,0 +1,883 @@
+{
+  "note": "Real FactoryVerdict/1 payloads captured from a full Factory run on the NeoRacer object (tools/factory/fixtures/neoracer-candidates.json). Frozen here so the contract adapter smoke test is hermetic: the NeoRacer STEP and its depgraph artifacts are gitignored and large, so the adapter path must be provable without them. Regenerate with: python3 tools/factory/validate.py --step .artifacts/neoracer/neoracer-full-vehicle.step --art .artifacts/neoracer/fc --contract tools/factory/fixtures/neoracer-object-contract.json --candidates tools/factory/fixtures/neoracer-candidates.json --out .artifacts/factory-neoracer",
+  "schema": "FactoryVerdictGolden/1",
+  "verdicts": [
+    {
+      "affectedDefinitions": [],
+      "affectedOccurrences": [],
+      "candidateId": "neo-a-scoped-1mm",
+      "checkSetVersion": "factory-checks/1.0.0",
+      "checks": [
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "CLEARANCE",
+          "measured": {
+            "collidingOccurrences": 0,
+            "samplingDensity": {
+              "minVerticesPerOccurrence": 24,
+              "occurrencesSampled": 493,
+              "vertices": 601756
+            },
+            "sweptOccurrences": 4,
+            "unchecked": "thickness ops in this candidate (KORM_X_E1NY__X_F6SSZEK_X-107086 +1 mm) are NOT interference-checked: a scalar thickness delta does not declare which face the material grows from, and the growth direction is not derivable from the baseline. The engagement consequence IS measured by FASTENER_LENGTH."
+          },
+          "reason": "no vertex of any other occurrence falls inside the swept volume of 4 lengthened fastener occurrences. thickness ops in this candidate (KORM_X_E1NY__X_F6SSZEK_X-107086 +1 mm) are NOT interference-checked: a scalar thickness delta does not declare which face the material grows from, and the growth direction is not derivable from the baseline. The engagement consequence IS measured by FASTENER_LENGTH.",
+          "reasonCode": "FAC-CLR-000",
+          "status": "pass",
+          "tolerance": {
+            "note": "a pass is \"no evidence of interference at this sampling density\", not proof of clearance: a surface can pass through the swept volume without placing a vertex inside."
+          }
+        },
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "FASTENER_LENGTH",
+          "measured": {
+            "engagementLosses": 0,
+            "evaluatedOccurrences": 4
+          },
+          "reason": "all 4 affected fastener occurrences retain at least their current thread engagement",
+          "reasonCode": "FAC-LEN-000",
+          "status": "pass",
+          "tolerance": {
+            "minEngagementDeltaMm": -0.0,
+            "note": "relative to the current build only; absolute adequacy is not claimed."
+          }
+        },
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "CONTRACT",
+          "measured": {
+            "operations": 3,
+            "targets": [
+              "ANSI_B18_3_4M_-_M3_X_0_5_X_10",
+              "ANSI_B18_3_4M_-_M3_X_0_5_X_5",
+              "KORM_X_E1NY__X_F6SSZEK_X-107086"
+            ]
+          },
+          "reason": "3 operations are well-formed, resolve to real component definitions, and touch no protected interface",
+          "reasonCode": "FAC-CON-000",
+          "status": "pass",
+          "tolerance": {
+            "protectedInterfaces": [
+              "CSAP_X_E1GY__1",
+              "ISO_4035_-_M3"
+            ]
+          }
+        },
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "ARTIFACT",
+          "measured": {
+            "checkSetVersion": "factory-checks/1.0.0",
+            "contractSource": "tools/factory/fixtures/neoracer-object-contract.json",
+            "corpusRevision": "73d18cf9104c9317",
+            "stepSha256": "73d18cf9104c93177495f09f1aa4569c887c089ce0c9d0ddf4a97d1f26fc7c73"
+          },
+          "reason": "baseline artifact hash, graph corpus revision, and check-set version all match the object contract",
+          "reasonCode": "FAC-ART-000",
+          "status": "pass",
+          "tolerance": {}
+        },
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "INVENTORY",
+          "measured": {
+            "definitions": 378,
+            "occurrences": 647
+          },
+          "reason": "647 occurrences across 378 definitions, as pinned by the object contract",
+          "reasonCode": "FAC-INV-000",
+          "status": "pass",
+          "tolerance": {
+            "expectedDefinitions": 378,
+            "expectedOccurrences": 647
+          }
+        }
+      ],
+      "corpusRevision": "73d18cf9104c9317",
+      "elapsedMs": 2767.9,
+      "evidencePath": ".artifacts/factory-neoracer/verdicts/neo-a-scoped-1mm.json",
+      "failedChecks": [],
+      "label": "Steering link +1.0 mm, clamping screws lengthened in place",
+      "objectId": "neoracer-full-vehicle",
+      "ops": [
+        {
+          "deltaMm": 1.0,
+          "op": "thickness",
+          "target": "KORM_X_E1NY__X_F6SSZEK_X-107086"
+        },
+        {
+          "newLengthMm": 10,
+          "op": "fastener_length",
+          "target": "ANSI_B18_3_4M_-_M3_X_0_5_X_10",
+          "targetOccurrences": [
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_10:1",
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_10:2"
+          ]
+        },
+        {
+          "newLengthMm": 5,
+          "op": "fastener_length",
+          "target": "ANSI_B18_3_4M_-_M3_X_0_5_X_5",
+          "targetOccurrences": [
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_5:1",
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_5:2"
+          ]
+        }
+      ],
+      "parentId": "neo-baseline",
+      "rationale": "Stiffen the steering link and carry the extra millimetre of grip into exactly the four screw occurrences that pass through it.",
+      "reason": "5 checks passed, 0 not applicable",
+      "reasonCode": "FAC-000",
+      "schema": "FactoryVerdict/1",
+      "stepSha256": "73d18cf9104c93177495f09f1aa4569c887c089ce0c9d0ddf4a97d1f26fc7c73",
+      "uncheckedChecks": [],
+      "verdict": "pass"
+    },
+    {
+      "affectedDefinitions": [],
+      "affectedOccurrences": [],
+      "candidateId": "neo-b-scoped-0.5mm",
+      "checkSetVersion": "factory-checks/1.0.0",
+      "checks": [
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "CLEARANCE",
+          "measured": {
+            "collidingOccurrences": 0,
+            "samplingDensity": {
+              "minVerticesPerOccurrence": 24,
+              "occurrencesSampled": 493,
+              "vertices": 601756
+            },
+            "sweptOccurrences": 4,
+            "unchecked": "thickness ops in this candidate (KORM_X_E1NY__X_F6SSZEK_X-107086 +0.5 mm) are NOT interference-checked: a scalar thickness delta does not declare which face the material grows from, and the growth direction is not derivable from the baseline. The engagement consequence IS measured by FASTENER_LENGTH."
+          },
+          "reason": "no vertex of any other occurrence falls inside the swept volume of 4 lengthened fastener occurrences. thickness ops in this candidate (KORM_X_E1NY__X_F6SSZEK_X-107086 +0.5 mm) are NOT interference-checked: a scalar thickness delta does not declare which face the material grows from, and the growth direction is not derivable from the baseline. The engagement consequence IS measured by FASTENER_LENGTH.",
+          "reasonCode": "FAC-CLR-000",
+          "status": "pass",
+          "tolerance": {
+            "note": "a pass is \"no evidence of interference at this sampling density\", not proof of clearance: a surface can pass through the swept volume without placing a vertex inside."
+          }
+        },
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "FASTENER_LENGTH",
+          "measured": {
+            "engagementLosses": 0,
+            "evaluatedOccurrences": 4
+          },
+          "reason": "all 4 affected fastener occurrences retain at least their current thread engagement",
+          "reasonCode": "FAC-LEN-000",
+          "status": "pass",
+          "tolerance": {
+            "minEngagementDeltaMm": -0.0,
+            "note": "relative to the current build only; absolute adequacy is not claimed."
+          }
+        },
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "CONTRACT",
+          "measured": {
+            "operations": 3,
+            "targets": [
+              "ANSI_B18_3_4M_-_M3_X_0_5_X_10",
+              "ANSI_B18_3_4M_-_M3_X_0_5_X_5",
+              "KORM_X_E1NY__X_F6SSZEK_X-107086"
+            ]
+          },
+          "reason": "3 operations are well-formed, resolve to real component definitions, and touch no protected interface",
+          "reasonCode": "FAC-CON-000",
+          "status": "pass",
+          "tolerance": {
+            "protectedInterfaces": [
+              "CSAP_X_E1GY__1",
+              "ISO_4035_-_M3"
+            ]
+          }
+        },
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "ARTIFACT",
+          "measured": {
+            "checkSetVersion": "factory-checks/1.0.0",
+            "contractSource": "tools/factory/fixtures/neoracer-object-contract.json",
+            "corpusRevision": "73d18cf9104c9317",
+            "stepSha256": "73d18cf9104c93177495f09f1aa4569c887c089ce0c9d0ddf4a97d1f26fc7c73"
+          },
+          "reason": "baseline artifact hash, graph corpus revision, and check-set version all match the object contract",
+          "reasonCode": "FAC-ART-000",
+          "status": "pass",
+          "tolerance": {}
+        },
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "INVENTORY",
+          "measured": {
+            "definitions": 378,
+            "occurrences": 647
+          },
+          "reason": "647 occurrences across 378 definitions, as pinned by the object contract",
+          "reasonCode": "FAC-INV-000",
+          "status": "pass",
+          "tolerance": {
+            "expectedDefinitions": 378,
+            "expectedOccurrences": 647
+          }
+        }
+      ],
+      "corpusRevision": "73d18cf9104c9317",
+      "elapsedMs": 2719.5,
+      "evidencePath": ".artifacts/factory-neoracer/verdicts/neo-b-scoped-0.5mm.json",
+      "failedChecks": [],
+      "label": "Steering link +0.5 mm, same scoped substitution",
+      "objectId": "neoracer-full-vehicle",
+      "ops": [
+        {
+          "deltaMm": 0.5,
+          "op": "thickness",
+          "target": "KORM_X_E1NY__X_F6SSZEK_X-107086"
+        },
+        {
+          "newLengthMm": 10,
+          "op": "fastener_length",
+          "target": "ANSI_B18_3_4M_-_M3_X_0_5_X_10",
+          "targetOccurrences": [
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_10:1",
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_10:2"
+          ]
+        },
+        {
+          "newLengthMm": 5,
+          "op": "fastener_length",
+          "target": "ANSI_B18_3_4M_-_M3_X_0_5_X_5",
+          "targetOccurrences": [
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_5:1",
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_5:2"
+          ]
+        }
+      ],
+      "parentId": "neo-baseline",
+      "rationale": "A lighter variant of the same idea; the same fastener step more than covers the smaller grip growth.",
+      "reason": "5 checks passed, 0 not applicable",
+      "reasonCode": "FAC-000",
+      "schema": "FactoryVerdict/1",
+      "stepSha256": "73d18cf9104c93177495f09f1aa4569c887c089ce0c9d0ddf4a97d1f26fc7c73",
+      "uncheckedChecks": [],
+      "verdict": "pass"
+    },
+    {
+      "affectedDefinitions": [],
+      "affectedOccurrences": [],
+      "candidateId": "neo-baseline",
+      "checkSetVersion": "factory-checks/1.0.0",
+      "checks": [
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "CLEARANCE",
+          "measured": {
+            "sweptOccurrences": 0
+          },
+          "reason": "candidate declares no operation that adds material along a measurable axis, so there is nothing to sweep",
+          "reasonCode": "FAC-CLR-U01",
+          "status": "unchecked",
+          "tolerance": {}
+        },
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "FASTENER_LENGTH",
+          "measured": {
+            "evaluatedOccurrences": 0
+          },
+          "reason": "candidate changes no measured grip stack, so no joint engagement is affected",
+          "reasonCode": "FAC-LEN-U01",
+          "status": "unchecked",
+          "tolerance": {}
+        },
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "CONTRACT",
+          "measured": {
+            "operations": 0,
+            "targets": []
+          },
+          "reason": "0 operations are well-formed, resolve to real component definitions, and touch no protected interface",
+          "reasonCode": "FAC-CON-000",
+          "status": "pass",
+          "tolerance": {
+            "protectedInterfaces": [
+              "CSAP_X_E1GY__1",
+              "ISO_4035_-_M3"
+            ]
+          }
+        },
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "ARTIFACT",
+          "measured": {
+            "checkSetVersion": "factory-checks/1.0.0",
+            "contractSource": "tools/factory/fixtures/neoracer-object-contract.json",
+            "corpusRevision": "73d18cf9104c9317",
+            "stepSha256": "73d18cf9104c93177495f09f1aa4569c887c089ce0c9d0ddf4a97d1f26fc7c73"
+          },
+          "reason": "baseline artifact hash, graph corpus revision, and check-set version all match the object contract",
+          "reasonCode": "FAC-ART-000",
+          "status": "pass",
+          "tolerance": {}
+        },
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "INVENTORY",
+          "measured": {
+            "definitions": 378,
+            "occurrences": 647
+          },
+          "reason": "647 occurrences across 378 definitions, as pinned by the object contract",
+          "reasonCode": "FAC-INV-000",
+          "status": "pass",
+          "tolerance": {
+            "expectedDefinitions": 378,
+            "expectedOccurrences": 647
+          }
+        }
+      ],
+      "corpusRevision": "73d18cf9104c9317",
+      "elapsedMs": 0.1,
+      "evidencePath": ".artifacts/factory-neoracer/verdicts/neo-baseline.json",
+      "failedChecks": [],
+      "label": "Baseline NeoRacer full vehicle as published",
+      "objectId": "neoracer-full-vehicle",
+      "ops": [],
+      "parentId": null,
+      "rationale": "The unmodified assembly. It must pass the same check set as every candidate.",
+      "reason": "3 checks passed, 2 not applicable",
+      "reasonCode": "FAC-000",
+      "schema": "FactoryVerdict/1",
+      "stepSha256": "73d18cf9104c93177495f09f1aa4569c887c089ce0c9d0ddf4a97d1f26fc7c73",
+      "uncheckedChecks": [
+        "CLEARANCE",
+        "FASTENER_LENGTH"
+      ],
+      "verdict": "pass"
+    },
+    {
+      "affectedDefinitions": [
+        "ANSI_B18_3_4M_-_M3_X_0_5_X_10",
+        "ANSI_B18_3_4M_-_M3_X_0_5_X_5",
+        "KORM_X_E1NY__X_F6SSZEK_X-107086"
+      ],
+      "affectedOccurrences": [
+        "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_10:1",
+        "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_10:2",
+        "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_5:1",
+        "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_5:2"
+      ],
+      "candidateId": "neo-c-link-only",
+      "checkSetVersion": "factory-checks/1.0.0",
+      "checks": [
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "CLEARANCE",
+          "measured": {
+            "collidingOccurrences": 0,
+            "samplingDensity": {
+              "minVerticesPerOccurrence": 24,
+              "occurrencesSampled": 493,
+              "vertices": 601756
+            },
+            "sweptOccurrences": 0,
+            "unchecked": "thickness ops in this candidate (KORM_X_E1NY__X_F6SSZEK_X-107086 +2 mm) are NOT interference-checked: a scalar thickness delta does not declare which face the material grows from, and the growth direction is not derivable from the baseline. The engagement consequence IS measured by FASTENER_LENGTH."
+          },
+          "reason": "no vertex of any other occurrence falls inside the swept volume of 0 lengthened fastener occurrences. thickness ops in this candidate (KORM_X_E1NY__X_F6SSZEK_X-107086 +2 mm) are NOT interference-checked: a scalar thickness delta does not declare which face the material grows from, and the growth direction is not derivable from the baseline. The engagement consequence IS measured by FASTENER_LENGTH.",
+          "reasonCode": "FAC-CLR-000",
+          "status": "pass",
+          "tolerance": {
+            "note": "a pass is \"no evidence of interference at this sampling density\", not proof of clearance: a surface can pass through the swept volume without placing a vertex inside."
+          }
+        },
+        {
+          "affectedDefinitions": [
+            "ANSI_B18_3_4M_-_M3_X_0_5_X_10",
+            "ANSI_B18_3_4M_-_M3_X_0_5_X_5",
+            "KORM_X_E1NY__X_F6SSZEK_X-107086"
+          ],
+          "affectedOccurrences": [
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_10:1",
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_10:2",
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_5:1",
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_5:2"
+          ],
+          "check": "FASTENER_LENGTH",
+          "measured": {
+            "definitionsAffected": [
+              "ANSI_B18_3_4M_-_M3_X_0_5_X_10",
+              "ANSI_B18_3_4M_-_M3_X_0_5_X_5"
+            ],
+            "detail": [
+              {
+                "currentGripMm": 2.0,
+                "currentLengthMm": 8.7,
+                "definition": "ANSI_B18_3_4M_-_M3_X_0_5_X_10",
+                "engagementDeltaMm": -2.0,
+                "fastener": "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_10:1",
+                "proposedGripMm": 4.0,
+                "proposedLengthMm": 8.7,
+                "thickenedMembers": [
+                  "KORM_X_E1NY__X_F6SSZEK_X-107086"
+                ]
+              },
+              {
+                "currentGripMm": 2.0,
+                "currentLengthMm": 8.7,
+                "definition": "ANSI_B18_3_4M_-_M3_X_0_5_X_10",
+                "engagementDeltaMm": -2.0,
+                "fastener": "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_10:2",
+                "proposedGripMm": 4.0,
+                "proposedLengthMm": 8.7,
+                "thickenedMembers": [
+                  "KORM_X_E1NY__X_F6SSZEK_X-107086"
+                ]
+              },
+              {
+                "currentGripMm": 2.1,
+                "currentLengthMm": 3.7,
+                "definition": "ANSI_B18_3_4M_-_M3_X_0_5_X_5",
+                "engagementDeltaMm": -2.0,
+                "fastener": "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_5:1",
+                "proposedGripMm": 4.1,
+                "proposedLengthMm": 3.7,
+                "thickenedMembers": [
+                  "KORM_X_E1NY__X_F6SSZEK_X-107086"
+                ]
+              },
+              {
+                "currentGripMm": 2.1,
+                "currentLengthMm": 3.7,
+                "definition": "ANSI_B18_3_4M_-_M3_X_0_5_X_5",
+                "engagementDeltaMm": -2.0,
+                "fastener": "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_5:2",
+                "proposedGripMm": 4.1,
+                "proposedLengthMm": 3.7,
+                "thickenedMembers": [
+                  "KORM_X_E1NY__X_F6SSZEK_X-107086"
+                ]
+              }
+            ],
+            "engagementLosses": 4,
+            "evaluatedOccurrences": 4,
+            "worstEngagementDeltaMm": -2.0
+          },
+          "reason": "4 of 4 affected fastener occurrences lose thread engagement. ANSI_B18_3_4M_-_M3_X_0_5_X_10 at SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_10:1 must span 4.0 mm of material (was 2.0 mm) on an unchanged 8.7 mm fastener -- 2.0 mm short. Thickened: KORM_X_E1NY__X_F6SSZEK_X-107086.",
+          "reasonCode": "FAC-LEN-001",
+          "status": "fail",
+          "tolerance": {
+            "minEngagementDeltaMm": -0.0,
+            "note": "relative to the current build only. Absolute fastener adequacy is not claimed: the threaded member is not derivable from a STEP file."
+          }
+        },
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "CONTRACT",
+          "measured": {
+            "operations": 1,
+            "targets": [
+              "KORM_X_E1NY__X_F6SSZEK_X-107086"
+            ]
+          },
+          "reason": "1 operations are well-formed, resolve to real component definitions, and touch no protected interface",
+          "reasonCode": "FAC-CON-000",
+          "status": "pass",
+          "tolerance": {
+            "protectedInterfaces": [
+              "CSAP_X_E1GY__1",
+              "ISO_4035_-_M3"
+            ]
+          }
+        },
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "ARTIFACT",
+          "measured": {
+            "checkSetVersion": "factory-checks/1.0.0",
+            "contractSource": "tools/factory/fixtures/neoracer-object-contract.json",
+            "corpusRevision": "73d18cf9104c9317",
+            "stepSha256": "73d18cf9104c93177495f09f1aa4569c887c089ce0c9d0ddf4a97d1f26fc7c73"
+          },
+          "reason": "baseline artifact hash, graph corpus revision, and check-set version all match the object contract",
+          "reasonCode": "FAC-ART-000",
+          "status": "pass",
+          "tolerance": {}
+        },
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "INVENTORY",
+          "measured": {
+            "definitions": 378,
+            "occurrences": 647
+          },
+          "reason": "647 occurrences across 378 definitions, as pinned by the object contract",
+          "reasonCode": "FAC-INV-000",
+          "status": "pass",
+          "tolerance": {
+            "expectedDefinitions": 378,
+            "expectedOccurrences": 647
+          }
+        }
+      ],
+      "corpusRevision": "73d18cf9104c9317",
+      "elapsedMs": 0.1,
+      "evidencePath": ".artifacts/factory-neoracer/verdicts/neo-c-link-only.json",
+      "failedChecks": [
+        "FASTENER_LENGTH"
+      ],
+      "label": "Steering link +2.0 mm, fastener schedule untouched",
+      "objectId": "neoracer-full-vehicle",
+      "ops": [
+        {
+          "deltaMm": 2.0,
+          "op": "thickness",
+          "target": "KORM_X_E1NY__X_F6SSZEK_X-107086"
+        }
+      ],
+      "parentId": "neo-baseline",
+      "rationale": "The cheapest version: change one part and leave the hardware alone, assuming 2 mm is too small to matter.",
+      "reason": "4 of 4 affected fastener occurrences lose thread engagement. ANSI_B18_3_4M_-_M3_X_0_5_X_10 at SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_10:1 must span 4.0 mm of material (was 2.0 mm) on an unchanged 8.7 mm fastener -- 2.0 mm short. Thickened: KORM_X_E1NY__X_F6SSZEK_X-107086.",
+      "reasonCode": "FAC-LEN-001",
+      "schema": "FactoryVerdict/1",
+      "stepSha256": "73d18cf9104c93177495f09f1aa4569c887c089ce0c9d0ddf4a97d1f26fc7c73",
+      "uncheckedChecks": [],
+      "verdict": "fail"
+    },
+    {
+      "affectedDefinitions": [
+        "ANSI_B18_3_4M_-_M3_X_0_5_X_5",
+        "LENG_X2_0151_X0_KAR_CSAP_B-8043",
+        "LENG_X2_0151_X0_KAR__X_F6S-8064"
+      ],
+      "affectedOccurrences": [
+        "SSTMINI_ASM:1/SSTMINI_F_ASM:1/DIFI_ASM:1/LENG_X2_0151_X0_KAR_CSAP_B-8043:1",
+        "SSTMINI_ASM:1/SSTMINI_F_ASM:1/DIFI_ASM:1/LENG_X2_0151_X0_KAR_CSAP_B-8043:2",
+        "SSTMINI_ASM:1/SSTMINI_F_ASM:1/DIFI_ASM:1/LENG_X2_0151_X0_KAR__X_F6S-8064:1",
+        "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_5:1",
+        "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_5:2"
+      ],
+      "candidateId": "neo-d-standardize-m3",
+      "checkSetVersion": "factory-checks/1.0.0",
+      "checks": [
+        {
+          "affectedDefinitions": [
+            "ANSI_B18_3_4M_-_M3_X_0_5_X_5",
+            "LENG_X2_0151_X0_KAR_CSAP_B-8043",
+            "LENG_X2_0151_X0_KAR__X_F6S-8064"
+          ],
+          "affectedOccurrences": [
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/DIFI_ASM:1/LENG_X2_0151_X0_KAR_CSAP_B-8043:1",
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/DIFI_ASM:1/LENG_X2_0151_X0_KAR_CSAP_B-8043:2",
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/DIFI_ASM:1/LENG_X2_0151_X0_KAR__X_F6S-8064:1",
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_5:1",
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_5:2"
+          ],
+          "check": "CLEARANCE",
+          "measured": {
+            "collidingOccurrences": 2,
+            "detail": [
+              {
+                "clearanceBeforeMm": 6.646,
+                "currentLengthMm": 3.7,
+                "definition": "ANSI_B18_3_4M_-_M3_X_0_5_X_5",
+                "fastener": "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_5:1",
+                "growthMm": 8.3,
+                "intersects": [
+                  {
+                    "defName": "LENG_X2_0151_X0_KAR_CSAP_B-8043",
+                    "firstContactAtMm": 8.62,
+                    "occId": "SSTMINI_ASM:1/SSTMINI_F_ASM:1/DIFI_ASM:1/LENG_X2_0151_X0_KAR_CSAP_B-8043:1",
+                    "verticesInside": 10
+                  },
+                  {
+                    "defName": "LENG_X2_0151_X0_KAR__X_F6S-8064",
+                    "firstContactAtMm": 8.678,
+                    "occId": "SSTMINI_ASM:1/SSTMINI_F_ASM:1/DIFI_ASM:1/LENG_X2_0151_X0_KAR__X_F6S-8064:1",
+                    "verticesInside": 7
+                  }
+                ],
+                "penetrationMm": 1.654,
+                "proposedLengthMm": 12.0
+              },
+              {
+                "clearanceBeforeMm": 6.646,
+                "currentLengthMm": 3.7,
+                "definition": "ANSI_B18_3_4M_-_M3_X_0_5_X_5",
+                "fastener": "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_5:2",
+                "growthMm": 8.3,
+                "intersects": [
+                  {
+                    "defName": "LENG_X2_0151_X0_KAR_CSAP_B-8043",
+                    "firstContactAtMm": 8.62,
+                    "occId": "SSTMINI_ASM:1/SSTMINI_F_ASM:1/DIFI_ASM:1/LENG_X2_0151_X0_KAR_CSAP_B-8043:2",
+                    "verticesInside": 10
+                  },
+                  {
+                    "defName": "LENG_X2_0151_X0_KAR__X_F6S-8064",
+                    "firstContactAtMm": 8.678,
+                    "occId": "SSTMINI_ASM:1/SSTMINI_F_ASM:1/DIFI_ASM:1/LENG_X2_0151_X0_KAR__X_F6S-8064:1",
+                    "verticesInside": 7
+                  }
+                ],
+                "penetrationMm": 1.654,
+                "proposedLengthMm": 12.0
+              }
+            ],
+            "maxPenetrationMm": 1.654,
+            "minClearanceBeforeMm": 6.646,
+            "obstructedOccurrences": 3,
+            "sweptOccurrences": 2,
+            "unchecked": null
+          },
+          "reason": "2 of 2 lengthened fastener occurrences sweep into material they do not touch today. Deepest: ANSI_B18_3_4M_-_M3_X_0_5_X_5 at SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_5:1 grows 8.3 mm with only 6.646 mm free, driving 1.654 mm into LENG_X2_0151_X0_KAR_CSAP_B-8043.",
+          "reasonCode": "FAC-CLR-001",
+          "status": "fail",
+          "tolerance": {
+            "maxPenetrationMm": 0.0,
+            "note": "penetration is a LOWER BOUND: OCCT places triangulation nodes on the exact surface, so a reported vertex is a real point of the real solid.",
+            "resolutionMm": 0.05
+          }
+        },
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "FASTENER_LENGTH",
+          "measured": {
+            "engagementLosses": 0,
+            "evaluatedOccurrences": 2
+          },
+          "reason": "all 2 affected fastener occurrences retain at least their current thread engagement",
+          "reasonCode": "FAC-LEN-000",
+          "status": "pass",
+          "tolerance": {
+            "minEngagementDeltaMm": -0.0,
+            "note": "relative to the current build only; absolute adequacy is not claimed."
+          }
+        },
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "CONTRACT",
+          "measured": {
+            "operations": 1,
+            "targets": [
+              "ANSI_B18_3_4M_-_M3_X_0_5_X_5"
+            ]
+          },
+          "reason": "1 operations are well-formed, resolve to real component definitions, and touch no protected interface",
+          "reasonCode": "FAC-CON-000",
+          "status": "pass",
+          "tolerance": {
+            "protectedInterfaces": [
+              "CSAP_X_E1GY__1",
+              "ISO_4035_-_M3"
+            ]
+          }
+        },
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "ARTIFACT",
+          "measured": {
+            "checkSetVersion": "factory-checks/1.0.0",
+            "contractSource": "tools/factory/fixtures/neoracer-object-contract.json",
+            "corpusRevision": "73d18cf9104c9317",
+            "stepSha256": "73d18cf9104c93177495f09f1aa4569c887c089ce0c9d0ddf4a97d1f26fc7c73"
+          },
+          "reason": "baseline artifact hash, graph corpus revision, and check-set version all match the object contract",
+          "reasonCode": "FAC-ART-000",
+          "status": "pass",
+          "tolerance": {}
+        },
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "INVENTORY",
+          "measured": {
+            "definitions": 378,
+            "occurrences": 647
+          },
+          "reason": "647 occurrences across 378 definitions, as pinned by the object contract",
+          "reasonCode": "FAC-INV-000",
+          "status": "pass",
+          "tolerance": {
+            "expectedDefinitions": 378,
+            "expectedOccurrences": 647
+          }
+        }
+      ],
+      "corpusRevision": "73d18cf9104c9317",
+      "elapsedMs": 13619.1,
+      "evidencePath": ".artifacts/factory-neoracer/verdicts/neo-d-standardize-m3.json",
+      "failedChecks": [
+        "CLEARANCE"
+      ],
+      "label": "Standardise the short steering screws at 12 mm",
+      "objectId": "neoracer-full-vehicle",
+      "ops": [
+        {
+          "newLengthMm": 12,
+          "op": "fastener_length",
+          "target": "ANSI_B18_3_4M_-_M3_X_0_5_X_5"
+        }
+      ],
+      "parentId": "neo-baseline",
+      "rationale": "Cut the fastener schedule: this assembly carries M3 cap screws at four different lengths. Run one longer M3 and drop a part number, gaining engagement everywhere. Applied at the definition, so it reaches every occurrence.",
+      "reason": "2 of 2 lengthened fastener occurrences sweep into material they do not touch today. Deepest: ANSI_B18_3_4M_-_M3_X_0_5_X_5 at SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_5:1 grows 8.3 mm with only 6.646 mm free, driving 1.654 mm into LENG_X2_0151_X0_KAR_CSAP_B-8043.",
+      "reasonCode": "FAC-CLR-001",
+      "schema": "FactoryVerdict/1",
+      "stepSha256": "73d18cf9104c93177495f09f1aa4569c887c089ce0c9d0ddf4a97d1f26fc7c73",
+      "uncheckedChecks": [],
+      "verdict": "fail"
+    },
+    {
+      "affectedDefinitions": [
+        "CSAP_X_E1GY__1"
+      ],
+      "affectedOccurrences": [
+        "SSTMINI_ASM:1/SSTMINI_F_ASM:1/DIFI_F_R_1-7859_ASM:1/CSAP_X_E1GY__1:1",
+        "SSTMINI_ASM:1/SSTMINI_F_ASM:1/DIFI_F_R_1-7859_ASM:1/CSAP_X_E1GY__1:2"
+      ],
+      "candidateId": "neo-e-thicker-bearing",
+      "checkSetVersion": "factory-checks/1.0.0",
+      "checks": [
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "CLEARANCE",
+          "measured": {},
+          "reason": "not evaluated: the candidate failed CONTRACT first, so its declared geometry could not be resolved",
+          "reasonCode": "FAC-CLR-U02",
+          "status": "unchecked",
+          "tolerance": {}
+        },
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "FASTENER_LENGTH",
+          "measured": {},
+          "reason": "not evaluated: the candidate failed CONTRACT first",
+          "reasonCode": "FAC-LEN-U02",
+          "status": "unchecked",
+          "tolerance": {}
+        },
+        {
+          "affectedDefinitions": [
+            "CSAP_X_E1GY__1"
+          ],
+          "affectedOccurrences": [
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/DIFI_F_R_1-7859_ASM:1/CSAP_X_E1GY__1:1",
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/DIFI_F_R_1-7859_ASM:1/CSAP_X_E1GY__1:2"
+          ],
+          "check": "CONTRACT",
+          "measured": {
+            "targets": [
+              "CSAP_X_E1GY__1"
+            ],
+            "violationCount": 1,
+            "violations": [
+              {
+                "message": "'CSAP_X_E1GY__1' is a protected interface (purchased ball bearing (csapagy); its bore and outer diameter set the shaft and housing fits around it) and may not be altered by a candidate",
+                "reasonCode": "FAC-CON-003"
+              }
+            ]
+          },
+          "reason": "'CSAP_X_E1GY__1' is a protected interface (purchased ball bearing (csapagy); its bore and outer diameter set the shaft and housing fits around it) and may not be altered by a candidate",
+          "reasonCode": "FAC-CON-003",
+          "status": "fail",
+          "tolerance": {
+            "operationVocabulary": [
+              "fastener_length",
+              "thickness"
+            ],
+            "protectedInterfaces": [
+              "CSAP_X_E1GY__1",
+              "ISO_4035_-_M3"
+            ]
+          }
+        },
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "ARTIFACT",
+          "measured": {
+            "checkSetVersion": "factory-checks/1.0.0",
+            "contractSource": "tools/factory/fixtures/neoracer-object-contract.json",
+            "corpusRevision": "73d18cf9104c9317",
+            "stepSha256": "73d18cf9104c93177495f09f1aa4569c887c089ce0c9d0ddf4a97d1f26fc7c73"
+          },
+          "reason": "baseline artifact hash, graph corpus revision, and check-set version all match the object contract",
+          "reasonCode": "FAC-ART-000",
+          "status": "pass",
+          "tolerance": {}
+        },
+        {
+          "affectedDefinitions": [],
+          "affectedOccurrences": [],
+          "check": "INVENTORY",
+          "measured": {
+            "definitions": 378,
+            "occurrences": 647
+          },
+          "reason": "647 occurrences across 378 definitions, as pinned by the object contract",
+          "reasonCode": "FAC-INV-000",
+          "status": "pass",
+          "tolerance": {
+            "expectedDefinitions": 378,
+            "expectedOccurrences": 647
+          }
+        }
+      ],
+      "corpusRevision": "73d18cf9104c9317",
+      "elapsedMs": 0.0,
+      "evidencePath": ".artifacts/factory-neoracer/verdicts/neo-e-thicker-bearing.json",
+      "failedChecks": [
+        "CONTRACT"
+      ],
+      "label": "Widen the differential bearing by 1.0 mm",
+      "objectId": "neoracer-full-vehicle",
+      "ops": [
+        {
+          "deltaMm": 1.0,
+          "op": "thickness",
+          "target": "CSAP_X_E1GY__1"
+        }
+      ],
+      "parentId": "neo-baseline",
+      "rationale": "Use a beefier bearing to take more load through the differential.",
+      "reason": "'CSAP_X_E1GY__1' is a protected interface (purchased ball bearing (csapagy); its bore and outer diameter set the shaft and housing fits around it) and may not be altered by a candidate",
+      "reasonCode": "FAC-CON-003",
+      "schema": "FactoryVerdict/1",
+      "stepSha256": "73d18cf9104c93177495f09f1aa4569c887c089ce0c9d0ddf4a97d1f26fc7c73",
+      "uncheckedChecks": [
+        "CLEARANCE",
+        "FASTENER_LENGTH"
+      ],
+      "verdict": "fail"
+    }
+  ]
+}
