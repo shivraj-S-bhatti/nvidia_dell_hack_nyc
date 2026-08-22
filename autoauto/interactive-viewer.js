@@ -240,7 +240,8 @@
       for (const mesh of this.meshes) {
         const center = mesh.geometry.boundingBox.getCenter(new THREE.Vector3());
         mesh.userData.center = center;
-        const clusterId = mesh.userData.part.ancestorOccurrenceIds[0] || mesh.userData.part.occurrenceId;
+        const ancestors = mesh.userData.part.ancestorOccurrenceIds;
+        const clusterId = ancestors[1] || ancestors[0] || mesh.userData.part.occurrenceId;
         if (!clusters.has(clusterId)) clusters.set(clusterId, {center: new THREE.Vector3(), meshes: [], radius: 1});
         const cluster = clusters.get(clusterId);
         cluster.center.add(center);
@@ -264,10 +265,14 @@
           const partDirection = mesh.userData.center.clone().sub(cluster.center);
           if (partDirection.lengthSq() < 0.001) partDirection.copy(groupDirection);
           partDirection.normalize();
-          mesh.userData.explodeOffset = groupDirection.clone().multiplyScalar(this.radius * 0.31)
-            .addScaledVector(partDirection, Math.min(cluster.radius, this.radius * 0.28) * 0.52);
+          mesh.userData.explodeOffset = groupDirection.clone().multiplyScalar(this.radius * 0.5)
+            .addScaledVector(partDirection, Math.min(cluster.radius, this.radius * 0.34) * 0.62);
         }
         fallbackIndex += 1;
+      }
+      this.explodedBounds = new THREE.Box3();
+      for (const mesh of this.meshes) {
+        this.explodedBounds.union(mesh.geometry.boundingBox.clone().translate(mesh.userData.explodeOffset));
       }
     }
 
@@ -280,6 +285,7 @@
       this.mode = mode;
       this.explodeTarget = mode === 'exploded' ? 1 : 0;
       if (mode === 'focus') this.focusSelection();
+      if (mode === 'exploded' && this.explodedBounds) this.fitCamera(this.explodedBounds);
       if (mode === 'assembled') this.fitCamera();
       this.updateStyles();
     }
