@@ -19,6 +19,12 @@ python3 tools/depgraph/work_order.py GB70-M2-5-6-DING
 python3 tools/depgraph/work_order.py TOP-PLATE-S500 --thicker 0.5 --json
 ```
 
+The viewer opens on a bounded demo change: increase the S500 bottom plate
+thickness by 1 mm. **Preview change** applies a reversible local mesh delta,
+focuses the selected plate, and shows the geometry-derived blast radius and
+relative fastener actions. **Reset** restores the original mesh. This is a
+candidate visualization, not a committed STEP/B-rep edit.
+
 ## What it produces
 
 ```
