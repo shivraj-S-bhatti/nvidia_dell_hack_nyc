@@ -22,8 +22,9 @@ Ship one private, local mechanical-design feedback loop on the Dell GB10:
 The product claim is not prompt-to-pretty-CAD. It is generation corrected by
 assembly truth and measured performance instead of another prompt.
 
-`Lab`, `Factory`, and `Track` are functional stage names. Do not invent agent
-personas until the complete loop works.
+`Lab`, `Factory`, and `Track` are functional stage names. The interface may show
+concise, evidence-backed Claw handoffs between them. Do not add decorative
+personas or roleplay until the complete loop works.
 
 ## The Six Active Issues
 
@@ -36,7 +37,7 @@ Only issues carrying the `active` label are on the execution path:
 | #12 `LAB` | Produce coherent candidate families and revise from feedback | `shivraj-S-bhatti` |
 | #13 `FACTORY` | Compile candidates and reject invalid assemblies | unassigned |
 | #14 `TRACK` | Measure and rank only Factory survivors | unassigned |
-| #37 `LOOP` | Join the stages into one minimal repeatable demo | unassigned |
+| #37 `FRONTEND` | Show Claw handoffs and join the stages into one demo | `justgoofingaround` |
 
 Issue #1 is the epic, #7 is the product contract, and #35 is the provisional
 story. They coordinate the work but are not extra implementation tracks.
@@ -136,9 +137,9 @@ The three moments judges must remember are:
 3. **Revision:** evidence changes Lab's next proposal before Track ranks it.
 
 The primary interface shows one object, one request, the three-stage rail,
-candidate states, a compact final comparison, and one approval action. Hide
-setup logs, agent chat, architecture diagrams, service names, and controls that
-do not affect the decision.
+concise clickable Claw handoffs, candidate states, a compact final comparison,
+and one approval action. Hide setup logs, raw agent chat, architecture diagrams,
+service names, and controls that do not affect the decision.
 
 ## Local And Model Boundary
 
