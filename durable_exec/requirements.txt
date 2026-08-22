@@ -1,0 +1,2 @@
+# Only dependency. Not needed for the in-memory backend (tests / offline demos).
+pymongo>=4.6

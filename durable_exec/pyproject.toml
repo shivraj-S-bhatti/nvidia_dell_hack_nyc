@@ -1,0 +1,14 @@
+# Optional. The examples run without installing (they bootstrap sys.path); you only need
+#   pip install -r requirements.txt
+# This metadata is here so `pip install .` from this directory also works if you prefer it.
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "durable-exec"
+version = "0.1.0"
+description = "A self-contained durable-execution step journal (local MongoDB Community, no API keys)."
+requires-python = ">=3.9"
+dependencies = ["pymongo>=4.6"]  # runtime-optional: the in-memory backend works without it
