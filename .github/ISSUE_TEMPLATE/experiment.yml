@@ -1,0 +1,72 @@
+name: Bounded experiment
+description: Propose a 90-minute project experiment for the convergence bake-off.
+title: "EXPERIMENT: "
+labels:
+  - experiment
+  - queued
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This issue is one bounded attempt, not the team roadmap. Issue #4 decides which experiment advances.
+  - type: input
+    id: owner
+    attributes:
+      label: Owner
+      placeholder: "@github-handle"
+    validations:
+      required: true
+  - type: textarea
+    id: user_demo
+    attributes:
+      label: User and five-minute demo moment
+      description: Who needs this, and what visible transformation will judges see?
+    validations:
+      required: true
+  - type: textarea
+    id: contract
+    attributes:
+      label: Strict input and output contract
+      description: Name the accepted input and the inspectable output.
+    validations:
+      required: true
+  - type: textarea
+    id: local_assets
+    attributes:
+      label: Local models and dependencies
+      description: Include model revisions, containers, ARM64 wheels, datasets, and disk estimates.
+    validations:
+      required: true
+  - type: textarea
+    id: metric
+    attributes:
+      label: Baseline and success metric
+      description: What comparison can falsify the idea?
+    validations:
+      required: true
+  - type: textarea
+    id: first_run
+    attributes:
+      label: First 90 minutes
+      description: List the smallest executable slice.
+    validations:
+      required: true
+  - type: textarea
+    id: kill
+    attributes:
+      label: Kill criterion
+      description: State exactly when this attempt stops or falls back.
+    validations:
+      required: true
+  - type: textarea
+    id: replay
+    attributes:
+      label: Offline replay command
+      description: Fill this after the first successful run.
+      render: shell
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Results and evidence
+      description: Attach logs, metrics, screenshots, and the known failure mode.
+
