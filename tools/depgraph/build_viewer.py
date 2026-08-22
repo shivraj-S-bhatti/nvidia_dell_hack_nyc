@@ -37,6 +37,16 @@ def main(art='.artifacts/depgraph', out='s500-impact.html'):
 
     with open(os.path.join(v, 'shell.html'), encoding='utf-8') as fh:
         shell = fh.read()
+    # Inline the webfonts. The judged path must run with outbound networking
+    # disabled, and an external font <link> means the page silently changes
+    # appearance the moment the ethernet is unplugged -- which IS the demo moment.
+    # 151 KB of base64 buys a page that renders identically offline.
+    fonts = ''
+    fpath = os.path.join(v, 'fonts.css')
+    if os.path.exists(fpath):
+        with open(fpath, encoding='utf-8') as fh:
+            fonts = fh.read()
+    shell = shell.replace('/*__FONTS__*/', fonts)
     with open(bundle, encoding='utf-8') as fh:
         three = fh.read()
     with open(os.path.join(v, 'app.js'), encoding='utf-8') as fh:

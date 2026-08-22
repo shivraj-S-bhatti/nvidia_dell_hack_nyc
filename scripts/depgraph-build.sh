@@ -28,6 +28,9 @@ python3 tools/depgraph/build_viewer.py "$ART" s500-impact.html
 echo "==> 4/4 load MongoDB (optional)"
 python3 tools/depgraph/load_mongo.py "$ART" 2>/dev/null || echo "    skipped (MongoDB not reachable)"
 
+echo "==> verify"
+python3 tools/depgraph/check.py | tail -3
+
 echo
 echo "done. open s500-impact.html, or:"
 echo "  python3 tools/depgraph/work_order.py BOTTOM-PLATE-S500 --thicker 1.0"
