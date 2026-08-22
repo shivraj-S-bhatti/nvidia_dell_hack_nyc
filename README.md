@@ -1,4 +1,5 @@
 # NVIDIA x Dell NYC Hackathon
+<img width="1672" height="941" alt="image" src="https://github.com/user-attachments/assets/5bccd495-ed5d-4c34-a6ac-c2f79653f12e" />
 
 Shared preparation and experiment repository for an offline demo on one Dell
 GB10. The team may explore several ideas, but evidence converges in one place:
