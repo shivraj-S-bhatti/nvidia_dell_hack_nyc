@@ -50,6 +50,9 @@ LENGTH ACTIONS -- 20 fasteners clamp BOTTOM-PLATE-S500, 20 need a longer part
 | `build_viewer.py` | Inlines everything into one offline HTML file. |
 | `load_mongo.py` | Persists to MongoDB (system of record). Traversal is *not* done here. |
 | `step_to_mesh.mjs` | OCCT WASM tessellation, once, offline. |
+| `normalize_step.py` | Folds geometry a product owns but does not contain back into it. |
+| `fcstd_to_mesh.py` | Mesh artifacts from a FreeCAD source, for STEP files that will not tessellate. |
+| `brep_to_mesh.mjs` | OCCT WASM tessellation of BREP shapes. |
 
 ## Reusable classifier, validated on one assembly
 
@@ -113,6 +116,43 @@ body for an M2.5×6), which is not grip — a fastener cannot clamp what it cann
 | `GB70-M2-5-6-DING` occurrences | **28** — agreed independently by the stdlib parser and OCCT |
 | Propagation, 126 nodes | 0.012 ms |
 | Propagation, 126k nodes | 27 ms, 153 MB |
+
+## When a second CAD writer breaks the ingest
+
+Validated on a second assembly (NeoRacer, CERN-OHL-S-2.0). Three failures were silent
+rather than loud, and all three are fixed. **The S500 path is unchanged.**
+
+- **Geometry a product owns but does not contain.** Some writers put a component's
+  solid in a separate `ADVANCED_BREP_SHAPE_REPRESENTATION` linked by
+  `SHAPE_REPRESENTATION_RELATIONSHIP`, leaving the representation named by
+  `SHAPE_DEFINITION_REPRESENTATION` holding only a placement. `parse_step` now follows
+  product → *orphan* edges only; following product → product edges would merge a whole
+  assembly's geometry into each of its parts. **3951 of 7273 cylinders were hidden.**
+- **A shank chosen by face count.** "Most cylinder faces = the shank" holds on the S500
+  and fails where a cap screw's head is split into more faces than its shank. Every
+  radius pair is now scored against the table, with the rule that a cap screw's head is
+  its **largest** radius. **Fastener recall 0/22 → 19/22**, and the S500 stays 6/6 with
+  zero false positives.
+- **A STEP file that will not tessellate.** `occt-import-js` reads
+  `neoracer-full-vehicle.step` well enough to report every face and then triangulates
+  none of them — 1136 meshes, 0 vertices, exit code 0, across four deflection
+  configurations. `step_to_mesh.mjs` now fails loudly. `fcstd_to_mesh.py` takes the
+  shapes from the FreeCAD source instead, where the same geometry meshes normally:
+
+  ```
+  FCStd  ->  per-DEFINITION geometry, in each definition's own frame
+  STEP   ->  the assembly: which definitions occur, where, how many times
+  ```
+
+  `bash scripts/neoracer-build.sh` → **493/493 occurrences bound, 136 `FASTENS` edges,
+  53 measured grip stacks.**
+
+**A caution the S500 does not license.** On NeoRacer, **17 of 36 classified definitions
+are false positives** — bearings, dampers and gears are single bodies of revolution with
+a shank/head-like radius pair, and a bearing at r=5.0/8.0 is indistinguishable from an
+M10 cap screw on radii alone. 6/6 with zero false positives on one assembly is one data
+point. Validate recall *and* false positives on every new assembly, and use the
+`overrides=` path where identity matters.
 
 ## See also
 

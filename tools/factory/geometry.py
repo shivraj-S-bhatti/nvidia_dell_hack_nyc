@@ -115,10 +115,21 @@ class Assembly:
                 self.mesh, self.vert_path, org, axis, spec['shank'], f_lo, f_hi,
                 exclude={f['occId']}, verts=self.verts)}
 
+            # A fastener identified by geometry alone has no nominal length in the
+            # table -- only a measured-fingerprint override carries one. derive()'s
+            # grip stack recovers it as measured length minus head height, so fall
+            # back to that. Without this every inferred fastener (i.e. every fastener
+            # on an assembly we have no override table for) reports length None and
+            # silently drops out of both geometric checks.
+            stack = self.stacks.get(f['occId']) or {}
+            nominal = spec.get('len')
+            if nominal is None:
+                nominal = stack.get('nominalLengthMm')
+
             sites[f['occId']] = {
                 'occId': f['occId'], 'defName': f['defName'],
                 'M': spec['M'], 'shankR': spec['shank'],
-                'nominalLengthMm': spec.get('len'),
+                'nominalLengthMm': nominal,
                 'org': org, 'axis': axis,
                 'spanLoMm': round(f_lo, 3), 'spanHiMm': round(f_hi, 3),
                 'tipMm': round(tip, 3), 'direction': direction,
