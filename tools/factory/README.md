@@ -58,6 +58,49 @@ This veto was **found by scanning the assembly, not designed**: every fastener w
 swept against every longer stock length in `derive_edges.STOCK`, and these are the
 collisions that exist.
 
+## Second object: NeoRacer (race car)
+
+The same check set, unchanged, on a completely different assembly — 647 occurrences,
+378 definitions, from a different CAD writer under CERN-OHL-S-2.0.
+
+```bash
+bash scripts/neoracer-build.sh
+python3 tools/factory/validate.py \
+    --step .artifacts/neoracer/neoracer-full-vehicle.step --art .artifacts/neoracer/fc \
+    --contract tools/factory/fixtures/neoracer-object-contract.json \
+    --candidates tools/factory/fixtures/neoracer-candidates.json \
+    --out .artifacts/factory-neoracer --repeat 3
+```
+
+```
+neo-baseline           PASS  FAC-000        3 checks passed, 2 not applicable
+neo-a-scoped-1mm       PASS  FAC-000        5 checks passed
+neo-b-scoped-0.5mm     PASS  FAC-000        5 checks passed
+neo-c-link-only        FAIL  FAC-LEN-001    4 of 4 occurrences lose thread engagement
+neo-d-standardize-m3   FAIL  FAC-CLR-001    2 of 2 lengthened occurrences sweep into material
+neo-e-thicker-bearing  FAIL  FAC-CON-003    protected interface (purchased ball bearing)
+
+SURVIVORS -- 3 eligible for Track, 3 rejected
+REPEATABILITY -- 3 runs, digests identical: 8230be136b095331
+6 candidates in 19.1 s, peak RSS 879 MB
+```
+
+The rejections are the same three checks firing on different geometry, and they were
+found by sweeping every fastener against every longer stock length on this assembly —
+not designed to fail:
+
+- **`neo-d`** consolidates the short steering screws at 12 mm. Both occurrences sweep
+  into the control-arm pin; the feedback event carries the ceiling — *this definition
+  may grow at most **6.646 mm** past its current tip*.
+- **`neo-c`** thickens the steering link 2 mm and leaves the hardware alone: 4 of 4
+  screws lose exactly **2.0 mm** of engagement.
+- **`neo-e`** widens a purchased ball bearing, which the contract protects.
+
+Mesh for this object comes from the FreeCAD source rather than the STEP — see
+`tools/depgraph/fcstd_to_mesh.py` for why, and the caution about classifier false
+positives in `tools/depgraph/README.md` before trusting fastener identity on a new
+assembly.
+
 ## The check set — `factory-checks/1.0.0`
 
 Shown in demo order, which is also confidence order: the checks that measure geometry

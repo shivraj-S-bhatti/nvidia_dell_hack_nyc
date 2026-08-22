@@ -344,6 +344,13 @@ def _grip(f, spec, org, axis, clamped, mesh, vert_path, by_id):
         # inferred fastener: recover nominal shank length as measured minus head height
         k = ISO4762.get(spec['M'], (0, 0, 0, 0))[2]
         nominal = round(measured_len - k, 1)
+        # A part shorter than the head height of the thread it was matched to is not
+        # that fastener. This fires on NeoRacer, where a shock absorber body classifies
+        # as an M4 and yields a nominal length of -3 mm. Length arithmetic on a
+        # negative nominal produces confident nonsense, so the length is withheld and
+        # every check that needs it reports unchecked instead of computing with it.
+        if nominal <= 0:
+            nominal = None
     engage = round(ENGAGE_D * spec['M'], 2)
     req = None if grip is None else round(grip + engage, 2)
     # An absolute adequate/inadequate verdict needs the THREADED member identified --
