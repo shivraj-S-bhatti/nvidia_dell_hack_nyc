@@ -1,0 +1,112 @@
+{
+  "schema": "CandidateFamily/1",
+  "objectId": "s500-c1",
+  "provenance": "PROVISIONAL Factory-side fixture. Issue #12 (LAB) owns candidate generation; when it publishes a family at .artifacts/lab/candidates.json, validate.py prefers it and this file stops being used. These candidates exist so the check set can be exercised and so Lab has a concrete input contract to write to. The verdicts are NOT authored here -- every pass and fail below is computed by tools/factory/checks.py from measured geometry, and the two rejections were found by scanning the assembly, not designed to fail.",
+  "goal": "Stiffen the S500 centre plate without disturbing any purchased interface.",
+  "candidates": [
+    {
+      "candidateId": "baseline",
+      "parentId": null,
+      "label": "Baseline S500-C1 as released",
+      "rationale": "The unmodified assembly. It must pass the same check set as every candidate; a check set the baseline cannot survive is measuring the fixture, not the design.",
+      "ops": []
+    },
+    {
+      "candidateId": "cand-a-scoped-1mm",
+      "parentId": "baseline",
+      "label": "Bottom plate +1.0 mm, fasteners lengthened only where they clamp it",
+      "rationale": "Stiffen the centre plate and carry the extra 1 mm of grip into the twenty fastener occurrences that actually pass through it, leaving the rest of the fleet alone.",
+      "ops": [
+        {"op": "thickness", "target": "BOTTOM-PLATE-S500", "deltaMm": 1.0},
+        {"op": "fastener_length", "target": "GB70-M2-5-6-DING", "newLengthMm": 8,
+         "targetOccurrences": [
+           "ARM-S500_ASM/GB70-M2-5-6-DING003",
+           "ARM-S500_ASM/GB70-M2-5-6-DING004",
+           "ARM-S500_ASM001/GB70-M2-5-6-DING008",
+           "ARM-S500_ASM001/GB70-M2-5-6-DING009",
+           "ARM-S500_ASM002/GB70-M2-5-6-DING013",
+           "ARM-S500_ASM002/GB70-M2-5-6-DING014",
+           "ARM-S500_ASM003/GB70-M2-5-6-DING018",
+           "ARM-S500_ASM003/GB70-M2-5-6-DING019"]},
+        {"op": "fastener_length", "target": "GB70-M3-8-DING", "newLengthMm": 10,
+         "targetOccurrences": [
+           "LANDING-GEAR-VERTICAL-POLE_ASM/GB70-M3-8-DING",
+           "LANDING-GEAR-VERTICAL-POLE_ASM/GB70-M3-8-DING001",
+           "LANDING-GEAR-VERTICAL-POLE_ASM/GB70-M3-8-DING002",
+           "LANDING-GEAR-VERTICAL-POLE_ASM/GB70-M3-8-DING003",
+           "LANDING-GEAR-VERTICAL-POLE_ASM001/GB70-M3-8-DING004",
+           "LANDING-GEAR-VERTICAL-POLE_ASM001/GB70-M3-8-DING005",
+           "LANDING-GEAR-VERTICAL-POLE_ASM001/GB70-M3-8-DING006",
+           "LANDING-GEAR-VERTICAL-POLE_ASM001/GB70-M3-8-DING007"]},
+        {"op": "fastener_length", "target": "NILONG-GB818-M3", "newLengthMm": 10,
+         "targetOccurrences": [
+           "NILONG-GB818-M3",
+           "NILONG-GB818-M004",
+           "NILONG-GB818-M005",
+           "NILONG-GB818-M006"]}
+      ]
+    },
+    {
+      "candidateId": "cand-b-scoped-2mm",
+      "parentId": "baseline",
+      "label": "Bottom plate +2.0 mm, same scoped fastener substitution",
+      "rationale": "A stiffer variant of cand-a. The same fastener step covers the larger grip growth exactly, so the joint keeps its current engagement.",
+      "ops": [
+        {"op": "thickness", "target": "BOTTOM-PLATE-S500", "deltaMm": 2.0},
+        {"op": "fastener_length", "target": "GB70-M2-5-6-DING", "newLengthMm": 8,
+         "targetOccurrences": [
+           "ARM-S500_ASM/GB70-M2-5-6-DING003",
+           "ARM-S500_ASM/GB70-M2-5-6-DING004",
+           "ARM-S500_ASM001/GB70-M2-5-6-DING008",
+           "ARM-S500_ASM001/GB70-M2-5-6-DING009",
+           "ARM-S500_ASM002/GB70-M2-5-6-DING013",
+           "ARM-S500_ASM002/GB70-M2-5-6-DING014",
+           "ARM-S500_ASM003/GB70-M2-5-6-DING018",
+           "ARM-S500_ASM003/GB70-M2-5-6-DING019"]},
+        {"op": "fastener_length", "target": "GB70-M3-8-DING", "newLengthMm": 10,
+         "targetOccurrences": [
+           "LANDING-GEAR-VERTICAL-POLE_ASM/GB70-M3-8-DING",
+           "LANDING-GEAR-VERTICAL-POLE_ASM/GB70-M3-8-DING001",
+           "LANDING-GEAR-VERTICAL-POLE_ASM/GB70-M3-8-DING002",
+           "LANDING-GEAR-VERTICAL-POLE_ASM/GB70-M3-8-DING003",
+           "LANDING-GEAR-VERTICAL-POLE_ASM001/GB70-M3-8-DING004",
+           "LANDING-GEAR-VERTICAL-POLE_ASM001/GB70-M3-8-DING005",
+           "LANDING-GEAR-VERTICAL-POLE_ASM001/GB70-M3-8-DING006",
+           "LANDING-GEAR-VERTICAL-POLE_ASM001/GB70-M3-8-DING007"]},
+        {"op": "fastener_length", "target": "NILONG-GB818-M3", "newLengthMm": 10,
+         "targetOccurrences": [
+           "NILONG-GB818-M3",
+           "NILONG-GB818-M004",
+           "NILONG-GB818-M005",
+           "NILONG-GB818-M006"]}
+      ]
+    },
+    {
+      "candidateId": "cand-c-plate-2mm-only",
+      "parentId": "baseline",
+      "label": "Bottom plate +2.0 mm, fastener schedule untouched",
+      "rationale": "The cheapest version of the same idea: change one plate and leave the hardware alone, on the assumption that 2 mm is small enough not to matter.",
+      "ops": [
+        {"op": "thickness", "target": "BOTTOM-PLATE-S500", "deltaMm": 2.0}
+      ]
+    },
+    {
+      "candidateId": "cand-d-standardize-m25",
+      "parentId": "baseline",
+      "label": "Standardise every M2.5 cap screw at 8 mm",
+      "rationale": "Cut the fastener schedule down: run one M2.5x8 everywhere instead of mixing lengths, gaining engagement and removing a part number from the kit. Applied at the definition, so it reaches all 28 occurrences.",
+      "ops": [
+        {"op": "fastener_length", "target": "GB70-M2-5-6-DING", "newLengthMm": 8}
+      ]
+    },
+    {
+      "candidateId": "cand-e-thicker-tube",
+      "parentId": "baseline",
+      "label": "Thicken the carbon arm tube wall by 1.0 mm",
+      "rationale": "Stiffen the arms at the source rather than the centre plate, on the theory that arm deflection dominates.",
+      "ops": [
+        {"op": "thickness", "target": "CARBON-FIBER-TUBE", "deltaMm": 1.0}
+      ]
+    }
+  ]
+}

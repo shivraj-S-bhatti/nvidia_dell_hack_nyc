@@ -116,5 +116,7 @@ body for an M2.5×6), which is not grip — a fastener cannot clamp what it cann
 
 ## See also
 
+- `tools/factory/README.md` — FACTORY (#13) turns these measurements into pass/fail
+  candidate verdicts. `swept_volume_hits` is the clearance primitive it vetoes with.
 - `docs/research/graph-store-decision.md` — why MongoDB + in-process, not Neo4j
 - `docs/research/depgraph-context.md` — verified facts, invariants, guardrails

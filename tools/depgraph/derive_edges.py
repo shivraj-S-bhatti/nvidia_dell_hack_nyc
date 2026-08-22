@@ -192,31 +192,60 @@ def derive(occurrences, cyl_by_def, mesh=None, vert_path=None, fasteners=None):
 # versions. See docs/research/manufacturing-side-spec.md sections 5.1-5.3.
 # ---------------------------------------------------------------------------
 
-def swept_volume_hits(mesh, vert_path, org, axis, radius, t0, t1, exclude=()):
+def load_vertex_cache(mesh, vert_path):
+    """Decode mesh_vert.bin once into {partIndex: [(x,y,z), ...]}.
+
+    swept_volume_hits re-reads and re-unpacks the whole vertex file on every call,
+    which is fine for a handful of queries and wasteful for a check harness that
+    sweeps every fastener in a candidate family. Pass the result as `verts=` to reuse
+    the decode. Same bytes, same numbers -- this is a decode cache, not a second
+    geometry implementation.
+    """
+    cache = {}
+    with open(vert_path, 'rb') as fh:
+        for part in mesh['parts']:
+            fh.seek(part['vOff'])
+            raw = fh.read(part['vCount'] * 12)
+            cache[part['i']] = [struct.unpack_from('<fff', raw, k)
+                                for k in range(0, len(raw), 12)]
+    return cache
+
+
+def swept_volume_hits(mesh, vert_path, org, axis, radius, t0, t1, exclude=(), verts=None):
     """Occurrences whose mesh vertices fall inside a cylinder along `axis`.
 
     org, axis  world-space origin and unit direction of the cylinder
     radius     cylinder radius, mm
     t0, t1     interval along the axis, mm (t1 may be less than t0)
     exclude    occurrence ids to skip (normally the fastener itself)
+    verts      optional load_vertex_cache() result; avoids re-reading vert_path
 
     Returns [{occId, defName, hitCount, nearestMm}], nearest first. A conservative
     vertex test: a part is reported when any vertex lies inside the cylinder. It can
     miss a part whose surface passes through with no vertex inside, so callers must
     treat an empty result as "no evidence of collision", not "proven clear".
+
+    The asymmetry is the point, and Factory depends on it: OCCT places triangulation
+    nodes ON the exact surface, so a reported vertex is a real point of the real
+    solid and a hit is sound evidence of interference. Sparse sampling can only hide
+    a collision, never invent one. Reported penetration is therefore a LOWER BOUND.
     """
     lo, hi = (t0, t1) if t0 <= t1 else (t1, t0)
     out = []
-    with open(vert_path, 'rb') as fh:
+    fh = None if verts is not None else open(vert_path, 'rb')
+    try:
         for part in mesh['parts']:
             oid = part.get('occ')
             if not oid or oid in exclude:
                 continue
-            fh.seek(part['vOff'])
-            raw = fh.read(part['vCount'] * 12)
+            if verts is not None:
+                pts = verts[part['i']]
+            else:
+                fh.seek(part['vOff'])
+                raw = fh.read(part['vCount'] * 12)
+                pts = (struct.unpack_from('<fff', raw, k) for k in range(0, len(raw), 12))
             hits, nearest = 0, None
-            for k in range(0, len(raw), 12):
-                v = struct.unpack_from('<fff', raw, k)
+            for v in pts:
                 w = _sub(v, org)
                 t = _dot(w, axis)
                 if not (lo <= t <= hi):
@@ -228,6 +257,9 @@ def swept_volume_hits(mesh, vert_path, org, axis, radius, t0, t1, exclude=()):
             if hits:
                 out.append({'occId': oid, 'defName': part['name'],
                             'hitCount': hits, 'nearestMm': round(nearest, 3)})
+    finally:
+        if fh is not None:
+            fh.close()
     out.sort(key=lambda h: abs(h['nearestMm']))
     return out
 
