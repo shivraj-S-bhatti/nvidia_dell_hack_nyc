@@ -335,13 +335,14 @@ Strict, validated, rejected on failure — **never re-prompted into compliance**
 {
   "proposalId": "...", "issueId": "...", "corpusRevision": "...",
   "candidates": [
-    {"sku":"SHCS-M3x20-A2","lengthMm":20,"requiredLengthMm":18.7,
-     "marginMm":1.3,"protrusionMm":1.3,"protrusionClear":true,
+    {"sku":"SHCS-M3x25-A2","lengthMm":25,"requiredLengthMm":20.2,
+     "marginMm":4.8,"protrusionMm":4.8,"protrusionClear":true,
      "toolId":"hex-2.5","toolClear":true,"leadTimeDays":3,"onHand":250,
-     "arithmetic":"grip 14.2 + engagement 4.5 = 18.7 required; 20 >= 18.7, margin 1.3"}
+     "arithmetic":"grip 14.2 + engagement 6.0 (2.0x D into polyamide) = 20.2 required; 25 >= 20.2, margin 4.8"}
   ],
   "rejected": [
-    {"sku":"SHCS-M3x25-A2","reason":"protrusion 6.3 mm collides with occurrence PCB-POWER"}
+    {"sku":"SHCS-M3x20-A2","reason":"20 mm < 20.2 mm required (grip 14.2 + engagement 6.0)"},
+    {"sku":"SHCS-M3x30-A2","reason":"protrusion 9.8 mm collides with occurrence PCB-POWER"}
   ],
   "unknowns": ["torque into polyamide unverified"],
   "mustVerifyByHuman": ["confirm thread engagement into nylon boss"]
