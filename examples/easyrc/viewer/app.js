@@ -10,7 +10,7 @@ const COLORS = {
   thread: 0xc8f44c,
 };
 
-const ASSEMBLY_DATA_ROOT = '/.artifacts/easyrc-ui/data';
+const ASSEMBLY_DATA_ROOT = '/examples/easyrc/viewer/data';
 const GROUP_SPREAD = 0.27;
 const PART_SPREAD = 0.4;
 const PART_PHASE_START = 0.28;
