@@ -170,3 +170,4 @@ run the document as an unattended shell script.
 ## Demo fixtures
 
 - [Native PartMode turbofan](examples/turbofan/README.md): editable schema-5 project, compact BOM, backend-neutral graph, MongoDB JSONL, and a verified exploded render.
+- [OpenBot-style Blocky rover](examples/openbot-rover/README.md): editable 65 mm and 82 mm wheel variants, bounded agent mutation contract, dependency graph, MongoDB JSONL, and reusable block-system parts.

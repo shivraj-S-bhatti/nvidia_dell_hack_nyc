@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "sourceProject": "openbot-blocky-rover-65mm.bomcad.json",
+  "resultProject": "openbot-blocky-rover-82mm.bomcad.json",
+  "request": {
+    "schemaVersion": 1,
+    "assemblyId": "assembly-openbot-blocky-rover",
+    "operation": "resize_wheels",
+    "wheelDiameterMm": 82,
+    "constraints": {
+      "bodyClearanceMm": 8,
+      "groundClearanceMm": 12,
+      "preserveLeftRightSymmetry": true
+    }
+  },
+  "operations": [
+    {
+      "kind": "parameter.update",
+      "input": {
+        "parameterId": "parameter-rover-wheel-diameter",
+        "value": 82
+      }
+    },
+    {
+      "kind": "component.update",
+      "input": {
+        "occurrenceId": "occ-rover-wheel-fore-left",
+        "patch": {
+          "baseTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            55,
+            -58,
+            41,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "kind": "component.update",
+      "input": {
+        "occurrenceId": "occ-rover-wheel-fore-right",
+        "patch": {
+          "baseTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            55,
+            58,
+            41,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "kind": "component.update",
+      "input": {
+        "occurrenceId": "occ-rover-wheel-aft-left",
+        "patch": {
+          "baseTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            -55,
+            -58,
+            41,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "kind": "component.update",
+      "input": {
+        "occurrenceId": "occ-rover-wheel-aft-right",
+        "patch": {
+          "baseTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -55,
+            58,
+            41,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "kind": "component.update",
+      "input": {
+        "occurrenceId": "occ-rover-motor-left",
+        "patch": {
+          "baseTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -38,
+            29,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "kind": "component.update",
+      "input": {
+        "occurrenceId": "occ-rover-motor-right",
+        "patch": {
+          "baseTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            38,
+            29,
+            1
+          ]
+        }
+      }
+    }
+  ],
+  "acceptance": {
+    "wheelOccurrencesUpdated": 4,
+    "motorMountOccurrencesUpdated": 2,
+    "wheelWellDefinitionsUpdatedThroughSharedParameter": 1,
+    "minimumBodyClearanceMm": 8,
+    "groundPlaneZMm": 0,
+    "symmetric": true
+  }
+}

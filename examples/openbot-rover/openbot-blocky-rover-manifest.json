@@ -1,0 +1,24 @@
+{
+  "corpusRevision": "sha256:91d0e7fe80e35b45caf98c00191f7b1c3a613b2d547d8998945f75cb3e52c9be",
+  "rootDocument": {
+    "kind": "assembly",
+    "assemblyId": "assembly-openbot-blocky-rover"
+  },
+  "counts": {
+    "nodes": 43,
+    "edges": 87,
+    "partDefinitions": 14,
+    "occurrences": 20
+  },
+  "files": {
+    "baseline": "openbot-blocky-rover-65mm.bomcad.json",
+    "upgraded": "openbot-blocky-rover-82mm.bomcad.json",
+    "bom": "openbot-blocky-rover-bom.json",
+    "graph": "openbot-blocky-rover-graph.json",
+    "nodes": "mongo/nodes.ndjson",
+    "edges": "mongo/edges.ndjson",
+    "request": "requests/upgrade-wheels-82mm.json",
+    "expectedPatch": "requests/upgrade-wheels-82mm.expected.json",
+    "agentPartsCatalog": "agent-parts-catalog.json"
+  }
+}

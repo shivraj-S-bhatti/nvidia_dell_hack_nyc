@@ -1,0 +1,102 @@
+{
+  "corpusRevision": "sha256:91d0e7fe80e35b45caf98c00191f7b1c3a613b2d547d8998945f75cb3e52c9be",
+  "rows": [
+    {
+      "definitionId": "part-rover-battery-tray",
+      "name": "Battery tray",
+      "quantity": 1,
+      "occurrenceIds": [
+        "occ-rover-battery-tray"
+      ]
+    },
+    {
+      "definitionId": "part-rover-camera-plate",
+      "name": "Phone and camera plate",
+      "quantity": 1,
+      "occurrenceIds": [
+        "occ-rover-camera-plate"
+      ]
+    },
+    {
+      "definitionId": "part-rover-chassis",
+      "name": "Blocky rover chassis",
+      "quantity": 1,
+      "occurrenceIds": [
+        "occ-rover-chassis"
+      ]
+    },
+    {
+      "definitionId": "part-rover-deck-standoff",
+      "name": "Deck standoff",
+      "quantity": 4,
+      "occurrenceIds": [
+        "occ-rover-standoff-fore-left",
+        "occ-rover-standoff-fore-right",
+        "occ-rover-standoff-aft-left",
+        "occ-rover-standoff-aft-right"
+      ]
+    },
+    {
+      "definitionId": "part-rover-electronics-tray",
+      "name": "Electronics tray",
+      "quantity": 1,
+      "occurrenceIds": [
+        "occ-rover-electronics-tray"
+      ]
+    },
+    {
+      "definitionId": "part-rover-front-bumper",
+      "name": "Front eye bumper",
+      "quantity": 1,
+      "occurrenceIds": [
+        "occ-rover-bumper"
+      ]
+    },
+    {
+      "definitionId": "part-rover-motor-mount",
+      "name": "Motor mount block",
+      "quantity": 2,
+      "occurrenceIds": [
+        "occ-rover-motor-left",
+        "occ-rover-motor-right"
+      ]
+    },
+    {
+      "definitionId": "part-rover-sensor-eye",
+      "name": "Sensor eye pod",
+      "quantity": 2,
+      "occurrenceIds": [
+        "occ-rover-eye-left",
+        "occ-rover-eye-right"
+      ]
+    },
+    {
+      "definitionId": "part-rover-top-deck",
+      "name": "Blocky top deck",
+      "quantity": 1,
+      "occurrenceIds": [
+        "occ-rover-top-deck"
+      ]
+    },
+    {
+      "definitionId": "part-rover-wheel",
+      "name": "Rover wheel",
+      "quantity": 4,
+      "occurrenceIds": [
+        "occ-rover-wheel-fore-left",
+        "occ-rover-wheel-fore-right",
+        "occ-rover-wheel-aft-left",
+        "occ-rover-wheel-aft-right"
+      ]
+    },
+    {
+      "definitionId": "part-rover-wheel-guard",
+      "name": "Two-wheel side guard",
+      "quantity": 2,
+      "occurrenceIds": [
+        "occ-rover-wheel-guard-left",
+        "occ-rover-wheel-guard-right"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "policy": {
+    "maximumInsertionsPerRequest": 2,
+    "allowedOperations": [
+      "component.insert",
+      "component.update",
+      "component.delete"
+    ],
+    "requireCollisionCheck": true,
+    "requireHumanApproval": true,
+    "note": "Bounded reusable primitives only; no arbitrary mesh generation in the judged path."
+  },
+  "parts": [
+    {
+      "partId": "part-rover-catalog-perforated-beam",
+      "name": "Perforated beam",
+      "use": "Bridge mounts or extend the bumper."
+    },
+    {
+      "partId": "part-rover-catalog-angle-bracket",
+      "name": "Right-angle bracket",
+      "use": "Attach a deck, camera plate, or sensor."
+    },
+    {
+      "partId": "part-rover-catalog-axle-spacer",
+      "name": "Axle spacer",
+      "use": "Preserve lateral wheel clearance."
+    },
+    {
+      "partId": "part-rover-sensor-eye",
+      "name": "Sensor eye pod",
+      "use": "Add a second bounded sensor arrangement."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "assemblyId": "assembly-openbot-blocky-rover",
+  "operation": "resize_wheels",
+  "wheelDiameterMm": 82,
+  "constraints": {
+    "bodyClearanceMm": 8,
+    "groundClearanceMm": 12,
+    "preserveLeftRightSymmetry": true
+  }
+}

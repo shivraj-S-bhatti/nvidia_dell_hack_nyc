@@ -1,0 +1,2537 @@
+{
+  "schemaVersion": 5,
+  "projectId": "project-openbot-blocky-rover-65mm",
+  "name": "OpenBot-style Blocky rover - 65 mm wheels",
+  "units": "mm",
+  "parameters": [
+    {
+      "id": "parameter-rover-wheel-diameter",
+      "name": "wheel_diameter_mm",
+      "value": 65,
+      "description": "Shared wheel and wheel-well diameter."
+    },
+    {
+      "id": "parameter-rover-body-clearance",
+      "name": "body_clearance_mm",
+      "value": 8,
+      "description": "Required radial wheel-to-body clearance."
+    },
+    {
+      "id": "parameter-rover-ground-clearance",
+      "name": "ground_clearance_mm",
+      "value": 12,
+      "description": "Chassis-bottom clearance above the ground plane."
+    },
+    {
+      "id": "parameter-rover-axle-height",
+      "name": "axle_height_mm",
+      "value": "wheel_diameter_mm/2",
+      "description": "Keeps every wheel tangent to the same ground plane."
+    }
+  ],
+  "materials": [
+    {
+      "id": "material-rover-body-red",
+      "name": "Printed red polymer",
+      "densityKgM3": 1240,
+      "description": "Conceptual material and appearance for the rover demonstrator.",
+      "source": "Team-authored demo assumption; verify production materials independently.",
+      "appearanceId": "appearance-rover-body-red",
+      "extensions": {
+        "studioAppearance": {
+          "baseColor": "#d83b32",
+          "metallic": 0.08,
+          "roughness": 0.38,
+          "opacity": 1,
+          "edgeColor": "#1b2430"
+        }
+      }
+    },
+    {
+      "id": "material-rover-accent-yellow",
+      "name": "Printed yellow polymer",
+      "densityKgM3": 1240,
+      "description": "Conceptual material and appearance for the rover demonstrator.",
+      "source": "Team-authored demo assumption; verify production materials independently.",
+      "appearanceId": "appearance-rover-accent-yellow",
+      "extensions": {
+        "studioAppearance": {
+          "baseColor": "#f2c94c",
+          "metallic": 0.06,
+          "roughness": 0.4,
+          "opacity": 1,
+          "edgeColor": "#1b2430"
+        }
+      }
+    },
+    {
+      "id": "material-rover-tire",
+      "name": "Flexible black tire",
+      "densityKgM3": 1120,
+      "description": "Conceptual material and appearance for the rover demonstrator.",
+      "source": "Team-authored demo assumption; verify production materials independently.",
+      "appearanceId": "appearance-rover-tire",
+      "extensions": {
+        "studioAppearance": {
+          "baseColor": "#20252b",
+          "metallic": 0.02,
+          "roughness": 0.72,
+          "opacity": 1,
+          "edgeColor": "#1b2430"
+        }
+      }
+    },
+    {
+      "id": "material-rover-tray-cyan",
+      "name": "Printed cyan polymer",
+      "densityKgM3": 1240,
+      "description": "Conceptual material and appearance for the rover demonstrator.",
+      "source": "Team-authored demo assumption; verify production materials independently.",
+      "appearanceId": "appearance-rover-tray-cyan",
+      "extensions": {
+        "studioAppearance": {
+          "baseColor": "#32a9b8",
+          "metallic": 0.06,
+          "roughness": 0.42,
+          "opacity": 1,
+          "edgeColor": "#1b2430"
+        }
+      }
+    },
+    {
+      "id": "material-rover-metal",
+      "name": "Conceptual aluminum",
+      "densityKgM3": 2700,
+      "description": "Conceptual material and appearance for the rover demonstrator.",
+      "source": "Team-authored demo assumption; verify production materials independently.",
+      "appearanceId": "appearance-rover-metal",
+      "extensions": {
+        "studioAppearance": {
+          "baseColor": "#a8b3bd",
+          "metallic": 0.7,
+          "roughness": 0.28,
+          "opacity": 1,
+          "edgeColor": "#1b2430"
+        }
+      }
+    },
+    {
+      "id": "material-rover-sensor",
+      "name": "Sensor lens",
+      "densityKgM3": 1180,
+      "description": "Conceptual material and appearance for the rover demonstrator.",
+      "source": "Team-authored demo assumption; verify production materials independently.",
+      "appearanceId": "appearance-rover-sensor",
+      "extensions": {
+        "studioAppearance": {
+          "baseColor": "#ecf5ff",
+          "metallic": 0.18,
+          "roughness": 0.2,
+          "opacity": 1,
+          "edgeColor": "#1b2430"
+        }
+      }
+    }
+  ],
+  "partDefinitions": [
+    {
+      "id": "part-rover-chassis",
+      "name": "Blocky rover chassis",
+      "parameters": [
+        {
+          "id": "part-rover-chassis:parameter:length",
+          "name": "length",
+          "value": 170
+        },
+        {
+          "id": "part-rover-chassis:parameter:width",
+          "name": "width",
+          "value": 100
+        },
+        {
+          "id": "part-rover-chassis:parameter:thickness",
+          "name": "thickness",
+          "value": 6
+        }
+      ],
+      "referenceGeometry": [],
+      "sketches": [],
+      "sketchBlockDefinitions": [],
+      "bodies": [
+        {
+          "id": "part-rover-chassis:body",
+          "name": "Blocky rover chassis",
+          "kind": "solid",
+          "createdByFeatureId": "part-rover-chassis:feature:base",
+          "featureIds": [
+            "part-rover-chassis:feature:base"
+          ],
+          "visible": true,
+          "suppressed": false,
+          "materialId": "material-rover-body-red",
+          "appearanceId": "appearance-rover-body-red"
+        }
+      ],
+      "bodyPatterns": [],
+      "features": [
+        {
+          "id": "part-rover-chassis:feature:base",
+          "name": "Extrude chassis",
+          "type": "extrude",
+          "sketch": {
+            "shapes": [
+              {
+                "kind": "rect",
+                "x": 0,
+                "y": 0,
+                "w": "length",
+                "h": "width",
+                "id": "part-rover-chassis:feature:base:profile:1"
+              }
+            ],
+            "z": 0
+          },
+          "through": false,
+          "h": "thickness",
+          "suppressed": false,
+          "inputRefs": [],
+          "resultPolicy": {
+            "kind": "new-body",
+            "bodyName": "Blocky rover chassis"
+          },
+          "createdBodyId": "part-rover-chassis:body"
+        }
+      ],
+      "featureOrder": [
+        "part-rover-chassis:feature:base"
+      ],
+      "metadata": {
+        "activeBodyId": "part-rover-chassis:body",
+        "partNumber": "ROVER-CHASSIS",
+        "revision": "A",
+        "designStatus": "concept-demonstrator"
+      },
+      "extensions": {
+        "roverRole": "primary-structure",
+        "agentCatalogOnly": false
+      }
+    },
+    {
+      "id": "part-rover-top-deck",
+      "name": "Blocky top deck",
+      "parameters": [
+        {
+          "id": "part-rover-top-deck:parameter:length",
+          "name": "length",
+          "value": 150
+        },
+        {
+          "id": "part-rover-top-deck:parameter:width",
+          "name": "width",
+          "value": 86
+        },
+        {
+          "id": "part-rover-top-deck:parameter:thickness",
+          "name": "thickness",
+          "value": 4
+        },
+        {
+          "id": "part-rover-top-deck:parameter:hole_dia",
+          "name": "hole_dia",
+          "value": 4
+        }
+      ],
+      "referenceGeometry": [],
+      "sketches": [],
+      "sketchBlockDefinitions": [],
+      "bodies": [
+        {
+          "id": "part-rover-top-deck:body",
+          "name": "Blocky top deck",
+          "kind": "solid",
+          "createdByFeatureId": "part-rover-top-deck:feature:base",
+          "featureIds": [
+            "part-rover-top-deck:feature:base",
+            "part-rover-top-deck:feature:holes"
+          ],
+          "visible": true,
+          "suppressed": false,
+          "materialId": "material-rover-accent-yellow",
+          "appearanceId": "appearance-rover-accent-yellow"
+        }
+      ],
+      "bodyPatterns": [],
+      "features": [
+        {
+          "id": "part-rover-top-deck:feature:base",
+          "name": "Extrude top deck",
+          "type": "extrude",
+          "sketch": {
+            "shapes": [
+              {
+                "kind": "rect",
+                "x": 0,
+                "y": 0,
+                "w": "length",
+                "h": "width",
+                "id": "part-rover-top-deck:feature:base:profile:1"
+              }
+            ],
+            "z": 0
+          },
+          "through": false,
+          "h": "thickness",
+          "suppressed": false,
+          "inputRefs": [],
+          "resultPolicy": {
+            "kind": "new-body",
+            "bodyName": "Blocky top deck"
+          },
+          "createdBodyId": "part-rover-top-deck:body"
+        },
+        {
+          "id": "part-rover-top-deck:feature:holes",
+          "name": "Cut deck mounting holes",
+          "type": "cut",
+          "sketch": {
+            "shapes": [
+              {
+                "kind": "circle",
+                "x": -60,
+                "y": -35,
+                "r": "hole_dia/2",
+                "id": "part-rover-top-deck:feature:holes:profile:1"
+              },
+              {
+                "kind": "circle",
+                "x": 60,
+                "y": -35,
+                "r": "hole_dia/2",
+                "id": "part-rover-top-deck:feature:holes:profile:2"
+              },
+              {
+                "kind": "circle",
+                "x": -60,
+                "y": 35,
+                "r": "hole_dia/2",
+                "id": "part-rover-top-deck:feature:holes:profile:3"
+              },
+              {
+                "kind": "circle",
+                "x": 60,
+                "y": 35,
+                "r": "hole_dia/2",
+                "id": "part-rover-top-deck:feature:holes:profile:4"
+              }
+            ],
+            "z": "thickness"
+          },
+          "through": true,
+          "h": "thickness*2",
+          "suppressed": false,
+          "inputRefs": [],
+          "resultPolicy": {
+            "kind": "subtract",
+            "targetBodyIds": [
+              "part-rover-top-deck:body"
+            ],
+            "keepTools": false
+          }
+        }
+      ],
+      "featureOrder": [
+        "part-rover-top-deck:feature:base",
+        "part-rover-top-deck:feature:holes"
+      ],
+      "metadata": {
+        "activeBodyId": "part-rover-top-deck:body",
+        "partNumber": "ROVER-TOP-DECK",
+        "revision": "A",
+        "designStatus": "concept-demonstrator"
+      },
+      "extensions": {
+        "roverRole": "upper-structure",
+        "agentCatalogOnly": false
+      }
+    },
+    {
+      "id": "part-rover-wheel",
+      "name": "Rover wheel",
+      "parameters": [
+        {
+          "id": "part-rover-wheel:parameter:wheel_dia",
+          "name": "wheel_dia",
+          "value": "wheel_diameter_mm",
+          "description": "Driven by the project wheel-size request."
+        },
+        {
+          "id": "part-rover-wheel:parameter:tread_width",
+          "name": "tread_width",
+          "value": 18
+        },
+        {
+          "id": "part-rover-wheel:parameter:bore_dia",
+          "name": "bore_dia",
+          "value": 8
+        }
+      ],
+      "referenceGeometry": [],
+      "sketches": [],
+      "sketchBlockDefinitions": [],
+      "bodies": [
+        {
+          "id": "part-rover-wheel:body",
+          "name": "Rover wheel",
+          "kind": "solid",
+          "createdByFeatureId": "part-rover-wheel:feature:tire",
+          "featureIds": [
+            "part-rover-wheel:feature:tire",
+            "part-rover-wheel:feature:bore"
+          ],
+          "visible": true,
+          "suppressed": false,
+          "materialId": "material-rover-tire",
+          "appearanceId": "appearance-rover-tire"
+        }
+      ],
+      "bodyPatterns": [],
+      "features": [
+        {
+          "id": "part-rover-wheel:feature:tire",
+          "name": "Extrude wheel",
+          "type": "extrude",
+          "sketch": {
+            "shapes": [
+              {
+                "kind": "circle",
+                "x": 0,
+                "y": 0,
+                "r": "wheel_dia/2",
+                "id": "part-rover-wheel:feature:tire:profile:1"
+              }
+            ],
+            "z": 0
+          },
+          "through": false,
+          "h": "tread_width",
+          "suppressed": false,
+          "inputRefs": [],
+          "resultPolicy": {
+            "kind": "new-body",
+            "bodyName": "Rover wheel"
+          },
+          "createdBodyId": "part-rover-wheel:body"
+        },
+        {
+          "id": "part-rover-wheel:feature:bore",
+          "name": "Cut axle bore",
+          "type": "cut",
+          "sketch": {
+            "shapes": [
+              {
+                "kind": "circle",
+                "x": 0,
+                "y": 0,
+                "r": "bore_dia/2",
+                "id": "part-rover-wheel:feature:bore:profile:1"
+              }
+            ],
+            "z": "tread_width"
+          },
+          "through": true,
+          "h": "tread_width*2",
+          "suppressed": false,
+          "inputRefs": [],
+          "resultPolicy": {
+            "kind": "subtract",
+            "targetBodyIds": [
+              "part-rover-wheel:body"
+            ],
+            "keepTools": false
+          }
+        }
+      ],
+      "featureOrder": [
+        "part-rover-wheel:feature:tire",
+        "part-rover-wheel:feature:bore"
+      ],
+      "metadata": {
+        "activeBodyId": "part-rover-wheel:body",
+        "partNumber": "ROVER-WHEEL",
+        "revision": "A",
+        "designStatus": "concept-demonstrator"
+      },
+      "extensions": {
+        "roverRole": "wheel",
+        "agentCatalogOnly": false
+      }
+    },
+    {
+      "id": "part-rover-wheel-guard",
+      "name": "Two-wheel side guard",
+      "parameters": [
+        {
+          "id": "part-rover-wheel-guard:parameter:length",
+          "name": "length",
+          "value": 160
+        },
+        {
+          "id": "part-rover-wheel-guard:parameter:height",
+          "name": "height",
+          "value": 98
+        },
+        {
+          "id": "part-rover-wheel-guard:parameter:thickness",
+          "name": "thickness",
+          "value": 4
+        },
+        {
+          "id": "part-rover-wheel-guard:parameter:wheel_dia",
+          "name": "wheel_dia",
+          "value": "wheel_diameter_mm"
+        },
+        {
+          "id": "part-rover-wheel-guard:parameter:clearance",
+          "name": "clearance",
+          "value": "body_clearance_mm"
+        },
+        {
+          "id": "part-rover-wheel-guard:parameter:axle_height",
+          "name": "axle_height",
+          "value": "axle_height_mm"
+        },
+        {
+          "id": "part-rover-wheel-guard:parameter:panel_center_z",
+          "name": "panel_center_z",
+          "value": 61
+        },
+        {
+          "id": "part-rover-wheel-guard:parameter:wheel_base",
+          "name": "wheel_base",
+          "value": 110
+        }
+      ],
+      "referenceGeometry": [],
+      "sketches": [],
+      "sketchBlockDefinitions": [],
+      "bodies": [
+        {
+          "id": "part-rover-wheel-guard:body",
+          "name": "Two-wheel side guard",
+          "kind": "solid",
+          "createdByFeatureId": "part-rover-wheel-guard:feature:panel",
+          "featureIds": [
+            "part-rover-wheel-guard:feature:panel",
+            "part-rover-wheel-guard:feature:wheel-wells"
+          ],
+          "visible": true,
+          "suppressed": false,
+          "materialId": "material-rover-body-red",
+          "appearanceId": "appearance-rover-body-red"
+        }
+      ],
+      "bodyPatterns": [],
+      "features": [
+        {
+          "id": "part-rover-wheel-guard:feature:panel",
+          "name": "Extrude side guard",
+          "type": "extrude",
+          "sketch": {
+            "shapes": [
+              {
+                "kind": "rect",
+                "x": 0,
+                "y": 0,
+                "w": "length",
+                "h": "height",
+                "id": "part-rover-wheel-guard:feature:panel:profile:1"
+              }
+            ],
+            "z": 0
+          },
+          "through": false,
+          "h": "thickness",
+          "suppressed": false,
+          "inputRefs": [],
+          "resultPolicy": {
+            "kind": "new-body",
+            "bodyName": "Two-wheel side guard"
+          },
+          "createdBodyId": "part-rover-wheel-guard:body"
+        },
+        {
+          "id": "part-rover-wheel-guard:feature:wheel-wells",
+          "name": "Cut wheel wells",
+          "type": "cut",
+          "sketch": {
+            "shapes": [
+              {
+                "kind": "circle",
+                "x": "-wheel_base/2",
+                "y": "axle_height-panel_center_z",
+                "r": "wheel_dia/2+clearance",
+                "id": "part-rover-wheel-guard:feature:wheel-wells:profile:1"
+              },
+              {
+                "kind": "circle",
+                "x": "wheel_base/2",
+                "y": "axle_height-panel_center_z",
+                "r": "wheel_dia/2+clearance",
+                "id": "part-rover-wheel-guard:feature:wheel-wells:profile:2"
+              }
+            ],
+            "z": "thickness"
+          },
+          "through": true,
+          "h": "thickness*2",
+          "suppressed": false,
+          "inputRefs": [],
+          "resultPolicy": {
+            "kind": "subtract",
+            "targetBodyIds": [
+              "part-rover-wheel-guard:body"
+            ],
+            "keepTools": false
+          }
+        }
+      ],
+      "featureOrder": [
+        "part-rover-wheel-guard:feature:panel",
+        "part-rover-wheel-guard:feature:wheel-wells"
+      ],
+      "metadata": {
+        "activeBodyId": "part-rover-wheel-guard:body",
+        "partNumber": "ROVER-WHEEL-GUARD",
+        "revision": "A",
+        "designStatus": "concept-demonstrator"
+      },
+      "extensions": {
+        "roverRole": "wheel-well",
+        "agentCatalogOnly": false
+      }
+    },
+    {
+      "id": "part-rover-motor-mount",
+      "name": "Motor mount block",
+      "parameters": [
+        {
+          "id": "part-rover-motor-mount:parameter:length",
+          "name": "length",
+          "value": 34
+        },
+        {
+          "id": "part-rover-motor-mount:parameter:width",
+          "name": "width",
+          "value": 24
+        },
+        {
+          "id": "part-rover-motor-mount:parameter:height",
+          "name": "height",
+          "value": 24
+        }
+      ],
+      "referenceGeometry": [],
+      "sketches": [],
+      "sketchBlockDefinitions": [],
+      "bodies": [
+        {
+          "id": "part-rover-motor-mount:body",
+          "name": "Motor mount block",
+          "kind": "solid",
+          "createdByFeatureId": "part-rover-motor-mount:feature:block",
+          "featureIds": [
+            "part-rover-motor-mount:feature:block"
+          ],
+          "visible": true,
+          "suppressed": false,
+          "materialId": "material-rover-metal",
+          "appearanceId": "appearance-rover-metal"
+        }
+      ],
+      "bodyPatterns": [],
+      "features": [
+        {
+          "id": "part-rover-motor-mount:feature:block",
+          "name": "Extrude motor mount",
+          "type": "extrude",
+          "sketch": {
+            "shapes": [
+              {
+                "kind": "rect",
+                "x": 0,
+                "y": 0,
+                "w": "length",
+                "h": "width",
+                "id": "part-rover-motor-mount:feature:block:profile:1"
+              }
+            ],
+            "z": 0
+          },
+          "through": false,
+          "h": "height",
+          "suppressed": false,
+          "inputRefs": [],
+          "resultPolicy": {
+            "kind": "new-body",
+            "bodyName": "Motor mount block"
+          },
+          "createdBodyId": "part-rover-motor-mount:body"
+        }
+      ],
+      "featureOrder": [
+        "part-rover-motor-mount:feature:block"
+      ],
+      "metadata": {
+        "activeBodyId": "part-rover-motor-mount:body",
+        "partNumber": "ROVER-MOTOR-MOUNT",
+        "revision": "A",
+        "designStatus": "concept-demonstrator"
+      },
+      "extensions": {
+        "roverRole": "motor-mount",
+        "agentCatalogOnly": false
+      }
+    },
+    {
+      "id": "part-rover-battery-tray",
+      "name": "Battery tray",
+      "parameters": [
+        {
+          "id": "part-rover-battery-tray:parameter:width",
+          "name": "width",
+          "value": 74
+        },
+        {
+          "id": "part-rover-battery-tray:parameter:depth",
+          "name": "depth",
+          "value": 46
+        },
+        {
+          "id": "part-rover-battery-tray:parameter:height",
+          "name": "height",
+          "value": 12
+        },
+        {
+          "id": "part-rover-battery-tray:parameter:wall",
+          "name": "wall",
+          "value": 3
+        }
+      ],
+      "referenceGeometry": [],
+      "sketches": [],
+      "sketchBlockDefinitions": [],
+      "bodies": [
+        {
+          "id": "part-rover-battery-tray:body",
+          "name": "Battery tray",
+          "kind": "solid",
+          "createdByFeatureId": "part-rover-battery-tray:feature:outer",
+          "featureIds": [
+            "part-rover-battery-tray:feature:outer"
+          ],
+          "visible": true,
+          "suppressed": false,
+          "materialId": "material-rover-tray-cyan",
+          "appearanceId": "appearance-rover-tray-cyan"
+        }
+      ],
+      "bodyPatterns": [],
+      "features": [
+        {
+          "id": "part-rover-battery-tray:feature:outer",
+          "name": "Extrude battery tray platform",
+          "type": "extrude",
+          "sketch": {
+            "shapes": [
+              {
+                "kind": "rect",
+                "x": 0,
+                "y": 0,
+                "w": "width",
+                "h": "depth",
+                "id": "part-rover-battery-tray:feature:outer:profile:1"
+              }
+            ],
+            "z": 0
+          },
+          "through": false,
+          "h": "height",
+          "suppressed": false,
+          "inputRefs": [],
+          "resultPolicy": {
+            "kind": "new-body",
+            "bodyName": "Battery tray"
+          },
+          "createdBodyId": "part-rover-battery-tray:body"
+        }
+      ],
+      "featureOrder": [
+        "part-rover-battery-tray:feature:outer"
+      ],
+      "metadata": {
+        "activeBodyId": "part-rover-battery-tray:body",
+        "partNumber": "ROVER-BATTERY-TRAY",
+        "revision": "A",
+        "designStatus": "concept-demonstrator"
+      },
+      "extensions": {
+        "roverRole": "battery-tray",
+        "agentCatalogOnly": false
+      }
+    },
+    {
+      "id": "part-rover-electronics-tray",
+      "name": "Electronics tray",
+      "parameters": [
+        {
+          "id": "part-rover-electronics-tray:parameter:width",
+          "name": "width",
+          "value": 72
+        },
+        {
+          "id": "part-rover-electronics-tray:parameter:depth",
+          "name": "depth",
+          "value": 52
+        },
+        {
+          "id": "part-rover-electronics-tray:parameter:height",
+          "name": "height",
+          "value": 12
+        },
+        {
+          "id": "part-rover-electronics-tray:parameter:wall",
+          "name": "wall",
+          "value": 3
+        }
+      ],
+      "referenceGeometry": [],
+      "sketches": [],
+      "sketchBlockDefinitions": [],
+      "bodies": [
+        {
+          "id": "part-rover-electronics-tray:body",
+          "name": "Electronics tray",
+          "kind": "solid",
+          "createdByFeatureId": "part-rover-electronics-tray:feature:outer",
+          "featureIds": [
+            "part-rover-electronics-tray:feature:outer"
+          ],
+          "visible": true,
+          "suppressed": false,
+          "materialId": "material-rover-tray-cyan",
+          "appearanceId": "appearance-rover-tray-cyan"
+        }
+      ],
+      "bodyPatterns": [],
+      "features": [
+        {
+          "id": "part-rover-electronics-tray:feature:outer",
+          "name": "Extrude electronics tray platform",
+          "type": "extrude",
+          "sketch": {
+            "shapes": [
+              {
+                "kind": "rect",
+                "x": 0,
+                "y": 0,
+                "w": "width",
+                "h": "depth",
+                "id": "part-rover-electronics-tray:feature:outer:profile:1"
+              }
+            ],
+            "z": 0
+          },
+          "through": false,
+          "h": "height",
+          "suppressed": false,
+          "inputRefs": [],
+          "resultPolicy": {
+            "kind": "new-body",
+            "bodyName": "Electronics tray"
+          },
+          "createdBodyId": "part-rover-electronics-tray:body"
+        }
+      ],
+      "featureOrder": [
+        "part-rover-electronics-tray:feature:outer"
+      ],
+      "metadata": {
+        "activeBodyId": "part-rover-electronics-tray:body",
+        "partNumber": "ROVER-ELECTRONICS-TRAY",
+        "revision": "A",
+        "designStatus": "concept-demonstrator"
+      },
+      "extensions": {
+        "roverRole": "electronics-tray",
+        "agentCatalogOnly": false
+      }
+    },
+    {
+      "id": "part-rover-deck-standoff",
+      "name": "Deck standoff",
+      "parameters": [
+        {
+          "id": "part-rover-deck-standoff:parameter:outer_dia",
+          "name": "outer_dia",
+          "value": 12
+        },
+        {
+          "id": "part-rover-deck-standoff:parameter:bore_dia",
+          "name": "bore_dia",
+          "value": 4
+        },
+        {
+          "id": "part-rover-deck-standoff:parameter:length",
+          "name": "length",
+          "value": 77
+        }
+      ],
+      "referenceGeometry": [],
+      "sketches": [],
+      "sketchBlockDefinitions": [],
+      "bodies": [
+        {
+          "id": "part-rover-deck-standoff:body",
+          "name": "Deck standoff",
+          "kind": "solid",
+          "createdByFeatureId": "part-rover-deck-standoff:feature:body",
+          "featureIds": [
+            "part-rover-deck-standoff:feature:body",
+            "part-rover-deck-standoff:feature:bore"
+          ],
+          "visible": true,
+          "suppressed": false,
+          "materialId": "material-rover-metal",
+          "appearanceId": "appearance-rover-metal"
+        }
+      ],
+      "bodyPatterns": [],
+      "features": [
+        {
+          "id": "part-rover-deck-standoff:feature:body",
+          "name": "Extrude standoff",
+          "type": "extrude",
+          "sketch": {
+            "shapes": [
+              {
+                "kind": "circle",
+                "x": 0,
+                "y": 0,
+                "r": "outer_dia/2",
+                "id": "part-rover-deck-standoff:feature:body:profile:1"
+              }
+            ],
+            "z": 0
+          },
+          "through": false,
+          "h": "length",
+          "suppressed": false,
+          "inputRefs": [],
+          "resultPolicy": {
+            "kind": "new-body",
+            "bodyName": "Deck standoff"
+          },
+          "createdBodyId": "part-rover-deck-standoff:body"
+        },
+        {
+          "id": "part-rover-deck-standoff:feature:bore",
+          "name": "Cut standoff bore",
+          "type": "cut",
+          "sketch": {
+            "shapes": [
+              {
+                "kind": "circle",
+                "x": 0,
+                "y": 0,
+                "r": "bore_dia/2",
+                "id": "part-rover-deck-standoff:feature:bore:profile:1"
+              }
+            ],
+            "z": "length"
+          },
+          "through": true,
+          "h": "length*2",
+          "suppressed": false,
+          "inputRefs": [],
+          "resultPolicy": {
+            "kind": "subtract",
+            "targetBodyIds": [
+              "part-rover-deck-standoff:body"
+            ],
+            "keepTools": false
+          }
+        }
+      ],
+      "featureOrder": [
+        "part-rover-deck-standoff:feature:body",
+        "part-rover-deck-standoff:feature:bore"
+      ],
+      "metadata": {
+        "activeBodyId": "part-rover-deck-standoff:body",
+        "partNumber": "ROVER-DECK-STANDOFF",
+        "revision": "A",
+        "designStatus": "concept-demonstrator"
+      },
+      "extensions": {
+        "roverRole": "standoff",
+        "agentCatalogOnly": false
+      }
+    },
+    {
+      "id": "part-rover-camera-plate",
+      "name": "Phone and camera plate",
+      "parameters": [
+        {
+          "id": "part-rover-camera-plate:parameter:width",
+          "name": "width",
+          "value": 64
+        },
+        {
+          "id": "part-rover-camera-plate:parameter:height",
+          "name": "height",
+          "value": 46
+        },
+        {
+          "id": "part-rover-camera-plate:parameter:thickness",
+          "name": "thickness",
+          "value": 4
+        }
+      ],
+      "referenceGeometry": [],
+      "sketches": [],
+      "sketchBlockDefinitions": [],
+      "bodies": [
+        {
+          "id": "part-rover-camera-plate:body",
+          "name": "Phone and camera plate",
+          "kind": "solid",
+          "createdByFeatureId": "part-rover-camera-plate:feature:plate",
+          "featureIds": [
+            "part-rover-camera-plate:feature:plate",
+            "part-rover-camera-plate:feature:lens"
+          ],
+          "visible": true,
+          "suppressed": false,
+          "materialId": "material-rover-accent-yellow",
+          "appearanceId": "appearance-rover-accent-yellow"
+        }
+      ],
+      "bodyPatterns": [],
+      "features": [
+        {
+          "id": "part-rover-camera-plate:feature:plate",
+          "name": "Extrude camera plate",
+          "type": "extrude",
+          "sketch": {
+            "shapes": [
+              {
+                "kind": "rect",
+                "x": 0,
+                "y": 0,
+                "w": "width",
+                "h": "height",
+                "id": "part-rover-camera-plate:feature:plate:profile:1"
+              }
+            ],
+            "z": 0
+          },
+          "through": false,
+          "h": "thickness",
+          "suppressed": false,
+          "inputRefs": [],
+          "resultPolicy": {
+            "kind": "new-body",
+            "bodyName": "Phone and camera plate"
+          },
+          "createdBodyId": "part-rover-camera-plate:body"
+        },
+        {
+          "id": "part-rover-camera-plate:feature:lens",
+          "name": "Cut lens opening",
+          "type": "cut",
+          "sketch": {
+            "shapes": [
+              {
+                "kind": "circle",
+                "x": 0,
+                "y": 8,
+                "r": 8,
+                "id": "part-rover-camera-plate:feature:lens:profile:1"
+              },
+              {
+                "kind": "rect",
+                "x": -20,
+                "y": -8,
+                "w": 5,
+                "h": 22,
+                "id": "part-rover-camera-plate:feature:lens:profile:2"
+              },
+              {
+                "kind": "rect",
+                "x": 20,
+                "y": -8,
+                "w": 5,
+                "h": 22,
+                "id": "part-rover-camera-plate:feature:lens:profile:3"
+              }
+            ],
+            "z": "thickness"
+          },
+          "through": true,
+          "h": "thickness*2",
+          "suppressed": false,
+          "inputRefs": [],
+          "resultPolicy": {
+            "kind": "subtract",
+            "targetBodyIds": [
+              "part-rover-camera-plate:body"
+            ],
+            "keepTools": false
+          }
+        }
+      ],
+      "featureOrder": [
+        "part-rover-camera-plate:feature:plate",
+        "part-rover-camera-plate:feature:lens"
+      ],
+      "metadata": {
+        "activeBodyId": "part-rover-camera-plate:body",
+        "partNumber": "ROVER-CAMERA-PLATE",
+        "revision": "A",
+        "designStatus": "concept-demonstrator"
+      },
+      "extensions": {
+        "roverRole": "phone-camera-mount",
+        "agentCatalogOnly": false
+      }
+    },
+    {
+      "id": "part-rover-front-bumper",
+      "name": "Front eye bumper",
+      "parameters": [
+        {
+          "id": "part-rover-front-bumper:parameter:length",
+          "name": "length",
+          "value": 12
+        },
+        {
+          "id": "part-rover-front-bumper:parameter:width",
+          "name": "width",
+          "value": 92
+        },
+        {
+          "id": "part-rover-front-bumper:parameter:height",
+          "name": "height",
+          "value": 14
+        }
+      ],
+      "referenceGeometry": [],
+      "sketches": [],
+      "sketchBlockDefinitions": [],
+      "bodies": [
+        {
+          "id": "part-rover-front-bumper:body",
+          "name": "Front eye bumper",
+          "kind": "solid",
+          "createdByFeatureId": "part-rover-front-bumper:feature:beam",
+          "featureIds": [
+            "part-rover-front-bumper:feature:beam"
+          ],
+          "visible": true,
+          "suppressed": false,
+          "materialId": "material-rover-accent-yellow",
+          "appearanceId": "appearance-rover-accent-yellow"
+        }
+      ],
+      "bodyPatterns": [],
+      "features": [
+        {
+          "id": "part-rover-front-bumper:feature:beam",
+          "name": "Extrude bumper",
+          "type": "extrude",
+          "sketch": {
+            "shapes": [
+              {
+                "kind": "rect",
+                "x": 0,
+                "y": 0,
+                "w": "length",
+                "h": "width",
+                "id": "part-rover-front-bumper:feature:beam:profile:1"
+              }
+            ],
+            "z": 0
+          },
+          "through": false,
+          "h": "height",
+          "suppressed": false,
+          "inputRefs": [],
+          "resultPolicy": {
+            "kind": "new-body",
+            "bodyName": "Front eye bumper"
+          },
+          "createdBodyId": "part-rover-front-bumper:body"
+        }
+      ],
+      "featureOrder": [
+        "part-rover-front-bumper:feature:beam"
+      ],
+      "metadata": {
+        "activeBodyId": "part-rover-front-bumper:body",
+        "partNumber": "ROVER-FRONT-BUMPER",
+        "revision": "A",
+        "designStatus": "concept-demonstrator"
+      },
+      "extensions": {
+        "roverRole": "bumper",
+        "agentCatalogOnly": false
+      }
+    },
+    {
+      "id": "part-rover-sensor-eye",
+      "name": "Sensor eye pod",
+      "parameters": [
+        {
+          "id": "part-rover-sensor-eye:parameter:outer_dia",
+          "name": "outer_dia",
+          "value": 16
+        },
+        {
+          "id": "part-rover-sensor-eye:parameter:length",
+          "name": "length",
+          "value": 10
+        }
+      ],
+      "referenceGeometry": [],
+      "sketches": [],
+      "sketchBlockDefinitions": [],
+      "bodies": [
+        {
+          "id": "part-rover-sensor-eye:body",
+          "name": "Sensor eye pod",
+          "kind": "solid",
+          "createdByFeatureId": "part-rover-sensor-eye:feature:pod",
+          "featureIds": [
+            "part-rover-sensor-eye:feature:pod"
+          ],
+          "visible": true,
+          "suppressed": false,
+          "materialId": "material-rover-sensor",
+          "appearanceId": "appearance-rover-sensor"
+        }
+      ],
+      "bodyPatterns": [],
+      "features": [
+        {
+          "id": "part-rover-sensor-eye:feature:pod",
+          "name": "Extrude sensor eye",
+          "type": "extrude",
+          "sketch": {
+            "shapes": [
+              {
+                "kind": "circle",
+                "x": 0,
+                "y": 0,
+                "r": "outer_dia/2",
+                "id": "part-rover-sensor-eye:feature:pod:profile:1"
+              }
+            ],
+            "z": 0
+          },
+          "through": false,
+          "h": "length",
+          "suppressed": false,
+          "inputRefs": [],
+          "resultPolicy": {
+            "kind": "new-body",
+            "bodyName": "Sensor eye pod"
+          },
+          "createdBodyId": "part-rover-sensor-eye:body"
+        }
+      ],
+      "featureOrder": [
+        "part-rover-sensor-eye:feature:pod"
+      ],
+      "metadata": {
+        "activeBodyId": "part-rover-sensor-eye:body",
+        "partNumber": "ROVER-SENSOR-EYE",
+        "revision": "A",
+        "designStatus": "concept-demonstrator"
+      },
+      "extensions": {
+        "roverRole": "sensor-pod",
+        "agentCatalogOnly": false
+      }
+    },
+    {
+      "id": "part-rover-catalog-perforated-beam",
+      "name": "Catalog perforated beam",
+      "parameters": [
+        {
+          "id": "part-rover-catalog-perforated-beam:parameter:length",
+          "name": "length",
+          "value": 100
+        },
+        {
+          "id": "part-rover-catalog-perforated-beam:parameter:width",
+          "name": "width",
+          "value": 14
+        },
+        {
+          "id": "part-rover-catalog-perforated-beam:parameter:thickness",
+          "name": "thickness",
+          "value": 8
+        },
+        {
+          "id": "part-rover-catalog-perforated-beam:parameter:hole_dia",
+          "name": "hole_dia",
+          "value": 5
+        }
+      ],
+      "referenceGeometry": [],
+      "sketches": [],
+      "sketchBlockDefinitions": [],
+      "bodies": [
+        {
+          "id": "part-rover-catalog-perforated-beam:body",
+          "name": "Catalog perforated beam",
+          "kind": "solid",
+          "createdByFeatureId": "part-rover-catalog-perforated-beam:feature:beam",
+          "featureIds": [
+            "part-rover-catalog-perforated-beam:feature:beam",
+            "part-rover-catalog-perforated-beam:feature:holes"
+          ],
+          "visible": true,
+          "suppressed": false,
+          "materialId": "material-rover-accent-yellow",
+          "appearanceId": "appearance-rover-accent-yellow"
+        }
+      ],
+      "bodyPatterns": [],
+      "features": [
+        {
+          "id": "part-rover-catalog-perforated-beam:feature:beam",
+          "name": "Extrude beam",
+          "type": "extrude",
+          "sketch": {
+            "shapes": [
+              {
+                "kind": "rect",
+                "x": 0,
+                "y": 0,
+                "w": "length",
+                "h": "width",
+                "id": "part-rover-catalog-perforated-beam:feature:beam:profile:1"
+              }
+            ],
+            "z": 0
+          },
+          "through": false,
+          "h": "thickness",
+          "suppressed": false,
+          "inputRefs": [],
+          "resultPolicy": {
+            "kind": "new-body",
+            "bodyName": "Catalog perforated beam"
+          },
+          "createdBodyId": "part-rover-catalog-perforated-beam:body"
+        },
+        {
+          "id": "part-rover-catalog-perforated-beam:feature:holes",
+          "name": "Cut beam holes",
+          "type": "cut",
+          "sketch": {
+            "shapes": [
+              {
+                "kind": "circle",
+                "x": -40,
+                "y": 0,
+                "r": "hole_dia/2",
+                "id": "part-rover-catalog-perforated-beam:feature:holes:profile:1"
+              },
+              {
+                "kind": "circle",
+                "x": -20,
+                "y": 0,
+                "r": "hole_dia/2",
+                "id": "part-rover-catalog-perforated-beam:feature:holes:profile:2"
+              },
+              {
+                "kind": "circle",
+                "x": 0,
+                "y": 0,
+                "r": "hole_dia/2",
+                "id": "part-rover-catalog-perforated-beam:feature:holes:profile:3"
+              },
+              {
+                "kind": "circle",
+                "x": 20,
+                "y": 0,
+                "r": "hole_dia/2",
+                "id": "part-rover-catalog-perforated-beam:feature:holes:profile:4"
+              },
+              {
+                "kind": "circle",
+                "x": 40,
+                "y": 0,
+                "r": "hole_dia/2",
+                "id": "part-rover-catalog-perforated-beam:feature:holes:profile:5"
+              }
+            ],
+            "z": "thickness"
+          },
+          "through": true,
+          "h": "thickness*2",
+          "suppressed": false,
+          "inputRefs": [],
+          "resultPolicy": {
+            "kind": "subtract",
+            "targetBodyIds": [
+              "part-rover-catalog-perforated-beam:body"
+            ],
+            "keepTools": false
+          }
+        }
+      ],
+      "featureOrder": [
+        "part-rover-catalog-perforated-beam:feature:beam",
+        "part-rover-catalog-perforated-beam:feature:holes"
+      ],
+      "metadata": {
+        "activeBodyId": "part-rover-catalog-perforated-beam:body",
+        "partNumber": "ROVER-CATALOG-PERFORATED-BEAM",
+        "revision": "A",
+        "designStatus": "concept-demonstrator"
+      },
+      "extensions": {
+        "roverRole": "agent-catalog-beam",
+        "agentCatalogOnly": true
+      }
+    },
+    {
+      "id": "part-rover-catalog-angle-bracket",
+      "name": "Catalog right-angle bracket",
+      "parameters": [
+        {
+          "id": "part-rover-catalog-angle-bracket:parameter:thickness",
+          "name": "thickness",
+          "value": 10
+        }
+      ],
+      "referenceGeometry": [],
+      "sketches": [],
+      "sketchBlockDefinitions": [],
+      "bodies": [
+        {
+          "id": "part-rover-catalog-angle-bracket:body",
+          "name": "Catalog right-angle bracket",
+          "kind": "solid",
+          "createdByFeatureId": "part-rover-catalog-angle-bracket:feature:bracket",
+          "featureIds": [
+            "part-rover-catalog-angle-bracket:feature:bracket"
+          ],
+          "visible": true,
+          "suppressed": false,
+          "materialId": "material-rover-metal",
+          "appearanceId": "appearance-rover-metal"
+        }
+      ],
+      "bodyPatterns": [],
+      "features": [
+        {
+          "id": "part-rover-catalog-angle-bracket:feature:bracket",
+          "name": "Extrude angle bracket",
+          "type": "extrude",
+          "sketch": {
+            "shapes": [
+              {
+                "kind": "poly",
+                "pts": [
+                  [
+                    -18,
+                    -18
+                  ],
+                  [
+                    18,
+                    -18
+                  ],
+                  [
+                    18,
+                    -10
+                  ],
+                  [
+                    -10,
+                    -10
+                  ],
+                  [
+                    -10,
+                    18
+                  ],
+                  [
+                    -18,
+                    18
+                  ]
+                ],
+                "id": "part-rover-catalog-angle-bracket:feature:bracket:profile:1",
+                "edgeIds": [
+                  "part-rover-catalog-angle-bracket:feature:bracket:profile:1:edge:1",
+                  "part-rover-catalog-angle-bracket:feature:bracket:profile:1:edge:2",
+                  "part-rover-catalog-angle-bracket:feature:bracket:profile:1:edge:3",
+                  "part-rover-catalog-angle-bracket:feature:bracket:profile:1:edge:4",
+                  "part-rover-catalog-angle-bracket:feature:bracket:profile:1:edge:5",
+                  "part-rover-catalog-angle-bracket:feature:bracket:profile:1:edge:6"
+                ]
+              }
+            ],
+            "z": 0
+          },
+          "through": false,
+          "h": "thickness",
+          "suppressed": false,
+          "inputRefs": [],
+          "resultPolicy": {
+            "kind": "new-body",
+            "bodyName": "Catalog right-angle bracket"
+          },
+          "createdBodyId": "part-rover-catalog-angle-bracket:body"
+        }
+      ],
+      "featureOrder": [
+        "part-rover-catalog-angle-bracket:feature:bracket"
+      ],
+      "metadata": {
+        "activeBodyId": "part-rover-catalog-angle-bracket:body",
+        "partNumber": "ROVER-CATALOG-ANGLE-BRACKET",
+        "revision": "A",
+        "designStatus": "concept-demonstrator"
+      },
+      "extensions": {
+        "roverRole": "agent-catalog-bracket",
+        "agentCatalogOnly": true
+      }
+    },
+    {
+      "id": "part-rover-catalog-axle-spacer",
+      "name": "Catalog axle spacer",
+      "parameters": [
+        {
+          "id": "part-rover-catalog-axle-spacer:parameter:outer_dia",
+          "name": "outer_dia",
+          "value": 16
+        },
+        {
+          "id": "part-rover-catalog-axle-spacer:parameter:bore_dia",
+          "name": "bore_dia",
+          "value": 8
+        },
+        {
+          "id": "part-rover-catalog-axle-spacer:parameter:length",
+          "name": "length",
+          "value": 10
+        }
+      ],
+      "referenceGeometry": [],
+      "sketches": [],
+      "sketchBlockDefinitions": [],
+      "bodies": [
+        {
+          "id": "part-rover-catalog-axle-spacer:body",
+          "name": "Catalog axle spacer",
+          "kind": "solid",
+          "createdByFeatureId": "part-rover-catalog-axle-spacer:feature:body",
+          "featureIds": [
+            "part-rover-catalog-axle-spacer:feature:body",
+            "part-rover-catalog-axle-spacer:feature:bore"
+          ],
+          "visible": true,
+          "suppressed": false,
+          "materialId": "material-rover-metal",
+          "appearanceId": "appearance-rover-metal"
+        }
+      ],
+      "bodyPatterns": [],
+      "features": [
+        {
+          "id": "part-rover-catalog-axle-spacer:feature:body",
+          "name": "Extrude axle spacer",
+          "type": "extrude",
+          "sketch": {
+            "shapes": [
+              {
+                "kind": "circle",
+                "x": 0,
+                "y": 0,
+                "r": "outer_dia/2",
+                "id": "part-rover-catalog-axle-spacer:feature:body:profile:1"
+              }
+            ],
+            "z": 0
+          },
+          "through": false,
+          "h": "length",
+          "suppressed": false,
+          "inputRefs": [],
+          "resultPolicy": {
+            "kind": "new-body",
+            "bodyName": "Catalog axle spacer"
+          },
+          "createdBodyId": "part-rover-catalog-axle-spacer:body"
+        },
+        {
+          "id": "part-rover-catalog-axle-spacer:feature:bore",
+          "name": "Cut axle bore",
+          "type": "cut",
+          "sketch": {
+            "shapes": [
+              {
+                "kind": "circle",
+                "x": 0,
+                "y": 0,
+                "r": "bore_dia/2",
+                "id": "part-rover-catalog-axle-spacer:feature:bore:profile:1"
+              }
+            ],
+            "z": "length"
+          },
+          "through": true,
+          "h": "length*2",
+          "suppressed": false,
+          "inputRefs": [],
+          "resultPolicy": {
+            "kind": "subtract",
+            "targetBodyIds": [
+              "part-rover-catalog-axle-spacer:body"
+            ],
+            "keepTools": false
+          }
+        }
+      ],
+      "featureOrder": [
+        "part-rover-catalog-axle-spacer:feature:body",
+        "part-rover-catalog-axle-spacer:feature:bore"
+      ],
+      "metadata": {
+        "activeBodyId": "part-rover-catalog-axle-spacer:body",
+        "partNumber": "ROVER-CATALOG-AXLE-SPACER",
+        "revision": "A",
+        "designStatus": "concept-demonstrator"
+      },
+      "extensions": {
+        "roverRole": "agent-catalog-spacer",
+        "agentCatalogOnly": true
+      }
+    }
+  ],
+  "assemblyDefinitions": [
+    {
+      "id": "assembly-openbot-blocky-rover",
+      "name": "OpenBot-style Blocky rover",
+      "parameters": [],
+      "occurrences": [
+        {
+          "id": "occ-rover-chassis",
+          "name": "01 Chassis",
+          "definition": {
+            "kind": "part",
+            "partId": "part-rover-chassis"
+          },
+          "baseTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            12,
+            1
+          ],
+          "fixed": true,
+          "suppressed": false,
+          "visible": true,
+          "extensions": {
+            "itemNumber": "01"
+          }
+        },
+        {
+          "id": "occ-rover-top-deck",
+          "name": "02 Top deck",
+          "definition": {
+            "kind": "part",
+            "partId": "part-rover-top-deck"
+          },
+          "baseTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            95,
+            1
+          ],
+          "fixed": true,
+          "suppressed": false,
+          "visible": true,
+          "extensions": {
+            "itemNumber": "02"
+          }
+        },
+        {
+          "id": "occ-rover-wheel-fore-left",
+          "name": "03 Front-left wheel",
+          "definition": {
+            "kind": "part",
+            "partId": "part-rover-wheel"
+          },
+          "baseTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            55,
+            -58,
+            32.5,
+            1
+          ],
+          "fixed": true,
+          "suppressed": false,
+          "visible": true,
+          "extensions": {
+            "itemNumber": "03",
+            "side": "left",
+            "axle": "front"
+          }
+        },
+        {
+          "id": "occ-rover-wheel-fore-right",
+          "name": "04 Front-right wheel",
+          "definition": {
+            "kind": "part",
+            "partId": "part-rover-wheel"
+          },
+          "baseTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            55,
+            58,
+            32.5,
+            1
+          ],
+          "fixed": true,
+          "suppressed": false,
+          "visible": true,
+          "extensions": {
+            "itemNumber": "04",
+            "side": "right",
+            "axle": "front"
+          }
+        },
+        {
+          "id": "occ-rover-wheel-aft-left",
+          "name": "05 Rear-left wheel",
+          "definition": {
+            "kind": "part",
+            "partId": "part-rover-wheel"
+          },
+          "baseTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            -55,
+            -58,
+            32.5,
+            1
+          ],
+          "fixed": true,
+          "suppressed": false,
+          "visible": true,
+          "extensions": {
+            "itemNumber": "05",
+            "side": "left",
+            "axle": "rear"
+          }
+        },
+        {
+          "id": "occ-rover-wheel-aft-right",
+          "name": "06 Rear-right wheel",
+          "definition": {
+            "kind": "part",
+            "partId": "part-rover-wheel"
+          },
+          "baseTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -55,
+            58,
+            32.5,
+            1
+          ],
+          "fixed": true,
+          "suppressed": false,
+          "visible": true,
+          "extensions": {
+            "itemNumber": "06",
+            "side": "right",
+            "axle": "rear"
+          }
+        },
+        {
+          "id": "occ-rover-motor-left",
+          "name": "07 Left motor mount",
+          "definition": {
+            "kind": "part",
+            "partId": "part-rover-motor-mount"
+          },
+          "baseTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -38,
+            20.5,
+            1
+          ],
+          "fixed": true,
+          "suppressed": false,
+          "visible": true,
+          "extensions": {
+            "itemNumber": "07",
+            "side": "left"
+          }
+        },
+        {
+          "id": "occ-rover-motor-right",
+          "name": "08 Right motor mount",
+          "definition": {
+            "kind": "part",
+            "partId": "part-rover-motor-mount"
+          },
+          "baseTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            38,
+            20.5,
+            1
+          ],
+          "fixed": true,
+          "suppressed": false,
+          "visible": true,
+          "extensions": {
+            "itemNumber": "08",
+            "side": "right"
+          }
+        },
+        {
+          "id": "occ-rover-wheel-guard-left",
+          "name": "09 Left wheel guard",
+          "definition": {
+            "kind": "part",
+            "partId": "part-rover-wheel-guard"
+          },
+          "baseTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            -50,
+            61,
+            1
+          ],
+          "fixed": true,
+          "suppressed": false,
+          "visible": true,
+          "extensions": {
+            "itemNumber": "09",
+            "side": "left"
+          }
+        },
+        {
+          "id": "occ-rover-wheel-guard-right",
+          "name": "10 Right wheel guard",
+          "definition": {
+            "kind": "part",
+            "partId": "part-rover-wheel-guard"
+          },
+          "baseTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            54,
+            61,
+            1
+          ],
+          "fixed": true,
+          "suppressed": false,
+          "visible": true,
+          "extensions": {
+            "itemNumber": "10",
+            "side": "right"
+          }
+        },
+        {
+          "id": "occ-rover-battery-tray",
+          "name": "11 Battery tray",
+          "definition": {
+            "kind": "part",
+            "partId": "part-rover-battery-tray"
+          },
+          "baseTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -42,
+            0,
+            20,
+            1
+          ],
+          "fixed": true,
+          "suppressed": false,
+          "visible": true,
+          "extensions": {
+            "itemNumber": "11"
+          }
+        },
+        {
+          "id": "occ-rover-electronics-tray",
+          "name": "12 Electronics tray",
+          "definition": {
+            "kind": "part",
+            "partId": "part-rover-electronics-tray"
+          },
+          "baseTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            42,
+            0,
+            20,
+            1
+          ],
+          "fixed": true,
+          "suppressed": false,
+          "visible": true,
+          "extensions": {
+            "itemNumber": "12"
+          }
+        },
+        {
+          "id": "occ-rover-standoff-fore-left",
+          "name": "13 Front-left deck standoff",
+          "definition": {
+            "kind": "part",
+            "partId": "part-rover-deck-standoff"
+          },
+          "baseTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            60,
+            -35,
+            18,
+            1
+          ],
+          "fixed": true,
+          "suppressed": false,
+          "visible": true,
+          "extensions": {
+            "itemNumber": "13"
+          }
+        },
+        {
+          "id": "occ-rover-standoff-fore-right",
+          "name": "14 Front-right deck standoff",
+          "definition": {
+            "kind": "part",
+            "partId": "part-rover-deck-standoff"
+          },
+          "baseTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            60,
+            35,
+            18,
+            1
+          ],
+          "fixed": true,
+          "suppressed": false,
+          "visible": true,
+          "extensions": {
+            "itemNumber": "14"
+          }
+        },
+        {
+          "id": "occ-rover-standoff-aft-left",
+          "name": "15 Rear-left deck standoff",
+          "definition": {
+            "kind": "part",
+            "partId": "part-rover-deck-standoff"
+          },
+          "baseTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -60,
+            -35,
+            18,
+            1
+          ],
+          "fixed": true,
+          "suppressed": false,
+          "visible": true,
+          "extensions": {
+            "itemNumber": "15"
+          }
+        },
+        {
+          "id": "occ-rover-standoff-aft-right",
+          "name": "16 Rear-right deck standoff",
+          "definition": {
+            "kind": "part",
+            "partId": "part-rover-deck-standoff"
+          },
+          "baseTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -60,
+            35,
+            18,
+            1
+          ],
+          "fixed": true,
+          "suppressed": false,
+          "visible": true,
+          "extensions": {
+            "itemNumber": "16"
+          }
+        },
+        {
+          "id": "occ-rover-camera-plate",
+          "name": "17 Phone and camera plate",
+          "definition": {
+            "kind": "part",
+            "partId": "part-rover-camera-plate"
+          },
+          "baseTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            44,
+            2,
+            106,
+            1
+          ],
+          "fixed": true,
+          "suppressed": false,
+          "visible": true,
+          "extensions": {
+            "itemNumber": "17"
+          }
+        },
+        {
+          "id": "occ-rover-bumper",
+          "name": "18 Front bumper",
+          "definition": {
+            "kind": "part",
+            "partId": "part-rover-front-bumper"
+          },
+          "baseTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            83,
+            0,
+            20,
+            1
+          ],
+          "fixed": true,
+          "suppressed": false,
+          "visible": true,
+          "extensions": {
+            "itemNumber": "18"
+          }
+        },
+        {
+          "id": "occ-rover-eye-left",
+          "name": "19 Left sensor eye",
+          "definition": {
+            "kind": "part",
+            "partId": "part-rover-sensor-eye"
+          },
+          "baseTransform": [
+            0,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            89,
+            -22,
+            38,
+            1
+          ],
+          "fixed": true,
+          "suppressed": false,
+          "visible": true,
+          "extensions": {
+            "itemNumber": "19",
+            "side": "left"
+          }
+        },
+        {
+          "id": "occ-rover-eye-right",
+          "name": "20 Right sensor eye",
+          "definition": {
+            "kind": "part",
+            "partId": "part-rover-sensor-eye"
+          },
+          "baseTransform": [
+            0,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            89,
+            22,
+            38,
+            1
+          ],
+          "fixed": true,
+          "suppressed": false,
+          "visible": true,
+          "extensions": {
+            "itemNumber": "20",
+            "side": "right"
+          }
+        }
+      ],
+      "mates": [],
+      "occurrencePatterns": [],
+      "explodedViews": [
+        {
+          "id": "exploded-rover-service-layout",
+          "name": "Blocky exploded layout",
+          "steps": [
+            {
+              "occurrenceIds": [
+                "occ-rover-top-deck"
+              ],
+              "deltaTransform": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                42,
+                1
+              ]
+            },
+            {
+              "occurrenceIds": [
+                "occ-rover-wheel-fore-left",
+                "occ-rover-wheel-aft-left"
+              ],
+              "deltaTransform": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                -38,
+                0,
+                1
+              ]
+            },
+            {
+              "occurrenceIds": [
+                "occ-rover-wheel-fore-right",
+                "occ-rover-wheel-aft-right"
+              ],
+              "deltaTransform": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                38,
+                0,
+                1
+              ]
+            },
+            {
+              "occurrenceIds": [
+                "occ-rover-wheel-guard-left"
+              ],
+              "deltaTransform": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                -20,
+                0,
+                1
+              ]
+            },
+            {
+              "occurrenceIds": [
+                "occ-rover-wheel-guard-right"
+              ],
+              "deltaTransform": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                20,
+                0,
+                1
+              ]
+            },
+            {
+              "occurrenceIds": [
+                "occ-rover-battery-tray",
+                "occ-rover-electronics-tray"
+              ],
+              "deltaTransform": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                24,
+                1
+              ]
+            },
+            {
+              "occurrenceIds": [
+                "occ-rover-camera-plate"
+              ],
+              "deltaTransform": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                18,
+                0,
+                28,
+                1
+              ]
+            },
+            {
+              "occurrenceIds": [
+                "occ-rover-bumper",
+                "occ-rover-eye-left",
+                "occ-rover-eye-right"
+              ],
+              "deltaTransform": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                24,
+                0,
+                0,
+                1
+              ]
+            }
+          ],
+          "extensions": {
+            "studioDisplayOnly": true,
+            "purpose": "agent-demo-exploded-view"
+          }
+        }
+      ],
+      "sectionViews": [],
+      "metadata": {
+        "activeExplodedViewId": "exploded-rover-service-layout",
+        "displayMode": "shaded-edges",
+        "placementPolicy": "deterministic-base-transforms",
+        "expectedExactBodyCount": 20
+      },
+      "extensions": {
+        "openBotStyleProxy": true
+      }
+    }
+  ],
+  "rootDocument": {
+    "kind": "assembly",
+    "assemblyId": "assembly-openbot-blocky-rover"
+  },
+  "resources": [],
+  "metadata": {
+    "templateId": "openbot-blocky-rover-proxy",
+    "expectedExactBodyCount": 20,
+    "instantiatedPartDefinitionCount": 11,
+    "catalogOnlyPartDefinitionCount": 3,
+    "openBotReference": "https://github.com/ob-f/OpenBot/tree/master/body/diy/cad/block_body",
+    "modelPolicy": "team-authored-parametric-proxy",
+    "limitations": [
+      "This is a visual and dependency-graph demonstrator, not the official OpenBot body.",
+      "Transforms are deterministic but are not recovered mates or kinematic constraints.",
+      "No structural, collision-safety, manufacturability, or vehicle-performance claim is made."
+    ]
+  },
+  "extensions": {
+    "agentContract": {
+      "operation": "resize_wheels",
+      "allowedWheelDiametersMm": [
+        65,
+        82
+      ],
+      "requiresTransformUpdates": [
+        "occ-rover-wheel-fore-left",
+        "occ-rover-wheel-fore-right",
+        "occ-rover-wheel-aft-left",
+        "occ-rover-wheel-aft-right",
+        "occ-rover-motor-left",
+        "occ-rover-motor-right"
+      ]
+    }
+  },
+  "partConfigurationSets": []
+}
