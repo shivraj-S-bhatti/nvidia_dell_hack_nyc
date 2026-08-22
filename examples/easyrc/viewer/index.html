@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EasyRC · Parts Explorer</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { color-scheme: dark; }
+  body { font: 14px/1.4 system-ui, -apple-system, sans-serif; color: #c8d3e0; background: #0d1117; overflow: hidden; }
+  #view { position: fixed; inset: 0; }
+  #view canvas { display: block; }
+
+  #sidebar {
+    position: fixed; top: 0; left: 0; bottom: 0; width: 268px; z-index: 10;
+    background: rgba(15,20,28,0.92); backdrop-filter: blur(8px);
+    border-right: 1px solid #1e2836; display: flex; flex-direction: column;
+  }
+  header { padding: 16px 16px 12px; border-bottom: 1px solid #1e2836; }
+  header h1 { font-size: 15px; letter-spacing: .3px; }
+  header .sub { font-size: 12px; color: #7d8aa0; margin-top: 3px; }
+  header #count { color: #4fb0a5; font-weight: 600; }
+  #nav { overflow-y: auto; flex: 1; padding: 8px 0 24px; }
+  .ghead { padding: 12px 16px 5px; font-size: 11px; text-transform: uppercase; letter-spacing: .6px; color: #7d8aa0; display: flex; align-items: center; gap: 7px; }
+  .ghead em { margin-left: auto; font-style: normal; color: #55617a; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .pnav { padding: 5px 16px 5px 31px; cursor: pointer; color: #a9b5c6; border-left: 2px solid transparent; }
+  .pnav:hover { background: #161d28; color: #e6edf5; }
+  .pnav.active { background: #172131; color: #ffd166; border-left-color: #ffd166; }
+
+  #info {
+    position: fixed; top: 14px; right: 14px; width: 250px; z-index: 10;
+    background: rgba(15,20,28,0.92); backdrop-filter: blur(8px);
+    border: 1px solid #1e2836; border-radius: 10px; padding: 14px 15px;
+  }
+  #info h2 { font-size: 15px; margin: 8px 0 10px; line-height: 1.25; }
+  #info .pill { display: inline-block; font-size: 11px; font-weight: 600; color: #0d1117; padding: 2px 8px; border-radius: 20px; }
+  #info table { width: 100%; border-collapse: collapse; }
+  #info td { padding: 4px 0; vertical-align: top; }
+  #info td:first-child { color: #7d8aa0; width: 82px; }
+  #info .hint { color: #7d8aa0; }
+
+  #toolbar { position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; gap: 8px; }
+  #toolbar button {
+    font: inherit; font-size: 13px; color: #c8d3e0; background: rgba(20,27,38,0.92);
+    border: 1px solid #26324a; border-radius: 8px; padding: 8px 14px; cursor: pointer;
+  }
+  #toolbar button:hover { background: #1c2534; border-color: #3a4a68; }
+</style>
+</head>
+<body>
+  <div id="view"></div>
+  <aside id="sidebar">
+    <header>
+      <h1>EasyRC · Parts Explorer</h1>
+      <div class="sub"><span id="count">…</span> · STEP → GLB · <span style="color:#7d8aa0">TRD-B/EasyRC (MIT)</span></div>
+    </header>
+    <div id="nav"></div>
+  </aside>
+  <div id="info"><div class="hint">Click a part to inspect</div></div>
+  <div id="toolbar">
+    <button id="colorBtn">Color: subsystem</button>
+    <button id="resetBtn">Reset view</button>
+  </div>
+  <script src="bundle.js"></script>
+</body>
+</html>
