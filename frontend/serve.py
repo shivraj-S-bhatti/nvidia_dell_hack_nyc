@@ -17,10 +17,10 @@ from uuid import uuid4
 
 try:
     from .build import main as build_frontend
-    from .run_controller import LiveRunError, RunController, capabilities
+    from .run_controller import LiveRunError, RunController, make_controller
 except ImportError:  # direct `python3 frontend/serve.py`
     from build import main as build_frontend
-    from run_controller import LiveRunError, RunController, capabilities
+    from run_controller import LiveRunError, RunController, make_controller
 
 
 HERE = Path(__file__).resolve().parent
@@ -198,7 +198,7 @@ class FrontendHandler(SimpleHTTPRequestHandler):
             self._json(200, {"ok": True, "ui": "frontend", "execution": "bounded-local"})
             return
         if path == "/api/capabilities":
-            self._json(200, capabilities())
+            self._json(200, self.controller.capabilities())
             return
         if path == "/api/runs":
             self._json(200, {"runs": self.controller.recent()})
@@ -254,8 +254,15 @@ def main() -> None:
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", default=4414, type=int)
     parser.add_argument("--run", help="saved DesignRun envelope to embed")
+    parser.add_argument(
+        "--runner",
+        choices=("live-fsai", "neoracer-demo"),
+        default=os.environ.get("AUTOAUTO_RUNNER", "live-fsai"),
+        help="execution adapter exposed by /api/runs",
+    )
     arguments = parser.parse_args()
     build_frontend(arguments.run)
+    FrontendHandler.controller = make_controller(arguments.runner)
     handler = partial(FrontendHandler, directory=str(REPOSITORY))
     server = ThreadingHTTPServer((arguments.host, arguments.port), handler)
     print(f"autoauto frontend ready at http://{arguments.host}:{arguments.port}/frontend/", flush=True)

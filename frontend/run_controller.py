@@ -122,6 +122,9 @@ class RunController:
         self._lock = threading.Lock()
         self._threads: dict[str, threading.Thread] = {}
 
+    def capabilities(self) -> dict[str, Any]:
+        return capabilities()
+
     def start(self, payload: dict[str, Any]) -> dict[str, Any]:
         request = normalize_request(payload)
         missing = [path for path in (TEMPLATE_PROBLEM, MASK_MANIFEST, TARGET_MANIFEST, PYTHON) if not path.is_file()]
@@ -313,3 +316,15 @@ class RunController:
         status.update({"status": "completed", "selectionPath": "selection.json", "error": None})
         _atomic_json(root / "status.json", status)
         return record, destination
+
+
+def make_controller(mode: str, run_root: Path = RUN_ROOT) -> RunController:
+    if mode == "live-fsai":
+        return RunController(run_root)
+    if mode == "neoracer-demo":
+        try:
+            from .neoracer_demo import NeoRacerDemoController
+        except ImportError:  # direct `python3 frontend/serve.py`
+            from neoracer_demo import NeoRacerDemoController
+        return NeoRacerDemoController(run_root)
+    raise LiveRunError(f"unknown run controller: {mode}")

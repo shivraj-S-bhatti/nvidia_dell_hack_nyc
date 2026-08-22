@@ -3,7 +3,9 @@ from __future__ import annotations
 import json
 from pathlib import Path
 from tempfile import TemporaryDirectory
+import time
 import unittest
+from unittest.mock import patch
 
 from frontend.serve import (
     ArtifactStore,
@@ -12,6 +14,7 @@ from frontend.serve import (
     make_human_selection,
 )
 from frontend.run_controller import LiveRunError, RunController, capabilities, normalize_request
+from frontend.neoracer_demo import COMPONENT, NeoRacerDemoController
 
 
 class FrontendControlRecordsTest(unittest.TestCase):
@@ -94,6 +97,34 @@ class FrontendControlRecordsTest(unittest.TestCase):
             self.assertEqual("candidate-pass", record["candidateId"])
             self.assertTrue(destination.is_file())
             self.assertEqual("completed", controller.get("run-test-01")["status"])
+
+    def test_neoracer_demo_runs_to_human_choice_without_openrouter_key(self) -> None:
+        with TemporaryDirectory() as directory, patch.dict("os.environ", {"OPENROUTER_API_KEY": ""}), patch(
+            "frontend.neoracer_demo.time.sleep", return_value=None
+        ):
+            controller = NeoRacerDemoController(Path(directory))
+            status = controller.start({
+                "component": COMPONENT,
+                "objective": "Reduce mass while preserving the suspension mounts.",
+                "constraint": "Preserve both mount interfaces and the wiring keep-out.",
+            })
+            for _ in range(100):
+                status = controller.get(status["runId"])
+                if status["status"] in ("awaiting_review", "failed"):
+                    break
+                time.sleep(0.01)
+            self.assertEqual("awaiting_review", status["status"], status.get("error"))
+            self.assertEqual("deterministic fallback", status["result"]["modelProposal"]["provider"])
+            self.assertFalse(status["result"]["inventory"]["simulationExecutedLive"])
+            result = status["result"]
+            rejected = result["factory"]["rejectedCandidateIds"][0]
+            selected = result["selectionEligibleCandidateIds"][0]
+            with self.assertRaisesRegex(LiveRunError, "did not survive"):
+                controller.select(status["runId"], {"candidateId": rejected})
+            selection, path = controller.select(status["runId"], {"candidateId": selected})
+            self.assertEqual(selected, selection["candidateId"])
+            self.assertTrue(path.is_file())
+            self.assertEqual("completed", controller.get(status["runId"])["status"])
 
 
 if __name__ == "__main__":

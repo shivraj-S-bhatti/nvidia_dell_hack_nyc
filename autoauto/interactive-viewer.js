@@ -40,6 +40,7 @@
       this.onDisplayReady = options.onDisplayReady || (() => {});
       this.onReady = options.onReady || (() => {});
       this.onError = options.onError || (() => {});
+      this.fallbackImage = options.fallbackImage || '';
       this.meshes = [];
       this.meshesByOccurrence = new Map();
       this.meshesByComponent = new Map();
@@ -157,7 +158,7 @@
         this.displayReady = true;
         this.onDisplayReady({triangles: this.asset.counts.triangles});
         const loading = this.container.querySelector('.vehicle-loading');
-        if (loading) loading.innerHTML = '<span></span><b>Preparing selectable parts</b><small>Complete car loaded · occurrence meshes streaming</small>';
+        loading?.remove();
         await new Promise((resolve) => requestAnimationFrame(resolve));
 
         for (let partIndex = 0; partIndex < packed.parts.length; partIndex += 1) {
@@ -203,7 +204,13 @@
 
     fail(error) {
       const loading = this.container.querySelector('.vehicle-loading');
-      if (loading) loading.innerHTML = '<b>Interactive assembly unavailable</b><small>Showing verified static fallback</small>';
+      if (this.displayReady) {
+        loading?.remove();
+      } else if (loading && this.fallbackImage) {
+        loading.innerHTML = `<img class="vehicle-fallback" src="${this.fallbackImage}" alt="Verified NeoRacer assembly">`;
+      } else if (loading) {
+        loading.innerHTML = '<b>Interactive assembly unavailable</b><small>Verified static fallback unavailable</small>';
+      }
       this.onError(error);
     }
 
