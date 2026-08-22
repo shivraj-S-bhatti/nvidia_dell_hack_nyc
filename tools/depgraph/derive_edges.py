@@ -23,12 +23,27 @@ FASTENERS = {
     'NILONG-GB818-M3':    {'shank': 1.400, 'M': 3.0, 'len': 8,  'std': 'GB/T 818 pan head cross, nylon'},
 }
 # Preferred stock lengths, mm. Used to round a computed requirement up to a real part.
-STOCK = {2.5: [4, 5, 6, 8, 10, 12, 16, 20, 25], 3.0: [5, 6, 8, 10, 12, 16, 20, 25, 30, 35]}
+# ISO 4762 standard lengths, verified against the published standard.
+# Superseded by data/mfg/stock.json once that lands -- see
+# docs/research/manufacturing-side-spec.md. One source of truth for what is buyable.
+STOCK = {2.5: [4, 5, 6, 8, 10, 12, 16, 20, 25, 30],
+         3.0: [4, 5, 6, 8, 10, 12, 16, 20, 25, 30, 35]}
 
 FIT_MAX_MM   = 0.35   # r_hole - r_shank upper bound for "this is a fit, not a passage"
 AXIS_OFF_MM  = 0.60   # max perpendicular distance between shank and hole axes
 AXIS_ANG_DEG = 1.0    # max angle between the two axes
-ENGAGE_D     = 1.5    # thread engagement multiple of nominal diameter (polyamide: 1.5-2.0 x D)
+# Thread engagement as a multiple of nominal diameter, BY MATERIAL. Published
+# guidance for thermoplastic bosses:
+#   standard metric thread in thermoplastic   1.5 x D minimum, 2.0 x D for high stress
+#   thread-forming / self-tapping into plastic 2.0 - 2.5 x D, 3.0 x D for heavy loads
+#   steel                                      1.0 x D
+# The S500 arms are polyamide-nylon, so 1.5 is the optimistic floor, not the right
+# default -- 2.0 is used here and the value is reported on every stack so a reader
+# can see which assumption produced a length.
+ENGAGE_BY_MATERIAL = {'polyamide': 2.0, 'thermoplastic': 2.0, 'aluminium': 2.0,
+                      'stainless': 1.5, 'steel': 1.0}
+DEFAULT_MATERIAL = 'polyamide'
+ENGAGE_D = ENGAGE_BY_MATERIAL[DEFAULT_MATERIAL]
 
 
 def _dot(a, b): return sum(a[k]*b[k] for k in range(3))
@@ -156,6 +171,7 @@ def _grip(f, spec, org, axis, clamped, mesh, vert_path, by_id):
             'nominalM': spec['M'], 'nominalLengthMm': spec['len'],
             'measuredLengthMm': measured_len,
             'gripMm': grip, 'engagementMm': engage, 'requiredLengthMm': req,
+            'engagementBasis': f'{ENGAGE_D}x D into {DEFAULT_MATERIAL}',
             'adequate': None, 'adequacyUnknownBecause':
                 'threaded member not identified from geometry; a tapped hole and a '
                 'clearance hole are both CYLINDRICAL_SURFACE, and some mates are into '
@@ -198,6 +214,7 @@ def actions_for_thickness_change(stacks, changed_def, delta_mm):
                         f"{next_stock(s['nominalM'], s['nominalLengthMm']+delta_mm) or '?':g}"
                         if pick else f"needs >= {need} mm -- no stock length available")),
             'reason': (f"grip {s['gripMm']} mm {'+' if delta_mm>=0 else ''}{delta_mm} mm -> {new_grip} mm; "
-                       f"plus {s['engagementMm']} mm engagement ({ENGAGE_D}x D) = {need} mm required"),
+                       f"plus {s['engagementMm']} mm engagement "
+                       f"({ENGAGE_D}x D into {DEFAULT_MATERIAL}) = {need} mm required"),
         })
     return out

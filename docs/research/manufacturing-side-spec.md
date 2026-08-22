@@ -56,6 +56,7 @@ agent exists.
 | Tool inventory | 2.0 mm and 2.5 mm hex drivers, 90 mm shaft | Not in the model |
 | Tool reach | Can a driver physically get on that head? | **Derivable — but only with the tool envelope, which is shop data** |
 | Torque capability | Driver rated 0.2–2.0 N·m | Not in the model |
+| Strip torque | Determined by drive-to-strip test on the real boss | Not in the model, and not in any table |
 | Cost | Unit cost, setup cost | Not in the model |
 | Process capability | Tolerances the shop can hold | Not in the model |
 
@@ -78,10 +79,10 @@ sequence of small JSON files. Suggested location `data/mfg/`.
   "site": "nyc-floor-1",
   "items": [
     {"sku":"SHCS-M2.5x6-A2","standard":"ISO 4762","thread":"M2.5","lengthMm":6,
-     "drive":"hex","driveSizeMm":2.0,"material":"A2 stainless",
+     "drive":"hex","driveSizeMm":2.0,"material":"A2 stainless","pitchMm":0.45,
      "onHand":400,"leadTimeDays":3,"unitCost":0.04,"lifecycle":"active"},
     {"sku":"SHCS-M3x8-A2","standard":"ISO 4762","thread":"M3","lengthMm":8,
-     "drive":"hex","driveSizeMm":2.5,"material":"A2 stainless",
+     "drive":"hex","driveSizeMm":2.5,"material":"A2 stainless","pitchMm":0.5,
      "onHand":600,"leadTimeDays":3,"unitCost":0.05,"lifecycle":"active"},
     {"sku":"SHCS-M3x21-A2","standard":"ISO 4762","thread":"M3","lengthMm":21,
      "drive":"hex","driveSizeMm":2.5,"material":"A2 stainless",
@@ -90,9 +91,10 @@ sequence of small JSON files. Suggested location `data/mfg/`.
 }
 ```
 
-Author the full ladder for both threads so the solver has somewhere to go:
-**M2.5** → 4, 5, 6, 8, 10, 12, 16, 20, 25 mm.
-**M3** → 5, 6, 8, 10, 12, 16, 20, 25, 30, 35 mm.
+Author the full ladder for both threads so the solver has somewhere to go.
+Verified against ISO 4762:
+**M2.5** → 4, 5, 6, 8, 10, 12, 16, 20, 25, 30 mm.
+**M3** → 4, 5, 6, 8, 10, 12, 16, 20, 25, 30, 35 mm.
 These already exist as `STOCK` in `tools/depgraph/derive_edges.py`; that constant
 should be **deleted and replaced by this file** once it lands, so there is one
 source of truth for what is buyable.
@@ -120,25 +122,40 @@ source of truth for what is buyable.
 `handleDiameterMm` matters for the last few centimetres and is the usual reason a
 "reachable" screw is not reachable.
 
-### 3.3 `torque.json` — `tier: standard`, values **unverified**
+### 3.3 `joint_torque.json` — **not a lookup table**
 
-Seed values only. Every entry carries `verified: false` until someone with
-authority signs off. **Do not display an unverified torque as a spec** — surface it
-as a proposal requiring confirmation.
+The research changed the shape of this file, not just its values.
+
+There is no universal torque table for a screw into plastic. Bossard's own
+polyamide guide states it "does not replace calculations as defined in VDI 2230",
+and the published guidance is consistent: torque into thermoplastic depends on the
+specific formulation, boss geometry, screw type, thread engagement, and
+temperature. A table lookup here is not a conservative approximation — it is the
+wrong data structure, and shipping one would invite someone to strip a nylon boss
+on our authority.
+
+The correct model is the **1:3 strip ratio**: tightening torque ≈ ⅓ of the torque
+that strips the plastic, where **strip torque is determined by test**, per joint
+family, on the actual material.
 
 ```json
-{"entries":[
-  {"thread":"M2.5","intoMaterial":"polyamide-nylon","torqueNm":0.4,"verified":false},
-  {"thread":"M3","intoMaterial":"polyamide-nylon","torqueNm":0.6,"verified":false},
-  {"thread":"M3","intoMaterial":"A2 stainless","torqueNm":1.2,"verified":false}
-]}
+{
+  "joints": [
+    {"jointFamily": "M2.5-into-S500-arm-boss",
+     "thread": "M2.5", "intoMaterial": "polyamide-nylon (carbon-rod reinforced)",
+     "stripTorqueNm": null,
+     "testMethod": "drive-to-strip on 5 sample bosses, record mean and min",
+     "recommendedTorqueNm": null,
+     "ratio": 0.33,
+     "verified": false,
+     "note": "no value until a strip test exists; the agent must refuse to state one"}
+  ]
+}
 ```
 
-The S500 arms are polyamide-nylon with a carbon rod — torque into plastic is far
-below the steel figure, and getting this wrong strips the part. It is exactly the
-kind of number that must not be asserted from a table lookup.
-
----
+**Rule: with `stripTorqueNm: null` the agent returns "not determined — requires a
+drive-to-strip test", never an inferred number.** This is the one place where
+producing a plausible figure is worse than producing none.
 
 ## 4. The identity bridge — definition ↔ SKU
 
@@ -162,9 +179,21 @@ Resolution order, matching #25:
 3. Normalised-name match.
 4. **Anything else → `identity_review` queue in MongoDB. Never guessed.**
 
-The fingerprints are already measured and in `derive_edges.FASTENERS`:
-M2.5 SHCS `1.200 / 2.150` · M3 SHCS `1.484 / 2.700` · M2.5 countersunk
-`1.150 / 2.100` · M3 nylon pan head `1.400 / 2.250`.
+The fingerprints are already measured and in `derive_edges.FASTENERS`, and they
+**check out against the published ISO 4762 dimensions** — which is what makes the
+identity bridge trustworthy rather than a naming convention:
+
+| Thread | ISO 4762 head dk | → radius | Measured in file | Hex drive | Head height k |
+|---|---|---|---|---|---|
+| M2.5 | 4.32 – 4.50 mm | 2.16 – 2.25 | **2.150** | 2.0 mm | 2.50 mm |
+| M3   | 5.32 – 5.50 mm | 2.66 – 2.75 | **2.700** | 2.5 mm | 3.00 mm |
+
+The M3 measurement lands mid-tolerance and M2.5 within 0.01 mm of the minimum.
+The head-height column independently explains the measured-vs-nominal length gap
+already recorded in the pipeline: M2.5×6 measured 8.1 mm ≈ 6 mm shank + 2.5 mm head.
+
+Also measured, without a standard to check against here: M2.5 countersunk
+`1.150 / 2.100` (GB/T 819) · M3 nylon pan head `1.400 / 2.250` (GB/T 818).
 
 **An unresolved identity blocks a substitution proposal.** It does not downgrade
 to a guess.
@@ -223,6 +252,12 @@ attached**; none of them return prose.
 1. resolve occId -> defName -> SKU            (§4; unresolved => block)
 2. load grip stack                            (already computed)
 3. required = gripMm + engagementMm
+   engagement is material-dependent, NOT a constant:
+     standard metric thread in thermoplastic   1.5x D floor, 2.0x D high stress
+     thread-forming / self-tapping into plastic 2.0-2.5x D (3.0x D heavy load)
+     steel                                      1.0x D
+   The S500 arms are polyamide, so the code now defaults to 2.0x D and reports
+   `engagementBasis` on every stack. 1.5x D is the optimistic floor, not a default.
 4. candidates = stock where thread matches, lifecycle active, onHand > 0,
                 lengthMm >= required
 5. for each: protrusion check (§5.2)          reject on hit
