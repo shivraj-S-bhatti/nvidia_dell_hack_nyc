@@ -9,7 +9,7 @@ and that the viewer fetches nothing over the network.
 
 Exits non-zero on any failure so it can gate a build.
 """
-import sys, json, subprocess, os
+import sys, json, subprocess, os, re
 sys.path.insert(0,'tools/depgraph')
 fail=[]
 def ck(name, cond, detail=''):
@@ -55,6 +55,13 @@ print("=== actions ===")
 acts=actions_for_thickness_change(stacks,'BOTTOM-PLATE-S500',1.0)
 ck('20 fasteners clamp bottom plate', len(acts)==20, str(len(acts)))
 ck('all actions have recommendation', all(x['recommendedLengthMm'] for x in acts))
+def action_target(action):
+    match=re.search(r'-> M[0-9.]+x([0-9.]+)$', action)
+    return float(match.group(1)) if match else None
+ck('action target matches recommendation',
+   all(action_target(x['action'])==x['recommendedLengthMm'] for x in acts))
+ck('relative requirement preserves current engagement',
+   all(x['requiredLengthMm']==x['currentLengthMm']+1.0 for x in acts))
 neg=actions_for_thickness_change(stacks,'BOTTOM-PLATE-S500',-1.0)
 ck('negative delta -> no lengthening', all(x['stillAdequate'] for x in neg))
 ck('unknown part -> no actions', actions_for_thickness_change(stacks,'NOPE',1.0)==[])

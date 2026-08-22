@@ -46,9 +46,8 @@ def classify_fasteners(cyl_by_def, overrides=None):
 
     A cap screw presents two coaxial cylinder families: a dominant small-radius
     shank and a larger short head, with head/shank ratio in a narrow band. Matching
-    the pair against the ISO 4762 table yields the thread. This is what lets the
-    pipeline ingest an assembly whose parts are named in another language, another
-    convention, or nothing at all -- swap the drone for a car and it still works.
+    the pair against the ISO 4762 table yields a candidate thread without relying
+    on names. Each new assembly still needs an explicit recall/false-positive check.
 
     Returns {defName: {shank, M, len, std, confidence, basis}}.
     `overrides` (e.g. data/mfg/identity.json) always wins over inference.
@@ -115,7 +114,8 @@ FASTENERS = {
     'NILONG-GB818-M3':    {'shank': 1.400, 'M': 3.0, 'len': 8,  'std': 'GB/T 818 pan head cross, nylon'},
 }
 # Preferred stock lengths, mm. Used to round a computed requirement up to a real part.
-STOCK = {2.5: [4, 5, 6, 8, 10, 12, 16, 20, 25], 3.0: [5, 6, 8, 10, 12, 16, 20, 25, 30, 35]}
+STOCK = {2.5: [4, 5, 6, 8, 10, 12, 16, 20, 25, 30],
+         3.0: [4, 5, 6, 8, 10, 12, 16, 20, 25, 30, 35]}
 
 FIT_MAX_MM   = 0.35   # r_hole - r_shank upper bound for "this is a fit, not a passage"
 AXIS_OFF_MM  = 0.60   # max perpendicular distance between shank and hole axes
@@ -129,8 +129,8 @@ def _sub(a, b): return [a[k]-b[k] for k in range(3)]
 
 def derive(occurrences, cyl_by_def, mesh=None, vert_path=None, fasteners=None):
     """Derive edges. `fasteners` defaults to geometric classification with the
-    measured S500 fingerprints applied as overrides, so an unseen assembly still
-    works and a known one keeps its exact standard and nominal length."""
+    measured S500 fingerprints applied as overrides. Geometry can identify
+    candidates despite unfamiliar names; every new assembly still needs validation."""
     if fasteners is None:
         fasteners = classify_fasteners(cyl_by_def, overrides=FASTENERS)
     cos_tol = math.cos(math.radians(AXIS_ANG_DEG))
@@ -362,20 +362,28 @@ def actions_for_thickness_change(stacks, changed_def, delta_mm):
         if s['gripMm'] is None:
             continue
         new_grip = round(s['gripMm'] + delta_mm, 3)
-        need = round(new_grip + s['engagementMm'], 2)
-        pick = next_stock(s['nominalM'], need)
-        # relative verdict only: does this change require MORE length than today?
+        assumed_need = round(new_grip + s['engagementMm'], 2)
+        # The threaded member is unknown, so the only defensible recommendation is
+        # relative: preserve today's engagement by carrying the thickness delta into
+        # the nominal fastener length. Keep the assumption-based figure as evidence,
+        # but never let it silently drive the work order.
+        relative_need = round(s['nominalLengthMm'] + max(delta_mm, 0), 2)
+        pick = next_stock(s['nominalM'], relative_need)
         ok = delta_mm <= 0
         out.append({
             'fastener': fid, 'defName': s['defName'], 'currentLengthMm': s['nominalLengthMm'],
             'gripMm': s['gripMm'], 'newGripMm': new_grip, 'engagementMm': s['engagementMm'],
-            'requiredLengthMm': need, 'recommendedLengthMm': pick, 'stillAdequate': ok,
+            'requiredLengthMm': relative_need,
+            'assumptionBasedRequiredLengthMm': assumed_need,
+            'recommendedLengthMm': pick, 'stillAdequate': ok,
             'action': ('no length change required' if ok else
                        (f"lengthen M{s['nominalM']:g}x{s['nominalLengthMm']:g} by "
                         f"{delta_mm:g} mm -> M{s['nominalM']:g}x"
-                        f"{next_stock(s['nominalM'], s['nominalLengthMm']+delta_mm) or '?':g}"
-                        if pick else f"needs >= {need} mm -- no stock length available")),
+                        f"{pick:g}"
+                        if pick else f"needs >= {relative_need} mm -- no stock length available")),
             'reason': (f"grip {s['gripMm']} mm {'+' if delta_mm>=0 else ''}{delta_mm} mm -> {new_grip} mm; "
-                       f"plus {s['engagementMm']} mm engagement ({ENGAGE_D}x D) = {need} mm required"),
+                       f"preserve current engagement by adding the same thickness delta to "
+                       f"the current {s['nominalLengthMm']:g} mm nominal length; "
+                       f"{assumed_need} mm is the separate {ENGAGE_D}x D assumption-based estimate"),
         })
     return out

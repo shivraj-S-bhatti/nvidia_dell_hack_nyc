@@ -51,7 +51,7 @@ LENGTH ACTIONS -- 20 fasteners clamp BOTTOM-PLATE-S500, 20 need a longer part
 | `load_mongo.py` | Persists to MongoDB (system of record). Traversal is *not* done here. |
 | `step_to_mesh.mjs` | OCCT WASM tessellation, once, offline. |
 
-## Works on any assembly, not just the drone
+## Reusable classifier, validated on one assembly
 
 Fasteners are identified by **geometry, not by part name**. A cap screw is a single
 body of revolution presenting a shank/head cylinder pair on one axis line; matching
@@ -60,13 +60,16 @@ clearance hole shows the same radius pair but spread over many axis lines, which
 the discriminator.
 
 On `S500-C1_ASM.step` this recovers **6/6 fastener definitions with zero false
-positives without reading a single part name** — so an assembly named in another
-language or convention (or a car instead of a drone) ingests the same way. Measured
-fingerprints in `FASTENERS` act as overrides where they exist, carrying the exact
-standard and nominal length that inference cannot recover.
+positives without reading a single part name**. That is evidence that names are not
+required for this fixture, not proof that every assembly will ingest correctly.
+Validate recall and false positives on each new assembly. Measured fingerprints in
+`FASTENERS` act as overrides where they exist, carrying the exact standard and
+nominal length that inference cannot recover.
 
-Material for thread engagement is set by `DEFAULT_MATERIAL` in `derive_edges.py`
-(`polyamide` for the S500 at 2.0×D). Change it for a metal chassis.
+The threaded member and its material are not derived reliably, so work orders make
+only a relative claim: if a clamped part gets 1 mm thicker, preserve the current
+engagement by moving to a stocked fastener at least 1 mm longer. The separate
+engagement estimate remains visible as an assumption and never drives the action.
 
 ## How an edge is derived
 
