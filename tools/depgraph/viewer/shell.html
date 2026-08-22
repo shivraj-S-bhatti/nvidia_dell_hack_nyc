@@ -1,6 +1,9 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>S500 Change Impact</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;450;500;600&display=swap">
 <style>
 :root{
   --bg:#f4f3f0; --surface:#fffefc; --surface2:#eceae5; --ink:#191c20; --ink2:#4a515a;
@@ -84,8 +87,22 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 label.chk{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink2);cursor:pointer}
 .note{font:400 11px/1.55 'IBM Plex Sans',sans-serif;color:var(--muted)}
 .note b{color:var(--ink2);font-weight:600}
+.change{display:flex;flex-direction:column;gap:10px;padding:12px 13px;border:1px solid var(--line2);border-radius:4px;background:var(--surface2)}
+.change-command{font:600 12px/1.45 'IBM Plex Mono',monospace;color:var(--ink)}
+.change-actions{display:flex;flex-direction:column;gap:5px}
+.change-action{display:flex;justify-content:space-between;gap:12px;font:500 10.5px/1.4 'IBM Plex Mono',monospace;color:var(--ink2)}
+.change-action b{color:var(--accent);white-space:nowrap}
+.change-controls{display:flex;gap:7px}
+.action-btn{min-height:32px;padding:7px 10px;border:1px solid var(--line2);border-radius:3px;background:var(--surface);color:var(--ink);font:600 10.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer}
+.action-btn.primary{border-color:var(--accent);background:var(--accent);color:#15110d}
+.action-btn:hover{filter:brightness(1.06)}
+.action-btn:disabled{cursor:default;filter:none;opacity:.52}
+.change-state{font:600 9.5px/1 'IBM Plex Sans Condensed',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.change-state.active{color:var(--accent)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
+</head>
+<body>
 <div class="app">
  <header>
   <div class="brand"><b>S500 CHANGE IMPACT</b><span class="mono">S500-C1_ASM.step · AP214 · derived graph</span></div>
@@ -127,6 +144,16 @@ label.chk{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink
     <div><b id="sumDef">0</b><span class="lbl">defs hit</span></div>
     <div><b id="sumOcc">0</b><span class="lbl">occurrences</span></div>
     <div><b id="sumHop">0</b><span class="lbl">max hop</span></div>
+   </div>
+   <div class="change">
+    <div class="change-state" id="changeState">candidate ready</div>
+    <div class="change-command">Increase bottom plate thickness by 1.0 mm</div>
+    <div class="change-actions" id="changeActions"></div>
+    <div class="change-controls">
+     <button class="action-btn primary" id="previewChange" type="button">Preview change</button>
+     <button class="action-btn" id="resetChange" type="button" disabled>Reset</button>
+    </div>
+    <p class="note">The visual delta is local. Graph impact and relative fastener actions are derived from geometry; accepting a CAD revision still requires human approval.</p>
    </div>
   </div>
   <div class="work" id="work"></div>

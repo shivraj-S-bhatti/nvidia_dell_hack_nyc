@@ -1,5 +1,5 @@
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const G=window.__GRAPH__, P=window.__PARTS__;
+const G=window.__GRAPH__, P=window.__PARTS__, CHANGE=window.__DEMO_CHANGE__;
 const nodeById=new Map(G.nodes.map(n=>[n.id,n]));
 const fast=new Map(); const contains=new Map();
 function push(m,k,v){ (m.get(k)||m.set(k,[]).get(k)).push(v); }
@@ -35,7 +35,8 @@ P.parts.forEach(p=>{
   const IA=p.i32? new Uint32Array(idxRaw,p.iOff,p.iCount): new Uint16Array(idxRaw,p.iOff,p.iCount);
   g.setIndex(new THREE.BufferAttribute(IA.slice(),1));
   const mat=new THREE.MeshStandardMaterial({color:BASE.clone(),roughness:.62,metalness:.28,transparent:true,opacity:1});
-  const m=new THREE.Mesh(g,mat); m.userData.part=p; m.userData.occ=p.occ; group.add(m); meshes.push(m);
+  const m=new THREE.Mesh(g,mat); m.userData.part=p; m.userData.occ=p.occ;
+  m.userData.basePosition=pos.slice(); group.add(m); meshes.push(m);
 });
 const box=new THREE.Box3().setFromObject(group), ctr=box.getCenter(new THREE.Vector3()), sz=box.getSize(new THREE.Vector3());
 group.position.sub(ctr);
@@ -112,6 +113,49 @@ function render(anchorLabel, anchorDef, anchorOccs, maxHops){
 }
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
+// ---------- bounded candidate change ----------
+let changePreviewed=false;
+function targetMeshes(){ return meshes.filter(m=>m.userData.part.name===CHANGE.target); }
+function setCandidateGeometry(active){
+  targetMeshes().forEach(m=>{
+    const p=m.userData.part, base=m.userData.basePosition;
+    const spans=p.max.map((v,i)=>v-p.min[i]);
+    const axis=spans.indexOf(Math.min(...spans));
+    const mid=(p.min[axis]+p.max[axis])/2;
+    const ratio=(spans[axis]+CHANGE.deltaMm)/spans[axis];
+    const out=m.geometry.getAttribute('position').array;
+    out.set(base);
+    if(active) for(let i=axis;i<out.length;i+=3) out[i]=mid+(base[i]-mid)*ratio;
+    m.geometry.getAttribute('position').needsUpdate=true;
+    m.geometry.deleteAttribute('normal'); m.geometry.computeVertexNormals();
+    m.geometry.computeBoundingBox(); m.geometry.computeBoundingSphere();
+  });
+  changePreviewed=active;
+  $('#changeState').textContent=active?'proposed · local preview':'candidate ready';
+  $('#changeState').classList.toggle('active',active);
+  $('#changeState').dataset.previewed=String(active);
+  $('#previewChange').textContent=active?'Previewing':'Preview change';
+  $('#previewChange').disabled=active; $('#resetChange').disabled=!active;
+}
+function focusTarget(){
+  const b=new THREE.Box3(); targetMeshes().forEach(m=>b.expandByObject(m));
+  const c=b.getCenter(new THREE.Vector3()), s=b.getSize(new THREE.Vector3());
+  const span=Math.max(s.x,s.y,s.z);
+  controls.target.copy(c);
+  const distance=span*1.55/Math.min(cam.aspect,1);
+  const view=new THREE.Vector3(.78,.56,.9).normalize().multiplyScalar(distance);
+  cam.position.copy(c).add(view);
+  cam.near=Math.max(span/1000,.1); cam.far=span*20; cam.updateProjectionMatrix(); controls.update();
+}
+function selectTarget(){
+  const b=$(`.defbtn[data-def="${CSS.escape(CHANGE.target)}"]`); if(b) b.click();
+}
+function previewChange(){ selectTarget(); setCandidateGeometry(true); focusTarget(); }
+function resetChange(){ setCandidateGeometry(false); focusTarget(); }
+$('#changeActions').innerHTML=CHANGE.actions.map(a=>
+  `<div class="change-action"><span>${esc(a.action)}</span><b>×${a.count}</b></div>`).join('');
+$('#previewChange').onclick=previewChange; $('#resetChange').onclick=resetChange;
+
 // ---------- anchors ----------
 const defCounts=Object.entries(G.defs).map(([d,o])=>({def:d,n:o.length}))
   .filter(x=>P.parts.some(p=>p.name===x.def)).sort((a,b)=>b.n-a.n||a.def.localeCompare(b.def));
@@ -134,4 +178,8 @@ $('#stat-edges').textContent=G.edges.length;
 $('#stat-fast').textContent=G.edges.filter(e=>e.t==='FASTENS').length;
 $('#stat-defs').textContent=Object.keys(G.defs).length;
 // default demo
-const first=$('.defbtn[data-def="GB70-M2-5-6-DING"]')||$('.defbtn'); if(first) first.click();
+const first=$(`.defbtn[data-def="${CSS.escape(CHANGE.target)}"]`)||$('.defbtn'); if(first) first.click();
+window.__S500_VIEWER__={previewChange,resetChange,getState:()=>({
+  previewed:changePreviewed,target:CHANGE.target,deltaMm:CHANGE.deltaMm,
+  targetMeshes:targetMeshes().length,impactedOccurrences:current?.hop.size||0
+})};
