@@ -1,0 +1,116 @@
+{
+  "schema": "CandidateFamily/1",
+  "objectId": "neoracer-full-vehicle",
+  "provenance": "PROVISIONAL Factory-side fixture. Issue #12 (LAB) owns candidate generation. The verdicts are NOT authored here -- every pass and fail is computed by tools/factory/checks.py from measured geometry, and the rejections were found by sweeping every fastener against every longer stock length on this assembly, not designed to fail.",
+  "goal": "Stiffen the NeoRacer steering link without disturbing a purchased interface.",
+  "candidates": [
+    {
+      "candidateId": "neo-baseline",
+      "parentId": null,
+      "label": "Baseline NeoRacer full vehicle as published",
+      "rationale": "The unmodified assembly. It must pass the same check set as every candidate.",
+      "ops": []
+    },
+    {
+      "candidateId": "neo-a-scoped-1mm",
+      "parentId": "neo-baseline",
+      "label": "Steering link +1.0 mm, clamping screws lengthened in place",
+      "rationale": "Stiffen the steering link and carry the extra millimetre of grip into exactly the four screw occurrences that pass through it.",
+      "ops": [
+        {
+          "op": "thickness",
+          "target": "KORM_X_E1NY__X_F6SSZEK_X-107086",
+          "deltaMm": 1.0
+        },
+        {
+          "op": "fastener_length",
+          "target": "ANSI_B18_3_4M_-_M3_X_0_5_X_10",
+          "newLengthMm": 10,
+          "targetOccurrences": [
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_10:1",
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_10:2"
+          ]
+        },
+        {
+          "op": "fastener_length",
+          "target": "ANSI_B18_3_4M_-_M3_X_0_5_X_5",
+          "newLengthMm": 5,
+          "targetOccurrences": [
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_5:1",
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_5:2"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "neo-b-scoped-0.5mm",
+      "parentId": "neo-baseline",
+      "label": "Steering link +0.5 mm, same scoped substitution",
+      "rationale": "A lighter variant of the same idea; the same fastener step more than covers the smaller grip growth.",
+      "ops": [
+        {
+          "op": "thickness",
+          "target": "KORM_X_E1NY__X_F6SSZEK_X-107086",
+          "deltaMm": 0.5
+        },
+        {
+          "op": "fastener_length",
+          "target": "ANSI_B18_3_4M_-_M3_X_0_5_X_10",
+          "newLengthMm": 10,
+          "targetOccurrences": [
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_10:1",
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_10:2"
+          ]
+        },
+        {
+          "op": "fastener_length",
+          "target": "ANSI_B18_3_4M_-_M3_X_0_5_X_5",
+          "newLengthMm": 5,
+          "targetOccurrences": [
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_5:1",
+            "SSTMINI_ASM:1/SSTMINI_F_ASM:1/KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM:1/ANSI_B18_3_4M_-_M3_X_0_5_X_5:2"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "neo-c-link-only",
+      "parentId": "neo-baseline",
+      "label": "Steering link +2.0 mm, fastener schedule untouched",
+      "rationale": "The cheapest version: change one part and leave the hardware alone, assuming 2 mm is too small to matter.",
+      "ops": [
+        {
+          "op": "thickness",
+          "target": "KORM_X_E1NY__X_F6SSZEK_X-107086",
+          "deltaMm": 2.0
+        }
+      ]
+    },
+    {
+      "candidateId": "neo-d-standardize-m3",
+      "parentId": "neo-baseline",
+      "label": "Standardise the short steering screws at 12 mm",
+      "rationale": "Cut the fastener schedule: this assembly carries M3 cap screws at four different lengths. Run one longer M3 and drop a part number, gaining engagement everywhere. Applied at the definition, so it reaches every occurrence.",
+      "ops": [
+        {
+          "op": "fastener_length",
+          "target": "ANSI_B18_3_4M_-_M3_X_0_5_X_5",
+          "newLengthMm": 12
+        }
+      ]
+    },
+    {
+      "candidateId": "neo-e-thicker-bearing",
+      "parentId": "neo-baseline",
+      "label": "Widen the differential bearing by 1.0 mm",
+      "rationale": "Use a beefier bearing to take more load through the differential.",
+      "ops": [
+        {
+          "op": "thickness",
+          "target": "CSAP_X_E1GY__1",
+          "deltaMm": 1.0
+        }
+      ]
+    }
+  ]
+}

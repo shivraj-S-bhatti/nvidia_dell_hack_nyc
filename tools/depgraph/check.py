@@ -31,6 +31,29 @@ ck('6/6 recall, 0 FP', set(auto)==set(FASTENERS), f"{len(auto)} found")
 ck('empty input safe', classify_fasteners({})=={} and classify_fasteners(None)=={})
 ck('overrides applied', classify_fasteners(cyl, overrides={'ZZZ':{'M':9.9}}).get('ZZZ',{}).get('M')==9.9)
 
+print("=== ingest robustness across CAD writers ===")
+# The classifier reads geometry, never names, so nothing stops it from calling a
+# turned part a screw. JIAO-EVA is the S500's EVA foam landing-gear foot: radii
+# 5.05/8.0/9.5, whose 5.05/8.0 pair fits the ISO 4762 M10 row. It is rejected only
+# because a cap screw's head is its LARGEST radius and 9.5 sits outside the 8.0 bore.
+ck('EVA foot pad is not a fastener', 'JIAO-EVA' not in auto,
+   str(auto.get('JIAO-EVA')))
+ck('head is the outermost radius for all 6',
+   all(max(round(r, 3) for r, _, _ in cyl[d]) == round(v['shank'] * 0 + max(
+       round(r2, 3) for r2, _, _ in cyl[d]), 3) for d, v in auto.items()))
+# Some writers put a product's solid in a separate representation linked by
+# SHAPE_REPRESENTATION_RELATIONSHIP. S500 carries its geometry inline, so the link
+# index must stay empty here -- if it ever fills, geometry is being double counted.
+ck('S500 geometry is inline (no orphan links)', st.rep_links == {},
+   f'{len(st.rep_links)} links')
+import normalize_step
+_tmp = '.artifacts/depgraph/_normalize_noop.step'
+_r = normalize_step.normalize('S500-C1_ASM.step', _tmp)
+ck('normalizer is a no-op on inline geometry', _r['folded'] == 0, str(_r['folded']))
+ck('normalizer preserves every entity',
+   len(Step(_tmp).ents) == len(st.ents), f"{len(Step(_tmp).ents)} vs {len(st.ents)}")
+os.remove(_tmp)
+
 print("=== derive + grip ===")
 mesh=json.load(open('.artifacts/depgraph/mesh.json'))
 edges,stacks=derive(occ,cyl,mesh,'.artifacts/depgraph/mesh_vert.bin')

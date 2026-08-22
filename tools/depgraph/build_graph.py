@@ -16,9 +16,20 @@ def bind_meshes(mesh, occurrences):
     translation and a mesh-vertex centroid -- then greedily pair nearest.
     """
     og, pg = collections.defaultdict(list), collections.defaultdict(list)
-    for p in mesh['parts']: og[p['name']].append(p)
+    # A part with no vertices has no centroid, and a part with no name cannot be
+    # matched to a definition. Both occur in the wild -- neoracer-full-vehicle.step
+    # yields 1136 parts, all empty and 671 of them unnamed -- and both used to reach
+    # the centroid arithmetic below and raise TypeError on None. Bad input should
+    # produce a reported count, not a traceback.
+    skipped = 0
+    for p in mesh['parts']:
+        if not p.get('name') or not p.get('vCount') or \
+                not p.get('centroid') or any(c is None for c in p['centroid']):
+            skipped += 1
+            continue
+        og[p['name']].append(p)
     for o in occurrences:   pg[o['defName']].append(o)
-    mapped, unmapped = {}, 0
+    mapped, unmapped = {}, skipped
     for name, om in og.items():
         pm = pg.get(name, [])
         if len(pm) != len(om):

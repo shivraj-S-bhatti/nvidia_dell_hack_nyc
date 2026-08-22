@@ -1,0 +1,23 @@
+{
+  "checkSetVersion": "factory-checks/1.0.0",
+  "corpusRevision": "c8d3bc53168bbfe2",
+  "expectedDefinitions": 41,
+  "expectedOccurrences": 125,
+  "objectId": "s500-c1",
+  "protectedInterfaces": [
+    {
+      "definition": "CARBON-FIBER-TUBE",
+      "occurrences": 4,
+      "reason": "purchased pultruded tube stock; the arm clamp JIA-GUAN and the hanger bore are both dimensioned to its outside diameter, so a candidate that changes it silently invalidates every clamp interface on the airframe"
+    },
+    {
+      "definition": "NILONGZHU-M3-6",
+      "occurrences": 4,
+      "reason": "purchased M3 nylon standoff, a catalogue part rather than a designed one; its length sets the deck spacing the rest of the stack is built to"
+    }
+  ],
+  "provenance": "PROVISIONAL Factory-side fixture. Issue #11 (OBJECT) owns the authoritative object contract; when it publishes one at .artifacts/object/object-contract.json, validate.py prefers it and this file stops being used. Every field here is measured from the released Holybro S500-C1 STEP, not asserted.",
+  "schema": "ObjectContract/1",
+  "stepFile": "S500-C1_ASM.step",
+  "stepSha256": "c8d3bc53168bbfe29d7c49cfe49f8523844c5c12d6431a4ea0c30e8b2d851c36"
+}
