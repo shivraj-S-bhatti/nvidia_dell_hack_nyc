@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/attempt1/physgen/object/target-component.schema.json",
+  "title": "Selected NeoRacer optimization target",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "selectionStatus",
+    "assetId",
+    "sourceArtifactSha256",
+    "componentId",
+    "occurrenceId",
+    "definitionName",
+    "occurrencePath",
+    "units",
+    "localFrame",
+    "assemblyTransform",
+    "geometry",
+    "protectedMountRegions",
+    "neighborKeepOuts",
+    "testFixtureAssumptions",
+    "baselineArtifact",
+    "assemblyContextScreenshot",
+    "fallback"
+  ],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "selectionStatus": {"enum": ["selected-neoracer", "selected-s500-fallback"]},
+    "assetId": {"type": "string", "minLength": 1},
+    "sourceArtifactSha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "componentId": {"type": "string", "pattern": "^component-[0-9a-f]{20}$"},
+    "occurrenceId": {"type": "string", "pattern": "^occurrence-[0-9a-f]{20}$"},
+    "definitionName": {"type": "string", "minLength": 1},
+    "occurrencePath": {"type": "string", "minLength": 1},
+    "units": {"const": "mm"},
+    "localFrame": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "transform"],
+      "properties": {
+        "description": {"type": "string", "minLength": 1},
+        "transform": {"$ref": "#/$defs/matrix4"}
+      }
+    },
+    "assemblyTransform": {"$ref": "#/$defs/matrix4"},
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "solidCount",
+        "valid",
+        "volumeMm3",
+        "boundingBoxMm",
+        "nominalThicknessMm",
+        "extrusionDirectionLocal",
+        "classification",
+        "thicknessEvidence"
+      ],
+      "properties": {
+        "solidCount": {"const": 1},
+        "valid": {"const": true},
+        "volumeMm3": {"type": "number", "exclusiveMinimum": 0},
+        "boundingBoxMm": {"$ref": "#/$defs/bbox"},
+        "nominalThicknessMm": {"type": "number", "exclusiveMinimum": 0},
+        "extrusionDirectionLocal": {"$ref": "#/$defs/vector3"},
+        "classification": {"const": "mostly-planar thin-wall bracket"},
+        "thicknessEvidence": {"type": "string", "minLength": 1}
+      }
+    },
+    "protectedMountRegions": {
+      "type": "array",
+      "minItems": 2,
+      "items": {"$ref": "#/$defs/cylinderRegion"}
+    },
+    "neighborKeepOuts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["occurrenceName", "definitionName", "frame", "boundingBoxMm", "clearanceMm", "source"],
+        "properties": {
+          "occurrenceName": {"type": "string", "minLength": 1},
+          "definitionName": {"type": "string", "minLength": 1},
+          "frame": {"const": "parent-subassembly"},
+          "boundingBoxMm": {"$ref": "#/$defs/bbox"},
+          "clearanceMm": {"type": "number", "minimum": 0},
+          "source": {"const": "source CAD sibling envelope"}
+        }
+      }
+    },
+    "testFixtureAssumptions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "supports", "loads", "disclaimer"],
+      "properties": {
+        "label": {"const": "demo test-fixture assumptions"},
+        "supports": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "loads": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["regionIds", "forceNLocal", "purpose"],
+            "properties": {
+              "regionIds": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+              "forceNLocal": {"$ref": "#/$defs/vector3"},
+              "purpose": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "disclaimer": {"type": "string", "minLength": 1}
+      }
+    },
+    "baselineArtifact": {"$ref": "#/$defs/hashArtifact"},
+    "assemblyContextScreenshot": {"$ref": "#/$defs/hashArtifact"},
+    "fallback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assetId", "targetDefinitionName", "sourceArtifactSha256", "trigger"],
+      "properties": {
+        "assetId": {"const": "s500-c1-asm"},
+        "targetDefinitionName": {"const": "BOTTOM-PLATE-S500"},
+        "sourceArtifactSha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "trigger": {"type": "string", "minLength": 1}
+      }
+    }
+  },
+  "$defs": {
+    "vector3": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {"type": "number"}
+    },
+    "matrix4": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "array",
+        "minItems": 4,
+        "maxItems": 4,
+        "items": {"type": "number"}
+      }
+    },
+    "bbox": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min", "max"],
+      "properties": {
+        "min": {"$ref": "#/$defs/vector3"},
+        "max": {"$ref": "#/$defs/vector3"}
+      }
+    },
+    "cylinderRegion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["regionId", "frame", "axisOriginMm", "axisDirection", "axialLengthMm", "protectedRadiusMm", "source"],
+      "properties": {
+        "regionId": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]+$"},
+        "frame": {"const": "component-local"},
+        "axisOriginMm": {"$ref": "#/$defs/vector3"},
+        "axisDirection": {"$ref": "#/$defs/vector3"},
+        "axialLengthMm": {"type": "number", "exclusiveMinimum": 0},
+        "protectedRadiusMm": {"type": "number", "exclusiveMinimum": 0},
+        "source": {"const": "source CAD cylindrical mounting interface"}
+      }
+    },
+    "hashArtifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["relativePath", "sha256", "sizeBytes"],
+      "properties": {
+        "relativePath": {"type": "string", "pattern": "^(?!/)(?!.*\\.\\.).+$"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "sizeBytes": {"type": "integer", "minimum": 1}
+      }
+    }
+  }
+}
