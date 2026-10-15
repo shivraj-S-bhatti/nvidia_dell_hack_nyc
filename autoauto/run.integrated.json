@@ -1,0 +1,2691 @@
+{
+  "schemaVersion": "autoauto.issue42-47/v1",
+  "meta": {
+    "product": "autoauto",
+    "runId": "run.neoracer-wing-mount-l-seed-7",
+    "machine": "Dell GB10",
+    "network": "offline",
+    "scope": "Issues #42-47",
+    "truthBoundary": "Component-level comparison fixture; no Track ranking or human selection has been run."
+  },
+  "integration": {
+    "object": {
+      "assembly": "NeoRacer v0 full vehicle",
+      "definitions": 379,
+      "occurrences": 647,
+      "targetName": "WING-MOUNT-L",
+      "componentId": "component-651d2501fdff2aa4f1cd",
+      "occurrenceId": "occurrence-356ea2a4ca15007f265a",
+      "occurrencePath": "SST000_ASM (1):1/WING-MOUNT-L:1",
+      "units": "mm",
+      "protectedInterfaceCount": 4,
+      "fullVehicleImage": {
+        "url": "assets/full-vehicle.png",
+        "sha256": "30f3efecc27286c270d1c4a2099efe79226f52f02ab28f7411d6d28ed7c43a7b",
+        "source": ".artifacts/attempt1-physgen/object/source/neoracer-hardware-files/full-vehicle/neoracer-full-vehicle.step",
+        "sizeBytes": 421491,
+        "triangleCount": 1028723
+      },
+      "interactiveVehicle": {
+        "meshUrl": "interactive/mesh.json?v=f7630da09e4b",
+        "positionUrl": "interactive/mesh_pos.bin?v=6fada8624c31",
+        "indexUrl": "interactive/mesh_idx.bin?v=36be14864951",
+        "files": {
+          "mesh": {
+            "relativePath": "interactive/mesh.json",
+            "sha256": "f7630da09e4bb6654d7aa9791b4e6c2362df1c0aeb6409cfaaf8a7e5f596f944",
+            "sizeBytes": 365200
+          },
+          "positions": {
+            "relativePath": "interactive/mesh_pos.bin",
+            "sha256": "6fada8624c318e2a0d2acca05314b6ccf5aa84fd663797aa1cb7a54c20c25d9b",
+            "sizeBytes": 11027314
+          },
+          "indices": {
+            "relativePath": "interactive/mesh_idx.bin",
+            "sha256": "36be14864951e76e3e2e6011e7ddce807f57f403584c766064995a4e2b649716",
+            "sizeBytes": 17816680
+          }
+        },
+        "counts": {
+          "definitions": 379,
+          "occurrences": 647,
+          "renderableLeafOccurrences": 499,
+          "vertices": 961837,
+          "triangles": 1004555,
+          "selectionVertices": 876020,
+          "selectionTriangles": 883473
+        },
+        "tessellation": {
+          "linearDeflectionMm": 2.2,
+          "angularDeflectionRad": 0.45
+        }
+      },
+      "image": {
+        "url": "assets/object-context.png",
+        "sha256": "425cc02758671dbb20391dbd14337bc43a31940c2ab0a20cfb2f073249eb97ba",
+        "source": ".artifacts/attempt1-physgen/object/artifacts/sha256/425cc02758671dbb20391dbd14337bc43a31940c2ab0a20cfb2f073249eb97ba.png",
+        "sizeBytes": 287461
+      },
+      "bom": [
+        {
+          "name": "000",
+          "componentId": "component-5bf27b69abd46729b5f2",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "0001",
+          "componentId": "component-253cbf6a992bd4bf3728",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "0003_ASM",
+          "componentId": "component-606bcc3140d0ea2b0e7b",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "0006_4",
+          "componentId": "component-e77769d60561a852187e",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "0008_2",
+          "componentId": "component-d7c87270cc9431f809bd",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "000_1",
+          "componentId": "component-c3948ee6e6576d6581ce",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "000_2",
+          "componentId": "component-edb90b396caa10677935",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "000_2_1",
+          "componentId": "component-841df30021443318ef51",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "1_0_5_1",
+          "componentId": "component-1390d856ee210688d400",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "1_0_5_2",
+          "componentId": "component-53d7808ab19aa358332e",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "1_0_5_ASM_ASM",
+          "componentId": "component-3fa7d309fa3675003bd9",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "2_0_7",
+          "componentId": "component-d2c73c5c16ef670aeccf",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "39500",
+          "componentId": "component-c3d59c9cc4aacfc5568d",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "3D_300A_V1_2025-10-29_ASM",
+          "componentId": "component-c0518db67fdb8362bb70",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "3D_OSRC_HUB_V1_2025-10-29_ASM",
+          "componentId": "component-1c4d7988faa119ce81ba",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "3D_OSRC_PW_V1_2025-10-29_ASM",
+          "componentId": "component-4413ad38ab61f5408c52",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "3S00",
+          "componentId": "component-3d4049a55bb12ca9c7fb",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "3_0_4",
+          "componentId": "component-ac76f01e8f1bee38f4b5",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "4_0_2",
+          "componentId": "component-f8e76d3848137a318bcf",
+          "occurrenceCount": 8,
+          "isRootAssembly": false
+        },
+        {
+          "name": "A014-2024-05-11",
+          "componentId": "component-8e605dbfcc9cc00e8fdf",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "A016-L-2024-05-11",
+          "componentId": "component-fe6a55beaed3d52165d4",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "A017-R-2024-05-11_1_",
+          "componentId": "component-81c86595c0583ec99e86",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "ANSI_B18_3_4M_",
+          "componentId": "component-4783bdb13ca7fda1d4c8",
+          "occurrenceCount": 6,
+          "isRootAssembly": false
+        },
+        {
+          "name": "ANSI_B18_3_4M_-_M3_5_MIR",
+          "componentId": "component-3fa098c057d13ee457c7",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "ANSI_B18_3_4M_-_M3_XR",
+          "componentId": "component-64c49de0d54a0bf260eb",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "ANSI_B18_3_4M_-_M3_X_0_5_XIR",
+          "componentId": "component-ea3f150f7003955b9bf1",
+          "occurrenceCount": 4,
+          "isRootAssembly": false
+        },
+        {
+          "name": "ANSI_B18_3_4M_-_M3_X_0_5_X_10",
+          "componentId": "component-6bedb0eab2ed33ab7f66",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "ANSI_B18_3_4M_-_M3_X_0_5_X_16",
+          "componentId": "component-b73bcd9e651e4b9ff94b",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "ANSI_B18_3_4M_-_M3_X_0_5_X_5",
+          "componentId": "component-bb616a0731120580754b",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "ANSI_B18_3_4M__MIR",
+          "componentId": "component-7cb2bb5b8dc3e51889f4",
+          "occurrenceCount": 6,
+          "isRootAssembly": false
+        },
+        {
+          "name": "ANSI_B27_7_-_3",
+          "componentId": "component-a5fac85658223e2829a9",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "ANSI_B27_7_-_3_MIR",
+          "componentId": "component-e71ab73914a2065c557d",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "ASM0002_ASM",
+          "componentId": "component-7c20c0109d188abb9436",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "ASME_ANSI_B18_3_5M_-_",
+          "componentId": "component-9b0b64c5654e27b916fd",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "ASME_ANSI_B18_3_5M_-_M3X6_2_",
+          "componentId": "component-d876295280f8f9aa0eb7",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "AS_1421_-_M4_X_8_FLAT_POINT",
+          "componentId": "component-e9cb37968b53b56f6489",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "AS_1421_-_M4_X_8_FLAT_POINT_MIR",
+          "componentId": "component-00b0f5ca5cd127fda279",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "BOARD_O9SG",
+          "componentId": "component-fc0dae77b09dd603b9e7",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "BOARD_VKX0",
+          "componentId": "component-54e54d16e1dea4b9bb04",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "BOARD_YPGN",
+          "componentId": "component-7d6e2196d961fa0b31ea",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "BOLYG_X_F3KER_X_E9K",
+          "componentId": "component-53f49c22e69453bcf641",
+          "occurrenceCount": 4,
+          "isRootAssembly": false
+        },
+        {
+          "name": "BOLYG_X_F3KER_X_E9K_MIR",
+          "componentId": "component-ad0e4a9047d1a2e67e04",
+          "occurrenceCount": 4,
+          "isRootAssembly": false
+        },
+        {
+          "name": "BOLYG_X_F3KER_X_E9K_TENGELY",
+          "componentId": "component-870c0b51e56f67e1f4db",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "BOLYG_X_F3KER_X_E9K_TENGELY_MIR",
+          "componentId": "component-15cd5c79e57498c3a946",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "BS_4168_-_M3_X_4",
+          "componentId": "component-e8063ebd6c0762e31b4a",
+          "occurrenceCount": 3,
+          "isRootAssembly": false
+        },
+        {
+          "name": "BS_4168_-_M3_X_40",
+          "componentId": "component-a30cb499231287ca55c6",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "BS_4168_-_M3_X_40_MIR",
+          "componentId": "component-790f84654bd9f5f8596b",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "BS_4168_-_M3_X_4_1_MIR",
+          "componentId": "component-415e6bac55492a24e4e9",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "BS_4168_-_M3_X_4_MIR",
+          "componentId": "component-e9c180eea2269080d099",
+          "occurrenceCount": 3,
+          "isRootAssembly": false
+        },
+        {
+          "name": "BS_4168_-_M5_X_6",
+          "componentId": "component-07091b083eade2d002ae",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "BS_4168_-_M5_X_6_MIR",
+          "componentId": "component-dc4497d5b5d42ab577bf",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "C0805_C0805_L2_0-W1_3-H1_3_YPGN",
+          "componentId": "component-23077a51c46788ea05e3",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "C1000",
+          "componentId": "component-24898ae2485160a0b6d7",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "C1206_C1206_L3_2-W1_6-H1_3_YPGN",
+          "componentId": "component-f96fda54eeb31ed7a024",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "C13_C0805_C0805_L2_0-W1_3-H1_3__ASM",
+          "componentId": "component-689c775bc29acee9cf05",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "C1812_C1812_L4_5-W3_2-H2_6_YPGN",
+          "componentId": "component-855851554ab91f542d8e",
+          "occurrenceCount": 3,
+          "isRootAssembly": false
+        },
+        {
+          "name": "C1_CAP-SMD_BD8_0-L8_3-W8_3-LS9__ASM",
+          "componentId": "component-d9579e8dfe664fc630dd",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "C1_MIR000",
+          "componentId": "component-5403875eb5abd6f5428e",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "C6_C1206_C1206_L3_2-W1_6-H1_3_Y_ASM",
+          "componentId": "component-bca29277a9f6ff8c7da4",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "C9_C1812_C1812_L4_5-W3_2-H2_6_Y_ASM",
+          "componentId": "component-a3f18f83c10f41ee8031",
+          "occurrenceCount": 3,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CAP-SMD_BD8_0-L8_3-W8_3-LS9_3-F_ASM",
+          "componentId": "component-34da5b49b9321136ae81",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CAP-SMD_BD8_0-L8_3-W8_3-LS9_3_1",
+          "componentId": "component-52e5e2e7cd30ec53a08c",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CAP-SMD_BD8_0-L8_3-W8_3-LS9_3_2",
+          "componentId": "component-da959da60fae304cea95",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CAP-SMD_BD8_0-L8_3-W8_3-LS9_3_3",
+          "componentId": "component-875624cf4b59220d3218",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CN1_CONN-TH_XT30UPB-F_CONN-TH_X_ASM",
+          "componentId": "component-fd758d9cbf47b186857f",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CN1_CONN-TH_XT60PW-M_CONN-TH_XT_ASM",
+          "componentId": "component-8258a39c73ce1a0b17b5",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CN1_CONN-TH_XT60PW-M_CONN-TH__1_ASM",
+          "componentId": "component-09095600c8dbe5e8b119",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CN2_CONN-TH_XT30UPB-F_CONN-TH_X_ASM",
+          "componentId": "component-eee23c2ea490fd969996",
+          "occurrenceCount": 3,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CN2_CONN-TH_XT30UPB-M_CONN-TH_X_ASM",
+          "componentId": "component-d36b74c31054578e6a58",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CN3_CONN-TH_XT30UPB-F_CONN-TH_X_ASM",
+          "componentId": "component-1686a5fcf2ad3fa3bbff",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CN5_CONN-TH_XT30PB-M_CONN-TH_XT_ASM",
+          "componentId": "component-a7c71fc832c0d8e0d855",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CNS_4558_-_M3_X_10_1",
+          "componentId": "component-1afef49017c81206d842",
+          "occurrenceCount": 6,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CNS_4558_-_M3_X_10_1_MIR",
+          "componentId": "component-271de39120f4ecf863d9",
+          "occurrenceCount": 6,
+          "isRootAssembly": false
+        },
+        {
+          "name": "COMPONENT1-249283",
+          "componentId": "component-b7186c5f6fdcbff9e3a9",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "COMPONENT1-314_ASM",
+          "componentId": "component-24c22542b4ba8e864cf8",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "COMPONENT1_2",
+          "componentId": "component-a4223a218d9480f71a1d",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "COMPONENT1_3",
+          "componentId": "component-2f0445954da584555ecc",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "COMPONENT1_4",
+          "componentId": "component-80b265144cfb637480ce",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "COMPONENT1_5",
+          "componentId": "component-2ad7d3c9d133c67d60a2",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-SMD_4P-P1_25_XUNPU_WAFER-M_ASM",
+          "componentId": "component-c74bf885eba4edeb3632",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-SMD_4P-P1_25_XUNPU_WAFER_1",
+          "componentId": "component-670c1270f8448ec002b1",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-SMD_4P-P1_25_XUNPU_WAFER_2",
+          "componentId": "component-72ff86d6c81d20a6f7c1",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-SMD_4P-P1_25_XUNPU_WAFER_3",
+          "componentId": "component-2912964356b4a50c6da1",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-SMD_8P-P1_25_ZX-MX1_25-8PL_ASM",
+          "componentId": "component-fa0e873ea084a9461100",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-SMD_8P-P1_25_ZX-MX1_25-8_1",
+          "componentId": "component-13e8eb3bbbc71765328d",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-SMD_8P-P1_25_ZX-MX1_25-8_2",
+          "componentId": "component-3eca02840880253679c7",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-SMD_8P-P1_25_ZX-MX1_25-8_3",
+          "componentId": "component-f735663cb5cd7a64f423",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-SMD_8P-P1_25_ZX-MX1_25-8_4",
+          "componentId": "component-18e577fa1b7eae9a2431",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-SMD_8P-P1_25_ZX-MX1_25-8_5",
+          "componentId": "component-56b2468b6c2fcbc4fe63",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-SMD_8P-P1_25_ZX-MX1_25-8_6",
+          "componentId": "component-a03a54a1fc8781f6cb66",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-SMD_8P-P1_25_ZX-MX1_25-8_7",
+          "componentId": "component-f1ca1456d53ebe2444bf",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-SMD_8P-P1_25_ZX-MX1_25-8_8",
+          "componentId": "component-3168bbdbfba54153e168",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-SMD_8P-P1_25_ZX-MX1_25-8_9",
+          "componentId": "component-a6a2ff01804c6678c459",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-SMD_8P-P1_25_ZX-MX1_25-_10",
+          "componentId": "component-6a14b795d3acce2a49b9",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-SMD_8P-P1_25_ZX-MX1_25-_11",
+          "componentId": "component-2297415ea25e72f0f298",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-TH_XT30PB-M_CONN-TH_XT30PB",
+          "componentId": "component-1babf39b0543e40cabfd",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-TH_XT30UPB-F_CONN-TH_XT30U_ASM",
+          "componentId": "component-4edfb28712796151d8c5",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-TH_XT30UPB-F_CONN-TH_XT3_1",
+          "componentId": "component-2fe35a5deaa33ec82428",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-TH_XT30UPB-F_CONN-TH_XT3_2",
+          "componentId": "component-e51f44df7e7a38795a48",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-TH_XT30UPB-F_CONN-TH_XT3_3",
+          "componentId": "component-de16bfb34e3976187582",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-TH_XT30UPB-F_CONN-TH_XT3_4_ASM",
+          "componentId": "component-49e70e29804b426c3802",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-TH_XT30UPB-F_CONN-TH_XT3_5",
+          "componentId": "component-a1f7f97d1922959cdeda",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-TH_XT30UPB-F_CONN-TH_XT3_6",
+          "componentId": "component-535554a19e81a2946c96",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-TH_XT30UPB-F_CONN-TH_XT3_7",
+          "componentId": "component-90d8cae57842685ce7fe",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-TH_XT30UPB-F_CONN-TH_XT3_8_ASM",
+          "componentId": "component-89db7eef81bf2051cb41",
+          "occurrenceCount": 3,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-TH_XT30UPB-F_CONN-TH_XT3_9",
+          "componentId": "component-8c37a9191b8dbf33211a",
+          "occurrenceCount": 3,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-TH_XT30UPB-F_CONN-TH_XT_10",
+          "componentId": "component-fe6f131fc8f48e40d0bd",
+          "occurrenceCount": 3,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-TH_XT30UPB-F_CONN-TH_XT_11",
+          "componentId": "component-cb019c2b4f62abf69f5a",
+          "occurrenceCount": 3,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-TH_XT30UPB-M_CONN-TH_XT30U",
+          "componentId": "component-ded499640204361707eb",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-TH_XT60PW-M_CONN-TH_XT60PW",
+          "componentId": "component-192af2257d98b1796e24",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CONN-TH_XT60PW-M_CONN-TH_XT60_1",
+          "componentId": "component-d796f9e1c0c5e112c4d6",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAP_2X8",
+          "componentId": "component-0ee718ac3de9d81edb3d",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAP_2X8_MIR",
+          "componentId": "component-65016384dfa5b9fb612c",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAP_X_E1GY__1",
+          "componentId": "component-2e28a215c6c3ea3039c2",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAP_X_E1GY__1_MIR",
+          "componentId": "component-fe4a151f81565904a3c5",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAP_X_E1GY__Z14",
+          "componentId": "component-a1082a091c271856f618",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAP_X_E1GY__Z14_MIR",
+          "componentId": "component-1ad1aa4bcc45e11e6c7c",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAP_X_E1GY__Z14____",
+          "componentId": "component-7f02261ad2fc89c70cd5",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAP_X_E1GY__Z14____6X13",
+          "componentId": "component-b0a09e05efaa9dcb2ca1",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAP_X_E1GY__Z14____6X13X",
+          "componentId": "component-42221f545338c3a4015e",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAP_X_E1GY__Z14____6X13X5-",
+          "componentId": "component-ff13f91d8e6a07ac60cf",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAP_X_E1GY__Z14____6X13X5-8",
+          "componentId": "component-29444218c99b47a28365",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAP_X_E1GY__Z14____6X13X5-8161",
+          "componentId": "component-751edcb5f8dcbd8fe91b",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAP_X_E1GY__Z14____6X13X5-8176",
+          "componentId": "component-687146a5238cabfb8ced",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAP_X_E1GY__Z14____6X13X5-8189",
+          "componentId": "component-43c3da4c417eeba155c4",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAP_X_E1GY__Z14____6X13X5-82",
+          "componentId": "component-036e76973418911aaa69",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAP_X_E1GY__Z14____6X13X5-8217",
+          "componentId": "component-a92c031095c1dddfee27",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAP_X_E1GY__Z14____6X13X5-8231",
+          "componentId": "component-0f25ddd3747f274fd3fa",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAP_X_E1GY__Z14____6X13X5-8245",
+          "componentId": "component-48a4d74f1c726f3dde2b",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAP_X_E1GY__Z14____6X13X5-8259",
+          "componentId": "component-87cbd696433ca99c86d7",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAP_X_E1GY__Z14____6X13X5-8273",
+          "componentId": "component-c3274a3510c2e8e3ac8a",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAP_X_E1GY__Z14____6X13X5-8287",
+          "componentId": "component-fac619a3b563c4529e5f",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAP_X_E1GY__Z14____6X13X5-830",
+          "componentId": "component-b3f5cde646eeb8601136",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAP_X_E1GY__Z14____6X13X5-8301",
+          "componentId": "component-f3ae87c35b5c8767f5d3",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAP_X_E1GY__Z14____6X13X5IR",
+          "componentId": "component-f8bfeb261428400549e9",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAP_X_E1GY__Z14____6X13XMIR",
+          "componentId": "component-59a5fb0da00e2d621c93",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAP_X_E1GY__Z14____6X1MIR",
+          "componentId": "component-942b9c87c952f1d43e9d",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAVAR_ANSI_B18_3_4M_-_M3_X_0_5",
+          "componentId": "component-fd4d76b54ae3b22ce3bc",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAVAR_ANSI_B18_3_4M_-_M3_X_MIR",
+          "componentId": "component-6bffeb8843235da8ef52",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "CSAVAR_CNS_4558_-_M3_X_0_5__MIR",
+          "componentId": "component-60658f97bb2eaa2b919b",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "DIFI_ASM",
+          "componentId": "component-9553e8e8d9a277d77cbe",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "DIFI_F_R",
+          "componentId": "component-07483acbc125fa874781",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "DIFI_F_R_1-7859_ASM",
+          "componentId": "component-9e50da25d33439d9c9f9",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "DIFI_F_R_1-7859_MIR_ASM",
+          "componentId": "component-3cfa89bfa013c4c1bdc0",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "DIFI_F_R_MIR",
+          "componentId": "component-075aab8abbde843b4b9f",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "DIFI_H_X_E1Z_1",
+          "componentId": "component-f1b73c9ce97fa58c5128",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "DIFI_H_X_E1Z_1_MIR",
+          "componentId": "component-baeaf4dd832c97de5802",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "DIFI_H_X_E1Z_2_2",
+          "componentId": "component-128834e9c5da07bf3b9f",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "DIFI_H_X_E1Z_2_2_MIR",
+          "componentId": "component-e60c06366792bf53b729",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "DIFI_MIR_ASM",
+          "componentId": "component-21929d106c70dd5d5d88",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "DIFI_TENGELY-7857_ASM",
+          "componentId": "component-7b74238663bd200d83aa",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "DIFI_TENGELY-7857_MIR_ASM",
+          "componentId": "component-2db97bb4ff8214c231fe",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "DIFI_TENGELY-7864_ASM",
+          "componentId": "component-e59e6d8a1aeeb5d918db",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "DIFI_TENGELY-7864_MIR_ASM",
+          "componentId": "component-47998a865ee34ba83633",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "DIFI_TENGELY_FRONT_REAR_CENTRAL",
+          "componentId": "component-da8b9913cee466a7c61a",
+          "occurrenceCount": 4,
+          "isRootAssembly": false
+        },
+        {
+          "name": "EASYEDA_PCB_MODEL_O9SG_ASM",
+          "componentId": "component-4728c1d5fa38a6a67974",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "EASYEDA_PCB_MODEL_VKX0_ASM",
+          "componentId": "component-f6f2ea65364ff9cfba12",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "EASYEDA_PCB_MODEL_YPGN_ASM",
+          "componentId": "component-914bdbdc3652ce7c1ab6",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "ESC_GOOLRC_60A-13_ASM",
+          "componentId": "component-3d668a5728981027033a",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "ESC_GOOLRC_60A-288",
+          "componentId": "component-a81706fb4d741d3516da",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "ESC_GOOLRC_60A_2",
+          "componentId": "component-dae157004b8625f19d94",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "ESC_GOOLRC_60A_3",
+          "componentId": "component-042bf3538d1b8b71e236",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "ESC_GOOLRC_60A_4",
+          "componentId": "component-3dca01a485d747d3e199",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "ESC_GOOLRC_60A_5",
+          "componentId": "component-2848ec35e760a71da9c4",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "ESC_GOOLRC_60A_6",
+          "componentId": "component-3f9ec65827b3e0b377f5",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "ESC_GOOLRC_60A_7",
+          "componentId": "component-b405742c45496c29caf2",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "ESC_GOOLRC_60A_8",
+          "componentId": "component-bcfc000baf000edd1a0b",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "ESC_GOOLRC_60A_9",
+          "componentId": "component-5b6d49e7a573e24fdda2",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "F_X_E9LTENGELY_00-7752_ASM",
+          "componentId": "component-5375b0b76b88e54c6bf6",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "F_X_E9LTENGELY_00-7752_MIR_ASM",
+          "componentId": "component-419c6696f585227e8947",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "F_X_E9LTENGELY_00-7758_ASM",
+          "componentId": "component-e49cdb45a51d1f26d099",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "F_X_E9LTENGELY_00-7758_MIR_ASM",
+          "componentId": "component-88d23fed1cd278d72a34",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "F_X_E9LTENGELY_00_1",
+          "componentId": "component-8c6daf523e575ce1e3a5",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "F_X_E9LTENGELY_00_1_MIR",
+          "componentId": "component-83cea8ea21de8653d5e9",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "H4_HDR-TH_5P-P2_54-V-M_HDR-TH_5_ASM",
+          "componentId": "component-0477162935b3b2293deb",
+          "occurrenceCount": 3,
+          "isRootAssembly": false
+        },
+        {
+          "name": "HAJT_X_E1S_HATSZ_X_F2_MIR",
+          "componentId": "component-af23bc5eacbac76c323a",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "HAJT_X_E1S_HATSZ_X_F6G_1",
+          "componentId": "component-d403b9d053e6f09eb1a5",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "HAJT_X_E1S_HATSZ_X_F6G_1_MIR",
+          "componentId": "component-69a8e9a18fe10b164608",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "HAJT_X_E1S_HATSZ_X_F6G_CSAP",
+          "componentId": "component-b27eef9377349a7158b6",
+          "occurrenceCount": 5,
+          "isRootAssembly": false
+        },
+        {
+          "name": "HAJT_X_E1S_HATSZ_X_F6G_CSAP_2",
+          "componentId": "component-4377b139329e839dcd7d",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "HAJT_X_E1S_HATSZ_X_F6G_CSAP_MIR",
+          "componentId": "component-bdf8b7bc42e3ce0337e0",
+          "occurrenceCount": 5,
+          "isRootAssembly": false
+        },
+        {
+          "name": "HAJT_X_F3JTENGELY_F",
+          "componentId": "component-5668e472dac27aa52aa7",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "HAJT_X_F3JTENGELY_F_MIR",
+          "componentId": "component-58bb05e0aed4590ad369",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "HAJT_X_F3TENGELY_CSAP_2_1",
+          "componentId": "component-dff69613ec7d2a7819d4",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "HAJT_X_F3TENGELY_CSAP_2_1_MIR",
+          "componentId": "component-b9191cb65ecfe9922f6d",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "HAJT_X_F3TENGELY_F-7740_ASM",
+          "componentId": "component-3eead0380f6ddbdd177c",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "HAJT_X_F3TENGELY_F-7740_MIR_ASM",
+          "componentId": "component-5b6b062d3d45d338e403",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "HAJT_X_F3TENGELY_F-7746_ASM",
+          "componentId": "component-712e410876809df327b8",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "HAJT_X_F3TENGELY_F-7746_MIR_ASM",
+          "componentId": "component-3682a13a790ab4b5b5bf",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "HDR-TH_5P-P2_54-V-M_HDR-TH_5P-P",
+          "componentId": "component-6abecd8da01d89940d0a",
+          "occurrenceCount": 3,
+          "isRootAssembly": false
+        },
+        {
+          "name": "IR_X_E1NY_X_EDT_X_F3KAR_ASM",
+          "componentId": "component-498ee05d13ecf14a4b71",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "IR_X_E1NY_X_EDT_X_F3KAR_MIR_ASM",
+          "componentId": "component-3c4522c2c96fd962bde5",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "IR_X_E1NY_X_EDT_X_F3KAR_MIR_MIR",
+          "componentId": "component-ebd007ca96635a5bd0ea",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "ISO_4035_-_M3",
+          "componentId": "component-a7178edd4a79da69d0ba",
+          "occurrenceCount": 4,
+          "isRootAssembly": false
+        },
+        {
+          "name": "ISO_4035_-_M3_MIR",
+          "componentId": "component-a1ccb8d2ba93fa8d11d7",
+          "occurrenceCount": 4,
+          "isRootAssembly": false
+        },
+        {
+          "name": "KER_X_E9KANYA_1",
+          "componentId": "component-fac922eb27cb79650960",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "KER_X_E9KANYA_1_MIR",
+          "componentId": "component-02f2602c0b0c45b7e022",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "KORM_X_E1NY_GIR",
+          "componentId": "component-eee710ec63a19be5290c",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "KORM_X_E1NY_G_XEJ_MIR",
+          "componentId": "component-ad310cd9d09678891a22",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "KORM_X_E1NY_G_X_F6MBFEJ",
+          "componentId": "component-711b3ae12031b91c88c3",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "KORM_X_E1NY_G_X_F6MBFEJ_MIR",
+          "componentId": "component-22dc7706f90afbf655c5",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "KORM_X_E1NY_G_X_F6MB_1",
+          "componentId": "component-afd620b4f8ef1ca0b4b0",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "KORM_X_E1NY_G_X_F6MB_1_MIR",
+          "componentId": "component-8d9f2a0a333a3bd4105c",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "KORM_X_E1NY_G_X_F6MB_1_MIR_MIR",
+          "componentId": "component-fc61a7101510f99494b3",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "KORM_X_E1NY_G_X_F6MB_2",
+          "componentId": "component-f66eaed671da6be9cd1b",
+          "occurrenceCount": 4,
+          "isRootAssembly": false
+        },
+        {
+          "name": "KORM_X_E1NY_G_X_F6MB_2_MIR",
+          "componentId": "component-aaec6023bff31402179e",
+          "occurrenceCount": 6,
+          "isRootAssembly": false
+        },
+        {
+          "name": "KORM_X_E1NY__X_F6SSZ75_MIR_ASM",
+          "componentId": "component-dab225a30a7112f5fdd4",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "KORM_X_E1NY__X_F6SSZE3_MIR",
+          "componentId": "component-27d1b1d1f78971bb9f97",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "KORM_X_E1NY__X_F6SSZEK_86_MIR",
+          "componentId": "component-3162f6c475dfcdfd602b",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "KORM_X_E1NY__X_F6SSZEK_X-107086",
+          "componentId": "component-e9d52c8c999d20c11483",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "KORM_X_E1NY__X_F6SSZEK_X-137723",
+          "componentId": "component-d0962e38a3025dc4292a",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "KORM_X_E1NY__X_F6SSZEK_X-140558",
+          "componentId": "component-469992582352965aabf2",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "KORM_X_E1NY__X_F6SSZEK_X9_MIR_ASM",
+          "componentId": "component-b98278b4fd56d9aa4ce2",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "KORM_X_E1NY__X_F6SSZEK_X_F-7763_ASM",
+          "componentId": "component-15976b49b76bd3f33c51",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "KORM_X_E1NY__X_F6SSZEK_X_F-7769_ASM",
+          "componentId": "component-992ce0c57d8509f1e72e",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "KORM_X_E1NY__X_F6SSZEK_X_F-7775_ASM",
+          "componentId": "component-620ea458e500b3a07399",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "K_X_FAPKER_X_E9K_Z14-288_ASM",
+          "componentId": "component-ad5a755d059b8bc6069e",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "K_X_FAPKER_X_E9K_Z14-288_MIR_ASM",
+          "componentId": "component-7fa696e69b4d8bbe6103",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "K_X_FAPKER_X_E9K_Z14_1",
+          "componentId": "component-163b93a8d22aa46f1297",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "K_X_FAPKER_X_E9K_Z14_1_MIR",
+          "componentId": "component-6698246889997206226f",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "K_X_FAPKER_X_E9K_Z14_HAJT",
+          "componentId": "component-43ae3025a37449346af2",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "K_X_FAPKER_X_E9K_Z14_HAJT_X_E1S",
+          "componentId": "component-7cbef91254ade5118618",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LED00",
+          "componentId": "component-410fe5ea4a11c3593647",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LED000",
+          "componentId": "component-a888a43dfd3de508856e",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENGG_X2_0151_X0_KAR_F_A_1",
+          "componentId": "component-65b2d83341c30e974429",
+          "occurrenceCount": 4,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENGG_X2_0151_X0_KAR_F_F_1",
+          "componentId": "component-13c3b4ebd31f59a7aaa8",
+          "occurrenceCount": 4,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X2_0151_X0_KAR27_MIR_ASM",
+          "componentId": "component-1ddeee65776c58f27321",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X2_0151_X0_KAR_CSAP_B-8043",
+          "componentId": "component-e6685c8375407a8c500e",
+          "occurrenceCount": 8,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X2_0151_X0_KAR_CSAP_R",
+          "componentId": "component-a41b1a5f04ac50b41d9e",
+          "occurrenceCount": 8,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X2_0151_X0_KAR_F1_MIR_ASM",
+          "componentId": "component-b8f676e1ac80b595d4df",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X2_0151_X0_KAR_FR_ASM",
+          "componentId": "component-9de64d6c48c3a901f58c",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X2_0151_X0_KAR_F_A__1-7845_ASM",
+          "componentId": "component-cfb41a0ef0873f4ac77e",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X2_0151_X0_KAR_F_A__1-7851_ASM",
+          "componentId": "component-223f56de4c624c09b542",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X2_0151_X0_KAR_F_A___ASM",
+          "componentId": "component-f9e56082c22429680ef3",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X2_0151_X0_KAR_F_F__1-7821_ASM",
+          "componentId": "component-4dae337d0165ebe1e3dc",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X2_0151_X0_KAR_F_F__1-7827_ASM",
+          "componentId": "component-ed1d2718a10fa5192034",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X2_0151_X0_KAR_G_X_F-70410",
+          "componentId": "component-fe63bb561eceb841a746",
+          "occurrenceCount": 4,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X2_0151_X0_KAR_G_X_F-7041R",
+          "componentId": "component-73938c6a9bf7e3637740",
+          "occurrenceCount": 4,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X2_0151_X0_KAR_H_X_",
+          "componentId": "component-66cae9b04c80fb64eab3",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X2_0151_X0_KAR_H_X_E",
+          "componentId": "component-aa133c0596a5b48f2f62",
+          "occurrenceCount": 4,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X2_0151_X0_KAR_H_X_E9",
+          "componentId": "component-b5068c1204a4eb4223e7",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X2_0151_X0_KAR_H_X_E9-7564",
+          "componentId": "component-50e54ad83d9b96b75ec3",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X2_0151_X0_KAR_H_X_E9-7569",
+          "componentId": "component-8c2936ef32ad9d34f98e",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X2_0151_X0_KAR_H_X_E9-7615",
+          "componentId": "component-da7ec48752aa4a87f22e",
+          "occurrenceCount": 4,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X2_0151_X0_KAR_TENGEL",
+          "componentId": "component-6df703436934799c0636",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X2_0151_X0_KAR_TENGELY",
+          "componentId": "component-f43a75cab213ab7352a2",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X2_0151_X0_KAR_TENGELY_F_A",
+          "componentId": "component-0ba83dbd674c5b7b7c91",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X2_0151_X0_KAR_TENGELY_F_F",
+          "componentId": "component-fe264ad14337c3c259d7",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X2_0151_X0_KAR__X_F6S",
+          "componentId": "component-2a584a4d18b791ccdb64",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X2_0151_X0_KAR__X_F6S-8",
+          "componentId": "component-5f45876621a0d200d166",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X2_0151_X0_KAR__X_F6S-8048",
+          "componentId": "component-a91a7f12998ddaccba11",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X2_0151_X0_KAR__X_F6S-8064",
+          "componentId": "component-7911d293aecc4e6badf7",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_ASM",
+          "componentId": "component-529039681af21e37d208",
+          "occurrenceCount": 3,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAPDT__MIR",
+          "componentId": "component-1327841e7a01b0acaebc",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_E728_MIR_ASM",
+          "componentId": "component-8466ff0214a745beb813",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_ED6_MIR_ASM",
+          "componentId": "component-7750c01b139445a0c1b8",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDD_MIR",
+          "componentId": "component-a017aa0c6d8e53a14393",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDT3_MIR",
+          "componentId": "component-eee29b1a5af50b7b63ce",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDTR_MIR",
+          "componentId": "component-362bf0145c941993e6c8",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDT_",
+          "componentId": "component-f688f03b8e7764d59de9",
+          "occurrenceCount": 4,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDT_-",
+          "componentId": "component-98160f8c6142f1bfc953",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDT_-1",
+          "componentId": "component-3e5fcabbf88b20e3dfc5",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDT_-145307",
+          "componentId": "component-594d994f6e3f3a1cb1e0",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDT_-145313",
+          "componentId": "component-9271936c072a04fd0bfe",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDT_-145314",
+          "componentId": "component-74a6d2da66d4eaf424b9",
+          "occurrenceCount": 5,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDT_-145356",
+          "componentId": "component-d3d72b374a843175a76d",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDT_-145381",
+          "componentId": "component-70a3cb63487a513d3f87",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDT_-175301",
+          "componentId": "component-77ce86bb67502d04772f",
+          "occurrenceCount": 3,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDT_-175326",
+          "componentId": "component-35c3428153d724006398",
+          "occurrenceCount": 6,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDT_-175340",
+          "componentId": "component-5a7ea6ed3f8151e18f09",
+          "occurrenceCount": 3,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDT_-_MIR",
+          "componentId": "component-24af73f6714f5ec1912d",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDT_G_MIR",
+          "componentId": "component-89e94ec43d103bb51e0f",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDT_X",
+          "componentId": "component-71f1dbf60cfee4c518e0",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDT_X_-7722_ASM",
+          "componentId": "component-ed2131ee9db268a0a6b8",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDT_X_-7728_ASM",
+          "componentId": "component-687d9fd4469ec37242b9",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDT_X_F3",
+          "componentId": "component-4ed840fc6f8c6fec2b3e",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDT_X_F3_3_",
+          "componentId": "component-dc73ceb9492461c9a851",
+          "occurrenceCount": 3,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDT_X_F3_T_",
+          "componentId": "component-992a437c7c1262c34f3d",
+          "occurrenceCount": 3,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDT_X_F3__D",
+          "componentId": "component-f77f40279af39a5eda5c",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDT_X_F3__G",
+          "componentId": "component-4fb2a9864d4b96bb6d68",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDT_X_F3__R",
+          "componentId": "component-15e8863580738b48ec09",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDT_X__ASM",
+          "componentId": "component-afa01aa2f7f50fb018b0",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLAP_X_EDT__MIR",
+          "componentId": "component-c39e2e9996e5db2539c7",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "LENG_X_E9SCSILLA_X__ASM",
+          "componentId": "component-4bea2563170de7ce3388",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "M300_ASM",
+          "componentId": "component-df22b6e5d489e5f4fd3b",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "MINI-02V2_ASM",
+          "componentId": "component-e2a35425eec8cb6bed0b",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "MINI-V2205-200",
+          "componentId": "component-04c895c0c1fbb705dd4c",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "MINISST000",
+          "componentId": "component-462312892acdc33868ce",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "MINIV2-205-3",
+          "componentId": "component-5f26cb251584cc4a14df",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "MINIV205-1",
+          "componentId": "component-653f7e279d2d3eb4fc34",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "MOUNTING_THE_BOARD_TYPE_C_ASM_1_ASM",
+          "componentId": "component-eee62834604d1f27735d",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "NAPKER_X_E9K",
+          "componentId": "component-b11976291d7b1ced7a09",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "NAPKER_X_E9K_MIR",
+          "componentId": "component-6029533b156960dbceff",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "OSRBOT110-SSTMINI-V2_ASM",
+          "componentId": "component-a7cab21e0d987d7b1ee0",
+          "occurrenceCount": 0,
+          "isRootAssembly": true
+        },
+        {
+          "name": "PAN_HEAD_PHILLIP_MC_SCRE-249284",
+          "componentId": "component-7bccac9b0dec47631611",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "PAN_HEAD_PHILLIP_MC_SCRE-268236",
+          "componentId": "component-f333cf339db35526a4c9",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "PAN_HEAD_PHILLIP_MC_SCRE-268248",
+          "componentId": "component-6002d1a700fb30be7768",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "PAN_HEAD_PHILLIP_MC_SCREW_M-280_ASM",
+          "componentId": "component-e2e7f043f51aab06196b",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "PAN_HEAD_PHILLIP_MC_SCREW_M-300",
+          "componentId": "component-db6654690fe0552be09e",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "PG-HSOF-8-1_L10_4-W9_9-P1_2-LS1_ASM",
+          "componentId": "component-667f252309dc941b60aa",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "PG-HSOF-8-1_L10_4-W9_9-P1_2-L_1",
+          "componentId": "component-65ff9bb307e728b3893b",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "PG-HSOF-8-1_L10_4-W9_9-P1_2-L_2",
+          "componentId": "component-7ca99aa1b85c7af1c51b",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "PG-HSOF-8-1_L10_4-W9_9-P1_2-L_3",
+          "componentId": "component-7d76e56321217d4e3bb1",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "PG-HSOF-8-1_L10_4-W9_9-P1_2-L_4",
+          "componentId": "component-619247abaaf560d3935c",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "PRT0002",
+          "componentId": "component-58765131a3aa0df59e0b",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "PRT0003",
+          "componentId": "component-610742e8044316ae3966",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "Q1_PG-HSOF-8-1_L10_4-W9_9-P1_2-_ASM",
+          "componentId": "component-5678eb38c390de0fc710",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "Q2_SOT-23-3_L2_9-W1_3-P1_90-LS2_ASM",
+          "componentId": "component-b8104d5e98de0455af17",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "R0603_R0603_YPGN_1",
+          "componentId": "component-b4a6d263acb2fc8477ec",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "R0603_R0603_YPGN_2",
+          "componentId": "component-795735238ed2510c696b",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "R0603_R0603_YPGN_3",
+          "componentId": "component-cb26eb9e9566154bc791",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "R0603_R0603_YPGN_4",
+          "componentId": "component-43c5afa1b8bcd720659c",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "R0603_R0603_YPGN_ASM",
+          "componentId": "component-5f939f2192bcce93ffec",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "R0805_R0805_L2_0-W1_3-H0_6_YPGN_ASM",
+          "componentId": "component-1e9d6a09556bd7ddd6f1",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "R0805_R0805_L2_0-W1_3-H0_6_YP_1",
+          "componentId": "component-6c9c414ded93c8b3b4cd",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "R0805_R0805_L2_0-W1_3-H0_6_YP_2",
+          "componentId": "component-7ffa1f83aea0b0c82916",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "R0805_R0805_L2_0-W1_3-H0_6_YP_3",
+          "componentId": "component-387b983447bf141daae7",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "R2_R0603_R0603_YPGN_ASM",
+          "componentId": "component-d93f5d33430c8630bdc2",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "R3_R0805_R0805_L2_0-W1_3-H0_6_Y_ASM",
+          "componentId": "component-6105d2ea60cb4b123003",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "RC-LIDAR-00",
+          "componentId": "component-8cba4b4aad89edf17f76",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "RECOMPUTER-J4012",
+          "componentId": "component-0974b3a58e442cb8866f",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "RUG_X_F3TORONY_CSAP",
+          "componentId": "component-623c2022186309c3ad31",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "RUG_X_F3TORONY_CSAP_MIR",
+          "componentId": "component-76a9e57b4c5033cbd415",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SERVO_ARM",
+          "componentId": "component-e5e8478471e1ad79b432",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SERVO_SPT5435LV_ASM",
+          "componentId": "component-f89b21e3601826ac09c2",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SOD-323_L1_7-W1_3-LS2_6-RD_SOD-",
+          "componentId": "component-6e88a5609ba39741fb28",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SOD-323_L1_8-W1_3-LS2_5-RD_SOD-",
+          "componentId": "component-eac0bf240bf95766bd21",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SOT-23-3_L2_9-W1_3-P1_90-LS2_10",
+          "componentId": "component-a7ffd1b0a8838799db57",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SOT-23-3_L2_9-W1_3-P1_90-LS2_11",
+          "componentId": "component-6ec0e8d46601b122784d",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SOT-23-3_L2_9-W1_3-P1_90-LS2_12",
+          "componentId": "component-7b24470dea3dde2b52f5",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SOT-23-3_L2_9-W1_3-P1_90-LS2_13",
+          "componentId": "component-cfa39a67fba8c570d0be",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SOT-23-3_L2_9-W1_3-P1_90-LS2_14",
+          "componentId": "component-08875d536d265dff8cff",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SOT-23-3_L2_9-W1_3-P1_90-LS2_15",
+          "componentId": "component-2f85f2b67f9ff4b52100",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SOT-23-3_L2_9-W1_3-P1_90-LS2_16",
+          "componentId": "component-deed91880322e76c189e",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SOT-23-3_L2_9-W1_3-P1_90-LS2_17",
+          "componentId": "component-63b362dc75875a6c7a3d",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SOT-23-3_L2_9-W1_3-P1_90-LS2_4-_ASM",
+          "componentId": "component-5c8f0afba64916042d61",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SOT-23-3_L2_9-W1_3-P1_90-LS2__1",
+          "componentId": "component-568f2d3af369aaf3fb70",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SOT-23-3_L2_9-W1_3-P1_90-LS2__2",
+          "componentId": "component-0940ffaebe619387deda",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SOT-23-3_L2_9-W1_3-P1_90-LS2__3",
+          "componentId": "component-88a5fc62e08c0756cbe5",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SOT-23-3_L2_9-W1_3-P1_90-LS2__4",
+          "componentId": "component-7be8f97cbd703d994f61",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SOT-23-3_L2_9-W1_3-P1_90-LS2__5",
+          "componentId": "component-c3da51762fb4b6ae4eab",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SOT-23-3_L2_9-W1_3-P1_90-LS2__6",
+          "componentId": "component-1997c7da26b0e1c89718",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SOT-23-3_L2_9-W1_3-P1_90-LS2__7",
+          "componentId": "component-55209420c453a031d39b",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SOT-23-3_L2_9-W1_3-P1_90-LS2__8",
+          "componentId": "component-2e64cf9c22ca3dc6efa7",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SOT-23-3_L2_9-W1_3-P1_90-LS2__9",
+          "componentId": "component-c3222cf34894e17a61d1",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SST000_ASM",
+          "componentId": "component-11786cb8081f37e930f8",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SST000_ASM_1",
+          "componentId": "component-6effbf33d748c9964e8d",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SST00_ASM_1_ASM",
+          "componentId": "component-41808612b1255ccff305",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SSTMINI-01",
+          "componentId": "component-5b22b619e2429c15a680",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SSTMINI_ASM",
+          "componentId": "component-ea73e76d330b0598c29f",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SSTMINI_FLUN-2",
+          "componentId": "component-ac99183313719dd75aca",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SSTMINI_FLUN-2_MIR",
+          "componentId": "component-5d659189425101b7ada7",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SSTMINI_FLUN-3",
+          "componentId": "component-bf17243317dae2cff159",
+          "occurrenceCount": 4,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SSTMINI_FLUN_ASM",
+          "componentId": "component-16ef13f69d6f8542323e",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SSTMINI_FLUN_MIR_ASM",
+          "componentId": "component-3d53c1a59c5c82ef53e0",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SSTMINI_F_ASM",
+          "componentId": "component-11d5140e0d5d66ec5644",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SSTMINI_L_ASM",
+          "componentId": "component-819f94ec71389399f175",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "STEERING_KNUCKLE_JOINT",
+          "componentId": "component-114c31bc873de0143e68",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "STEERING_LINK_SHAFT",
+          "componentId": "component-eb820f3b1b07cbbcd6a4",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "STEERING_OUTER_LINK",
+          "componentId": "component-b6f70de1cc1490cc2769",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "STMINIV2-6",
+          "componentId": "component-a1c74460227683328b33",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "STMINIV2-7",
+          "componentId": "component-b5172738646610fe09dc",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "STMINIV2-CARM_ASM",
+          "componentId": "component-14c366c6935a7181fa21",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "SZERV_X_F3V_X_E9D_X2_0151_X0___",
+          "componentId": "component-efad5f66f680b6efbbf3",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "TORZI_X_F3S_R_X_FAD_BILINCS",
+          "componentId": "component-ad39c474f98df167379a",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "TORZI_X_F3S_R_X_FAD_BILINCS_MIR",
+          "componentId": "component-aa4fc105926ebac66b63",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "TORZI_X_F3S_R_X_FAD_F_MIR",
+          "componentId": "component-8fb3b9ee407b3724e156",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "TORZI_X_F3S_R_X_FAD_G_X_-1777",
+          "componentId": "component-f6b1763ec120cced6848",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "TORZI_X_F3S_R_X_FAD_G_X_-17775",
+          "componentId": "component-5787481c94dd284ef728",
+          "occurrenceCount": 2,
+          "isRootAssembly": false
+        },
+        {
+          "name": "TORZI_X_F3S_R_X_FAD_G_X_F6_ASM",
+          "componentId": "component-f837b5d76d50d35c6a7e",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "TORZI_X_F3S_R_X_FAD_MIR_ASM",
+          "componentId": "component-4a5e3edcc0d68150903a",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "TORZI_X_F3S_R_X_FAD__G_X-178",
+          "componentId": "component-5c01e6d488c8a6860114",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "U1_CONN-SMD_8P-P1_25_ZX-MX1_25-_ASM",
+          "componentId": "component-e5148e1d2b37d8d6df5b",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "U2_CONN-SMD_4P-P1_25_XUNPU_WAFE_ASM",
+          "componentId": "component-d0d6e038a06c1810153b",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "U4_SOD-323_L1_8-W1_3-LS2_5-RD_S_ASM",
+          "componentId": "component-954e0d9c3168c9b31e49",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "U5_SOD-323_L1_7-W1_3-LS2_6-RD_S_ASM",
+          "componentId": "component-f29f2a89b52cc5e38a41",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "WING-MOUNT-L",
+          "componentId": "component-651d2501fdff2aa4f1cd",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "WING-MOUNT-R",
+          "componentId": "component-83ca41b0e0c4d1c0ebd9",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        },
+        {
+          "name": "_MIR0001",
+          "componentId": "component-46b7bc43f77c5b72985f",
+          "occurrenceCount": 1,
+          "isRootAssembly": false
+        }
+      ]
+    },
+    "problem": {
+      "id": "design-problem.neoracer-wing-mount-l",
+      "objective": "Minimize compliance at a fixed 35% material target",
+      "grid": [
+        124,
+        109
+      ],
+      "cellSizeMm": 0.5,
+      "loadN": 100.0,
+      "loadNote": "Demo comparison fixture assumption",
+      "roundTripErrorCells": 0.0,
+      "image": {
+        "url": "assets/design-domain.png",
+        "sha256": "5eedf8cf438cf2541422c844e7a18baaa81e8f7a1ca0d7946106ef943b08d608",
+        "source": ".artifacts/attempt1-physgen/design-problem/artifacts/sha256/5eedf8cf438cf2541422c844e7a18baaa81e8f7a1ca0d7946106ef943b08d608.png",
+        "sizeBytes": 18740
+      }
+    },
+    "contracts": {
+      "recordsValidated": 9,
+      "entitySchemas": 7
+    },
+    "lab": {
+      "modelPair": "OpenTO large latent",
+      "candidateCount": 3,
+      "coldSeconds": 3.3007828849986254,
+      "warmSeconds": 2.1549297540004773,
+      "proposals": [
+        {
+          "id": "candidate.neoracer-wing-mount-l-s7-00",
+          "shortId": "C1",
+          "label": "OAT 00",
+          "role": "proposal",
+          "method": "OptimizeAnyTopology OATPipeline OpenTO large latent",
+          "seed": 7,
+          "densityImage": {
+            "url": "assets/lab-00.png",
+            "sha256": "909e948fb3963624c3f96bfd94e9bd6c064c7c30b9763ba70dd838c80f36deaa",
+            "source": ".artifacts/attempt1-physgen/lab-runtime/candidates/candidate.neoracer-wing-mount-l-s7-00.png",
+            "sizeBytes": 489
+          },
+          "labEvaluation": {
+            "materialFraction": 0.3515833086712045,
+            "complianceNmm": 7283.8904909860075,
+            "finite": true,
+            "note": "Lab evaluator result; not a Track rank."
+          },
+          "compile": {
+            "id": "compiled.neoracer-wing-mount-l-s7-00",
+            "valid": true,
+            "solidCount": 1,
+            "volumeMm3": 4117.572581449701,
+            "materialFraction": 0.689565627950897,
+            "trueCells": 2921,
+            "seconds": 2.517699203999655,
+            "geometrySha256": "303db387a18410ddf39434df839bf3addbd7b7c2b180062a4c948d6efe653841",
+            "image": {
+              "url": "assets/compiled-00.png",
+              "sha256": "1d6c134880b9072d02ca2b0adc07e632c3345513964cca29d3259b07c71b84da",
+              "source": ".artifacts/attempt1-physgen/cad-candidates/artifacts/sha256/1d6c134880b9072d02ca2b0adc07e632c3345513964cca29d3259b07c71b84da.png",
+              "sizeBytes": 88055
+            }
+          },
+          "factory": {
+            "verdict": "pass",
+            "verdictId": "factory-verdict.neoracer-wing-mount-l-s7-00",
+            "failureCodes": [],
+            "checksPassed": 13,
+            "checkCount": 13,
+            "failedChecks": [],
+            "elapsedMs": 1383
+          },
+          "trackEligible": true
+        },
+        {
+          "id": "candidate.neoracer-wing-mount-l-s7-01",
+          "shortId": "C2",
+          "label": "OAT 01",
+          "role": "proposal",
+          "method": "OptimizeAnyTopology OATPipeline OpenTO large latent",
+          "seed": 7,
+          "densityImage": {
+            "url": "assets/lab-01.png",
+            "sha256": "639fe192a1f822f0b2af3a86299bf95502d618c5d2ed6e99328dbc5bfb4a0dfa",
+            "source": ".artifacts/attempt1-physgen/lab-runtime/candidates/candidate.neoracer-wing-mount-l-s7-01.png",
+            "sizeBytes": 802
+          },
+          "labEvaluation": {
+            "materialFraction": 0.35039952648712636,
+            "complianceNmm": 1.179179442780497,
+            "finite": true,
+            "note": "Lab evaluator result; not a Track rank."
+          },
+          "compile": {
+            "id": "compiled.neoracer-wing-mount-l-s7-01",
+            "valid": true,
+            "solidCount": 1,
+            "volumeMm3": 4560.226463908225,
+            "materialFraction": 0.7731350330500472,
+            "trueCells": 3275,
+            "seconds": 2.6756185029989865,
+            "geometrySha256": "10ddf18e0cce0b9e13dca16aa376be9295e9ce238692e29a3f0c0332074a1e88",
+            "image": {
+              "url": "assets/compiled-01.png",
+              "sha256": "7fc73ecf1b1c194c49d8cb7f983aba0c8d2ed3a50c3dfb25327b480a1359a828",
+              "source": ".artifacts/attempt1-physgen/cad-candidates/artifacts/sha256/7fc73ecf1b1c194c49d8cb7f983aba0c8d2ed3a50c3dfb25327b480a1359a828.png",
+              "sizeBytes": 93927
+            }
+          },
+          "factory": {
+            "verdict": "fail",
+            "verdictId": "factory-verdict.neoracer-wing-mount-l-s7-01",
+            "failureCodes": [
+              "constraint_violation"
+            ],
+            "checksPassed": 12,
+            "checkCount": 13,
+            "failedChecks": [
+              {
+                "check_id": "check.volume-centroid-shift",
+                "evidence_source_ids": [
+                  "evidence.factory.neoracer-wing-mount-l-s7-01"
+                ],
+                "implicated_component_ids": [
+                  "component-651d2501fdff2aa4f1cd"
+                ],
+                "kind": "assembly_constraint",
+                "measured": {
+                  "unit": "mm",
+                  "value": 4.114660643670036
+                },
+                "operator": "lte",
+                "outcome": "fail",
+                "threshold": {
+                  "unit": "mm",
+                  "value": 3.0
+                }
+              }
+            ],
+            "elapsedMs": 1428
+          },
+          "trackEligible": false
+        },
+        {
+          "id": "candidate.neoracer-wing-mount-l-s7-02",
+          "shortId": "C3",
+          "label": "OAT 02",
+          "role": "proposal",
+          "method": "OptimizeAnyTopology OATPipeline OpenTO large latent",
+          "seed": 7,
+          "densityImage": {
+            "url": "assets/lab-02.png",
+            "sha256": "760c0635dc7d7bd02922022689579cf052b74736088b6bc51dda15dfb9dded63",
+            "source": ".artifacts/attempt1-physgen/lab-runtime/candidates/candidate.neoracer-wing-mount-l-s7-02.png",
+            "sizeBytes": 478
+          },
+          "labEvaluation": {
+            "materialFraction": 0.3526931044687777,
+            "complianceNmm": 9863.594066848127,
+            "finite": true,
+            "note": "Lab evaluator result; not a Track rank."
+          },
+          "compile": {
+            "id": "compiled.neoracer-wing-mount-l-s7-02",
+            "valid": true,
+            "solidCount": 1,
+            "volumeMm3": 4344.61567311181,
+            "materialFraction": 0.7325306893295562,
+            "trueCells": 3103,
+            "seconds": 2.6584594349988038,
+            "geometrySha256": "7aec21a47337b5bb0aaf53e276aecdaee8804f3f50dee0e4bfee53bd9410b0ee",
+            "image": {
+              "url": "assets/compiled-02.png",
+              "sha256": "dc3d8583717474d071fc7c61ef1108a1953e18b688278b2d050c28ec094481b5",
+              "source": ".artifacts/attempt1-physgen/cad-candidates/artifacts/sha256/dc3d8583717474d071fc7c61ef1108a1953e18b688278b2d050c28ec094481b5.png",
+              "sizeBytes": 87778
+            }
+          },
+          "factory": {
+            "verdict": "pass",
+            "verdictId": "factory-verdict.neoracer-wing-mount-l-s7-02",
+            "failureCodes": [],
+            "checksPassed": 13,
+            "checkCount": 13,
+            "failedChecks": [],
+            "elapsedMs": 1456
+          },
+          "trackEligible": true
+        }
+      ]
+    },
+    "compile": {
+      "status": "passed",
+      "countIncludingBaseline": 4,
+      "deterministicRepetitions": 3,
+      "wallSeconds": 35.69761272899996,
+      "baseline": {
+        "id": "candidate.neoracer-wing-mount-l-source-baseline",
+        "volumeMm3": 5136.590908868597,
+        "geometrySha256": "afb085e3a7dfe99843d1f80a3dd070ee9c229c6c1ffc08f9873b997cca7a9d1c",
+        "image": {
+          "url": "assets/compiled-baseline.png",
+          "sha256": "3624a9f9ccb22b50b2208657298d92f1117f7f2b9a596e7c2b1c9393ef8a5b1c",
+          "source": ".artifacts/attempt1-physgen/cad-candidates/artifacts/sha256/3624a9f9ccb22b50b2208657298d92f1117f7f2b9a596e7c2b1c9393ef8a5b1c.png",
+          "sizeBytes": 124411
+        },
+        "factoryVerdict": "pass"
+      }
+    },
+    "factory": {
+      "status": "passed",
+      "checkSetId": "check-set.neoracer-wing-mount-l-v1",
+      "proposalSurvivors": 2,
+      "rejectedCandidateIds": [
+        "candidate.neoracer-wing-mount-l-s7-01"
+      ],
+      "repeatability": {
+        "identical_verdict_measurements": true,
+        "repetitions": 3,
+        "signatures": [
+          "10801ee00a35a927443e1c4961adc0ecfc28634c97b63139983a4ecf87605776",
+          "10801ee00a35a927443e1c4961adc0ecfc28634c97b63139983a4ecf87605776",
+          "10801ee00a35a927443e1c4961adc0ecfc28634c97b63139983a4ecf87605776"
+        ]
+      },
+      "wallSeconds": 20.81272999900102,
+      "feedback": {
+        "id": "feedback.factory.neoracer-wing-mount-l-s7-01",
+        "reasonCode": "assembly_constraint",
+        "candidateId": "candidate.neoracer-wing-mount-l-s7-01",
+        "measured": {
+          "unit": "mm",
+          "value": 4.114660643670036
+        },
+        "threshold": {
+          "unit": "mm",
+          "value": 3.0
+        },
+        "implicatedComponentIds": [
+          "component-651d2501fdff2aa4f1cd"
+        ]
+      },
+      "veto": {
+        "candidateId": "candidate.neoracer-wing-mount-l-s7-01",
+        "checkId": "check.volume-centroid-shift",
+        "measured": {
+          "unit": "mm",
+          "value": 4.114660643670036
+        },
+        "operator": "lte",
+        "threshold": {
+          "unit": "mm",
+          "value": 3.0
+        }
+      }
+    },
+    "pendingStages": [
+      "Track",
+      "Revision",
+      "Human Review"
+    ],
+    "events": [
+      {
+        "agent": "AS",
+        "name": "Full assembly · #42",
+        "text": "Loaded all 647 physical occurrences in the NeoRacer root assembly.",
+        "image": {
+          "url": "assets/full-vehicle.png",
+          "sha256": "30f3efecc27286c270d1c4a2099efe79226f52f02ab28f7411d6d28ed7c43a7b",
+          "source": ".artifacts/attempt1-physgen/object/source/neoracer-hardware-files/full-vehicle/neoracer-full-vehicle.step",
+          "sizeBytes": 421491,
+          "triangleCount": 1028723
+        },
+        "heading": "NeoRacer v0 full vehicle",
+        "subtitle": "647 occurrences · every saved part visible"
+      },
+      {
+        "agent": "OB",
+        "name": "Object · #42",
+        "text": "Selected WING-MOUNT-L with stable occurrence identity.",
+        "image": {
+          "url": "assets/object-context.png",
+          "sha256": "425cc02758671dbb20391dbd14337bc43a31940c2ab0a20cfb2f073249eb97ba",
+          "source": ".artifacts/attempt1-physgen/object/artifacts/sha256/425cc02758671dbb20391dbd14337bc43a31940c2ab0a20cfb2f073249eb97ba.png",
+          "sizeBytes": 287461
+        }
+      },
+      {
+        "agent": "CT",
+        "name": "Contracts · #43",
+        "text": "Validated 9 live records against 7 frozen entity schemas.",
+        "image": {
+          "url": "assets/object-context.png",
+          "sha256": "425cc02758671dbb20391dbd14337bc43a31940c2ab0a20cfb2f073249eb97ba",
+          "source": ".artifacts/attempt1-physgen/object/artifacts/sha256/425cc02758671dbb20391dbd14337bc43a31940c2ab0a20cfb2f073249eb97ba.png",
+          "sizeBytes": 287461
+        }
+      },
+      {
+        "agent": "LB",
+        "name": "Lab · #44",
+        "text": "Generated 3 seeded OAT density fields offline.",
+        "image": {
+          "url": "assets/lab-00.png",
+          "sha256": "909e948fb3963624c3f96bfd94e9bd6c064c7c30b9763ba70dd838c80f36deaa",
+          "source": ".artifacts/attempt1-physgen/lab-runtime/candidates/candidate.neoracer-wing-mount-l-s7-00.png",
+          "sizeBytes": 489
+        }
+      },
+      {
+        "agent": "BI",
+        "name": "CAD domain · #45",
+        "text": "Built a 124 × 109 grid with 4 protected interfaces.",
+        "image": {
+          "url": "assets/design-domain.png",
+          "sha256": "5eedf8cf438cf2541422c844e7a18baaa81e8f7a1ca0d7946106ef943b08d608",
+          "source": ".artifacts/attempt1-physgen/design-problem/artifacts/sha256/5eedf8cf438cf2541422c844e7a18baaa81e8f7a1ca0d7946106ef943b08d608.png",
+          "sizeBytes": 18740
+        }
+      },
+      {
+        "agent": "CC",
+        "name": "CAD compiler · #46",
+        "text": "Compiled baseline + 3 proposals into deterministic STEP solids.",
+        "image": {
+          "url": "assets/compiled-00.png",
+          "sha256": "1d6c134880b9072d02ca2b0adc07e632c3345513964cca29d3259b07c71b84da",
+          "source": ".artifacts/attempt1-physgen/cad-candidates/artifacts/sha256/1d6c134880b9072d02ca2b0adc07e632c3345513964cca29d3259b07c71b84da.png",
+          "sizeBytes": 88055
+        }
+      },
+      {
+        "agent": "FX",
+        "name": "Factory · #47",
+        "text": "Vetoed OAT 01; two proposals remain Track-eligible.",
+        "image": {
+          "url": "assets/compiled-01.png",
+          "sha256": "7fc73ecf1b1c194c49d8cb7f983aba0c8d2ed3a50c3dfb25327b480a1359a828",
+          "source": ".artifacts/attempt1-physgen/cad-candidates/artifacts/sha256/7fc73ecf1b1c194c49d8cb7f983aba0c8d2ed3a50c3dfb25327b480a1359a828.png",
+          "sizeBytes": 93927
+        }
+      }
+    ]
+  }
+}

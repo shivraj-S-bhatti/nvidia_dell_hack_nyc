@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "autoauto.interactive-vehicle/v1",
+  "sourceStep": {
+    "relativePath": ".artifacts/attempt1-physgen/object/source/neoracer-hardware-files/full-vehicle/neoracer-full-vehicle.step",
+    "sha256": "73d18cf9104c93177495f09f1aa4569c887c089ce0c9d0ddf4a97d1f26fc7c73"
+  },
+  "componentManifest": {
+    "relativePath": ".artifacts/attempt1-physgen/object/evidence/component-manifest.json",
+    "sha256": "01b229ace2a22d57f846c8a7d00b8c0ef54dbba6b1920bda6d447f2e70464981"
+  },
+  "counts": {
+    "definitions": 379,
+    "occurrences": 647,
+    "renderableLeafOccurrences": 499,
+    "vertices": 961837,
+    "triangles": 1004555,
+    "selectionVertices": 876020,
+    "selectionTriangles": 883473
+  },
+  "tessellation": {
+    "linearDeflectionMm": 2.2,
+    "angularDeflectionRad": 0.45
+  },
+  "files": {
+    "mesh": {
+      "relativePath": "interactive/mesh.json",
+      "sha256": "f7630da09e4bb6654d7aa9791b4e6c2362df1c0aeb6409cfaaf8a7e5f596f944",
+      "sizeBytes": 365200
+    },
+    "positions": {
+      "relativePath": "interactive/mesh_pos.bin",
+      "sha256": "6fada8624c318e2a0d2acca05314b6ccf5aa84fd663797aa1cb7a54c20c25d9b",
+      "sizeBytes": 11027314
+    },
+    "indices": {
+      "relativePath": "interactive/mesh_idx.bin",
+      "sha256": "36be14864951e76e3e2e6011e7ddce807f57f403584c766064995a4e2b649716",
+      "sizeBytes": 17816680
+    }
+  }
+}

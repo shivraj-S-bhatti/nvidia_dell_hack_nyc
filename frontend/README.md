@@ -1,37 +1,52 @@
-# autoauto final demo
+# autoauto live design-loop UI
 
-The recording surface is a two-screen local application:
+The frontend has three local screens:
 
-1. **Object** selects the EasyRC chassis plate, starts a scripted local design loop, and shows dependency propagation in the assembled viewer.
-2. **Simulation** presents the frozen Factory and Track evidence, including the rejected load path and the winning material layout.
+1. **Object** shows the downloaded FS-AI Example Plate context.
+2. **Request change** starts the bounded local pipeline immediately.
+3. **Simulation** displays fresh candidate previews, STEP artifacts, Factory
+   verdicts, Track measurements, revision ancestry, and the human choice.
 
-The Object toolbar preserves direct `Assembled`, `Focus`, and `Exploded` views. Its BOM drawer reads the real 46-part catalog, groups it by subsystem, and focuses a rendered component when selected.
-
-`Review on object` returns to the affected subassembly. The operator then promotes one Factory survivor and the dependency graph pulses once more.
+The right-hand dock polls persisted backend status. Object, Lab, CAD Compile,
+Factory, Revision, Track, and Human Review change only when the corresponding
+worker stage updates the run artifact; the UI does not animate a synthetic
+queue.
 
 ## Run
 
 From the repository root:
 
 ```bash
-python3 frontend/build.py
-python3 -m http.server 4414
+python3 frontend/serve.py
 ```
 
 Open `http://127.0.0.1:4414/frontend/`.
 
-## Recording path
+The live endpoints are:
 
-1. Hold on the assembled car and the `The object improves itself.` claim.
-2. Click `Run iteration`.
-3. Let the app transition to Simulation without interruption.
-4. Click `Review on object`.
-5. Choose `Edge scallops`.
+- `GET /api/capabilities` reports the verified local adapter and runtime.
+- `POST /api/runs` validates the request and starts one offline run.
+- `GET /api/runs/<run-id>` returns persisted stage and result evidence.
+- `GET /api/runs` lists recent runs.
+- `POST /api/selections` accepts only a Factory/Track survivor and closes the
+  human gate.
 
-The run is deterministic and intentionally compact. `frontend/nightshift.html` is not part of the judged path. The previous nine-step workbench remains available in git history at commit `3ed7f6c`.
+Each run is retained under `.artifacts/design-run/runs/<run-id>/`, including
+the normalized request, candidate density fields and previews, generated STEP
+files, logs, `status.json`, `run.json`, and (after review) `selection.json`.
 
-## Data
+## Verified scope
 
-`frontend/build.py` validates and inlines `run.sample.json`. The visible decision numbers are the merged Track evidence from `tools/track/README.md`, and the veto language follows the deterministic Factory and Track checks on `main`.
+The live adapter currently supports only the downloaded **Example Plate** from
+the FS-AI ADS-DV 2026 assembly. Its four mount interfaces are protected. The
+request may choose a 20–80% material target; candidate generation and geometry
+checks are deterministic.
 
-The EasyRC assembly is rendered by `examples/easyrc/viewer/`. Its embedded mode accepts a narrow `postMessage` interface for selection, view mode, and one-shot dependency pulses.
+Factory checks re-imported STEP validity, exactly one solid, protected mounts,
+and a connected support-to-load path. Track evaluates only Factory survivors
+with the same local OptimizeAnyTopology pyEDGE CPU plane-stress fixture. These
+are comparative measurements, not vehicle certification.
+
+`python3 frontend/build.py` still emits a standalone page with the explicitly
+labelled fixture replay, but live execution and selection persistence require
+`frontend/serve.py`.
